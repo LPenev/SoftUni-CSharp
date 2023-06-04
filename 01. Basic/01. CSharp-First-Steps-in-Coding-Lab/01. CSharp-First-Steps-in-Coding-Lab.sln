@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Nums 1 to 10", "02. Num
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Rectangle Area", "03. Rectangle Area\03. Rectangle Area.csproj", "{BF8D2588-8F58-4F61-AC48-E6668C01CCC3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Inches to Centimeters", "04. Inches to Centimeters\04. Inches to Centimeters.csproj", "{0FE59036-2A88-4950-A8DB-18BF8B521B22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BF8D2588-8F58-4F61-AC48-E6668C01CCC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF8D2588-8F58-4F61-AC48-E6668C01CCC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF8D2588-8F58-4F61-AC48-E6668C01CCC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FE59036-2A88-4950-A8DB-18BF8B521B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE59036-2A88-4950-A8DB-18BF8B521B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE59036-2A88-4950-A8DB-18BF8B521B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE59036-2A88-4950-A8DB-18BF8B521B22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
