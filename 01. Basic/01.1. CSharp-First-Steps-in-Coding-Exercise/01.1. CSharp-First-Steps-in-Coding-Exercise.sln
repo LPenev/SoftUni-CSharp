@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. USD to BGN", "01. USD to BGN\01. USD to BGN.csproj", "{69B6E498-DC73-422C-94FB-C10A36C2947A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Radians to Degrees", "02. Radians to Degrees\02. Radians to Degrees.csproj", "{62A77C1F-123D-4471-86C5-336FC259403F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
