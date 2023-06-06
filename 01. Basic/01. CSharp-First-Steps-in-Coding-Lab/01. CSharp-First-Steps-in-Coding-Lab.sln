@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Inches to Centimeters",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Greeting by Name", "05. Greeting by Name\05. Greeting by Name.csproj", "{A607A29A-4FD2-4D59-983C-D1CA65037686}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Concatenate Data", "06. Concatenate Data\06. Concatenate Data.csproj", "{BC6DD5C6-D72F-4BE0-9A04-4F67B0766B5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A607A29A-4FD2-4D59-983C-D1CA65037686}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A607A29A-4FD2-4D59-983C-D1CA65037686}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A607A29A-4FD2-4D59-983C-D1CA65037686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6DD5C6-D72F-4BE0-9A04-4F67B0766B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6DD5C6-D72F-4BE0-9A04-4F67B0766B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6DD5C6-D72F-4BE0-9A04-4F67B0766B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6DD5C6-D72F-4BE0-9A04-4F67B0766B5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
