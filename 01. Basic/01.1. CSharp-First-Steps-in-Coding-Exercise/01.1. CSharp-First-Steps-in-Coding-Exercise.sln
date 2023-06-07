@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Radians to Degrees", "0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Deposit Calculator", "03. Deposit Calculator\03. Deposit Calculator.csproj", "{5192DD5A-F5AE-4BA2-B9AC-32C7D88ED40D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Vacation Books List", "04. Vacation Books List\04. Vacation Books List.csproj", "{16047C9D-F2A4-44EC-A22A-02CB68FF202D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
