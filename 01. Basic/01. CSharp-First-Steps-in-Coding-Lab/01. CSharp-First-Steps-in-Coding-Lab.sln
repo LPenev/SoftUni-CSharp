@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Concatenate Data", "06.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Projects Creation", "07. Projects Creation\07. Projects Creation.csproj", "{EAB40CCB-8E87-4ADD-BB9E-53CFD3746131}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. Pet Shop", "08. Pet Shop\08. Pet Shop.csproj", "{46D69841-364C-4B4B-8EFC-CCCC60D39025}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{EAB40CCB-8E87-4ADD-BB9E-53CFD3746131}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAB40CCB-8E87-4ADD-BB9E-53CFD3746131}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAB40CCB-8E87-4ADD-BB9E-53CFD3746131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46D69841-364C-4B4B-8EFC-CCCC60D39025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46D69841-364C-4B4B-8EFC-CCCC60D39025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46D69841-364C-4B4B-8EFC-CCCC60D39025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46D69841-364C-4B4B-8EFC-CCCC60D39025}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
