@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Supplies for School", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Repainting", "06. Repainting\06. Repainting.csproj", "{056B0E49-4E90-4E8D-A401-9AD57A4E74AD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Food Delivery", "07. Food Delivery\07. Food Delivery.csproj", "{91298E74-778F-4D2E-B3EB-2F8B949A0164}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
