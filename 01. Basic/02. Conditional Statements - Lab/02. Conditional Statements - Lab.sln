@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Excellent Result", "01.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Greater Number", "02. Greater Number\02. Greater Number.csproj", "{61B27714-3E54-44D1-B35D-BBC948E6F5BB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Even or Odd", "03. Even or Odd\03. Even or Odd.csproj", "{242D40BC-914C-43E6-B8CD-68C39F4CC13C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
