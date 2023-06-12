@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Even or Odd", "03. Even
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Password Guess", "04. Password Guess\04. Password Guess.csproj", "{2BFAC24D-0B08-4CA1-A0E7-F1DFABBAECB5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Number 100 to 200", "05. Number 100 to 200\05. Number 100 to 200.csproj", "{6E091B5F-D11C-4C3E-B137-2E00325F9734}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
