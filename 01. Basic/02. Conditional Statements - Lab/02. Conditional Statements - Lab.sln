@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Number 100 to 200", "05
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Speed Info", "06. Speed Info\06. Speed Info.csproj", "{362DFDDD-BCE6-4A80-AFD0-BC094D4045E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. Area of Figures", "07. Area of Figures\07. Area of Figures.csproj", "{3134B9E0-D24F-4E71-8E87-3BDEA7B6D7DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
