@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. USD to BGN", "01. USD to BGN\01. USD to BGN.csproj", "{69B6E498-DC73-422C-94FB-C10A36C2947A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Radians to Degrees", "02. Radians to Degrees\02. Radians to Degrees.csproj", "{62A77C1F-123D-4471-86C5-336FC259403F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Radians to Degrees", "02. Radians to Degrees\02. Radians to Degrees.csproj", "{62A77C1F-123D-4471-86C5-336FC259403F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Deposit Calculator", "03. Deposit Calculator\03. Deposit Calculator.csproj", "{5192DD5A-F5AE-4BA2-B9AC-32C7D88ED40D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{62A77C1F-123D-4471-86C5-336FC259403F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62A77C1F-123D-4471-86C5-336FC259403F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62A77C1F-123D-4471-86C5-336FC259403F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5192DD5A-F5AE-4BA2-B9AC-32C7D88ED40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5192DD5A-F5AE-4BA2-B9AC-32C7D88ED40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5192DD5A-F5AE-4BA2-B9AC-32C7D88ED40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5192DD5A-F5AE-4BA2-B9AC-32C7D88ED40D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
