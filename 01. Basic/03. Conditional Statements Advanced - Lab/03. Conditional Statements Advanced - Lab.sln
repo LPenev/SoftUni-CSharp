@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Animal Type", "03. Anim
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Personal Titles", "04. Personal Titles\04. Personal Titles.csproj", "{55E47BF7-E028-4C7E-8038-B4EBFEAF2D87}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Small Shop", "05. Small Shop\05. Small Shop.csproj", "{50996859-CFA6-4E29-9680-BA649D38FE38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
