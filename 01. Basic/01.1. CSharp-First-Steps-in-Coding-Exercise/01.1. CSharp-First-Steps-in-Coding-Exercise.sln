@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Deposit Calculator", "0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Vacation Books List", "04. Vacation Books List\04. Vacation Books List.csproj", "{16047C9D-F2A4-44EC-A22A-02CB68FF202D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Supplies for School", "05. Supplies for School\05. Supplies for School.csproj", "{43CB0073-BB39-40CF-A8C5-534353E021AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Supplies for School", "05. Supplies for School\05. Supplies for School.csproj", "{43CB0073-BB39-40CF-A8C5-534353E021AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. Repainting", "06. Repainting\06. Repainting.csproj", "{056B0E49-4E90-4E8D-A401-9AD57A4E74AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Repainting", "06. Repainting\06. Repainting.csproj", "{056B0E49-4E90-4E8D-A401-9AD57A4E74AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. Food Delivery", "07. Food Delivery\07. Food Delivery.csproj", "{91298E74-778F-4D2E-B3EB-2F8B949A0164}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{056B0E49-4E90-4E8D-A401-9AD57A4E74AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{056B0E49-4E90-4E8D-A401-9AD57A4E74AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{056B0E49-4E90-4E8D-A401-9AD57A4E74AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91298E74-778F-4D2E-B3EB-2F8B949A0164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91298E74-778F-4D2E-B3EB-2F8B949A0164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91298E74-778F-4D2E-B3EB-2F8B949A0164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91298E74-778F-4D2E-B3EB-2F8B949A0164}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
