@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Numbers N", "02. Number
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Numbers 1.N with Step 3", "03. Numbers 1.N with Step 3\03. Numbers 1.N with Step 3.csproj", "{8071FF38-37A4-44FB-9DF0-46012DD63971}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Even Powers of 2", "04. Even Powers of 2\04. Even Powers of 2.csproj", "{A65EAC37-9E39-405E-A111-0090C970E0D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
