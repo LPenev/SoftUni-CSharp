@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Toy Shop", "04. Toy Sho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Godzilla vs. Kong", "05. Godzilla vs. Kong\05. Godzilla vs. Kong.csproj", "{58073927-2210-483A-9E67-3ACD0362B248}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. World Swimming Record", "06. World Swimming Record\06. World Swimming Record.csproj", "{AC855F8A-7409-49AB-B719-0BCE1D76AB29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{58073927-2210-483A-9E67-3ACD0362B248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58073927-2210-483A-9E67-3ACD0362B248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58073927-2210-483A-9E67-3ACD0362B248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC855F8A-7409-49AB-B719-0BCE1D76AB29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC855F8A-7409-49AB-B719-0BCE1D76AB29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC855F8A-7409-49AB-B719-0BCE1D76AB29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC855F8A-7409-49AB-B719-0BCE1D76AB29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
