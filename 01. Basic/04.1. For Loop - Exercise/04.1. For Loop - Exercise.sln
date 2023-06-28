@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Numbers Ending in 7", "01. Numbers Ending in 7\01. Numbers Ending in 7.csproj", "{637F091C-E2FD-417A-8FBD-A564D827AD74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Half Sum Element", "02. Half Sum Element\02. Half Sum Element.csproj", "{BCA2D85E-1708-41E6-BB6B-F064D575196B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
