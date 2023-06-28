@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Sum Seconds", "01. Sum Seconds\01. Sum Seconds.csproj", "{12F47426-1E2E-48AE-8C6D-807C788D79F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Sum Seconds", "01. Sum Seconds\01. Sum Seconds.csproj", "{12F47426-1E2E-48AE-8C6D-807C788D79F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Bonus Score", "02. Bonus Score\02. Bonus Score.csproj", "{4858F13E-7207-4B9A-9151-466B1C2147EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Bonus Score", "02. Bonus Score\02. Bonus Score.csproj", "{4858F13E-7207-4B9A-9151-466B1C2147EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Time + 15 Minutes", "03. Time + 15 Minutes\03. Time + 15 Minutes.csproj", "{21E7651B-2CC5-401C-9D55-AE0BFE54A951}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Time + 15 Minutes", "03. Time + 15 Minutes\03. Time + 15 Minutes.csproj", "{21E7651B-2CC5-401C-9D55-AE0BFE54A951}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Toy Shop", "04. Toy Shop\04. Toy Shop.csproj", "{4BC1D67A-4E38-45CD-9044-B4E3427908DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{21E7651B-2CC5-401C-9D55-AE0BFE54A951}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21E7651B-2CC5-401C-9D55-AE0BFE54A951}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21E7651B-2CC5-401C-9D55-AE0BFE54A951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BC1D67A-4E38-45CD-9044-B4E3427908DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC1D67A-4E38-45CD-9044-B4E3427908DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC1D67A-4E38-45CD-9044-B4E3427908DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC1D67A-4E38-45CD-9044-B4E3427908DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
