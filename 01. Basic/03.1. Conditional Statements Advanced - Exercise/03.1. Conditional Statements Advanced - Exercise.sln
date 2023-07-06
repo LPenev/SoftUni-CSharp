@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Cinema", "01. Cinema\01. Cinema.csproj", "{B4D15746-6F24-483B-A300-D06A0EFCB508}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Cinema", "01. Cinema\01. Cinema.csproj", "{B4D15746-6F24-483B-A300-D06A0EFCB508}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Summer Outfit", "02. Summer Outfit\02. Summer Outfit.csproj", "{55278B13-00C7-4276-927E-ECF9664BFB64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Summer Outfit", "02. Summer Outfit\02. Summer Outfit.csproj", "{55278B13-00C7-4276-927E-ECF9664BFB64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. New House", "03. New House\03. New House.csproj", "{10A6E6DD-E3A4-499F-B5EA-1DF064AFB1EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{55278B13-00C7-4276-927E-ECF9664BFB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55278B13-00C7-4276-927E-ECF9664BFB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55278B13-00C7-4276-927E-ECF9664BFB64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10A6E6DD-E3A4-499F-B5EA-1DF064AFB1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10A6E6DD-E3A4-499F-B5EA-1DF064AFB1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10A6E6DD-E3A4-499F-B5EA-1DF064AFB1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10A6E6DD-E3A4-499F-B5EA-1DF064AFB1EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
