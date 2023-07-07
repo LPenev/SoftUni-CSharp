@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. OperationsBetween", "06
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. Hotel Room", "07. Hotel Room\07. Hotel Room.csproj", "{CBDCDA7B-074D-4806-8CEB-F665FD8485C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08. On Time for Exam", "08. On Time for Exam\08. On Time for Exam.csproj", "{B3CFE675-4034-406C-9ADD-977ADA8D6A2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{CBDCDA7B-074D-4806-8CEB-F665FD8485C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBDCDA7B-074D-4806-8CEB-F665FD8485C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBDCDA7B-074D-4806-8CEB-F665FD8485C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3CFE675-4034-406C-9ADD-977ADA8D6A2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3CFE675-4034-406C-9ADD-977ADA8D6A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3CFE675-4034-406C-9ADD-977ADA8D6A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3CFE675-4034-406C-9ADD-977ADA8D6A2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
