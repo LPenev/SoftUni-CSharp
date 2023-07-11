@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Numbers N", "02. Number
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Numbers 1.N with Step 3", "03. Numbers 1.N with Step 3\03. Numbers 1.N with Step 3.csproj", "{8071FF38-37A4-44FB-9DF0-46012DD63971}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Even Powers of 2", "04. Even Powers of 2\04. Even Powers of 2.csproj", "{A65EAC37-9E39-405E-A111-0090C970E0D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Even Powers of 2", "04. Even Powers of 2\04. Even Powers of 2.csproj", "{A65EAC37-9E39-405E-A111-0090C970E0D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Character Sequence", "05. Character Sequence\05. Character Sequence.csproj", "{9A589EC7-AB6A-4087-AD3A-677491A8B799}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Character Sequence", "05. Character Sequence\05. Character Sequence.csproj", "{9A589EC7-AB6A-4087-AD3A-677491A8B799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. Vowels Sum", "06. Vowels Sum\06. Vowels Sum.csproj", "{ADAAE272-9308-4836-BBD7-A97C1B920A96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{9A589EC7-AB6A-4087-AD3A-677491A8B799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A589EC7-AB6A-4087-AD3A-677491A8B799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A589EC7-AB6A-4087-AD3A-677491A8B799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADAAE272-9308-4836-BBD7-A97C1B920A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADAAE272-9308-4836-BBD7-A97C1B920A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADAAE272-9308-4836-BBD7-A97C1B920A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADAAE272-9308-4836-BBD7-A97C1B920A96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
