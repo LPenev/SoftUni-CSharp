@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Even Powers of 2", "04.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Character Sequence", "05. Character Sequence\05. Character Sequence.csproj", "{9A589EC7-AB6A-4087-AD3A-677491A8B799}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. Vowels Sum", "06. Vowels Sum\06. Vowels Sum.csproj", "{ADAAE272-9308-4836-BBD7-A97C1B920A96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Vowels Sum", "06. Vowels Sum\06. Vowels Sum.csproj", "{ADAAE272-9308-4836-BBD7-A97C1B920A96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. Sum Numbers", "07. Sum Numbers\07. Sum Numbers.csproj", "{3BBD921D-4535-417A-A895-7A81BE9EE417}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{ADAAE272-9308-4836-BBD7-A97C1B920A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADAAE272-9308-4836-BBD7-A97C1B920A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADAAE272-9308-4836-BBD7-A97C1B920A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BBD921D-4535-417A-A895-7A81BE9EE417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BBD921D-4535-417A-A895-7A81BE9EE417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BBD921D-4535-417A-A895-7A81BE9EE417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BBD921D-4535-417A-A895-7A81BE9EE417}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
