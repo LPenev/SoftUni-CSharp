@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Oscars week in cinema",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Cinema Voucher", "04. Cinema Voucher\04. Cinema Voucher.csproj", "{B82E2099-35C3-4AA8-ACAB-BA506D5FB785}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Movie Ratings", "05. Movie Ratings\05. Movie Ratings.csproj", "{5AFE372A-653B-4BA4-B6D2-BD4E6B186D05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
