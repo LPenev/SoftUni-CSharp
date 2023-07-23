@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Football Souvenirs", "0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Gifts from Santa", "04. Gifts from Santa\04. Gifts from Santa.csproj", "{70DA8248-4186-4525-BF13-DD2C9818DE1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Christmas Gifts", "05. Christmas Gifts\05. Christmas Gifts.csproj", "{AF982D20-2961-4DBD-AB54-83FE73BB8DF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
