@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.  Easter Party", "02.  E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Easter Guests", "02. Easter Guests\02. Easter Guests.csproj", "{EF034BD8-7590-4F41-AD65-A5DFAD079EF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Easter Trip", "03. Easter Trip\03. Easter Trip.csproj", "{5C8B11AC-1F08-4800-ACDF-F970BFB891B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
