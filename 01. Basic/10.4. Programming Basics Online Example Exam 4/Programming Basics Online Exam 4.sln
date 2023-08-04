@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Movie Stars", "04. Movi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Series", "05. Series\05. Series.csproj", "{90FCA239-655C-4291-9EC5-60D3C1C4D44C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Oscars", "05. Oscars\05. Oscars.csproj", "{0A60044C-EF34-41DB-9AE3-65FC4927D3A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
