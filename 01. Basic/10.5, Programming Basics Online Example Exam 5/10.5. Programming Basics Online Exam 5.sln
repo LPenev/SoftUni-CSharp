@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Pool Day", "01. Pool Day\01. Pool Day.csproj", "{81BEAD6F-420C-4823-B8A8-D4CBEBDF17DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Family Trip", "02. Family Trip\02. Family Trip.csproj", "{20D8D569-996D-421D-8E77-964A499FBB58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
