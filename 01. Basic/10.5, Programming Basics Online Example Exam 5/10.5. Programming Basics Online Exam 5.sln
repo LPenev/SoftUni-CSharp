@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Football Tournament", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. Name Game", "06. Name Game\06. Name Game.csproj", "{1EF6A024-F7ED-423D-947A-06F97CE570CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. The Most Powerful Word", "06. The Most Powerful Word\06. The Most Powerful Word.csproj", "{1A342F35-7E40-4BA1-A80D-111F45C5672E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
