@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Agency Profit", "01. Ag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Add Bags", "02. Add Bags\02. Add Bags.csproj", "{69952F26-00FA-4A72-AD17-711F0CB98E31}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Aluminum Joinery", "03. Aluminum Joinery\03. Aluminum Joinery.csproj", "{CAA95359-7E8A-40D9-9F3E-9103729EE5E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
