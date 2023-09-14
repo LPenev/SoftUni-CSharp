@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Theatre Prom", "07. The
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Theatre Prom2", "07. Theatre Prom2\07. Theatre Prom2.csproj", "{626AFADA-2BB5-406B-9C3B-D2EFFBC4232A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. Divisible by 3", "08. Divisible by 3\08. Divisible by 3.csproj", "{0EABA925-6B89-4A2D-9C01-7D137A006F3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
