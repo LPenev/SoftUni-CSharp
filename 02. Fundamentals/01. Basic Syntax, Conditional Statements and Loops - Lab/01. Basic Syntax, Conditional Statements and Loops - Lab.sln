@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Month Printer", "05. Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Foreign Langua", "06. Foreign Langua\06. Foreign Langua.csproj", "{A3CD02CA-DC23-4DCA-A443-E58EBC9CC4F9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Theatre Prom", "07. Theatre Prom\07. Theatre Prom.csproj", "{9FFFA1DA-F18C-4649-B526-88CA01E0D558}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
