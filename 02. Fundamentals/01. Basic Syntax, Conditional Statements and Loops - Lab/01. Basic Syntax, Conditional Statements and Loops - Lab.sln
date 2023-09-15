@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. Divisible by 3", "08. D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09. Sum of Odd Num", "09. Sum of Odd Num\09. Sum of Odd Num.csproj", "{AE221AB0-26C7-467E-9948-6796A390B339}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10. Multipl Table", "10. Multipl Table\10. Multipl Table.csproj", "{906FD771-F15A-4BB2-88A3-09251B7933DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
