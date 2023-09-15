@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10. Multipl Table2", "10. M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10. Multipl Table3", "10. Multipl Table3\10. Multipl Table3.csproj", "{D5F1827E-FA23-4555-8C5E-36794781CA2A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10. Multipl Table4", "10. Multipl Table4\10. Multipl Table4.csproj", "{CF307784-8B5A-4365-A53A-303734F2A54E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
