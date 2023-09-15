@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09. Sum of Odd Num", "09. S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10. Multipl Table", "10. Multipl Table\10. Multipl Table.csproj", "{906FD771-F15A-4BB2-88A3-09251B7933DD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10. Multipl Table2", "10. Multipl Table2\10. Multipl Table2.csproj", "{80AC6568-B646-40FD-BC6F-03137DBC7C63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
