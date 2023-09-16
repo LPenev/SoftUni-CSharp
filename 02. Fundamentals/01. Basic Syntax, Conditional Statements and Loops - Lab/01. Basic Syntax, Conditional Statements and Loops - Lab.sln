@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11. Multipl Table2.0", "11.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12. Even Number", "12. Even Number\12. Even Number.csproj", "{49F48E97-FDA6-4DD0-862B-0CDC022C8AB5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "13. Holi Betw Two", "13. Holi Betw Two\13. Holi Betw Two.csproj", "{7CE4C7C0-2B5E-423E-AA1E-C13E35C71D05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
