@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Strong Number", "06. St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Vending Mach", "07. Vending Mach\07. Vending Mach.csproj", "{9267ED2B-8CD9-4900-B577-176E4A5B3ED7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. TriangleOfNumb", "08. TriangleOfNumb\08. TriangleOfNumb.csproj", "{930B957B-F03E-457D-A239-C64E27A693BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
