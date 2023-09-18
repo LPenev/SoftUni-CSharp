@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Ages", "01. Ages\01. Ag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Divison", "02. Divison\02. Divison.csproj", "{9159C9F7-35DA-449D-98C4-EFF493022B11}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Vacation", "03. Vacation\03. Vacation.csproj", "{13D9F49C-53E0-4309-863E-C2B83585F0CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
