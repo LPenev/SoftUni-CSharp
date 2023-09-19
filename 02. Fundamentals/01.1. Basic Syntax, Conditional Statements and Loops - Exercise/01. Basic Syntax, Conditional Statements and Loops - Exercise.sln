@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10. Rage Expenses", "10. Ra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10. Rage Expenses2", "10. Rage Expenses2\10. Rage Expenses2.csproj", "{83915068-6EA0-4E6E-9BA5-84A5D59588EC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "`11. Orders", "11. Orders\11. Orders.csproj", "{08166474-C7EC-4EA9-AD11-00EE3A7E070D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
