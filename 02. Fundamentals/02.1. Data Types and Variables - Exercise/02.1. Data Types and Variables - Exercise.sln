@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Triples of Latin Letter
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Water Overflow", "07. Water Overflow\07. Water Overflow.csproj", "{292C320A-B810-4366-8DD0-821998EAC186}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. Beer Kegs", "08. Beer Kegs\08. Beer Kegs.csproj", "{C8B8A5A8-C043-4E32-94BE-8EADEC2AEACB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
