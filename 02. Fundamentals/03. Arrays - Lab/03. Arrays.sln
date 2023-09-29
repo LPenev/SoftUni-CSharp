@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Sum Even Numbers", "05.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Even and Odd Subtraction", "06. Even and Odd Subtraction\06. Even and Odd Subtraction.csproj", "{9D53705B-2CA0-46C7-8220-5BF763F97F4B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Equal Arrays", "07. Equal Arrays\07. Equal Arrays.csproj", "{DE360CE2-5F69-48B6-ABCB-973E21B0B904}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
