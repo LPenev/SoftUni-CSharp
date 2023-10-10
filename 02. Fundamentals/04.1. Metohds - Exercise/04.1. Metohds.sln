@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11. Array Manipulator", "11
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "98. Method Test Referent Type 1 Example", "98. Method Test Referent Type 1 Example\98. Method Test Referent Type 1 Example.csproj", "{09EE5A3A-8051-4150-825C-CE9ED64E1FAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "99. Method Test Referent Type Example", "99. Method Test Referent Type Example\99. Method Test Referent Type.csproj", "{8BDFA5D3-294C-4B40-B333-214785389273}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
