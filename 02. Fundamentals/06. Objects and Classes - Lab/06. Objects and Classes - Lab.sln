@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Randomize Words", "01. 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Big Factorial", "02. Big Factorial\02. Big Factorial.csproj", "{2960B0B9-5594-4181-91B7-E35086A70E68}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Songs", "03. Songs\03. Songs.csproj", "{97B9F372-B6AB-452C-AEB5-E136FFC8D093}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
