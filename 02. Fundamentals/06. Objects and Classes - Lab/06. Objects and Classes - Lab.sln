@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Randomize Words", "01. Randomize Words\01. Randomize Words.csproj", "{3374779A-B362-4AF8-AFF8-2E073D28F476}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Big Factorial", "02. Big Factorial\02. Big Factorial.csproj", "{2960B0B9-5594-4181-91B7-E35086A70E68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
