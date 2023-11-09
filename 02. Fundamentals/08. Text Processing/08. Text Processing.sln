@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Digits, Letters and Oth
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.1 Digits, Letters and Other", "05.1 Digits, Letters and Other\05.1 Digits, Letters and Other.csproj", "{AF535DBC-BFCA-475D-9DA5-3933049A9573}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.2 Digits, Letters and Other", "05.2 Digits, Letters and Other\05.2 Digits, Letters and Other.csproj", "{8ADFBEBE-1422-484C-BAB0-FA7AF80CAA9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
