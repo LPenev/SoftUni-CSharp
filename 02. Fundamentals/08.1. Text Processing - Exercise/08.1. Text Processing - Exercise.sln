@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Replace Repeating Chars
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.1 Replace Repeating Chars", "06.1 Replace Repeating Chars\06.1 Replace Repeating Chars.csproj", "{0FE4B137-8A0A-491D-ADAE-A448E3A1808E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. String Explosion", "07. String Explosion\07. String Explosion.csproj", "{38B0BEE3-C5ED-488F-914F-06532F3CF838}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
