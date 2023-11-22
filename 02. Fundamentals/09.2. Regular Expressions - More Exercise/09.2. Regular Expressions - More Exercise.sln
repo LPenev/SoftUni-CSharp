@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Winning Ticket", "01. W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Rage Quit", "02. Rage Quit\02. Rage Quit.csproj", "{1913566D-C742-4DC5-9942-8248725F527D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Post Office", "03. Post Office\03. Post Office.csproj", "{EB72C428-9BE7-4A5B-A031-E95C5A8EB021}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
