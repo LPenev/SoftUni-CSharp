@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.02. The Lift", "1.02. The
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.03. Memory Game", "1.03. Memory Game\1.03. Memory Game.csproj", "{F60EA200-59DE-4565-A9BA-659443539B67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.01. SoftUni Reception", "2.01. SoftUni Reception\2.01. SoftUni Reception.csproj", "{77088295-A95A-428E-8FAC-8B9AE8F4BAEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
