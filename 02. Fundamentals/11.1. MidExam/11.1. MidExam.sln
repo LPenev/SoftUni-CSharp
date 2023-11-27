@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.02. Array Modifier", "2.0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.03. Numbers", "2.03. Numbers\2.03. Numbers.csproj", "{6C7EF47B-634E-4434-A3AC-EDBBA2CD01E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.03.1 Numbers", "2.03.1 Numbers\2.03.1 Numbers.csproj", "{0F450A7C-9B72-46DA-9BD1-F286DCC6DC99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
