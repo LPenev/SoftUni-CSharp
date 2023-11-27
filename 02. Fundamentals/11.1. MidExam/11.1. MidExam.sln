@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.03. Memory Game", "1.03. 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.01. SoftUni Reception", "2.01. SoftUni Reception\2.01. SoftUni Reception.csproj", "{77088295-A95A-428E-8FAC-8B9AE8F4BAEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.02. Array Modifier", "2.02. Array Modifier\2.02. Array Modifier.csproj", "{ECB19519-4CCD-4B72-9DAC-0F2B7C36ADA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
