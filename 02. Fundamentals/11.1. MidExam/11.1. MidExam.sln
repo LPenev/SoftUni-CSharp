@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.03. Numbers", "2.03. Numb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.03.1 Numbers", "2.03.1 Numbers\2.03.1 Numbers.csproj", "{0F450A7C-9B72-46DA-9BD1-F286DCC6DC99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.01. Counter-Strike", "3.01. Counter-Strike\3.01. Counter-Strike.csproj", "{8AD2B4FE-A9E0-4BBC-A8C9-397CC14F6050}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
