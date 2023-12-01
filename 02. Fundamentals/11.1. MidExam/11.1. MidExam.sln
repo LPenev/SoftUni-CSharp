@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.03. Inventory", "5.03. In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.01. Black Flag", "6.01. Black Flag\6.01. Black Flag.csproj", "{FC45D796-4C9E-4A05-9536-132394DF8B39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.02. Treasure Hunt", "6.02. Treasure Hunt\6.02. Treasure Hunt.csproj", "{88EF5BC0-2D6E-4C6A-9667-73518BD028EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
