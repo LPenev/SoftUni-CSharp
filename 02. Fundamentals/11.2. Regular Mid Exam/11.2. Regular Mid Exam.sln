@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. The Hunting Games", "01
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Space Travel", "02. Space Travel\02. Space Travel.csproj", "{B1F1947E-DF2A-4BCB-8673-BA1619F2F8DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Chat Logger", "03. Chat Logger\03. Chat Logger.csproj", "{BC9AE28C-3166-4419-AD8C-0D19BBBB4458}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
