@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. String Game", "01. Stri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Message Translator", "02. Message Translator\02. Message Translator.csproj", "{2AA2C722-17E9-41E7-8939-D037376731F1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Dictionary", "03. Dictionary\03. Dictionary.csproj", "{7A5B04A7-880F-4C32-A64C-F8B0C3D5D318}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
