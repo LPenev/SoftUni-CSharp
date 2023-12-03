@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. String Game", "01. String Game\01. String Game.csproj", "{12743497-1B34-4F9C-AB2A-E8A664C219CE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Message Translator", "02. Message Translator\02. Message Translator.csproj", "{2AA2C722-17E9-41E7-8939-D037376731F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
