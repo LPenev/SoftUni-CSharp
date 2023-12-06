@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.01. The Imitation Game",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.02. Ad Astra", "01.02. Ad Astra\01.02. Ad Astra.csproj", "{1E640B4D-9561-4B05-BEEA-45DBE1308DF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.03. The Pianist", "01.03. The Pianist\01.03. The Pianist.csproj", "{D8764AF6-7E5C-4CC0-8CDE-8EAD655BE1A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
