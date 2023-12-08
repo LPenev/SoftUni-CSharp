@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.02. Destination Mapper",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.03. Plant Discovery", "02.03. Plant Discovery\02.03. Plant Discovery.csproj", "{990E9C67-AE5D-44C8-8628-FF84D4ECA79D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.01. Secret Chat", "03.01. Secret Chat\03.01. Secret Chat.csproj", "{4528DBD7-C670-47A8-A176-72CB96C0DF45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
