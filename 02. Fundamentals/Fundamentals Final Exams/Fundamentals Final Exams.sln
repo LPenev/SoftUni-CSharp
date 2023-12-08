@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.01. Secret Chat", "03.01
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.02. Mirror Words", "03.02. Mirror Words\03.02. Mirror Words.csproj", "{037CC990-0A70-4065-9DFA-EE634481EE79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.03. Need for Speed III", "03.03. Need for Speed III\03.03. Need for Speed III.csproj", "{C7E2427F-60DC-4965-A303-665D9019B7FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
