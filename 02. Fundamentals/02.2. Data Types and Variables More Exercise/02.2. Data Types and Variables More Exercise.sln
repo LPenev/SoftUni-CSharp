@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Data Type Finder", "01.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. From Left to the Right", "02. From Left to the Right\02. From Left to the Right.csproj", "{2A3A916F-FC4F-430E-BCE7-18F51FF49702}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Floating Equality", "03. Floating Equality\03. Floating Equality.csproj", "{7C63CDFA-434D-4477-B4C8-093BEA00280A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
