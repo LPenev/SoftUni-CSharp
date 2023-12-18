@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Recursive Fibonacci", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.1 Fibonacci", "03.1 Fibonacci\03.1 Fibonacci.csproj", "{E27DAA0A-4777-440B-BB29-F654A6DBF6F9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.2 Fibonacci_memo", "03.2 Fibonacci_memo\03.2 Fibonacci_memo.csproj", "{3F4D776B-1491-4A35-99D3-48587C2D749D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
