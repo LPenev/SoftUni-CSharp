@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.2 Fibonacci_memo", "03.2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Fold and Sum", "04. Fold and Sum\04. Fold and Sum.csproj", "{02F6E020-F9EB-4DCA-89F7-322470037938}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.1. Fold and Sum", "04.1. Fold and Sum\04.1. Fold and Sum.csproj", "{A4C45A91-3E62-4A83-A9D2-C1C0B0F32C0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
