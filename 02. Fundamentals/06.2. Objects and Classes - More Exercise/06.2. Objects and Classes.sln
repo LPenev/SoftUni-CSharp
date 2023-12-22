@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.1 Company Roster", "01.1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02 Oldest Family Member", "02 Oldest Family Member\02 Oldest Family Member.csproj", "{7BCA5EFC-1A9C-4E97-A828-842C3E4698D8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Speed Racing", "03. Speed Racing\03. Speed Racing.csproj", "{6DC31C48-A330-4693-8688-3524F3181C85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
