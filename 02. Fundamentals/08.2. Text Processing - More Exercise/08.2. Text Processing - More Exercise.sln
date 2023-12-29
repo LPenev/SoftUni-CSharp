@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Extract Person Informat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Ascii Sumator", "02. Ascii Sumator\02. Ascii Sumator.csproj", "{03A782FB-696B-4804-904B-51AD61295FEC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Treasure Finder", "03. Treasure Finder\03. Treasure Finder.csproj", "{D0590D23-AA22-42E8-A7E6-32A114720328}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
