@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Registration", "01. Reg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. The Race", "02. The Race\02. The Race.csproj", "{EA8C42A7-EAF2-4A5E-B837-967134A416A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Monthly Report", "03. Monthly Report\03. Monthly Report.csproj", "{CA835BF7-CAB2-4B1B-8064-8108AC69DE9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
