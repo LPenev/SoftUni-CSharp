@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.LongerLine", "03.LongerL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.TribonacciSequence", "04.TribonacciSequence\04.TribonacciSequence.csproj", "{B1955ED5-D592-4B33-8041-4AF36858CB3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.MultiplicationSign", "05.MultiplicationSign\05.MultiplicationSign.csproj", "{5EEB0AB9-4D85-453A-871A-AE66B298840F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
