@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Messaging", "01.Messagin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.CarRace", "02.CarRace\02.CarRace.csproj", "{BC661CD8-3B9F-4AD2-9CCC-72CFBD901C47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.TakeSkipRope", "03.TakeSkipRope\03.TakeSkipRope.csproj", "{CB3A0898-134F-4473-955E-8AEC6979B2BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
