@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.CarRace", "02.CarRace\02
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.TakeSkipRope", "03.TakeSkipRope\03.TakeSkipRope.csproj", "{CB3A0898-134F-4473-955E-8AEC6979B2BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.MixedUpLists", "04.MixedUpLists\04.MixedUpLists.csproj", "{FAC54134-4677-43FB-8893-16619D14BC9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
