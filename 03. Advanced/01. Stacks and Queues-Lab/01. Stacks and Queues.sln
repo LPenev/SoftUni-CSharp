@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Reverse a String", "01. Reverse a String\01. Reverse a String.csproj", "{2E8FC497-ADB1-4B25-8E40-59ECD0C2EF07}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Stack Sum", "02. Stack Sum\02. Stack Sum.csproj", "{EE3EBAF2-4E26-49F6-A4BD-DC3F9EEEFA40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
