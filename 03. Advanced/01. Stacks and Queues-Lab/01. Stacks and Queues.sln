@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.1 Print Even Numbers", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Supermarket", "06. Supermarket\06. Supermarket.csproj", "{5286A016-CD9E-438C-8196-EE8633F78D15}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Hot Potato", "07. Hot Potato\07. Hot Potato.csproj", "{397B8146-F33B-44C2-A44C-A1B619A95658}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
