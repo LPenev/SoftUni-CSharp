@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09. Simple Text Editor", "0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10. Crossroads+", "10. Crossroads+\10. Crossroads+.csproj", "{3CF211C3-EE6A-49BF-A5B3-71ABE56A56F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11. Key Revolver+", "11. Key Revolver+\11. Key Revolver+.csproj", "{E8A20769-AEAE-4CC1-A2A7-E43941C7FFCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12. Cups and Bottles+", "12. Cups and Bottles+\12. Cups and Bottles+.csproj", "{E8A20769-AEAE-4CC1-A2A7-E43941C7FFCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
