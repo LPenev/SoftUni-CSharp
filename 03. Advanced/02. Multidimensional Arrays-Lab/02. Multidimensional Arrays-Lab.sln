@@ -5,15 +5,17 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Sum Matrix Elements", "01. Sum Matrix Elements\01. Sum Matrix Elements.csproj", "{A07E91F1-A70F-4264-AA2F-1F45D7B03C6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.1 Sum Matrix Elements", "01.1 Sum Matrix Elements\01.1 Sum Matrix Elements.csproj", "{63F38E08-6B42-4A1A-AD5D-ABDE6FED7AEA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Sum Matrix Columns", "02. Sum Matrix Columns\02. Sum Matrix Columns.csproj", "{534C8389-C1CC-44BA-B6F9-10B6558A6F0E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.1 Sum Matrix Elements", "01.1 Sum Matrix Elements\01.1 Sum Matrix Elements.csproj", "{63F38E08-6B42-4A1A-AD5D-ABDE6FED7AEA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Primary Diagonal", "03. Primary Diagonal\03. Primary Diagonal.csproj", "{264D9275-8DD9-4A37-B2BE-54583499EBE7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Symbol in Matrix", "04. Symbol in Matrix\04. Symbol in Matrix.csproj", "{FF3BF338-4C83-4BED-B870-334A5A9BC54A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Square With Maximum Sum", "05. Square With Maximum Sum\05. Square With Maximum Sum.csproj", "{36E5B10E-78D2-45F4-B7C9-27C2D08252B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Jagged-Array Modification", "06. Jagged-Array Modification\06. Jagged-Array Modification.csproj", "{F55B0A4E-64F1-4CCB-AF94-2B996C3A9666}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
