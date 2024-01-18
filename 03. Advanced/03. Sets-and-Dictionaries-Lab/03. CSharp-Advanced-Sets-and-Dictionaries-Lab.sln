@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Record Unique Names", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Parking Lot", "07. Parking Lot\07. Parking Lot.csproj", "{6207ECA7-60B5-40E0-8DB3-53C5D1BD1517}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. SoftUni Party", "08. SoftUni Party\08. SoftUni Party.csproj", "{E21FBB75-D957-4813-8267-59B3F0A7E079}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
