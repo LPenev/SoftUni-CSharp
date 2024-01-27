@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Define_a_Class_Person", "01. Define a Class Person\01.Define_a_Class_Person.csproj", "{71AD42E4-AD8E-4FF4-A271-BFF45805A075}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.CreatingConstructors", "02. Creating Constructors\02.CreatingConstructors.csproj", "{EE68314F-53F6-426E-9F13-0540375EBA20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
