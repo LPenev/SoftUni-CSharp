@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.OldestFamilyMember", "03
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.OpinionPoll", "04. Opinion Poll\04.OpinionPoll.csproj", "{B126CCFD-DF43-4D96-AAFE-EEBAC610A6C5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.DateModifier!", "05. Date Modifier\05.DateModifier!.csproj", "{8E2CFB3E-BCDC-4B4E-93C3-1416CAA6CAC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
