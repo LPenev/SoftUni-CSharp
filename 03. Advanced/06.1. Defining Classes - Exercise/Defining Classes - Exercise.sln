@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.SpeedRacing", "06. Speed
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.RawData", "07. Raw Data\07.RawData.csproj", "{C83D29AD-528E-43DC-A82D-226EB940F968}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.CarSalesman", "08. Car Salesman\08.CarSalesman.csproj", "{39DAAAFC-381C-45CE-854A-B7E307CA4997}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
