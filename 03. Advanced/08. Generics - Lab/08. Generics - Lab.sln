@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.BoxOfT", "01.Box\BoxOfT.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.ArrayCreator", "02.ArrayCreator\02.ArrayCreator.csproj", "{FE0592EF-A750-432F-A04A-04E9546294B5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.GenericScale", "03.GenericScale\03.GenericScale.csproj", "{36B62455-0B47-4254-8421-93BF5393E37D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
