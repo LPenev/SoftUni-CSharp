@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Library", "01. Library\0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.LibraryIterator", "02. LibraryIterator\02.LibraryIterator.csproj", "{7134E8FC-0BBC-427B-B2D7-0EFE36483EF1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.ComparableBook", "03. ComparableBook\03.ComparableBook.csproj", "{96C7A650-2430-4C9D-8C0A-1F24069461C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
