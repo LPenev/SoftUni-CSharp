@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Jagged Array Manipulato
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Knight Game", "07. Knight Game\07. Knight Game.csproj", "{711D862F-E4D0-4E17-85BB-F5FF3A9BDFEF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. Bombs+", "08. Bombs+\08. Bombs+.csproj", "{09F4CBE0-63FD-4FE5-A22B-8BB87159D21E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
