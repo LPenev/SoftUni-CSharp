@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Wardrobe", "06. Wardrob
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. The V-Logger+", "07. The V-Logger+\07. The V-Logger+.csproj", "{D640909E-E1A3-453A-9EDB-985E11F00AB7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. Ranking+", "08. Ranking+\08. Ranking+.csproj", "{9A8F8CDF-7856-4A7D-AC67-8DB87E05286B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
