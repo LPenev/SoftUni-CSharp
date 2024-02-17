@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34601.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Chicken Snack", "01.Chicken Snack\01.Chicken Snack.csproj", "{695591EF-0E8C-4D02-9596-090CC947737E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{695591EF-0E8C-4D02-9596-090CC947737E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{695591EF-0E8C-4D02-9596-090CC947737E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{695591EF-0E8C-4D02-9596-090CC947737E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{695591EF-0E8C-4D02-9596-090CC947737E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{323FD394-F475-4F61-8DD8-5A54D63D1AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{323FD394-F475-4F61-8DD8-5A54D63D1AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{323FD394-F475-4F61-8DD8-5A54D63D1AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{323FD394-F475-4F61-8DD8-5A54D63D1AD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F98EBD1B-B2B3-4B6C-AB58-07042B123C75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98EBD1B-B2B3-4B6C-AB58-07042B123C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98EBD1B-B2B3-4B6C-AB58-07042B123C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98EBD1B-B2B3-4B6C-AB58-07042B123C75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1E75C36-89D9-46D5-88CE-B13D767E3544}
+	EndGlobalSection
+EndGlobal
