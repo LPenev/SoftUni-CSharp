@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.ComparingObjects", "05.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.Equality Logic!", "06.Equality Logic!\06.Equality Logic!.csproj", "{C90DF7B3-87EF-422D-9D0A-63BAFDC80961}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.Custom Comparator", "07.Custom Comparator\07.Custom Comparator.csproj", "{1DB4BFB3-CB5A-4D66-9516-E13246129EF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
