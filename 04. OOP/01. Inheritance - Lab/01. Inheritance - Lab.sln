@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.Multiple Inheritance", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.Hierarchical Inheritance", "03. Hierarchical Inheritance\03.Hierarchical Inheritance.csproj", "{A4F0F42C-3F4D-4210-9021-2663110B6A65}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.Random List", "04. Random List\04.Random List.csproj", "{24A9F9F6-1E16-4F10-B5D8-4C3B35A4CBDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
