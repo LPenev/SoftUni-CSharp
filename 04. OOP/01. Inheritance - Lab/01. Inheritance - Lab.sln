@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Single Inheritance", "01
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.Multiple Inheritance", "02. Multiple Inheritance\02.Multiple Inheritance.csproj", "{210E8ECE-40F1-44A3-B263-6D6CA971DF19}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.Hierarchical Inheritance", "03. Hierarchical Inheritance\03.Hierarchical Inheritance.csproj", "{A4F0F42C-3F4D-4210-9021-2663110B6A65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
