@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34601.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Shapes", "01.Shapes\01.Shapes.csproj", "{7FD7076A-D2ED-4524-BCE9-D428885F7A72}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.Cars", "02.Cars\02.Cars.csproj", "{E34A2DDF-0F82-4BD1-9267-5AE26D1A441A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
