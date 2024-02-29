@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34601.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DefineAnInterfaceIPerson", "01. Define an Interface IPerson\01.DefineAnInterfaceIPerson.csproj", "{54F3879C-3C28-4A94-9ACA-852D20C21B71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.MultipleImplementation", "02. Multiple Implementation\02.MultipleImplementation.csproj", "{D29F797A-B64C-4BFD-9D60-8F90C624B9DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
