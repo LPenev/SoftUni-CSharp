@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.Vehicles Extension", "02
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.Raiding", "03. Raiding\03. Raiding.csproj", "{922E4145-FC7D-41DF-AA24-1286405F9B2D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.Wild Farm", "04. Wild Farm\04. Wild Farm.csproj", "{43201F12-4FC5-4E93-A051-0D175FFBB259}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
