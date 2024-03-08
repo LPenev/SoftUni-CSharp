@@ -1,6 +1,6 @@
 ﻿namespace _02.Animals
 {
-    internal class Program
+    internal class StartUp
     {
         static void Main(string[] args)
         {
