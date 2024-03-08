@@ -1,10 +1,10 @@
-﻿namespace _02.Animals
+﻿namespace Animals
 {
     internal class StartUp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            
         }
     }
 }
