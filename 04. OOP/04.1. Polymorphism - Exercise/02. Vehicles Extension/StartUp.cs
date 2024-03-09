@@ -1,6 +1,6 @@
-﻿namespace _03._Raiding
+﻿namespace _02._Vehicles_Extension
 {
-    internal class Program
+    internal class StartUp
     {
         static void Main(string[] args)
         {

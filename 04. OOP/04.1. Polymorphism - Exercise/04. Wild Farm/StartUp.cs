@@ -1,6 +1,6 @@
 ﻿namespace _04._Wild_Farm
 {
-    internal class Program
+    internal class StartUp
     {
         static void Main(string[] args)
         {

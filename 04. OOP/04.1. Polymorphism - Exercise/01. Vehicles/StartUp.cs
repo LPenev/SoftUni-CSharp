@@ -1,6 +1,6 @@
-﻿namespace _02._Vehicles_Extension
+﻿namespace Vehicles
 {
-    internal class Program
+    internal class StartUp
     {
         static void Main(string[] args)
         {
