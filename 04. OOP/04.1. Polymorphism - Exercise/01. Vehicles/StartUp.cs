@@ -2,18 +2,16 @@
 using Vehicles.Core.Interfaces;
 using Vehicles.IO;
 using Vehicles.IO.Interfaces;
+using Vehicles.VehicleFactory;
+using Vehicles.VehicleFactory.Interfaces;
 
-namespace Vehicles
+internal class StartUp
 {
-    internal class StartUp
+    private static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            IReader reader = new ConsoleReader();
-            IWriter writer = new ConsoleWriter();
+        IVehicleFactory vehicleFactory = new VehicleFactory();
 
-            IEngine engine = new Engine(reader, writer);
-            engine.Start();
-        }
+        IEngine engine = new Engine(new ConsoleReader(), new ConsoleWriter());
+        engine.Start();
     }
 }
