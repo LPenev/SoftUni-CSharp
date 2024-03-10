@@ -3,7 +3,7 @@ using Vehicles.Core.Interfaces;
 using Vehicles.IO;
 using Vehicles.VehicleFactory;
 
-internal class StartUp
+public class StartUp
 {
     private static void Main()
     {
