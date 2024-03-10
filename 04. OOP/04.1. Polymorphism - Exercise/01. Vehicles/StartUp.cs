@@ -1,17 +1,13 @@
 ﻿using Vehicles.Core;
 using Vehicles.Core.Interfaces;
 using Vehicles.IO;
-using Vehicles.IO.Interfaces;
 using Vehicles.VehicleFactory;
-using Vehicles.VehicleFactory.Interfaces;
 
 internal class StartUp
 {
-    private static void Main(string[] args)
+    private static void Main()
     {
-        IVehicleFactory vehicleFactory = new VehicleFactory();
-
-        IEngine engine = new Engine(new ConsoleReader(), new ConsoleWriter());
+        IEngine engine = new Engine(new ConsoleReader(), new ConsoleWriter(), new VehicleFactory());
         engine.Start();
     }
 }
