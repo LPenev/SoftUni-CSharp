@@ -16,8 +16,7 @@ namespace Vehicles.Core
 
         public void Start()
         {
-            var str = reader.ReadLine();
-            writer.WriteLine(str);
+            
         }
     }
 }
