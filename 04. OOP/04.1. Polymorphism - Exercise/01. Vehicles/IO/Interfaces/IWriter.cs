@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Vehicles.IO.Interfaces
+﻿namespace Vehicles.IO.Interfaces
 {
-    internal interface IWriter
+    public interface IWriter
     {
+        public void WriteLine(string str);
     }
 }

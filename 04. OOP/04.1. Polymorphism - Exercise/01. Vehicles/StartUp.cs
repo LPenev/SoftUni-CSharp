@@ -1,10 +1,19 @@
-﻿namespace Vehicles
+﻿using Vehicles.Core;
+using Vehicles.Core.Interfaces;
+using Vehicles.IO;
+using Vehicles.IO.Interfaces;
+
+namespace Vehicles
 {
     internal class StartUp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            IReader reader = new ConsoleReader();
+            IWriter writer = new ConsoleWriter();
+
+            IEngine engine = new Engine(reader, writer);
+            engine.Start();
         }
     }
 }
