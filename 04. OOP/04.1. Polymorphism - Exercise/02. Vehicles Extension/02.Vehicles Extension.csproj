@@ -3,15 +3,9 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>_02._Vehicles_Extension</RootNamespace>
+    <RootNamespace>Vehicles</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Core\" />
-    <Folder Include="IO\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
 
 </Project>
