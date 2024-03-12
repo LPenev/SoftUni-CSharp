@@ -7,6 +7,7 @@
             ICollection<int> numbers = new List<int>();
             int start = 1;
             int end = 100;
+            
             while (numbers.Count < 10 && start < 99)
             {
                 start = ReadNumber(start, end);
@@ -16,11 +17,10 @@
 
             int ReadNumber(int start, int end)
             {
-                string input = Console.ReadLine();
                 int number = 0;
                 try
                 {
-                    number = int.Parse(input);
+                    number = int.Parse(Console.ReadLine());
 
                     if (number <= start || number >= end)
                     {
