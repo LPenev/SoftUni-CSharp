@@ -32,7 +32,6 @@
             Console.WriteLine(String.Join(" ", cards));
         }
 
-
         internal class Card
         {
             private readonly HashSet<string> Faces
@@ -89,7 +88,6 @@
             {
                 return $"[{Face}{Suit}]";
             }
-
         }
 
         internal class InvalidCardException : Exception
