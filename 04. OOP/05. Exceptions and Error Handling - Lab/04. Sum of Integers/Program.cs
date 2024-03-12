@@ -1,10 +1,10 @@
-﻿namespace _04._Sum_of_Integers
+﻿namespace SumOfIntegers
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            
         }
     }
 }
