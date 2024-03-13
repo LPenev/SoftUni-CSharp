@@ -1,20 +1,19 @@
-﻿using System.Xml.Linq;
-
-namespace SumOfIntegers
+﻿namespace SumOfIntegers
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             string[] inputArray = Console.ReadLine()
-                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                .Split(' ');
             int sum = 0;
 
             foreach (string currentElement in inputArray)
             {
                 try
                 {
-                    sum += int.Parse(currentElement);
+                    int number = int.Parse(currentElement);
+                    sum += number;
                 }
                 catch (FormatException)
                 {
