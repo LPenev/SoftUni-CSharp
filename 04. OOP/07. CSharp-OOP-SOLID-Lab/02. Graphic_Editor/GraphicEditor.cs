@@ -1,4 +1,6 @@
 ﻿using System;
+using Models;
+using Models.Interfaces;
 
 namespace P02.Graphic_Editor
 {
@@ -6,18 +8,7 @@ namespace P02.Graphic_Editor
     {
         public void DrawShape(IShape shape)
         {
-            if (shape is Circle)
-            {
-                Console.WriteLine("I'm Circle");
-            }
-            else if (shape is Rectangle)
-            {
-                Console.WriteLine("I'm Recangle");
-            }
-            else if (shape is Square)
-            {
-                Console.WriteLine("I'm Square");
-            }
+            shape.Draw();
         }
     }
 }
