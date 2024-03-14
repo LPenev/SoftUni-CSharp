@@ -1,4 +1,4 @@
-﻿namespace P04.Recharge
+﻿namespace Models.Intrefaces
 {
     public interface ISleeper
     {

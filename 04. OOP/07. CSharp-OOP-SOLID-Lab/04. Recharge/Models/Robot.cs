@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace P04.Recharge
+namespace Models
 {
     public class Robot : Worker, IRechargeable
     {
@@ -14,34 +14,29 @@ namespace P04.Recharge
 
         public int Capacity
         {
-            get { return this.capacity; }
+            get { return capacity; }
         }
 
         public int CurrentPower
         {
-            get { return this.currentPower; }
-            set { this.currentPower = value; }
+            get { return currentPower; }
+            set { currentPower = value; }
+        }
+
+        public void Recharge()
+        {
+            this.CurrentPower = this.capacity;
         }
 
         public void Work(int hours)
         {
-            if (hours > this.currentPower)
+            if (hours > currentPower)
             {
                 hours = currentPower;
             }
 
             base.Work(hours);
-            this.currentPower -= hours;
-        }
-
-        public override void Recharge()
-        {
-            this.currentPower = this.capacity;
-        }
-
-        public override void Sleep()
-        {
-            throw new InvalidOperationException("Robots cannot sleep");
+            currentPower -= hours;
         }
     }
 }
