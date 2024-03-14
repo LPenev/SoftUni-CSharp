@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Stream_Progress", "01. Stream_Progress\01.Stream_Progress.csproj", "{7479878C-FDEC-4380-9665-F22D3DB2F0BA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.Graphic_Editor", "02. Graphic_Editor\02.Graphic_Editor.csproj", "{2924B6BF-C664-4DB6-AD89-226F29FFA05B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
