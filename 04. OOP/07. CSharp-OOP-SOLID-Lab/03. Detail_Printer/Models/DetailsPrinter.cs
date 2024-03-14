@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace P03.DetailPrinter
+namespace Models
 {
     public class DetailsPrinter
     {
@@ -14,15 +14,15 @@ namespace P03.DetailPrinter
 
         public void PrintDetails()
         {
-            foreach (Employee employee in this.employees)
+            foreach (Employee employee in employees)
             {
                 if (employee is Manager)
                 {
-                    this.PrintManager((Manager)employee);
+                    PrintManager((Manager)employee);
                 }
                 else
                 {
-                    this.PrintEmployee(employee);
+                    PrintEmployee(employee);
                 }
             }
         }
