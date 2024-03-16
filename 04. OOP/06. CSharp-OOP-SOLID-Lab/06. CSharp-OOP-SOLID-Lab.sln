@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.Graphic_Editor", "02. Gr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.Detail_Printer", "03. Detail_Printer\03.Detail_Printer.csproj", "{D959426C-6A22-489F-AB83-B9369CA8772E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.Recharge", "04. Recharge\04.Recharge.csproj", "{2C4A0D52-9ADB-4A67-814C-A1E1839CD6E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
