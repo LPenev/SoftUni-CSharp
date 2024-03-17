@@ -13,7 +13,7 @@ namespace Stealer
             FieldInfo[] fieldsInfo = typeOfClass.GetFields((BindingFlags)60);
             Object instancedClass = Activator.CreateInstance(typeOfClass);
 
-            sb.AppendLine($"Class under investigation: {instancedClass}");
+            sb.AppendLine($"Class under investigation: {instancedClass.ToString()}");
 
             foreach (FieldInfo field in fieldsInfo.Where(x => fields.Contains(x.Name)))
             {
