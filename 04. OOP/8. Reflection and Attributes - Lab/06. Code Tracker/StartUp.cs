@@ -1,6 +1,6 @@
-﻿namespace MissionPrivateImpossible
+﻿namespace CodeTracker
 {
-    internal class Program
+    internal class StartUp
     {
         static void Main(string[] args)
         {
