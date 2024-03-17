@@ -1,10 +1,12 @@
-﻿namespace Collector
+﻿namespace Stealer
 {
     internal class StartUp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Spy spy = new Spy();
+            string result = spy.CollectGettersAndSetters("Stealer.Hacker");
+            Console.WriteLine(result);
         }
     }
 }
