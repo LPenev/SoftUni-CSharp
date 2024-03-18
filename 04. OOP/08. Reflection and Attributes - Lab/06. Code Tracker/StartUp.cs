@@ -1,10 +1,19 @@
-﻿namespace CodeTracker
+﻿namespace AuthorProblem
 {
-    internal class StartUp
+    [Author("Victor")]
+    public class StartUp
     {
-        static void Main(string[] args)
+        [Author("George")]
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var tracker = new Tracker();
+            tracker.PrintMethodsByAuthor();
+        }
+
+        [Author("Bobo")]
+        public void Workers()
+        {
+
         }
     }
 }
