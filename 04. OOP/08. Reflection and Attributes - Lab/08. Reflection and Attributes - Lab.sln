@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Stealer", "01. Stealer\01. Stealer.csproj", "{C518A336-5D90-4A73-853C-3DDBF8305650}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Stealer", "01. Stealer\01. Stealer.csproj", "{C518A336-5D90-4A73-853C-3DDBF8305650}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. High Quality Mistakes", "02. High Quality Mistakes\02. High Quality Mistakes.csproj", "{8685500A-2811-4BE7-A401-D5F0CB15B44E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. High Quality Mistakes", "02. High Quality Mistakes\02. High Quality Mistakes.csproj", "{8685500A-2811-4BE7-A401-D5F0CB15B44E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Mission Private Impossible", "03. Mission Private Impossible\03. Mission Private Impossible.csproj", "{961F47D4-A23D-4397-ACC5-7C6842D07ACB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Mission Private Impossible", "03. Mission Private Impossible\03. Mission Private Impossible.csproj", "{961F47D4-A23D-4397-ACC5-7C6842D07ACB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Collector", "04. Collector\04. Collector.csproj", "{08AB55DD-811B-411E-B854-DF269143F166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Collector", "04. Collector\04. Collector.csproj", "{08AB55DD-811B-411E-B854-DF269143F166}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Create Attribute", "05. Create Attribute\05. Create Attribute.csproj", "{91662C34-36E9-4D56-B78C-9B1CAF645069}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Create Attribute", "05. Create Attribute\05. Create Attribute.csproj", "{91662C34-36E9-4D56-B78C-9B1CAF645069}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. Code Tracker", "06. Code Tracker\06. Code Tracker.csproj", "{41D950DF-742B-4ABE-AC46-82180DC9D762}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Code Tracker", "06. Code Tracker\06. Code Tracker.csproj", "{41D950DF-742B-4ABE-AC46-82180DC9D762}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
