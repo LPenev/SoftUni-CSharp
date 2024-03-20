@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Convert M ot KM", "01. 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Pounds to Dollars", "02. Pounds to Dollars\02. Pounds to Dollars.csproj", "{3B4D8E45-60AB-4529-971D-2D2A9FB3BEF6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Exact Sum of Real Numbers", "03. Exact Sum of Real Numbers\03. Exact Sum of Real Numbers.csproj", "{975CF9BE-9B4F-487F-9D7E-2D5ED5FE4BD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Centuries to Minutes", "04. Centuries to Minutes\04. Centuries to Minutes.csproj", "{4DEDB61E-12D1-4174-9369-B05379C332C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{3B4D8E45-60AB-4529-971D-2D2A9FB3BEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B4D8E45-60AB-4529-971D-2D2A9FB3BEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B4D8E45-60AB-4529-971D-2D2A9FB3BEF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{975CF9BE-9B4F-487F-9D7E-2D5ED5FE4BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{975CF9BE-9B4F-487F-9D7E-2D5ED5FE4BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{975CF9BE-9B4F-487F-9D7E-2D5ED5FE4BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{975CF9BE-9B4F-487F-9D7E-2D5ED5FE4BD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DEDB61E-12D1-4174-9369-B05379C332C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DEDB61E-12D1-4174-9369-B05379C332C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DEDB61E-12D1-4174-9369-B05379C332C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DEDB61E-12D1-4174-9369-B05379C332C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
