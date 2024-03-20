@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Special Numbers", "05. 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Reversed Chars", "06. Reversed Chars\06. Reversed Chars.csproj", "{00733666-BA0C-4E68-8F4D-DAE8B7484412}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Concat Names", "07. Concat Names\07. Concat Names.csproj", "{ADB2C3E9-0946-4E05-896F-2B197DB4349D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. Town Info", "08. Town Info\08. Town Info.csproj", "{BF128663-E197-4ACA-95A1-E20D88612D21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{00733666-BA0C-4E68-8F4D-DAE8B7484412}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00733666-BA0C-4E68-8F4D-DAE8B7484412}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00733666-BA0C-4E68-8F4D-DAE8B7484412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADB2C3E9-0946-4E05-896F-2B197DB4349D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB2C3E9-0946-4E05-896F-2B197DB4349D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB2C3E9-0946-4E05-896F-2B197DB4349D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB2C3E9-0946-4E05-896F-2B197DB4349D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF128663-E197-4ACA-95A1-E20D88612D21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF128663-E197-4ACA-95A1-E20D88612D21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF128663-E197-4ACA-95A1-E20D88612D21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF128663-E197-4ACA-95A1-E20D88612D21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
