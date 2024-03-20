@@ -1,20 +1,34 @@
 ﻿
 using CommandPattern.Core.Contracts;
+using System;
 
 namespace CommandPattern.Core
 {
     public class Engine : IEngine
     {
-        private ICommandInterpreter command;
+        private ICommandInterpreter commandIntepreter;
 
-        public Engine(ICommandInterpreter command)
+        public Engine(ICommandInterpreter commandIntepreter)
         {
-            this.command = command;
+            this.commandIntepreter = commandIntepreter;
         }
 
         public void Run()
         {
-            throw new System.NotImplementedException();
+            while (true)
+            {
+                string input = Console.ReadLine();
+
+                try
+                {
+                    string result = commandIntepreter.Read(input);
+                    Console.WriteLine(result);
+
+                }catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
     }
 }
