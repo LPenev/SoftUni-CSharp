@@ -27,8 +27,6 @@ namespace CommandPattern.Core
                 throw new InvalidOperationException(CommndNotFound);
             }
 
-            Console.WriteLine(commandType);
-
             ICommand commandInstance = Activator.CreateInstance(commandType) as ICommand;
             string result = commandInstance.Execute(commandArgs);
 
