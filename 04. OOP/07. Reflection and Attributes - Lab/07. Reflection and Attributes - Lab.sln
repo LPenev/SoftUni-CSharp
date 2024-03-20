@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Stealer", "01. Stealer\01. Stealer.csproj", "{C518A336-5D90-4A73-853C-3DDBF8305650}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. High Quality Mistakes", "02. High Quality Mistakes\02. High Quality Mistakes.csproj", "{8685500A-2811-4BE7-A401-D5F0CB15B44E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
