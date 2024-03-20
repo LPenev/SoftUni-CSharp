@@ -17,12 +17,17 @@ namespace CommandPattern.Core
             string commandName = inputArray[0];
             string[] commandArgs = inputArray.Skip(1).ToArray();
 
-            Type commandType = Assembly.GetEntryAssembly().GetType($"{commandName}Command");
+            Type commandType = Assembly
+                .GetEntryAssembly()
+                .GetTypes()
+                .FirstOrDefault(x => x.Name == $"{commandName}Command");
 
             if (commandType == null)
             {
                 throw new InvalidOperationException(CommndNotFound);
             }
+
+            Console.WriteLine(commandType);
 
             ICommand commandInstance = Activator.CreateInstance(commandType) as ICommand;
             string result = commandInstance.Execute(commandArgs);
