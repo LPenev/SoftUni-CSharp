@@ -1,13 +1,41 @@
 ﻿using System;
-using ValidationAttributes.Models;
+using System.Linq;
+using System.Reflection;
+using ValidationAttributes.Attributes;
+using System.Collections.Generic;
+using System.Data;
 
 namespace ValidationAttributes
 {
-    internal class Validator
+    public class Validator
     {
-        internal static bool IsValid(Person person)
+        internal static bool IsValid(object obj)
         {
-            throw new NotImplementedException();
+            Type objType = obj.GetType();
+
+            PropertyInfo[] propertyInfos = objType
+            .GetProperties()
+            .Where(p => p.CustomAttributes.Any(ca => typeof(MyValidationAttribute)
+            .IsAssignableFrom(ca.AttributeType)))
+            .ToArray();
+
+            foreach (PropertyInfo propertyInfo in propertyInfos)
+            {
+                IEnumerable<MyValidationAttribute> attributes = propertyInfo
+                .GetCustomAttributes(true)
+                .Where(ca => typeof(MyValidationAttribute)
+                .IsAssignableFrom(ca.GetType()))
+                .Cast<MyValidationAttribute>();
+
+                foreach (MyValidationAttribute attribute in attributes)
+                {
+                    if (!attribute.IsValid(propertyInfo.GetValue(obj)))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
     }
 }

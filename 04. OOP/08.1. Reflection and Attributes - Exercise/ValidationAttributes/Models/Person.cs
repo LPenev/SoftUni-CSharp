@@ -1,4 +1,6 @@
-﻿namespace ValidationAttributes.Models
+﻿using ValidationAttributes.Attributes;
+
+namespace ValidationAttributes.Models
 {
     public class Person
     {
@@ -11,7 +13,10 @@
             Age = age;
         }
 
+        [MyRequired]
         public string FullName { get; private set; }
+
+        [MyRange(MinAge, MaxAge)]
         public int Age { get; private set; }
 
     }
