@@ -9,7 +9,7 @@ namespace ValidationAttributes
 {
     public class Validator
     {
-        internal static bool IsValid(object obj)
+        public static bool IsValid(object obj)
         {
             Type objType = obj.GetType();
 
