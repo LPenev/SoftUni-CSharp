@@ -1,24 +1,46 @@
 using NUnit.Framework;
+using System;
 
 namespace Skeleton.Tests
 {
     [TestFixture]
     public class AxeTests
     {
-        private const int Attack = 10;
-        private const int DurabilityPoints = 10;
-        private const int Health = 10;
-        private const int Experience = 10;
+        private Axe axe;
+        private Dummy target;
+
+        [SetUp]
+        public void SetUp()
+        {
+            axe = new Axe(6, 4);
+            target = new Dummy(9, 7);
+        }
 
         [Test]
-        public void Test1()
+        public void AttackPointsIsSetCorrectly()
         {
-            Axe axe = new Axe(Attack, DurabilityPoints);
-            Dummy dummy = new Dummy(Health, Experience);
+            Assert.AreEqual(axe.AttackPoints, 6);
+        }
 
-            axe.Attack(dummy);
+        [Test]
+        public void AxeLoosesDurabilityAfterAttack()
+        {
+            axe.Attack(target);
 
-            Assert.That(axe.DurabilityPoints, Is.EqualTo(9), "Axe drability doesn't change after attack.");
+            Assert.AreEqual(axe.DurabilityPoints, 3);
+        }
+
+        [Test]
+        [TestCase(0)]
+        [TestCase(-1)]
+        public void AttackWithBrokenAxe(int durability)
+        {
+            axe = new(5, durability);
+
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                axe.Attack(target);
+            });
         }
     }
 }
