@@ -20,14 +20,14 @@ namespace Database.Tests
         [Test]
         public void ConstructorEmptyDatabase()
         {
-            Assert.That(emptyDatabase, Is.Not.Null);
+            Assert.NotNull(emptyDatabase);
             Assert.AreEqual(0, emptyDatabase.Count);
         }
 
         [Test]
         public void ConstructorFullDatabase()
         {
-            Assert.AreEqual(fullDatabase.Count, 16);
+            Assert.AreEqual(16, fullDatabase.Count);
         }
 
         [Test]
