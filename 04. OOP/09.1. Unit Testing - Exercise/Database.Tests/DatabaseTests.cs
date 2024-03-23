@@ -2,13 +2,14 @@ namespace Database.Tests
 {
     using NUnit.Framework;
     using System;
+    using System.Linq;
 
     [TestFixture]
     public class DatabaseTests
     {
         private Database fullDatabase;
         private Database emptyDatabase;
-        private int[] ints = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+        private int[] ints = Enumerable.Range(1,16).ToArray();
 
         [SetUp]
         public void StartUp()
