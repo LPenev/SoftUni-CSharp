@@ -36,26 +36,26 @@ namespace DatabaseExtended.Tests
         public void ConstructorDatabaseNotNull()
         {
             Assert.NotNull(emptyDatabase);
+            Assert.AreEqual(0, emptyDatabase.Count);
         }
 
         [Test]
         public void ConstructorDatabaseFull() 
         {
             int count = fullDatabase.Count;
+            Assert.NotNull(fullDatabase);
             Assert.AreEqual(16, count);
         }
 
         [Test]
-        public void ConstructorArgumentException()
+        public void AddRange_ArgumentException()
         {
-            Assert.Throws<ArgumentException>(() =>
-            {
-                emptyDatabase = new Database(personsUpperMax);
-            });
+            ArgumentException ae = Assert.Throws<ArgumentException>(() => new Database(personsUpperMax));
+            Assert.That(ae.Message, Is.EqualTo("Provided data length should be in range [0..16]!"));
         }
 
         [Test]
-        public void AddPersonShoudBeOnePersonAdded()
+        public void AddPerson_ShoudBeOnePersonAdded()
         {
             emptyDatabase.Add(person);
             Assert.AreEqual(1, emptyDatabase.Count);
@@ -65,10 +65,9 @@ namespace DatabaseExtended.Tests
         public void AddPersonIntoFullDatabaseInvalidOperationException()
         {
 
-            Assert.Throws<InvalidOperationException>(() => 
-            {
-                fullDatabase.Add(person);
-            });
+            InvalidOperationException ioe = Assert.Throws<InvalidOperationException>(() =>
+            fullDatabase.Add(person));
+            Assert.That(ioe.Message, Is.EqualTo("Array's capacity must be exactly 16 integers!"));
         }
 
         [Test]
@@ -76,10 +75,9 @@ namespace DatabaseExtended.Tests
         {
             emptyDatabase.Add(person);
 
-            Assert.Throws<InvalidOperationException>(() =>
-            {
-                emptyDatabase.Add(person);
-            });
+            InvalidOperationException ioe = Assert.Throws<InvalidOperationException>(() =>
+            emptyDatabase.Add(person));
+            Assert.That(ioe.Message, Is.EqualTo("There is already user with this username!"));
         }
 
         [Test]
@@ -87,19 +85,15 @@ namespace DatabaseExtended.Tests
         {
             emptyDatabase.Add(person);
 
-            Assert.Throws<InvalidOperationException>(() =>
-            {
-                emptyDatabase.Add(new Person(16,"User16"));
-            });
+            InvalidOperationException ioe = Assert.Throws<InvalidOperationException>(() 
+                => emptyDatabase.Add(new Person(16, "User116")));
+            Assert.That(ioe.Message, Is.EqualTo("There is already user with this Id!"));
         }
 
         [Test]
         public void RemovePersonFromEmptyDatabaseInvalidOperationException()
         {
-            Assert.Throws<InvalidOperationException>(() =>
-            {
-                emptyDatabase.Remove();
-            });
+            Assert.Throws<InvalidOperationException>(() => emptyDatabase.Remove());
         }
 
         [Test]
@@ -110,21 +104,22 @@ namespace DatabaseExtended.Tests
         }
 
         [Test]
-        public void FindByUsernameWennUsernameIsNull()
+        [TestCase("")]
+        [TestCase(null)]
+        public void FindByUsernameWennUsernameIsNull(string input)
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                fullDatabase.FindByUsername("");
+                fullDatabase.FindByUsername(input);
             });
         }
 
         [Test]
         public void FindByUsernameWennUsernameNotExist()
         {
-            Assert.Throws<InvalidOperationException>(() =>
-            {
-                fullDatabase.FindByUsername("User");
-            });
+            InvalidOperationException ioe = Assert.Throws<InvalidOperationException>(() 
+                => fullDatabase.FindByUsername("noExist"));
+            Assert.That(ioe.Message, Is.EqualTo("No user is present by this username!"));
         }
 
         [Test]
@@ -137,19 +132,17 @@ namespace DatabaseExtended.Tests
         [Test]
         public void FindByIdArgumentOutOfRangeException()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() =>
-            {
-                fullDatabase.FindById(-1);
-            });
+            ArgumentOutOfRangeException FindByIdOutOfRangeEx = Assert.Throws<ArgumentOutOfRangeException>(() 
+                => fullDatabase.FindById(-1));
+            Assert.That(FindByIdOutOfRangeEx.ParamName, Is.EqualTo("Id should be a positive number!"));
         }
 
         [Test]
         public void FindByIdInvalidOperationException()
         {
-            Assert.Throws<InvalidOperationException>(() =>
-            {
-                fullDatabase.FindById(11001);
-            });
+            InvalidOperationException ioe = Assert.Throws<InvalidOperationException>(() 
+                => fullDatabase.FindById(333));
+            Assert.That(ioe.Message, Is.EqualTo("No user is present by this ID!"));
         }
 
         [Test]
