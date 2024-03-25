@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. Create Attribute", "05.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Create Attribute2", "05. Create Attribute2\05. Create Attribute2.csproj", "{C30E8D85-E971-4FD7-9494-D0D0A3F929C7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.CodeTracker", "06. Code Tracker\06.CodeTracker.csproj", "{41D950DF-742B-4ABE-AC46-82180DC9D762}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
