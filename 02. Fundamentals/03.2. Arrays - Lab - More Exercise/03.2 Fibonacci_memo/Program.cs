@@ -1,0 +1,1 @@
+﻿int input = int.Parse(Console.ReadLine());
