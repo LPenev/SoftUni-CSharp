@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Calculate Rectangle Are
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Repeat String", "07. Repeat String\07. Repeat String.csproj", "{AF4C9179-362E-4166-B2BE-6A11D588B22B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. Math Power", "08. Math Power\08. Math Power.csproj", "{20F6A332-EF98-4BD2-803B-4FA79AD9E18B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{AF4C9179-362E-4166-B2BE-6A11D588B22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF4C9179-362E-4166-B2BE-6A11D588B22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF4C9179-362E-4166-B2BE-6A11D588B22B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20F6A332-EF98-4BD2-803B-4FA79AD9E18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20F6A332-EF98-4BD2-803B-4FA79AD9E18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20F6A332-EF98-4BD2-803B-4FA79AD9E18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20F6A332-EF98-4BD2-803B-4FA79AD9E18B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
