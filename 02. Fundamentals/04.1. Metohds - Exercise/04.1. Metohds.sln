@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. Middle Characters", "06
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. NxN Matrix", "07. NxN Matrix\07. NxN Matrix.csproj", "{DE301DDA-A6F2-4C68-B836-FFD841EA6443}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. Factorial Division", "08. Factorial Division\08. Factorial Division.csproj", "{54EAF71B-6130-439B-B443-0293F3509136}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{DE301DDA-A6F2-4C68-B836-FFD841EA6443}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE301DDA-A6F2-4C68-B836-FFD841EA6443}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE301DDA-A6F2-4C68-B836-FFD841EA6443}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54EAF71B-6130-439B-B443-0293F3509136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54EAF71B-6130-439B-B443-0293F3509136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54EAF71B-6130-439B-B443-0293F3509136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54EAF71B-6130-439B-B443-0293F3509136}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
