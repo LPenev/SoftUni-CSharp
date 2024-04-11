@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.MilitaryElite!", "07. Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.CollectionHierarchy!", "08. Collection Hierarchy!\08.CollectionHierarchy!.csproj", "{1E6E5203-9D20-40FF-B335-46FB657101F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.ExplicitInterfaces!", "09. Explicit Interfaces!\09.ExplicitInterfaces!.csproj", "{6A692FA9-6C0F-44A4-B205-B1CD7E5CC080}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
