@@ -35,7 +35,7 @@ namespace NauticalCatchChallenge.Models
         public int OxygenLevel
         {
             get { return oxygenLevel; }
-            private set
+            protected set
             {
                 if (value < 0)
                 {
