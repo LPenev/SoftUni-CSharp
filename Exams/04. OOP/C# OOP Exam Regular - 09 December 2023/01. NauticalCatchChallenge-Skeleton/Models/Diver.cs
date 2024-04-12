@@ -15,6 +15,7 @@ namespace NauticalCatchChallenge.Models
         {
             this.Name = name;
             this.OxygenLevel = oxygenLevel;
+            catchs = new List<string>();
         }
 
         public string Name
