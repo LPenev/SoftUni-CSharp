@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Barista Contest", "01. BaristaContest\01.Barista Contest.csproj", "{0FC93C27-DBA8-45FF-B285-9C07910D3124}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FC93C27-DBA8-45FF-B285-9C07910D3124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FC93C27-DBA8-45FF-B285-9C07910D3124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC93C27-DBA8-45FF-B285-9C07910D3124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FC93C27-DBA8-45FF-B285-9C07910D3124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D99C8D79-91E2-4CFA-9310-03DC152C5033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D99C8D79-91E2-4CFA-9310-03DC152C5033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D99C8D79-91E2-4CFA-9310-03DC152C5033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D99C8D79-91E2-4CFA-9310-03DC152C5033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{363F2CFB-F9D4-4990-8D65-A2D48998E752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{363F2CFB-F9D4-4990-8D65-A2D48998E752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{363F2CFB-F9D4-4990-8D65-A2D48998E752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{363F2CFB-F9D4-4990-8D65-A2D48998E752}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B86EA71-8CC1-412C-BD62-3F6DE5A4F57F}
+	EndGlobalSection
+EndGlobal
