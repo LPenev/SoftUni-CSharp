@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Barista Contest", "01. BaristaContest\01.Barista Contest.csproj", "{0FC93C27-DBA8-45FF-B285-9C07910D3124}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.HelpAMole", "02. Help A Mole\02.HelpAMole.csproj", "{D99C8D79-91E2-4CFA-9310-03DC152C5033}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
