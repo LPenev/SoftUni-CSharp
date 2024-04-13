@@ -10,7 +10,7 @@
 
         public override void Miss(int TimeToCatch)
         {
-            OxygenLevel -= (int)Math.Round(OxygenLevel_Const * 0.3, MidpointRounding.AwayFromZero);
+            OxygenLevel -= (int)Math.Round(TimeToCatch * 0.3, MidpointRounding.AwayFromZero);
         }
 
         public override void RenewOxy()
