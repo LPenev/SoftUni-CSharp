@@ -5,17 +5,22 @@ namespace NauticalCatchChallenge.Repositories
 {
     public class FishRepository : IRepository<IFish>
     {
-        private List<IFish> fishs;
-        public IReadOnlyCollection<IFish> Models => fishs.AsReadOnly();
+        private List<IFish> models;
+        public IReadOnlyCollection<IFish> Models => models.AsReadOnly();
+
+        public FishRepository()
+        {
+            models = new List<IFish>();
+        }
 
         public void AddModel(IFish model)
         {
-            fishs.Add(model);
+            models.Add(model);
         }
 
         public IFish GetModel(string name)
         {
-            return fishs.FirstOrDefault(x => x.Name == name);
+            return models.FirstOrDefault(x => x.Name == name);
         }
     }
 }

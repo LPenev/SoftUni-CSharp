@@ -7,7 +7,7 @@ namespace NauticalCatchChallenge.Models
     {
         private string name;
         private int oxygenLevel;
-        private List<string> catchs;
+        private List<string> @catchs;
         private double competitionPoints = 0;
         private bool hasHealthIssues = false;
 
@@ -15,7 +15,9 @@ namespace NauticalCatchChallenge.Models
         {
             this.Name = name;
             this.OxygenLevel = oxygenLevel;
-            catchs = new List<string>();
+            @catchs = new List<string>();
+            competitionPoints = 0;
+            hasHealthIssues = false;
         }
 
         public string Name
@@ -37,8 +39,9 @@ namespace NauticalCatchChallenge.Models
             get { return oxygenLevel; }
             protected set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
+                    hasHealthIssues = true;
                     oxygenLevel = 0;
                 }
                 else
@@ -78,14 +81,7 @@ namespace NauticalCatchChallenge.Models
 
         public void UpdateHealthStatus()
         {
-            if(HasHealthIssues)
-            {
-                HasHealthIssues = false;
-            }
-            else
-            {
-                HasHealthIssues = true;
-            }
+            hasHealthIssues = !hasHealthIssues;
         }
 
         public override string ToString()
