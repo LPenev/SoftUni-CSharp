@@ -29,11 +29,11 @@ OscarWallace hits a 5pt. YellowtailSurgeonfish.
 OscarWallace missed a good Tuna.
 OscarWallace will not be allowed to dive, due to health issues.
 JamalCarter missed a good Tuna.
-JamalCarter hits a 6.3pt. BluestripeSnapper.
+JamalCarter missed a good BluestripeSnapper.
 LilaMoreno hits a 8.5pt. Tuna.
 LilaMoreno hits a 9.1pt. Mahi-Mahi.
 LilaMoreno hits a 10pt. SwordFish.
-Divers recovered: 0
+Divers recovered: 4
 LilaMoreno hits a 8.5pt. Tuna.
 LilaMoreno hits a 9.1pt. Mahi-Mahi.
 LilaMoreno hits a 10pt. SwordFish.
@@ -48,4 +48,4 @@ DeepSeaFish: SwordFish [ Points: 10, Time to Catch: 180 seconds ]
 **Nautical-Catch-Challenge**
 Diver [ Name: MaxineHarper, Oxygen left: 540, Fish caught: 6, Points earned: 45.4 ]
 Diver [ Name: OscarWallace, Oxygen left: 120, Fish caught: 2, Points earned: 14.2 ]
-Diver [ Name: JamalCarter, Oxygen left: 18, Fish caught: 1, Points earned: 6.3 ]
+Diver [ Name: JamalCarter, Oxygen left: 120, Fish caught: 0, Points earned: 0 ]

@@ -132,14 +132,16 @@ namespace NauticalCatchChallenge.Core
         public string HealthRecovery()
         {
             var diversHasHealthIssues = divers.Models.Where(x => x.HasHealthIssues == true);
+            int counter = 0;
 
             foreach (var diverHasHealthIssues in diversHasHealthIssues)
             {
                 diverHasHealthIssues.UpdateHealthStatus();
                 diverHasHealthIssues.RenewOxy();
+                counter++;
             }
 
-            return string.Format(OutputMessages.DiversRecovered, diversHasHealthIssues.Count());
+            return string.Format(OutputMessages.DiversRecovered, counter);
         }
 
         public string SwimIntoCompetition(string fishType, string fishName, double points)
