@@ -53,7 +53,7 @@
                 departureTrains.Dequeue();
                 return true ;
             }
-            return false ;
+            return false;
         }
     }
 }
