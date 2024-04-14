@@ -32,7 +32,7 @@ namespace HighwayToPeak.Core
 
             if (!difficultyLevels.Contains(difficultyLevel))
             {
-                return String.Format(OutputMessages.PeakIsNotAllowed, difficultyLevel);
+                return String.Format(OutputMessages.PeakDiffucultyLevelInvalid, difficultyLevel);
             }
 
             peaks.Add(new Peak(name, elevation, difficultyLevel));
