@@ -1,7 +1,5 @@
 ﻿using HighwayToPeak.Models.Contracts;
 using HighwayToPeak.Utilities.Messages;
-using System.Collections.Concurrent;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace HighwayToPeak.Models
@@ -12,6 +10,12 @@ namespace HighwayToPeak.Models
         private int stamina;
         private List<string> conqueredPeaks;
 
+        protected Climber(string name, int stamina)
+        {
+            this.Name = name;
+            this.Stamina = stamina;
+            conqueredPeaks = new List<string>();
+        }
 
         public string Name
         {
@@ -30,16 +34,17 @@ namespace HighwayToPeak.Models
         public int Stamina
         {
             get => stamina;
-            private set
+            protected set
             {
-                if(value > 10)
+                if (value > 10)
                 {
                     stamina = 10;
                 }
                 else if (value < 0)
                 {
                     stamina = 0;
-                }else
+                }
+                else
                 {
                     stamina = value;
                 }
@@ -50,19 +55,44 @@ namespace HighwayToPeak.Models
 
         public void Climb(IPeak peak)
         {
-            throw new NotImplementedException();
+            if (!ConqueredPeaks.Contains(peak.Name))
+            {
+                conqueredPeaks.Add(peak.Name);
+            }
+            
+            if (peak.Name == "Extreme")
+            {
+                Stamina -= 6;
+            }
+            else if (peak.Name == "Hard")
+            {
+                Stamina -= 4;
+            }
+            else if (peak.Name == "Moderate")
+            {
+                Stamina -= 2;
+            }
         }
 
-        public void Rest(int daysCount)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Rest(int daysCount);
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"{nameof(name)} - Name: {Name}, Stamina: {Stamina}");
-            sb.AppendLine($"Peaks conquered: no peaks conquered/{peaksCount}");
+
+            sb.AppendLine($"{this.GetType().Name} - Name: {Name}, Stamina: {Stamina}");
+
+            int currentPeaks = ConqueredPeaks.Count;
+
+            if (currentPeaks < 1)
+            {
+                sb.AppendLine($"Peaks conquered: no peaks conquered");
+            }
+            else
+            {
+                sb.AppendLine($"Peaks conquered: {currentPeaks}");
+            }
+
             return sb.ToString().Trim();
         }
     }
