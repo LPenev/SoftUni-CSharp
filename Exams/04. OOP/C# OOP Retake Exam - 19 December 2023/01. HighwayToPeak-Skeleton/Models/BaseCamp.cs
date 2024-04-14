@@ -15,12 +15,12 @@ namespace HighwayToPeak.Models
 
         public void ArriveAtCamp(string climberName)
         {
-            throw new NotImplementedException();
+            residents.Add(climberName);
         }
 
         public void LeaveCamp(string climberName)
         {
-            throw new NotImplementedException();
+            residents.Remove(climberName);
         }
     }
 }
