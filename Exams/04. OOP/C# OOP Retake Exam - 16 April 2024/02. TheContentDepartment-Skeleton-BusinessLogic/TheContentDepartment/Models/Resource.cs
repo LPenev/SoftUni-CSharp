@@ -9,7 +9,7 @@ namespace TheContentDepartment.Models
 
         protected Resource(string name, string creator, int priority)
         {
-            this.name = name;
+            Name = name;
             Creator = creator;
             Priority = priority;
             IsTested = false;
@@ -23,7 +23,7 @@ namespace TheContentDepartment.Models
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException(ExceptionMessages.NameNullOrWhiteSpace);
+                    throw new ArgumentException(ExceptionMessages.NameNullOrWhiteSpace);
                 }
 
                 name = value;

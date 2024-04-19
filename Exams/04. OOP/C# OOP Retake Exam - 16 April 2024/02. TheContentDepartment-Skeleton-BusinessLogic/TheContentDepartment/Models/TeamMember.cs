@@ -1,4 +1,4 @@
-﻿    using TheContentDepartment.Models.Contracts;
+﻿using TheContentDepartment.Models.Contracts;
 using TheContentDepartment.Utilities.Messages;
 
 namespace TheContentDepartment.Models
@@ -7,9 +7,9 @@ namespace TheContentDepartment.Models
     {
         private string name;
         private string path;
-        private List<string> inProgress;
+        private readonly List<string> inProgress;
 
-        public TeamMember(string name, string path)
+        protected TeamMember(string name, string path)
         {
             Name = name;
             Path = path;
@@ -31,8 +31,8 @@ namespace TheContentDepartment.Models
         }
 
         public string Path
-        { 
-            get { return path; } 
+        {
+            get { return path; }
             protected set { path = value; }
         }
 
@@ -40,7 +40,7 @@ namespace TheContentDepartment.Models
 
         public void FinishTask(string resourceName)
         {
-            inProgress.Remove(resourceName);
+                inProgress.Remove(resourceName);
         }
 
         public void WorkOnTask(string resourceName)
