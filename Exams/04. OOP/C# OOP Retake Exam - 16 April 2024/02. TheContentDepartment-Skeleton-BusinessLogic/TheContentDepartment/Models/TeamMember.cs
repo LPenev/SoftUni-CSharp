@@ -1,4 +1,4 @@
-﻿using TheContentDepartment.Models.Contracts;
+﻿    using TheContentDepartment.Models.Contracts;
 using TheContentDepartment.Utilities.Messages;
 
 namespace TheContentDepartment.Models
@@ -13,6 +13,7 @@ namespace TheContentDepartment.Models
         {
             Name = name;
             Path = path;
+            inProgress = new List<string>();
         }
 
         public string Name

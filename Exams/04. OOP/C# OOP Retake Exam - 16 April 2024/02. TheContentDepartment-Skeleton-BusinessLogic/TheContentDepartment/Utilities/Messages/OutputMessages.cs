@@ -4,7 +4,7 @@ namespace TheContentDepartment.Utilities.Messages
     public class OutputMessages
     {
         //Common
-        public const string PathParamInvalid = "{0} is not a valid parameter.";
+        public const string ContentMember = "{0} is not a valid parameter.";
         public const string WrongMemberName = "Provide the correct member name.";
 
         //Join Team

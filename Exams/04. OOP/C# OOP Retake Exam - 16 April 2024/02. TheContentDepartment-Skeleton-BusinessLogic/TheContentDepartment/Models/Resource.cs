@@ -19,14 +19,14 @@ namespace TheContentDepartment.Models
         public string Name
         {
             get { return name; }
-            private set 
+            private set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException(ExceptionMessages.NameNullOrWhiteSpace);
                 }
 
-                name = value; 
+                name = value;
             }
 
         }
@@ -41,12 +41,12 @@ namespace TheContentDepartment.Models
 
         public void Approve()
         {
-            IsTested = !IsTested;
+            IsApproved = true;
         }
 
         public void Test()
         {
-            IsApproved = true;
+            IsTested = !IsTested;
         }
 
         public override string ToString()

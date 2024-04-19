@@ -9,7 +9,6 @@ namespace TheContentDepartment.Repositories
 
         public ResourceRepository()
         {
-            ResourceRepository resource = new ResourceRepository();
             models = new List<IResource>();
         }
 
