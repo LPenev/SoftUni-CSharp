@@ -14,7 +14,7 @@ namespace TheContentDepartment.Models
 
         public override string ToString()
         {
-            return $"{Name} ({this.GetType().Name}) – Currently working on {InProgress.Count} tasks.";
+            return $"{Name} ({this.GetType().Name}) - Currently working on {InProgress.Count} tasks.";
         }
     }
 }

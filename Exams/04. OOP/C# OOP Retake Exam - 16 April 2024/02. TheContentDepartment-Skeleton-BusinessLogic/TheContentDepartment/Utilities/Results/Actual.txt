@@ -37,7 +37,7 @@ Finished Tasks:
 --JavaOOP-Regular (Exam), Created By: PeterSully
 --C#OOP-Regular (Exam), Created By: KrissThompson
 Team Report:
---YokoYong (TeamLead) – Currently working on 1 tasks.
+--YokoYong (TeamLead) - Currently working on 1 tasks.
 DaniDavis - JavaScript path. Currently working on 2 tasks.
 PeterSully - Java path. Currently working on 0 tasks.
 ValGendor - Python path. Currently working on 0 tasks.
