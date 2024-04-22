@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.ApocalypsePreparation", "01. Apocalypse Preparation\01.ApocalypsePreparation.csproj", "{C0B5AF38-B730-4E40-8B27-59034193CBA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0B5AF38-B730-4E40-8B27-59034193CBA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0B5AF38-B730-4E40-8B27-59034193CBA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0B5AF38-B730-4E40-8B27-59034193CBA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0B5AF38-B730-4E40-8B27-59034193CBA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38763A93-BF0A-414E-8CF5-77F1527FDFDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38763A93-BF0A-414E-8CF5-77F1527FDFDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38763A93-BF0A-414E-8CF5-77F1527FDFDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38763A93-BF0A-414E-8CF5-77F1527FDFDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD38F47A-02A3-4574-8FA9-F5FDBE5F0EBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD38F47A-02A3-4574-8FA9-F5FDBE5F0EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD38F47A-02A3-4574-8FA9-F5FDBE5F0EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD38F47A-02A3-4574-8FA9-F5FDBE5F0EBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30986306-AEC5-4644-8E25-40DF0CF2E6E8}
+	EndGlobalSection
+EndGlobal
