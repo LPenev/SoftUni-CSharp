@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.ApocalypsePreparation", "01. Apocalypse Preparation\01.ApocalypsePreparation.csproj", "{C0B5AF38-B730-4E40-8B27-59034193CBA6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.BlindMansBuff", "02. Blind Mans Buff\02.BlindMansBuff.csproj", "{38763A93-BF0A-414E-8CF5-77F1527FDFDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
