@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. Append Arrays", "07. Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. Anonymous Threat", "08. Anonymous Threat\08. Anonymous Threat.csproj", "{4BE722F7-49C0-4A84-852A-82E46E2C1C55}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09. Pokemon Don't Go", "09. Pokemon Don't Go\09. Pokemon Don't Go.csproj", "{F37108F6-8541-4C3B-812F-1000B82CE071}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.1 Train", "01.1 Train\01.1 Train.csproj", "{F44CC895-DEBD-454F-BF46-845B5085954C}"
 EndProject
 Global
@@ -59,6 +61,10 @@ Global
 		{4BE722F7-49C0-4A84-852A-82E46E2C1C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BE722F7-49C0-4A84-852A-82E46E2C1C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BE722F7-49C0-4A84-852A-82E46E2C1C55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37108F6-8541-4C3B-812F-1000B82CE071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37108F6-8541-4C3B-812F-1000B82CE071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37108F6-8541-4C3B-812F-1000B82CE071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37108F6-8541-4C3B-812F-1000B82CE071}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F44CC895-DEBD-454F-BF46-845B5085954C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F44CC895-DEBD-454F-BF46-845B5085954C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F44CC895-DEBD-454F-BF46-845B5085954C}.Release|Any CPU.ActiveCfg = Release|Any CPU
