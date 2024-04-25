@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.RubberDuckDebugers", "01. Rubber Duck Debugers\01.RubberDuckDebugers.csproj", "{A0D678A3-3E88-45FE-B4D1-6B455BD3F36E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.TheSquirrel", "02. The Squirrel\02.TheSquirrel.csproj", "{E6C03D2E-3376-457B-8ADA-FBA01AE87164}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
