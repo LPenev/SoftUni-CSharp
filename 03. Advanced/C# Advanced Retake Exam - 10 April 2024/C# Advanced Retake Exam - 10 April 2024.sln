@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Pie Pursuit", "01. Pie Pursuit\01. Pie Pursuit.csproj", "{D80C0C39-4574-4F3E-9FA8-E990A18B0CD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D80C0C39-4574-4F3E-9FA8-E990A18B0CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D80C0C39-4574-4F3E-9FA8-E990A18B0CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D80C0C39-4574-4F3E-9FA8-E990A18B0CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D80C0C39-4574-4F3E-9FA8-E990A18B0CD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DD6CBF4-C7BA-40A7-BB1C-8850E4BB6EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD6CBF4-C7BA-40A7-BB1C-8850E4BB6EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD6CBF4-C7BA-40A7-BB1C-8850E4BB6EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD6CBF4-C7BA-40A7-BB1C-8850E4BB6EED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B4908BE-CE10-499B-B83E-F17965EDCA9D}
+	EndGlobalSection
+EndGlobal
