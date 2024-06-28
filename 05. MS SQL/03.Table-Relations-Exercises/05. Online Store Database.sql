@@ -1,0 +1,46 @@
+CREATE DATABASE OnlineStore
+GO
+USE OnlineStore
+GO
+-- 05
+-- Create a new database and design the following structure:
+
+CREATE TABLE ItemTypes
+(
+	ItemTypeID INT PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(60) NOT NULL
+)
+GO
+CREATE TABLE Items
+(
+	ItemID INT PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(60) NOT NULL,
+	ItemTypeID INT FOREIGN KEY REFERENCES ItemTypes(ItemTypeID)
+)
+
+CREATE TABLE Cities
+(
+	CityID INT PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(60) NOT NULL
+)
+GO
+CREATE TABLE Customers
+(
+	CustomerID INT PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(60) NOT NULL,
+	Birthday DATE,
+	CityID INT FOREIGN KEY REFERENCES Cities(CityID)
+)
+GO
+CREATE TABLE Orders
+(
+	OrderID INT PRIMARY KEY IDENTITY,
+	CustomerID INT FOREIGN KEY REFERENCES Customers(CustomerID)
+)
+GO
+CREATE TABLE OrderItems
+(
+	OrderID INT FOREIGN KEY REFERENCES Orders(OrderID),
+	ItemID INT FOREIGN KEY REFERENCES Items(ItemID),
+	CONSTRAINT PK_OrderItem PRIMARY KEY (OrderID,ItemID)
+)
