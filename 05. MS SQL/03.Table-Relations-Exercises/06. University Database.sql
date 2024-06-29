@@ -1,0 +1,45 @@
+CREATE DATABASE University
+GO
+USE University
+GO
+-- 06
+-- Create a new database and design
+
+CREATE TABLE Majors
+(
+	MajorID INT PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(60) NOT NULL
+)
+GO
+
+CREATE TABLE Students
+(
+	StudentID INT PRIMARY KEY IDENTITY,
+	SudentNumber INT NOT NULL,
+	StudentName VARCHAR(60) NOT NULL,
+	MajorID INT FOREIGN KEY REFERENCES Majors(MajorID)
+)
+GO
+
+CREATE TABLE Payments
+(
+	PaymentID INT PRIMARY KEY IDENTITY,
+	PaymentData DATETIME2 NOT NULL,
+	PaymentAmount DECIMAL(8,2) NOT NULL,
+	StudentID INT FOREIGN KEY REFERENCES Students(StudentID)
+
+)
+
+CREATE TABLE Subjects
+(
+	SubjectID INT PRIMARY KEY IDENTITY,
+	SubjectName VARCHAR(60) NOT NULL
+)
+GO
+
+CREATE TABLE Agenda
+(
+	StudentID INT FOREIGN KEY REFERENCES Students(StudentID),
+	SubjectID INT FOREIGN KEY REFERENCES Subjects(SubjectID),
+	CONSTRAINT PK_Agenda PRIMARY KEY(StudentID,SubjectID)
+)
