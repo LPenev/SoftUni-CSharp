@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Hospital Database", "01. Hospital Database\01. Hospital Database.csproj", "{E4C0676D-C012-4105-A921-459D8D346860}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Hospital Database Modification", "02. Hospital Database Modification\02. Hospital Database Modification.csproj", "{503363F2-1914-4AA2-AADB-C50418A882DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
