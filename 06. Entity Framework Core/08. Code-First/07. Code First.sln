@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Hospital Database", "01
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Hospital Database Modification", "02. Hospital Database Modification\02. Hospital Database Modification.csproj", "{503363F2-1914-4AA2-AADB-C50418A882DD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Sales Database", "03. Sales Database\03. Sales Database.csproj", "{1C781083-0415-4A40-BF87-576AC9E0027F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
