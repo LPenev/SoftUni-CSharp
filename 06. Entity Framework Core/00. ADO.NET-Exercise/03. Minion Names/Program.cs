@@ -5,11 +5,11 @@ using SqlConnection connection = new SqlConnection(Config.ConnectionString);
 connection.Open();
 
 int VillianId = ReadVillianId();
-string villianName = GetVillianNameById(connection, VillianId);
+object villianName = GetVillianNameById(connection, VillianId);
 
 if (villianName != null)
 {
-    PrintVillianName(villianName);
+    PrintVillianName((string)villianName);
     PrintMinionsByVillianID(connection, VillianId);
 }
 
@@ -34,7 +34,7 @@ static void PrintVillianName(string name)
 {
     Console.WriteLine($"Villain: {name}");
 }
-static string GetVillianNameById(SqlConnection connection, int Id)
+static object GetVillianNameById(SqlConnection connection, int Id)
 {
     string findVillianByIdQuery = @"SELECT Name FROM Villains WHERE ID = @VillianId";
     SqlCommand cmd = new SqlCommand(findVillianByIdQuery, connection);
@@ -47,7 +47,7 @@ static string GetVillianNameById(SqlConnection connection, int Id)
         return null;
     }
 
-    return reader.GetString(0).TrimEnd();
+    return (object)reader.GetString(0).TrimEnd();
 }
 static int ReadVillianId() 
 {
