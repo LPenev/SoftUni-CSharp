@@ -1,0 +1,1 @@
+﻿INSERT INTO Towns(Name) Values(@Town)

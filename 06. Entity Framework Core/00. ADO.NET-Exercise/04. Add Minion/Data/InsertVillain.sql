@@ -1,0 +1,1 @@
+﻿INSERT INTO Villains (Name,EvilnessFactorId) VALUES (@name, @evilnessFactorId)

@@ -1,0 +1,1 @@
+﻿SELECT Id FROM Minions WHERE Name = @Name AND Age = @Age AND TownId=@TownId
