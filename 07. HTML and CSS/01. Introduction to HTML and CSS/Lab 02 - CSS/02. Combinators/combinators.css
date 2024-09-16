@@ -1,0 +1,19 @@
+div p{
+    color:darkblue;
+}
+
+ul > li{
+    list-style-type: circle;
+}
+
+p:first-of-type + p {
+    background-color: lightgray;
+}
+
+p > span{
+    color: red;
+}
+p ~ span{
+    font-weight: bold;
+    color: red;
+}
