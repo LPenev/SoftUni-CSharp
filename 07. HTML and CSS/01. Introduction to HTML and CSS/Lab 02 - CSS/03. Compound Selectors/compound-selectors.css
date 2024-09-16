@@ -1,0 +1,42 @@
+p.highlighted{
+    color:#007BFF;
+    font-size: 18px;
+}
+
+div#special-content{
+    background-color: #FFC107;
+    padding: 5px;
+}
+
+ul li.import-item-1{
+    color:#17A2B8;
+}
+
+ul li.import-item-3{
+    color:red;
+}
+
+a.blue{
+    color:#0000EE;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+p.italic{
+    font-style: italic;
+}
+
+p.blue{
+    color:#0000EE;
+}
+
+a.extern-page{
+    color:#FFA500;
+}
+
+input[type="text"].input-text{
+    padding: 5px;
+    border-color: black;
+}
