@@ -1,0 +1,38 @@
+h1,
+h2,
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    color:black;
+}
+
+p a{
+    font-size: small;
+}
+
+nav,
+header,
+section,
+footer{
+    border: rgb(171, 171, 171);
+    border-style: solid;
+    border-width: thin;
+    margin: 7px 0px;
+    padding: 5px 15px;
+}
+
+nav div#menu a,
+section a,
+footer a{
+    display: inline-block;
+    color:black;
+    text-decoration: none;
+    margin:20px 10px;
+}
+
+nav > div#menu > a:hover,
+section a:hover,
+footer a:hover{
+    cursor: grab;
+    color:navy;
+}
+
