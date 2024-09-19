@@ -1,0 +1,16 @@
+section div{
+    border: 2px solid black;
+    margin: 20px 0px;
+}
+
+section div.uniform-padding{
+    padding: 20px;
+}
+
+section div.non-uniform-padding{
+    padding: 10px 30px 20px 40px;
+}
+
+section div.percentage-padding{
+    padding: 5%;
+}
