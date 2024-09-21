@@ -1,0 +1,100 @@
+html {
+	box-sizing: border-box;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+    font-family: inherit;
+}
+
+p,
+div > ul,
+ol{
+    padding-bottom: 1.5rem;
+}
+
+ul,
+ol{
+    padding-left:1.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Georgia, serif;
+    line-height: 1.2;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+header{
+    margin-top:1em;
+    margin-bottom: 1em;
+}
+
+section#paragraphs p:first-of-type{
+    margin-top: 1em;
+}
+
+section#paragraphs p:last-of-type{
+    margin-bottom: 2em;
+}
+
+section#article article{
+    margin-top: 1em;
+}
+
+section#lists div#unorderd-list-items > ul{
+    list-style-type: square;
+}
+
+section#lists div#unorderd-list-items ul ul{
+    list-style: disc;
+}
+
+section#lists div#unorderd-list-items ul ul ul{
+    list-style: circle;
+}
+
+table{
+    width: 100%;
+}
+
+table,
+td,
+th{
+    border: 1px solid rgb(166, 166, 166);
+    border-collapse: collapse;
+}
+
+table th{
+    color: black;
+    background-color: rgb(197, 197, 197);
+    text-align: left;
+    width: 33%;
+}
+
+table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+div#comments{
+    border-left: 3px solid rgb(219, 219, 219);
+    margin-left: 1.5em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    padding-left: 1.5em;
+    font-style: italic;
+}
+
+div#comments p#author{
+    text-align: right;
+}
