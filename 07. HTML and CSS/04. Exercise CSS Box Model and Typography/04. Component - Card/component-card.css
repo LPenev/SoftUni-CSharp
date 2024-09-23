@@ -1,0 +1,49 @@
+body{
+    background-color: #ebebeb;
+}
+
+header img{
+    height: 290px;
+}
+
+article.post{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    background-color: white;
+    width: 420px;
+    margin:30px auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+article.post section,
+article.post footer{
+    padding-left:30px;
+    padding-right: 30px;
+}
+
+p#title{
+    font-size: 1.15em;
+    font-weight: bold;
+}
+
+article.post footer p{
+    font-weight: bold;
+    margin-top: 20px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+article.post footer a{
+    width: 100%;
+    white-space: nowrap;
+    text-decoration: none;
+    font-style: italic;
+    color:black;
+}
+
+article.post footer{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-bottom: 40px;
+}
