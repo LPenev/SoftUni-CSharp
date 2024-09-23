@@ -1,0 +1,20 @@
+body{
+    display: block;
+    border: 2px solid green;
+    height: 95vh;
+}
+
+section{
+    border: 2px solid black;
+    margin: 20px 20px;
+    height: 90px;
+}
+
+div{
+    border: 2px solid blue;
+    margin: 20px 70px;
+}
+
+p{
+    padding-left: 20px;
+}
