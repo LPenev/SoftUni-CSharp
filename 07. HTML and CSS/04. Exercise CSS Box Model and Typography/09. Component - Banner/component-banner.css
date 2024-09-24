@@ -1,0 +1,30 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+header section#banner{
+    
+    background-image: url("images/image1.jpg");
+    background-position: center center;
+    min-height: 500px;
+    max-height: 520px;
+}
+
+h1{
+    font-size: 1.9em;
+    margin: 0 0;
+}
+
+header section#banner p{
+    font-size: 1.32em;
+    margin-top: 10px;
+}
+
+header section#banner div#text{
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
