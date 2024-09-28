@@ -1,0 +1,37 @@
+.flex-container{ 
+    width: 400px;
+    padding: 1em;
+    border: 2px solid blue;
+    display: flex;
+    align-items: flex-start;
+}
+
+.flex-container .flex-item{
+    background-color: #eee;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+.custom-order .flex-item:nth-child(1){
+    order: 5;
+}
+
+.custom-order .flex-item:nth-child(1){
+    order: 3;
+}
+
+.custom-order .flex-item:nth-child(1){
+    order: 1;
+}
+
+.custom-order .flex-item:nth-child(1){
+    order: 6;
+}
+
+.custom-order .flex-item:nth-child(1){
+    order: 2;
+}
+
+.custom-order .flex-item:nth-child(1){
+    order: 4;
+}
