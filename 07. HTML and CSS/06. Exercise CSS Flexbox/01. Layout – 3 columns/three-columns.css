@@ -1,0 +1,82 @@
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+	box-sizing: inherit;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #eee;
+}
+
+.flex-container{
+    width: 80%;
+    margin: 30px auto;
+    padding: 30px 60px;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.5em;
+}
+
+.flex-container .container-article{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    margin-top: 40px;
+    gap: 40px;
+}
+
+.flex-container .flex-item{
+    width: 33%;
+}
+
+.flex-container header,
+.flex-container footer{
+    flex-wrap: wrap;
+    flex: 0 0 100%;
+    text-align: center;
+
+}
+
+.flex-container header:after,
+.flex-container footer:before{
+    display: block;
+    content: '';
+    width: 80px;
+    height: 2px;
+    background-color: #eee;
+    margin: 40px auto 20px auto;
+}
+
+.flex-container footer:before
+
+.flex-container header h2{
+    font-size:x-large;
+    font-weight: 600;
+}
+
+.flex-container article h2{
+    font-size: large;
+}
+
+.flex-container header p,
+.flex-container footer p{
+    color: #7b7b7b;
+}
+
+.flex-container header p{
+    font-weight: 600;
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+.flex-container footer p{
+    font-size: 0.9em;
+}
