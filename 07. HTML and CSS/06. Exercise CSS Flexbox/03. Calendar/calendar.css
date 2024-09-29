@@ -1,0 +1,63 @@
+body{
+    background-color: #eee;
+    color:#363636;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    width: 100%;
+}
+
+.calendar-container{
+    width: auto;
+    margin: 70px 40px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.calendar-container .flex-container{
+    display: flex;
+    flex: 1 1 auto;
+    border-radius: inherit;
+    border: 3px solid silver;
+}
+
+.flex-container #left-column{
+    display: flex;
+    flex: 1 1 70%;
+    flex-wrap: wrap;
+}
+
+.flex-container #right-column{
+    display: flex;
+    flex: 1 1 30%;
+    flex-direction: column;
+}
+
+.item{
+    text-align: center;
+    flex: 1 1 auto;
+    height: 100px;
+    align-content: center;
+}
+
+#left-column > div{
+    border-right: 3px solid silver;
+    border-bottom: 3px solid silver;
+}
+
+.full-width{    
+    flex: 1 1 100%;
+    border-bottom: 3px solid silver;
+    border-right: 3px solid silver;
+}
+
+#left-column > div:nth-child(8),
+#left-column > div:nth-child(9){
+    border-bottom: none;
+}
+
+#right-column > div:nth-child(1){
+    border-bottom: 3px solid silver;
+}
