@@ -1,0 +1,115 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+
+html {
+    font-family: Lato, sans-serif;
+}
+
+body {
+    padding: 2em;
+}
+
+h1 {
+    margin-bottom: 1em;
+}
+
+.tree-list,
+.tree-list summary{
+    line-height: 1.2;
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.tree-list li {
+    padding: 0.2em 0;
+}
+
+.tree-list ul {
+    padding-top: 0.2em;
+    padding-left: 0;
+}
+
+.tree-list li {
+    border-left: 4px solid #DDD;
+    display: flex;
+    align-items: center;
+    margin-left: 0.25em;
+}
+
+.tree-list li:last-child {
+    border-color: transparent;
+}
+
+.tree-list ul li:before {
+    content: "";
+    order: -2;
+    display: block;
+    align-self: flex-start;
+    flex: 0 0 1.4em;
+    width: 1.4em;
+    height: 1.1em;
+    border: solid #DDD;
+    border-width: 0 0 4px 4px;
+    position: relative;
+    top: -0.5em;
+    left: -4px;
+}
+
+.tree-list ul li:last-child:before {
+    border-bottom-left-radius: 0.5em;
+}
+
+.tree-list summary {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+}
+
+.tree-list summary:focus {
+    outline: none;
+}
+
+.tree-list summary:focus-visible {
+    outline: 1px dotted #000;
+}
+
+.tree-list summary::before {
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: -1;
+    flex: 0 0 1.4em;
+    width: 1.4em;
+    height: 1.4em;
+    font-size: 1rem;
+    line-height: 1;
+    border-radius: 50%;
+    margin-right: 0.4em;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: -0.3em;
+}
+
+.tree-list summary::before {
+    content: "+";
+    background-color: green;
+    z-index: 1;
+    color: white;
+    line-height: 14px;
+    text-align: center;
+}
+
+.tree-list details[open] > summary::before {
+    content: "-";
+    text-align: center;
+}
+
+.tree-list details {
+    flex: 1 1 auto;
+}
