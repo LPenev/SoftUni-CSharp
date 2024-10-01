@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+
+html {
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+}
+
+body {
+    display: flex;
+    padding: 2em;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+}
+
+.article {
+    width: 40%;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 4px;
+    padding: 2em;
+}
+
+p,ul {
+    padding-bottom: 1.5em;
+}
+
+ul {
+    padding-left: 1.5em;
+}
+
+.article header {
+    padding-bottom: 1em;
+}
