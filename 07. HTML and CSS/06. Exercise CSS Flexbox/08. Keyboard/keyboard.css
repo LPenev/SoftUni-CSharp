@@ -1,0 +1,117 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    opacity: 80%;
+}
+
+body {
+    display: flex;
+    padding: 2em;
+    min-height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.keyboard {
+    flex-direction: column;
+    border: 1px solid #999;
+    border-radius: 1em;
+    background-color: #ddd;
+    box-shadow: 0 0.3em 0 0 #aaa;
+    padding: 1em;
+}
+
+.keyboard .key-row {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.keyboard .key {
+    margin: 3px 5px;
+    height: 3em;
+    text-wrap: nowrap;
+    aspect-ratio: 1.1 / 1;
+    background: #fff;
+    box-shadow: 0 0.2em 0 0 #BBB;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-transform: lowercase;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+.keyboard .key:hover,
+.keyboard .key:focus-visible {
+    background: #666 !important;
+    color: #fff;
+    border-color: #333;
+    box-shadow: 0 0.2em 0 0 #333;
+}
+
+.keyboard .key:active {
+    box-shadow: 0 0 0 0 #333;
+    position: relative;
+    top: 0.16em;
+}
+
+.keyboard .func-key {
+    height: 2.5em;
+    aspect-ratio: 1.43 / 1;
+}
+
+.keyboard .spec-key {
+    background: #eee;
+}
+
+.keyboard #key-enter {
+    position: relative;
+    flex-grow: 1;
+    border-bottom-right-radius: 0;
+}
+
+.keyboard #key-slash {
+    margin-right: 5.5em;
+}
+
+ .keyboard #key-enter::after {
+    display: block;
+    position: absolute;
+    content: '';
+    background-color: inherit;
+    box-shadow: inherit;
+    border: inherit;
+    border-radius: inherit;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 4px;
+    height: 3.84em;
+    aspect-ratio: 1.05/1;
+    right: -1px;
+    top: 100%;
+}
+
+.keyboard #key-spacebar {
+    flex-grow: 12;
+}
+
+.keyboard .grow1 {
+    flex-grow: 1;
+}
+
+.keyboard .grow2 {
+    flex-grow: 2;
+}
+
+.keyboard .grow05{
+    flex-grow: 0.5;
+}
