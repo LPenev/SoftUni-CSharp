@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Lato", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #eee;
+}
+
+header {
+    max-width: 1160px;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    margin: 20px 80px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    height: 100px;
+    position: relative;
+}
+
+#site-logo {
+    flex-grow: 5;
+    padding-left: 45px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.main-menu {
+    font-size: 14px;
+    display: flex;
+    flex-grow: 1;
+    justify-content: right;
+    padding-right: 30px;
+}
+
+/* main menu */
+.main-menu ul {
+    display: flex;
+    gap: 15px;
+}
+
+.main-menu li {
+    background-color: #eee;
+    border-radius: 5px;
+    position: relative;
+    list-style: none;
+}
+
+.main-menu a {
+    display: block;
+    padding: 15px 19px;
+    text-decoration: none;
+    color: black;
+}
+
+@media (hover:hover) {
+
+    /* hide toggle menu */
+    label[for="nav-toggle"] {
+        display: none;
+    }
+
+    .main-menu > ul {
+        display: flex;
+        gap: 1em
+    }
+
+    .main-menu > ul > li > a {
+        border-radius: 0.3em;
+    }
+
+    .main-menu ul ul ul {
+        top: 0;
+        left: 100%;
+    }
+    
+    /* colors of mouse over */
+    .main-menu li:hover > a,
+    .main-menu a:hover {
+        background: #888;
+        color: #fff;
+    }
+
+    /* hide submenus */
+    .main-menu ul ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 10rem;
+    }
+
+    /* show submenus*/
+    .main-menu li:hover > ul {
+        display: block;
+        box-shadow: 0 0 1em 0.1em rgb(0, 0, 0, 0.1);
+    }
+
+}
+
+#nav-toggle {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+@media (hover:none) {
+
+    /* show toggle menu */
+    label[for="nav-toggle"] {
+        display: block;
+        position: absolute;
+        right: 30px;
+        top: 25px;
+        background: #EEE;
+        padding: 1em 1.5em;
+    }
+
+    .main-menu,
+    label[for="nav-toggle"] .close {
+        display: none;
+    }
+
+    /* change state of label open/close */
+    #nav-toggle:checked ~ header label[for="nav-toggle"] .close {
+        display: block;
+    }
+
+    #nav-toggle:checked ~ header label[for="nav-toggle"] .open {
+        display: none;
+    }
+    /* end of change state of label */
+
+    #nav-toggle:checked ~ header .main-menu {
+        display: flex;
+        background: #fff;
+        position: relative;
+        right: 140px;
+    }
+
+    #nav-toggle:checked ~ header .main-menu ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: absolute;
+        background-color: #fff;
+    }
+
+    #nav-toggle:checked ~ header .main-menu li {
+        width: 100%;
+    }
+
+    #nav-toggle:checked ~ header .main-menu li li{
+        width: 120px;
+    }
+
+    #nav-toggle:checked ~ header .main-menu ul ul{
+        margin-left: 7em;
+        margin-top: -50px;
+    }
+    #nav-toggle:checked ~ header .main-menu a {
+        border-bottom: 2px solid #fff;
+        width: 100%;
+    }
+}
+
+/* rules for small screen to 800px*/
+@media screen and (max-width: 900px){
+    header {
+        margin: 20px;
+    }
+}
