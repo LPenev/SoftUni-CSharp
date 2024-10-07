@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+body {
+    background: #eee;
+    height: 100vh;
+    display: flex;
+}
+
+.container-articles {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container-articles article {
+    display: flex;
+    flex-shrink: 1;
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 2em;
+    margin: 2em;
+    border-radius: 0.3em;
+}
+
+.container-articles article header .header-text {
+    font-size: 1.5em;
+    font-weight: 800;
+    margin-top: - 60px;
+    line-height: 1;
+}
+
+.container-articles article header h2 {
+    font-weight: 600;
+    font-size: 2.5em;
+    opacity: 90%;
+    line-height: 1;
+    margin-top: 0.18em;
+    margin-bottom: 0.33em;
+}
+
+
+.container-articles article p{
+    opacity: 60%;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.container-articles article .image {
+    min-width: 30%;
+    background-color: #eee;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid rgb(193, 193, 193);
+    margin-left: 1.5em;
+}
+
+.container-articles article .buttons {
+    margin-top: 2.1em;
+    margin-bottom: 0.8em;
+}
+
+.container-articles article .buttons a{
+    border-radius: 4px;
+    width: 50px;
+    padding: 0.66em 1.3em;
+    text-decoration: none;
+    margin-right: 1em;
+}
+
+.buttons .grey {
+    background-color: #eee;
+    color: #666;
+}
+
+.buttons .lila {
+    background-color: #639;
+    color: #fff;
+}
+
+@media screen and (max-width: 800px) {
+
+    html {
+        font-size: 1em;
+    }
+}
