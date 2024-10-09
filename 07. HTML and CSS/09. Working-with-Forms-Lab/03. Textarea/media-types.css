@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px/1.5;
+}
+
+body {
+    padding: 2em;
+}
+
+section h2 {
+    margin-top: 2em;
+}
+
+.code {
+    font-size: 16px;
+    display: block;
+    background-color: #eee;
+    padding: 2em 2em 2em 2em;
+    border-radius: 0.3em;
+    border: 1px solid #ccc;
+    margin: 2em 0;
+    overflow: auto;
+}
+
+input,
+textarea {
+    display: inline-block;
+    padding: 0.5em 0.8em;
+    border: 2px solid #ccc;
+    outline: none;
+}
+
+input:focus {
+    border-color: #090;
+}
