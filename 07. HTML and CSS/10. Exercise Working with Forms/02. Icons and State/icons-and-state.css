@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #eee;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    margin: auto;
+    padding: 2.5em 3em 3em 3em;
+    width: 500px;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.login-form h2 {
+    font-weight: bolder;
+}
+
+.login-form .field {
+    position: relative;
+}
+
+.login-form .field .icon {
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+
+.login-form .field label{
+    display: block;
+}
+
+.login-form .field label::after{
+    content: '*';
+    color: #d22121;
+}
+
+.login-form .field p {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.login-form .separator {
+    width: 8em;
+    border: 1px solid #ccc;
+}
+
+.login-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    height: 4em;
+}
+
+.login-form input[type="submit"] {
+    width: 100%;
+    height: 3.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff8c00;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 0.5em;
+}
