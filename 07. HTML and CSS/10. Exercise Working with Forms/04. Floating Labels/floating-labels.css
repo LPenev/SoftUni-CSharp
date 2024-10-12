@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    background-color: #eee;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 2em 2.5em;
+    gap: 2em;
+}
+
+.login-form h2 {
+    margin-bottom: 1.3em;
+    font-weight: 900;
+}
+
+.login-form .field {
+    display: inherit;
+    flex-direction: inherit;
+}
+
+.login-form input::placeholder {
+    color: #606060;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.login-form input:focus::placeholder {
+    color: transparent;
+}
+
+.login-form input:focus {
+    outline: none;
+}
+
+.login-form input[name="email"],
+.login-form input[name="password"] {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 1.3em 0;
+}
+
+.login-form p {
+    font-style: italic;
+    font-weight: 600;
+    color: #a4a4a4;
+    margin-top: 5px;
+}
+
+.login-form input[type="submit"] {
+    background-color: #eee;
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 800;
+    margin-top: 1.5em;
+}
