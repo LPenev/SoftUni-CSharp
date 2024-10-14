@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="registration.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <title>5.Registration</title>
+</head>
+<body>
+    <div class="registration-form">
+        <form method="post">
+            <h2>Registration</h2>
+
+            <fieldset>
+                <legend>Login information</legend>
+                <div class="field">
+                    <input name="email" id="email" placeholder="Email">
+                    <p>example: john.doe@gmail.com</p>
+                </div>
+                <div class="field">
+                    <input name="password" id="password" placeholder="Password">
+                    <p>minimum 6 characters, letters and numbers, at least 1 special character</p>
+                </div>
+            </fieldset>
+
+            <fieldset class="date">
+                <legend>Additional information</legend>
+                <div class="feld">
+                    <label for="date-of-birth">Date of Birth</label>
+                    <input type="date" name="date-of-birth" id="date-of-birth">
+                    <p>Example: 30.05.2024</p>
+                </div>
+            </fieldset>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>

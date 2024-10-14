@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    background-color: #eee;
+    padding: 2em;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    width: 490px;
+    margin: auto;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 2em 2.5em;
+    gap: 2em;
+}
+
+.registration-form h2 {
+    margin-bottom: 2.2em;
+    margin-top: 0.2em;
+    font-weight: 900;
+}
+
+.registration-form fieldset {
+    margin-top: 2.2em;
+    padding: 2em 2em 3.2em 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    border: 3px solid #ddd;
+    border-radius: 5px;
+}
+
+.registration-form fieldset legend {
+    display: block;
+    margin-left: -1em;
+    padding: 0 1em;
+    font-size: 15px;
+    font-weight: 800;
+    opacity: 70%;
+}
+
+.registration-form input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 1.2em 0;
+
+    &::placeholder {
+        font-weight: 800;
+        font-size: 14px;
+        font-family: 'Lato', sans-serif;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:focus::placeholder {
+        color: transparent;
+    }
+}
+
+.registration-form p {
+    font-size: 13px;
+    font-weight: 800;
+    font-style: italic;
+    color: #959595;
+    margin-top: 0.3em;
+}
+
+.registration-form label {
+    font-weight: 800;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    opacity: 60%;
+}
+
+.registration-form input[type="date"] {
+    font-family: inherit;
+    font-weight: 800;
+    opacity: 70%;
+}
+
+.registration-form .date {
+    padding-top: 1.3em;
+}
+
+.registration-form .date input {
+    padding: 1em 0;
+}
+
+.registration-form input[type="submit"] {
+    border: none;
+    border-radius: 5px;
+    margin-top: 2em;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 900;
+}
+
