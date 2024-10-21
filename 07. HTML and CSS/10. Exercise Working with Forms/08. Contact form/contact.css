@@ -1,0 +1,88 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    padding: 2em;
+}
+
+.contact-form {
+    width: 490px;
+    height: 625px;
+    display: flex;
+    flex-direction: column;
+    padding: 2em 2.5em;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 5px;
+
+}
+
+.contact-form fieldset {
+    border: none
+}
+
+.contact-form fieldset legend {
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 1.6em;
+}
+
+.contact-form fieldset .field {
+    margin-top: 3em;
+}
+
+.contact-form fieldset label {
+    font-weight: 900;
+    font-size: 14px;
+    opacity: 60%;
+}
+
+.contact-form fieldset input,
+.contact-form fieldset textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #ccc;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.contact-form .message {
+    margin-top: 1.2em;
+}
+
+.contact-form fieldset textarea {
+    height: 8ch;
+}
+
+.contact-form fieldset p {
+    font-style: italic;
+    font-size: 14px;
+    color: #a9a9a9;
+    font-weight: 600;
+    padding-top: 0.3em;
+}
+
+.contact-form fieldset input[type="submit"] {
+    padding: 1em;
+    font-weight: 900;
+    font-size: 16px;
+    font-family: inherit;
+    border: none;
+    border-radius: 5px;
+    margin-top: 3em;
+}
