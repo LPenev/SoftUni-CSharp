@@ -1,0 +1,70 @@
+@media screen and ( max-width:600px) {
+
+    body {
+        font-size: 0.8em;
+    }
+    header {
+        padding: 1.5rem 0;
+    }
+    header nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    header nav img {
+        width: 40px;
+        height: auto;
+    }
+
+    header nav ul li {
+        padding-right: 0.5rem;
+    }
+
+    .header-title {
+        padding: 5px 0 0 0;
+    }
+
+    .header-title h1 {
+        font-size: 40px;
+    }
+
+    .our-dogs-wrapper, .contact {
+        padding: 2rem 0;
+    }
+
+    .blog-section p:nth-child(2), .our-dogs p:nth-child(2), .contact p:nth-child(2) {
+        padding-bottom: 2.3em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    .our-dogs ul li img {
+        width: 158px;
+        height: 158px;
+        padding-bottom: 0.2rem;
+    }
+
+    .our-dogs ul li > p:nth-child(2) {
+        padding-bottom: 8px;
+    }
+
+    .helpNeed {
+        padding: 2rem 0;
+    }
+
+    .helpNeed ul {
+        flex-direction: column;
+    }
+
+    .helpNeed li img {
+        height: 6.3rem;
+        width: 6.3rem;
+    }
+
+    .helpNeed li h4 {
+        font-size: 16px;
+        margin-top: 25px;
+    }
+}
