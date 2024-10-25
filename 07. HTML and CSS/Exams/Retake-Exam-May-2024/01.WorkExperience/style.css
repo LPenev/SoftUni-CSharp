@@ -1,0 +1,109 @@
+@import url(https://fonts.googleapis.com/css2?family=Margarine&display=swap);
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+    font-family: 'Margarine';
+    font-size: 15px;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #fff0e4;
+    padding-top: 150px;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+.opacity-55 {
+    opacity: 55%;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.box {
+    height: 587px;
+    box-shadow: 0px 17px 30px 10px rgba(0,0,0,0.22),0px 5px 14px 0px rgba(0,0,0,0.18);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.person-info {
+    width: 442px;
+    padding: 12px 16px 15px;
+}
+
+.person-info .details {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 29px 0 16px;
+    font-weight: 300;
+}
+
+.w3-text-teal {
+    color: #2991e6;
+    margin-right: 16px;
+}
+
+.statistic {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.container-row {
+    width: 100%;
+}
+
+.row {
+    background-color: #2991e6;
+    color: #fff;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 12px;
+    padding: 0.07rem 0;
+}
+
+.experience {
+    width: 910px;
+    padding: 58px 32px 0;
+}
+
+.container-articles {
+    margin-top: 40px;
+}
+
+p.time {
+    color: #2991e6;
+    margin: 13px 0 17px;
+    font-size: 16px;   
+}
+
+.container-articles hr{
+    margin: 15px 0 19px;
+}
+
+.line-15 {
+    line-height: 1.5;
+}
