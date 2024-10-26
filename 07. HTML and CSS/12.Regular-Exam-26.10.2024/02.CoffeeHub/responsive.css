@@ -1,0 +1,75 @@
+@media screen and (max-width:600px) {
+    .home-container .home-cta-btn {
+        padding-left: 16px;
+        padding-right: 17px;
+        font-size: 0.88rem;
+    }
+
+    .home-container .home-navbar {
+        padding-left: 88px;
+        padding-right: 22px;
+    }
+
+    .home-container .home-heading-container {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .home-container .home-text03 {
+        white-space: nowrap;
+    }
+
+    .home-container #features {
+        height: 100%;
+    }
+
+    .home-cards-container .home-feature-card {
+        width: 100%;
+    }
+    
+    .home-image2, .home-image3, .home-image4 {
+        width: 403px;
+        height: 291px;
+        margin-bottom: 19px;
+    }
+
+    .home-feature-card1, .home-feature-card2 {
+        width: 100%;
+        padding-top: 41px;
+    }
+
+    .home-container .home-cards-container {
+        flex-direction: column;
+    }
+
+    .home-stats {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .home-hero {
+        flex-direction: column-reverse;
+        margin-top:26px;
+        padding-left: 24px;
+        padding-right: 23px;
+    }
+
+    .home-hero-text-container {
+        width: 100%;
+        margin-left:0px;
+        margin-top: 20px;
+        align-items:center;
+    }
+
+    .home-image1 {
+        width: 100%;
+    }
+
+    .home-cta-btn2 {
+        align-self:center;
+        padding-left: 19px;
+        padding-right: 19px;
+        margin-bottom: 10px;
+    }
+
+}
