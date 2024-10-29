@@ -1,4 +1,6 @@
 function monthPrinter(month) {
+    let result;
+    
     switch(month){
         case 1:
             result = 'January';
