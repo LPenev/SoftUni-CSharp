@@ -1,5 +1,4 @@
 function charactersInRange(startChar, endChar){
-    
     let chars = printCharactersRange(startChar, endChar);
     console.log(chars);
 
@@ -8,6 +7,12 @@ function charactersInRange(startChar, endChar){
         let endOfRange = getAsciiValue(b);
         let result = '';
         
+        if(startOfRange > endOfRange){
+            const temp = startOfRange;
+            startOfRange = endOfRange;
+            endOfRange = temp;
+        }
+
         for(let i = ++startOfRange; startOfRange < endOfRange; startOfRange++){
             result = result.concat(' ' + asciiToChar(startOfRange));
         }
@@ -24,4 +29,4 @@ function charactersInRange(startChar, endChar){
     }
 }
 
-charactersInRange('a','d');
+charactersInRange('C','#');
