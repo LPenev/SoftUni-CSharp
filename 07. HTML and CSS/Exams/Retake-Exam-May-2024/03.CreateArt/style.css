@@ -302,6 +302,12 @@ input:-ms-input-placeholder {
     padding-left: 25px;
 }
 
+#border-ramen{
+    position: relative;
+    border: none;
+    overflow: hidden;
+}
+
 footer{
     display: flex;
     flex-direction: column;
