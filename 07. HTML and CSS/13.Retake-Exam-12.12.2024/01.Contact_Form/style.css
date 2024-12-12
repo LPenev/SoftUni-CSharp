@@ -1,0 +1,139 @@
+@import url(https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css);
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+html {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+}
+
+body {
+    width: 100%;
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding: 17.5% 16%;
+    gap: 4%;
+}
+
+#side-left{
+    flex-basis: 70%;
+}
+
+.logo{
+    font-family: 'Source Sans 3', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    opacity: 70%;
+}
+
+#side-right{
+    flex-basis: 30%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    padding-top: 4.5%;
+    gap: 30px;
+}
+
+.app-form{
+    font-family: 'Source Sans 3', sans-serif;
+    padding: 10px 0;
+    opacity: 80%;
+    color: #535453;
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: solid 2px #cbc9c9;
+    font-size: 1.2em;
+}
+
+#side-left #separator{
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+}
+
+#side-left #name{
+    flex-basis: 50%;
+}
+
+#side-left #email{
+    flex-basis: 50%;
+}
+
+#side-left #message{
+    flex-basis: 100%;
+}
+
+#side-left #send-btn{
+    font-family: 'Source Sans 3', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    width: 100px;
+    color: #fff;
+    background-color: #585858;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9em;
+    letter-spacing: 0.3em;
+    border-radius: 4px;
+
+}
+
+.bottom{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;   
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.35em;
+    padding-top: 45px;
+    font-weight: 300;
+}
+
+a.bold{
+    text-decoration: underline;
+    font-weight: 500;
+    opacity: 65%;
+    color: #000;
+}
+
+.icons{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.icons .row{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.icons i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 60%;
+    font-size: 30px;
+    border: solid 2px gray;
+    border-radius: 5px;
+    width: 79px;
+    height: 59px;
+}
