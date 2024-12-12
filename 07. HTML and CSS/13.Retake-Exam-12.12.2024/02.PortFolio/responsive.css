@@ -1,0 +1,45 @@
+@media screen and (max-width:600px) {
+    .site-header{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .site-header > i{
+        left: 0px;
+    }
+
+    section.about {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+    }
+
+    .about-header{
+        bottom: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+    }
+
+    .about-text{
+        width: 50%;
+    }
+
+    .gallery{
+        text-align: center;
+    }
+
+    .checkbtn{
+        display: flex;
+        margin-right: 20px;
+    }
+
+    nav ul{
+        display: none;
+    }
+
+    nav{
+        flex-direction: row-reverse;
+    }
+}
