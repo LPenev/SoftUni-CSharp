@@ -11,7 +11,7 @@ function townsInfo(townsInfoArray){
 
         towns.push(town);
     }
-
+    
     towns.forEach(town => console.log(town));
 }
 
