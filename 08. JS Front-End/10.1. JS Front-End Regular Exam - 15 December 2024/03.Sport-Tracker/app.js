@@ -9,6 +9,7 @@ const locationInput = document.getElementById("location");
 const dateInput = document.getElementById("date");
 
 const listContainer = document.getElementById("list");
+let currentWorkoutId = null;
 
 loadBtn.addEventListener("click", loadWorkouts);
 addBtn.addEventListener("click", addWorkout);
