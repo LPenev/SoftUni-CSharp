@@ -4,30 +4,36 @@ function crewManagement(input) {
     let astronauts = {};
 
     for(let i=0; i < astronautCount; i++){
-        const current = input.shift().split(' ');
-        fName = current[0];
-        spacecraftSection = current[1];
-        skills = current[2].split(',');
+        const [ astronautName, spacecraftSection, astronautSkills ] = input.shift().split(' ');
 
-        astronauts[fName] = { spacecraftSection, skills: skills };
+        astronauts[astronautName] = {
+            spacecraftSection,
+            skills: astronautSkills?astronautSkills.split(','):[],
+        };
     }
 
     while(input.length > 0){
-        const currentCommand = input.shift().split('/').map(x=> x.trim());
+        const currentInput = input.shift();
         
-        if(currentCommand[0] === 'End'){
-            continue;
+        if(currentInput === 'End'){
+            break;
         }
 
-        switch(currentCommand[0]){
+        const [command, astronautName, arg1, arg2] = currentInput.split('/').map(x=> x.trim());
+
+        switch(command){
             case 'Perform':
-                perform(currentCommand[1], currentCommand[2], currentCommand[3]);
+                const section = arg1;
+                const skill = arg2;
+                perform(astronautName, section, skill);
                 break;
             case 'Transfer':
-                transfer(currentCommand[1], currentCommand[2]);
+                const newSection = arg1;
+                transfer(astronautName, newSection);
                 break;
             case 'Learn Skill':
-                learn(currentCommand[1], currentCommand[2]);
+                const newSkill = arg1;
+                learn(astronautName, newSkill);
                 break;
         }
     }
