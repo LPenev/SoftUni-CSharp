@@ -1,5 +1,5 @@
 function crewManagement(input) {
-    astronautCount = Number(input.shift());
+    const astronautCount = Number(input.shift());
     
     let astronauts = {};
 
