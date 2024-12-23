@@ -399,3 +399,13 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 08. JS Front-End/.vscode/*
+08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/server.js
+08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/advanced.json
+08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/blog.json
+08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/bus.json
+08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/catches.json
+08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/collections.json
+08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/forecaster.json
+08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/messenger.json
+08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/phonebook.json
+/08. JS Front-End
