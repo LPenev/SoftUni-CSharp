@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Database_First_model.Models;
+namespace DatabaseFirstModel.Models;
 
-public partial class RmployeesProject
+public partial class EmployeesProject
 {
     public int? ProjectId { get; set; }
 

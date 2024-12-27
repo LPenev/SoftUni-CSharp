@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Database_First_model.Models;
+namespace DatabaseFirstModel.Models;
 
 public partial class ProjectsContext : DbContext
 {
@@ -19,9 +19,9 @@ public partial class ProjectsContext : DbContext
 
     public virtual DbSet<Employee> Employees { get; set; }
 
-    public virtual DbSet<Project> Projects { get; set; }
+    public virtual DbSet<EmployeesProject> EmployeesProjects { get; set; }
 
-    public virtual DbSet<RmployeesProject> RmployeesProjects { get; set; }
+    public virtual DbSet<Project> Projects { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -31,7 +31,7 @@ public partial class ProjectsContext : DbContext
     {
         modelBuilder.Entity<Department>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Departme__3214EC07453734DF");
+            entity.HasKey(e => e.Id).HasName("PK__Departme__3214EC07AB2612C1");
 
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
@@ -40,7 +40,7 @@ public partial class ProjectsContext : DbContext
 
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Employee__3214EC07A8064A91");
+            entity.HasKey(e => e.Id).HasName("PK__Employee__3214EC0717297B24");
 
             entity.Property(e => e.FirstName)
                 .HasMaxLength(30)
@@ -54,29 +54,29 @@ public partial class ProjectsContext : DbContext
 
             entity.HasOne(d => d.Department).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.DepartmentId)
-                .HasConstraintName("FK__Employees__Depar__4316F928");
+                .HasConstraintName("FK__Employees__Depar__4BAC3F29");
         });
 
-        modelBuilder.Entity<Project>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Projects__3214EC07910C2638");
-
-            entity.Property(e => e.Name)
-                .HasMaxLength(30)
-                .IsUnicode(false);
-        });
-
-        modelBuilder.Entity<RmployeesProject>(entity =>
+        modelBuilder.Entity<EmployeesProject>(entity =>
         {
             entity.HasNoKey();
 
             entity.HasOne(d => d.Employee).WithMany()
                 .HasForeignKey(d => d.EmployeeId)
-                .HasConstraintName("FK__Rmployees__Emplo__45F365D3");
+                .HasConstraintName("FK__Employees__Emplo__5070F446");
 
             entity.HasOne(d => d.Project).WithMany()
                 .HasForeignKey(d => d.ProjectId)
-                .HasConstraintName("FK__Rmployees__Proje__44FF419A");
+                .HasConstraintName("FK__Employees__Proje__4F7CD00D");
+        });
+
+        modelBuilder.Entity<Project>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Projects__3214EC07156955C0");
+
+            entity.Property(e => e.Name)
+                .HasMaxLength(30)
+                .IsUnicode(false);
         });
 
         OnModelCreatingPartial(modelBuilder);

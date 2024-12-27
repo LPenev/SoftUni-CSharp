@@ -1,4 +1,4 @@
-CREATE Database Projects;
+CREATE Database ProjectsCodeFirst;
 GO
 USE Projects;
 GO
@@ -30,15 +30,11 @@ CREATE TABLE EmployeesProjects
 
 GO
 INSERT INTO Departments (Name)
-VALUES ('IT');
-INSERT INTO Departments (Name)
-VALUES ('Finance');
-INSERT INTO Departments (Name)
-VALUES ('Logistic');
-INSERT INTO Departments (Name)
-VALUES ('Security');
-INSERT INTO Departments (Name)
-VALUES ('Productions');
+VALUES 	('IT'),
+		('Finance'),
+		('Logistic'),
+		('Security'),
+		('Productions');
 GO
 INSERT INTO Projects (Name)
 VALUES ('Bildung Prog'),
