@@ -10,7 +10,10 @@ public class StartUp
         var output = string.Empty;
 
         // 03. Employees Full Information
-        output = GetEmployeesFullInformation(context);
+        //output = GetEmployeesFullInformation(context);
+
+        //04. Employees with Salary Over 50,000
+        output = GetEmployeesWithSalaryOver50000(context);
 
 
         Console.WriteLine(output);
@@ -42,5 +45,25 @@ public class StartUp
 
         return sb.ToString().TrimEnd();
     }
+
+    // 04. Employees with Salary Over 50,000
+    public static string GetEmployeesWithSalaryOver50000(SoftUniContext context)
+    {
+        var employees = context.Employees
+            .Select(e => new { e.FirstName, e.Salary })
+            .Where(e => e.Salary > 50000)
+            .OrderBy(e => e.FirstName)
+            .ToList();
+
+        var sb = new StringBuilder();
+
+        foreach (var employee in employees)
+        {
+            sb.AppendLine($"{employee.FirstName} - {employee.Salary:f2}");
+        }
+
+        return sb.ToString().TrimEnd();
+    }
+
 
 }
