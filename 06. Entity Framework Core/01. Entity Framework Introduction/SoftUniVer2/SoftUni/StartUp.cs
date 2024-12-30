@@ -1,4 +1,5 @@
 ﻿using SoftUni.Data;
+using SoftUni.Models;
 using System.Text;
 
 namespace SoftUni;
@@ -16,7 +17,10 @@ public class StartUp
         //output = GetEmployeesWithSalaryOver50000(context);
 
         // 05. Employees from Research and Development
-        output = GetEmployeesFromResearchAndDevelopment(context);
+        //output = GetEmployeesFromResearchAndDevelopment(context);
+
+        //06. Adding a New Address and Updating Employee
+        output = AddNewAddressToEmployee(context);
 
 
         Console.WriteLine(output);
@@ -85,6 +89,55 @@ public class StartUp
             sb.AppendLine($"{employee.FirstName} {employee.LastName} from {employee.Department.Name} - ${employee.Salary:f2}");
         }
         return sb.ToString().TrimEnd();
+    }
+
+    // 06. Adding a New Address and Updating Employee
+    public static string AddNewAddressToEmployee(SoftUniContext context)
+    {
+        string newAddress = "Vitoshka 15";
+        //var checkNewAddress = context.Employees.Where(e => e.Address.AddressText == newAddress).FirstOrDefault();
+
+        //if (checkNewAddress != null)
+        //{
+        //    return "The address already exists.";
+        //}
+
+        // set new address
+        Address address = new Address();
+        address.TownId = 4;
+        address.AddressText = newAddress;
+
+        // add address into Database and save changes
+        context.Addresses.Add(address);
+        context.SaveChanges();
+
+        // search for employee per LastName
+        string employeeName = "Nakov";
+        var SearchedEmployee = context.Employees.Where(e => e.LastName == employeeName).FirstOrDefault();
+
+        if (SearchedEmployee == null)
+        {
+            return "Employee not found...";
+        }
+
+        // if employee found set new address and save changes
+        SearchedEmployee.Address = address;
+        context.SaveChanges();
+
+        // get first 10 employees orderd by addressId
+        var sorted10Employees = context.Employees
+            .Select(e => new { e.AddressId, e.Address })
+            .OrderByDescending(e => e.AddressId)
+            .Take(10)
+            .ToList();
+
+        var sb = new StringBuilder();
+        foreach (var employee in sorted10Employees)
+        {
+            sb.AppendLine($"{employee.Address.AddressText}");
+        }
+
+        return sb.ToString().TrimEnd(); ;
     }
 
 }
