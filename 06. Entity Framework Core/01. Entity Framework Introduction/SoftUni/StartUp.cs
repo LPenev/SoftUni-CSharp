@@ -28,7 +28,7 @@ public class StartUp
         //output = GetEmployeesInPeriod(context);
 
         //08.
-        //output = GetAddressesByTown(context);
+        output = GetAddressesByTown(context);
 
         //09.
         //output = GetEmployee147(context);
