@@ -5,12 +5,13 @@ namespace P01_StudentSystem.Data
 {
     public class StudentSystemContext : DbContext
     {
+        public StudentSystemContext(DbContextOptions options) : base(options) { }
+
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<Resource> Resources { get; set; }
         public DbSet<Homework> Homeworks { get; set; }
+        public DbSet<Resource> Resources { get; set; }
         public DbSet<StudentCourse> StudentsCourses { get; set; }
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -18,8 +19,6 @@ namespace P01_StudentSystem.Data
             {
                 optionsBuilder.UseSqlServer("Server=localhost;Database=StudentSystem;User=demo;Password=Demo1234");
             }
-
-            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,10 +35,10 @@ namespace P01_StudentSystem.Data
                     .IsUnicode(false)
                     .IsRequired(false);
 
-                s.Property(s => s.RegistredOn)
+                s.Property(s => s.RegisteredOn)
                     .IsRequired(true);
 
-                s.Property(s => s.BirthDay)
+                s.Property(s => s.Birthday)
                     .IsRequired(false);
             });
 
@@ -64,16 +63,17 @@ namespace P01_StudentSystem.Data
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Course>(h => { });
+            modelBuilder.Entity<Homework>(h => {
+                h.Property(h => h.Content)
+                    .IsUnicode (false);
+            });
 
             modelBuilder.Entity<StudentCourse>(sc =>
             {
                 sc.HasKey(sc=> new {sc.StudentId, sc.CourseId});
             });
 
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
-
-
     }
 }

@@ -1,7 +1,8 @@
-﻿
-using P01_StudentSystem.Data;
+﻿namespace P01_StudentSystem;
 
-var context = new StudentSystemContext();
-
-context.Database.EnsureDeleted();
-context.Database.EnsureCreated();
+public class StartUp
+{
+    public static void Main()
+    {
+    }
+}

@@ -1,9 +1,7 @@
-﻿namespace P01_StudentSystem.Data.Models
+﻿namespace P01_StudentSystem.Data.Models;
+public enum ContentType
 {
-    internal enum ContentType
-    {
-        Application,
-        Pdf,
-        Zip
-    }
+    Application,
+    Pdf,
+    Zip
 }
