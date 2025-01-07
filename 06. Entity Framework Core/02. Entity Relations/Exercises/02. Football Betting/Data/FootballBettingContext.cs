@@ -36,6 +36,10 @@ public class FootballBettingContext: DbContext
 
         });
 
+        modelBuilder.Entity<PlayerStatistic>(ps => {
+            ps.HasKey(ps => new { ps.GameId, ps.PlayerId });
+        });
+
         base.OnModelCreating(modelBuilder);
     }
 }
