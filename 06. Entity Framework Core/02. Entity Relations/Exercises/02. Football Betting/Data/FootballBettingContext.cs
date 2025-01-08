@@ -3,7 +3,7 @@ using P02_FootballBetting.Data.Models;
 
 namespace P02_FootballBetting.Data;
 
-public class FootballBettingContext: DbContext
+public class FootballBettingContext : DbContext
 {
     public FootballBettingContext(DbContextOptions options) : base(options) { }
 
@@ -11,10 +11,11 @@ public class FootballBettingContext: DbContext
     public DbSet<Color> Colors { get; set; }
     public DbSet<Game> Games { get; set; }
     public DbSet<Player> Players { get; set; }
-    public DbSet<PlayerStatistic> PlayerStatistics { get; set; }
+    public DbSet<PlayerStatistic> PlayersStatistics { get; set; }
     public DbSet<Position> Positions { get; set; }
     public DbSet<Team> Teams { get; set; }
     public DbSet<Town> Towns { get; set; }
+    public DbSet<Country> Countries { get; set; }
     public DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -22,24 +23,26 @@ public class FootballBettingContext: DbContext
         if (!optionsBuilder.IsConfigured)
         {
             optionsBuilder.UseSqlServer("Server=localhost;Database=FootballBetting;User=demo;Password=Demo1234");
+            base.OnConfiguring(optionsBuilder);
         }
 
-        base.OnConfiguring(optionsBuilder);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Team>( t => { 
+        modelBuilder.Entity<Team>(t =>
+        {
             t.Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
         });
 
-        modelBuilder.Entity<PlayerStatistic>(ps => {
+        modelBuilder.Entity<PlayerStatistic>(ps =>
+        {
             ps.HasKey(ps => new { ps.GameId, ps.PlayerId });
         });
 
-        base.OnModelCreating(modelBuilder);
+        // base.OnModelCreating(modelBuilder);
     }
 }

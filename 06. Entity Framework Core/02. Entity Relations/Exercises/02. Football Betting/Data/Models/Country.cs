@@ -1,4 +1,6 @@
-﻿namespace P02_FootballBetting.Data.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace P02_FootballBetting.Data.Models;
 public class Country
 {
     public Country()
@@ -6,6 +8,7 @@ public class Country
         this.Towns = new HashSet<Town>();
     }
 
+    [Key]
     public int CountryId { get; set; }
     public string Name { get; set; } = null!;
 

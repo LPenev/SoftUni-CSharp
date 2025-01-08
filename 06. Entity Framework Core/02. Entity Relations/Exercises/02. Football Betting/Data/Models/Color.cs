@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace P02_FootballBetting.Data.Models;
 public class Color
@@ -8,8 +9,11 @@ public class Color
         this.PrimaryKitTeams = new HashSet<Color>();
         this.SecondaryKitTeams = new HashSet<Color>();
     }
-    
+
+    [Key]
     public int ColorId { get; set; }
+    
+    [Required]
     public string Name { get; set; } = null!;
 
     [InverseProperty(nameof(Team.PrimaryKitColor))]

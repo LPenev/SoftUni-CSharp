@@ -1,14 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace P02_FootballBetting.Data.Models;
 public class Game
 {
     public Game()
     {
-        this.PlayerStatistic = new HashSet<PlayerStatistic>();
+        this.PlayersStatistics = new HashSet<PlayerStatistic>();
         this.Bets = new HashSet<Bet>();
     }
 
+    [Key]
     public int GameId { get; set; }
 
     [ForeignKey(nameof(HomeTeam))]
@@ -27,6 +29,6 @@ public class Game
     public DateTime DateTime { get; set; }
     public string? Result { get; set; }
 
-    public virtual ICollection<PlayerStatistic> PlayerStatistic { get; set; }
+    public virtual ICollection<PlayerStatistic> PlayersStatistics { get; set; }
     public virtual ICollection<Bet> Bets { get; set; }
 }
