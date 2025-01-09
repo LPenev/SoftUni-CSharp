@@ -6,8 +6,8 @@ public class Color
 {
     public Color()
     {
-        this.PrimaryKitTeams = new HashSet<Color>();
-        this.SecondaryKitTeams = new HashSet<Color>();
+        this.PrimaryKitTeams = new HashSet<Team>();
+        this.SecondaryKitTeams = new HashSet<Team>();
     }
 
     [Key]
@@ -17,8 +17,8 @@ public class Color
     public string Name { get; set; } = null!;
 
     [InverseProperty(nameof(Team.PrimaryKitColor))]
-    public virtual ICollection<Color> PrimaryKitTeams { get; set; }
+    public virtual ICollection<Team> PrimaryKitTeams { get; set; }
 
     [InverseProperty(nameof(Team.SecondaryKitColor))]
-    public virtual ICollection<Color> SecondaryKitTeams { get; set; }
+    public virtual ICollection<Team> SecondaryKitTeams { get; set; }
 }
