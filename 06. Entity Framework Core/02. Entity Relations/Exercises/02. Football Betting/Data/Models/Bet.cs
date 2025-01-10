@@ -13,9 +13,9 @@ public class Bet
 
     [ForeignKey(nameof(User))]
     public int UserId { get; set; }
-    public User User { get; set; } = null!;
+    public virtual User User { get; set; } = null!;
 
     [ForeignKey(nameof(Game))]
     public int GameId { get; set; }
-    public Game Game { get; set; }
+    public virtual Game Game { get; set; }
 }
