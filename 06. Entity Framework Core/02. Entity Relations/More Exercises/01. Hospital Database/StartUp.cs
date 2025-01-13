@@ -1,10 +1,8 @@
-﻿namespace P01_HospitalDatabase
+﻿namespace P01_HospitalDatabase;
+public class StartUp
 {
-    public class StartUp
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
 
-        }
     }
 }
