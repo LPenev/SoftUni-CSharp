@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using P01_HospitalDatabase.Data.Models;
 
 namespace P01_HospitalDatabase.Data;
 public class HospitalContext : DbContext
@@ -17,7 +18,10 @@ public class HospitalContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
+        modelBuilder.Entity<PatientMedicament>( pm => 
+        {
+            pm.HasKey(pm => new { pm.PatientId, pm.MedicamentId });
+        });
         //
         base.OnModelCreating(modelBuilder);
     }
