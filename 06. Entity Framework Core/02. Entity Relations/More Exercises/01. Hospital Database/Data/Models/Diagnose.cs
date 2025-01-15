@@ -8,7 +8,7 @@ public class Diagnose
     public int DiagnoseId { get; set; }
 
     [MaxLength(50)]
-    public string DiagnoseName { get; set; } = null!;
+    public string Name { get; set; } = null!;
 
     [MaxLength(250)]
     public string Comments { get; set; } = null!;
