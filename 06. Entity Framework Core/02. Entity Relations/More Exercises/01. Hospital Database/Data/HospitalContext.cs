@@ -11,6 +11,7 @@ public class HospitalContext : DbContext
     public DbSet<Patient> Patients { get; set; }
     public DbSet<PatientMedicament> Prescriptions { get; set; }
     public DbSet<Visitation> Visitations { get; set; }
+    public DbSet<Doctor> Doctors { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
