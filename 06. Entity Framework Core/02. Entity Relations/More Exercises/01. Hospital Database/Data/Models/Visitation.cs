@@ -13,10 +13,6 @@ public class Visitation
     [MaxLength(250)]
     public string Comments { get; set; } = null!;
 
-    [ForeignKey(nameof(Doctor))]
-    public int DoctorId { get; set; }
-    public virtual Doctor Doctor { get; set; } = null!;
-
     [ForeignKey(nameof(Patient))]
     public int PatientId { get; set; }
     public virtual Patient Patient { get; set; } = null!;
