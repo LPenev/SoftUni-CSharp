@@ -5,7 +5,7 @@ public class Diagnose
 
     public string Name { get; set; } = null!;
 
-    public string Comments { get; set; } = null!;
+    public string? Comments { get; set; }
 
     public int PatientId { get; set; }
     public Patient Patient { get; set; } = null!;

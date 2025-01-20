@@ -8,9 +8,9 @@ public class Visitation
     
     public DateTime Date { get; set; }
 
-    public string Comments { get; set; } = null!;
+    public string? Comments { get; set; }
 
-    public int DoctorId { get; set; }
+    public int? DoctorId { get; set; }
     public virtual Doctor Doctor { get; set; } = null!;
 
     public int PatientId { get; set; }

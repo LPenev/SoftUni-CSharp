@@ -4,6 +4,8 @@ using P01_HospitalDatabase.Data.Models;
 namespace P01_HospitalDatabase.Data;
 public class HospitalContext : DbContext
 {
+    public HospitalContext() { }
+
     public HospitalContext(DbContextOptions options) : base(options) { }
 
     public DbSet<Diagnose> Diagnoses { get; set; }
@@ -17,7 +19,7 @@ public class HospitalContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=FootballBetting;User=demo;Password=Demo1234");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=Hospital;User=demo;Password=Demo1234");
             base.OnConfiguring(optionsBuilder);
         }
     }
