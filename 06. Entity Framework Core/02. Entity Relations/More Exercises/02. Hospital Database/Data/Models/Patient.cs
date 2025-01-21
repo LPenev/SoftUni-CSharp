@@ -3,9 +3,9 @@ public class Patient
 {
     public Patient()
     {
-        var Diagnoses = new HashSet<Diagnose>();
-        var Visitations = new HashSet<Visitation>();
-        var Prescriptions = new HashSet<PatientMedicament>();
+        this.Diagnoses = new HashSet<Diagnose>();
+        this.Visitations = new HashSet<Visitation>();
+        this.Prescriptions = new HashSet<PatientMedicament>();
     }
 
     public int PatientId { get; set; }
