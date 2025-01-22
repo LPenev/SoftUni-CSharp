@@ -395,6 +395,8 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
+# Ignore Files
+Configuration.cs
 
 # JetBrains Rider
 *.sln.iml
@@ -409,3 +411,4 @@ FodyWeavers.xsd
 08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/messenger.json
 08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/phonebook.json
 /08. JS Front-End
+/06. Entity Framework Core/03. LINQ/02. MusicHub/Data/Configuration.cs
