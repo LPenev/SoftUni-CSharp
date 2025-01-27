@@ -14,6 +14,11 @@
 
             DbInitializer.ResetDatabase(context);
 
+            // Task 02
+            var output = ExportAlbumsInfo(context, 9);
+            Console.WriteLine(output);
+
+
         }
 
         public static string ExportAlbumsInfo(MusicHubDbContext context, int producerId)
