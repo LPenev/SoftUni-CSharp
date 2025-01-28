@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace BookShop.Initializer
+﻿namespace BookShop.Initializer
 {
     using System;
 
