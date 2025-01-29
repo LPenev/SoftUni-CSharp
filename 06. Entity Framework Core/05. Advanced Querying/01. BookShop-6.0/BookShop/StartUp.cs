@@ -15,22 +15,29 @@
             // Tasks
 
             // 02. Age Restriction
-            string command = Console.ReadLine();
-            Console.WriteLine(GetBooksByAgeRestriction(db, command));
+            //string command = Console.ReadLine();
+            //var result = GetBooksByAgeRestriction(db, command);
 
             // 03. Golden Books
+            var result = GetGoldenBooks(db);
+
+
+            // Print result
+            Console.WriteLine(result);
 
         }
 
         public static string GetBooksByAgeRestriction(BookShopContext context, string command)
         {
-            var sb = new StringBuilder();
             var ageRestrinction = Enum.Parse<AgeRestriction>(command, true);
 
             var resultBooksTitel = context.Books
                 .Where(x => x.AgeRestriction == ageRestrinction)
+                .OrderBy(x => x.Title)
                 .Select(x => new { x.Title})
-                .OrderBy(x => x.Title);
+                .ToArray();
+
+            var sb = new StringBuilder();
 
             foreach (var book in resultBooksTitel) 
             {
@@ -38,6 +45,19 @@
             }
             
             return sb.ToString().TrimEnd();
+        }
+
+        public static string GetGoldenBooks(BookShopContext context)
+        {
+            var selectedEditionType = Enum.Parse<EditionType>("gold", true);
+                        
+            var resultTitleGoldenBooksLess5000Copys = context.Books
+                .Where(x => x.EditionType == selectedEditionType && x.Copies < 5000)
+                .OrderBy(x => x.BookId)
+                .Select(x => x.Title)
+                .ToArray();
+
+            return String.Join(Environment.NewLine, resultTitleGoldenBooksLess5000Copys);
         }
     }
 }
