@@ -19,7 +19,10 @@
             //var result = GetBooksByAgeRestriction(db, command);
 
             // 03. Golden Books
-            var result = GetGoldenBooks(db);
+            //var result = GetGoldenBooks(db);
+
+            // 04. Books by price
+            var result = GetBooksByPrice(db);
 
 
             // Print result
@@ -58,6 +61,24 @@
                 .ToArray();
 
             return String.Join(Environment.NewLine, resultTitleGoldenBooksLess5000Copys);
+        }
+
+        public static string GetBooksByPrice(BookShopContext context)
+        {
+            var resultBooksByPrices = context.Books
+                .Where(x => x.Price > 40)
+                .OrderByDescending(x => x.Price)
+                .Select(x => new { x.Title, x.Price })
+                .ToArray();
+
+            var sb = new StringBuilder();
+
+            foreach (var book in resultBooksByPrices) 
+            {
+                sb.AppendLine($"{book.Title} - ${book.Price:f2}"); 
+            }
+            
+            return sb.ToString().TrimEnd();
         }
     }
 }
