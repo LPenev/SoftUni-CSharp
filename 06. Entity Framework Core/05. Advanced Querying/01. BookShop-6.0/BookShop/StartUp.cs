@@ -15,8 +15,8 @@
             // Tasks
 
             // 02. Age Restriction
-            //string command = Console.ReadLine();
-            //var result = GetBooksByAgeRestriction(db, command);
+            string command = Console.ReadLine();
+            var result = GetBooksByAgeRestriction(db, command);
 
             // 03. Golden Books
             //var result = GetGoldenBooks(db);
@@ -29,8 +29,8 @@
             //var result = GetBooksNotReleasedIn(db, inputedYear);
 
             // 06. Book Titles by Category
-            string input = Console.ReadLine();
-            var result = GetBooksByCategory(db, input);
+            //string input = Console.ReadLine();
+            //var result = GetBooksByCategory(db, input);
 
             // Print result
             Console.WriteLine(result);
@@ -39,10 +39,15 @@
 
         public static string GetBooksByAgeRestriction(BookShopContext context, string command)
         {
-            var ageRestrinction = Enum.Parse<AgeRestriction>(command, true);
+            var isExcistCommand = Enum.TryParse<AgeRestriction>(command, true, out AgeRestriction ageRestriction);
+
+            if (!isExcistCommand)
+            {
+                return null;
+            }
 
             var resultBooksTitel = context.Books
-                .Where(x => x.AgeRestriction == ageRestrinction)
+                .Where(x => x.AgeRestriction == ageRestriction)
                 .OrderBy(x => x.Title)
                 .Select(x => new { x.Title})
                 .ToArray();
