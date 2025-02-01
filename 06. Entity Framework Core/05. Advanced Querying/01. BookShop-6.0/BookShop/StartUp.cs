@@ -25,8 +25,12 @@
             //var result = GetBooksByPrice(db);
 
             // 05. Not Released In
-            int inputedYear = int.Parse(Console.ReadLine());
-            var result = GetBooksNotReleasedIn(db, inputedYear);
+            //int inputedYear = int.Parse(Console.ReadLine());
+            //var result = GetBooksNotReleasedIn(db, inputedYear);
+
+            // 06. Book Titles by Category
+            string input = Console.ReadLine();
+            var result = GetBooksByCategory(db, input);
 
             // Print result
             Console.WriteLine(result);
@@ -93,6 +97,21 @@
                 .ToArray();
 
             return String.Join(Environment.NewLine, resultBooksNotReleasedInGivenYear);
+        }
+
+        public static string GetBooksByCategory(BookShopContext context, string input)
+        {
+            var inputedCategory = input.ToLower()
+                .Split()
+                .ToArray();
+
+            var resultBooksByCategory = context.Books
+                .Where(x => x.BookCategories.Any(x => inputedCategory.Contains(x.Category.Name.ToLower())))
+                .OrderBy(x => x.Title)
+                .Select(x => x.Title)
+                .ToArray();
+
+            return String.Join(Environment.NewLine, resultBooksByCategory);
         }
     }
 }
