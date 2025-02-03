@@ -15,11 +15,11 @@
             // Tasks
 
             // 02. Age Restriction
-            string command = Console.ReadLine();
-            var result = GetBooksByAgeRestriction(db, command);
+            //string command = Console.ReadLine();
+            //var result = GetBooksByAgeRestriction(db, command);
 
             // 03. Golden Books
-            //var result = GetGoldenBooks(db);
+            var result = GetGoldenBooks(db);
 
             // 04. Books by price
             //var result = GetBooksByPrice(db);
@@ -37,6 +37,7 @@
 
         }
 
+        // 02. Age Restriction
         public static string GetBooksByAgeRestriction(BookShopContext context, string command)
         {
             var isExcistCommand = Enum.TryParse<AgeRestriction>(command, true, out AgeRestriction ageRestriction);
@@ -62,6 +63,7 @@
             return sb.ToString().TrimEnd();
         }
 
+        // 03. Golden Books
         public static string GetGoldenBooks(BookShopContext context)
         {
             var selectedEditionType = Enum.Parse<EditionType>("gold", true);
@@ -75,6 +77,7 @@
             return String.Join(Environment.NewLine, resultTitleGoldenBooksLess5000Copys);
         }
 
+        // 04. Books by price
         public static string GetBooksByPrice(BookShopContext context)
         {
             var resultBooksByPrices = context.Books
@@ -93,6 +96,7 @@
             return sb.ToString().TrimEnd();
         }
 
+        // 05. Not Released In
         public static string GetBooksNotReleasedIn(BookShopContext context, int year)
         {
             var resultBooksNotReleasedInGivenYear = context.Books
@@ -104,6 +108,7 @@
             return String.Join(Environment.NewLine, resultBooksNotReleasedInGivenYear);
         }
 
+        // 06. Book Titles by Category
         public static string GetBooksByCategory(BookShopContext context, string input)
         {
             var inputedCategory = input.ToLower()
