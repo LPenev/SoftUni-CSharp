@@ -4,6 +4,7 @@
     using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
     using Data;
     using Initializer;
+    using System.Globalization;
     using System.Text;
 
     public class StartUp
@@ -20,7 +21,7 @@
             //var result = GetBooksByAgeRestriction(db, command);
 
             // 03. Golden Books
-            var result = GetGoldenBooks(db);
+            // var result = GetGoldenBooks(db);
 
             // 04. Books by price
             //var result = GetBooksByPrice(db);
@@ -32,6 +33,10 @@
             // 06. Book Titles by Category
             //string input = Console.ReadLine();
             //var result = GetBooksByCategory(db, input);
+
+            // 07. Released Before Date
+            string date = Console.ReadLine();
+            var result = GetBooksReleasedBefore(db, date);
 
             // Print result
             Console.WriteLine(result);
@@ -128,6 +133,29 @@
                 .ToArray();
 
             return String.Join(Environment.NewLine, resultBooksByCategory);
+        }
+
+        // 07. Released Before Date
+        public static string GetBooksReleasedBefore(BookShopContext context, string date)
+        {
+            if(!DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var releaseDate))
+            {
+                return "Invalid date";
+            }
+
+            var resultBooksReleasedBefore = context.Books
+                .Where(x => x.ReleaseDate < releaseDate)
+                .OrderByDescending(x => x.ReleaseDate)
+                .Select(x => new { x.Title, x.EditionType,x.Price})
+                .ToArray();
+
+            var sb = new StringBuilder();
+            foreach (var book in resultBooksReleasedBefore) 
+            {
+                sb.AppendLine($"{book.Title} - {book.EditionType} - ${book.Price:f2}");
+            }
+
+            return sb.ToString().TrimEnd();
         }
     }
 }
