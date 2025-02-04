@@ -1,6 +1,7 @@
 ﻿namespace BookShop
 {
     using BookShop.Models.Enums;
+    using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
     using Data;
     using Initializer;
     using System.Text;
@@ -44,7 +45,7 @@
 
             if (!isExcistCommand)
             {
-                return null;
+                return "Ivalid command";
             }
 
             var resultBooksTitel = context.Books
@@ -66,7 +67,12 @@
         // 03. Golden Books
         public static string GetGoldenBooks(BookShopContext context)
         {
-            var selectedEditionType = Enum.Parse<EditionType>("gold", true);
+            var checkResult = Enum.TryParse<EditionType>("Gold", true, out EditionType selectedEditionType);
+            
+            if (!checkResult)
+            {
+                return "Invalid Bood Edition";
+            }
                         
             var resultTitleGoldenBooksLess5000Copys = context.Books
                 .Where(x => x.EditionType == selectedEditionType && x.Copies < 5000)
