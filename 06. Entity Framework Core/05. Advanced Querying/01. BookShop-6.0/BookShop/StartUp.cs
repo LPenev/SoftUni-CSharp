@@ -14,29 +14,34 @@
             using var db = new BookShopContext();
             //DbInitializer.ResetDatabase(db);
 
+            var result = String.Empty;
             // Tasks
 
             // 02. Age Restriction
             //string command = Console.ReadLine();
-            //var result = GetBooksByAgeRestriction(db, command);
+            //result = GetBooksByAgeRestriction(db, command);
 
             // 03. Golden Books
-            // var result = GetGoldenBooks(db);
+            //result = GetGoldenBooks(db);
 
             // 04. Books by price
-            //var result = GetBooksByPrice(db);
+            //result = GetBooksByPrice(db);
 
             // 05. Not Released In
             //int inputedYear = int.Parse(Console.ReadLine());
-            //var result = GetBooksNotReleasedIn(db, inputedYear);
+            //result = GetBooksNotReleasedIn(db, inputedYear);
 
             // 06. Book Titles by Category
             //string input = Console.ReadLine();
-            //var result = GetBooksByCategory(db, input);
+            //result = GetBooksByCategory(db, input);
 
             // 07. Released Before Date
-            string date = Console.ReadLine();
-            var result = GetBooksReleasedBefore(db, date);
+            //string date = Console.ReadLine();
+            //result = GetBooksReleasedBefore(db, date);
+
+            // 08. Author Search
+            var input = Console.ReadLine();
+            result = GetAuthorNamesEndingIn(db, input);
 
             // Print result
             Console.WriteLine(result);
@@ -157,7 +162,18 @@
 
             return sb.ToString().TrimEnd();
         }
+
+        // 08. Author Search
+        public static string GetAuthorNamesEndingIn(BookShopContext context, string input)
+        {
+            var resultAuthorsNames = context.Authors
+                .Where(x => x.FirstName.EndsWith(input))
+                .OrderBy(x => x.FirstName)
+                .ThenBy(x => x.LastName)
+                .Select(x => $"{x.FirstName} {x.LastName}")
+                .ToArray();
+
+            return String.Join(Environment.NewLine, resultAuthorsNames);
+        }
     }
 }
-
-
