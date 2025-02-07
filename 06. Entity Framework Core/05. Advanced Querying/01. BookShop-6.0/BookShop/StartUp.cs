@@ -48,8 +48,16 @@
             //result = GetBookTitlesContaining(db, input);
 
             // 10.	Book Search by Author
-            var input = Console.ReadLine();
-            result = GetBooksByAuthor(db, input);
+            //var input = Console.ReadLine();
+            //result = GetBooksByAuthor(db, input);
+
+            // 11. Count Books
+            int lenghtCheck = int.Parse(Console.ReadLine());
+            int countBooks = CountBooks(db, lenghtCheck);
+            result = $"There are {countBooks} books with longer title than {lenghtCheck} symbols";
+
+
+
             // Print result
             Console.WriteLine(result);
 
@@ -212,5 +220,16 @@
 
             return sb.ToString().Trim();
         }
+
+        // 11. Count Books
+        public static int CountBooks(BookShopContext context, int lengthCheck)
+        {
+            var countBooks = context.Books
+                .Where(x => x.Title.Length > lengthCheck)
+                .Count();
+
+            return countBooks;
+        }
+
     }
 }
