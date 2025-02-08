@@ -58,7 +58,11 @@
             //result = $"There are {countBooks} books with longer title than {lenghtCheck} symbols";
 
             // 12. Total Book Copies
-            result = CountCopiesByAuthor(db);
+            //result = CountCopiesByAuthor(db);
+
+            // 13. Profit by Category
+            result = GetTotalProfitByCategory(db);
+
 
             // Print result
             Console.WriteLine(result);
@@ -251,6 +255,30 @@
             foreach(var book in numbersOfBookCopiesByAuthor)
             {
                 sb.AppendLine($"{book.AuthorName} - {book.Copies}");
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        // 13. Profit by Category
+        public static string GetTotalProfitByCategory(BookShopContext context)
+        {
+            var listCategories = context.Categories
+                .AsNoTracking()
+                .Select(x => new
+                {
+                    CategoryName = x.Name,
+                    Profit = x.CategoryBooks.Sum( c => c.Book.Price * c.Book.Copies)
+                })
+                .OrderByDescending(x => x.Profit)
+                .ThenBy(x => x.CategoryName)
+                .ToArray();
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach(var book in listCategories)
+            {
+                sb.AppendLine($"{book.CategoryName} {book.Profit:f2}");
             }
 
             return sb.ToString().TrimEnd();
