@@ -4,6 +4,7 @@
     using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
     using Data;
     using Initializer;
+    using Microsoft.EntityFrameworkCore;
     using System.Globalization;
     using System.Text;
 
@@ -52,11 +53,12 @@
             //result = GetBooksByAuthor(db, input);
 
             // 11. Count Books
-            int lenghtCheck = int.Parse(Console.ReadLine());
-            int countBooks = CountBooks(db, lenghtCheck);
-            result = $"There are {countBooks} books with longer title than {lenghtCheck} symbols";
+            //int lenghtCheck = int.Parse(Console.ReadLine());
+            //int countBooks = CountBooks(db, lenghtCheck);
+            //result = $"There are {countBooks} books with longer title than {lenghtCheck} symbols";
 
-
+            // 12. Total Book Copies
+            result = CountCopiesByAuthor(db);
 
             // Print result
             Console.WriteLine(result);
@@ -231,5 +233,27 @@
             return countBooks;
         }
 
+        // 12. Total Book Copies
+        public static string CountCopiesByAuthor(BookShopContext context)
+        {
+            var numbersOfBookCopiesByAuthor = context.Authors
+                .AsNoTracking()
+                .Select(x => new 
+                {
+                    AuthorName = $"{x.FirstName} {x.LastName}",
+                    Copies = x.Books.Sum(x => x.Copies),
+                })
+                .OrderByDescending(x => x.Copies)
+                .ToArray();
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach(var book in numbersOfBookCopiesByAuthor)
+            {
+                sb.AppendLine($"{book.AuthorName} - {book.Copies}");
+            }
+
+            return sb.ToString().TrimEnd();
+        }
     }
 }
