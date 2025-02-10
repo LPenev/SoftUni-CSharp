@@ -6,6 +6,7 @@
     using Initializer;
     using Microsoft.EntityFrameworkCore;
     using System.Globalization;
+    using System.Runtime.Serialization.Formatters;
     using System.Text;
 
     public class StartUp
@@ -61,7 +62,10 @@
             //result = CountCopiesByAuthor(db);
 
             // 13. Profit by Category
-            result = GetTotalProfitByCategory(db);
+            //result = GetTotalProfitByCategory(db);
+
+            // 14. Most Recent Books
+            result = GetMostRecentBooks(db);
 
 
             // Print result
@@ -281,6 +285,40 @@
                 sb.AppendLine($"{book.CategoryName} {book.Profit:f2}");
             }
 
+            return sb.ToString().TrimEnd();
+        }
+
+        // 14. Most Recent Books
+        public static string GetMostRecentBooks(BookShopContext context)
+        {
+            var MostRecentBooksByCategory = context.Categories
+                .AsNoTracking()
+                .OrderBy(x => x.Name)
+                .Select(x => new 
+                {
+                    CategoryName = x.Name,
+                    Books = x.CategoryBooks
+                        .OrderByDescending(cb => cb.Book.ReleaseDate)
+                        .Take(3)
+                        .Select(b => new 
+                        {
+                            b.Book.Title,
+                            ReleaseYear = b.Book.ReleaseDate.Value.Year
+                        })
+                })
+                .ToArray();
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach(var category in MostRecentBooksByCategory)
+            {
+                sb.AppendLine($"--{category.CategoryName}");
+                
+                foreach(var book in category.Books)
+                {
+                    sb.AppendLine($"{book.Title} ({book.ReleaseYear})");
+                }
+            }
             return sb.ToString().TrimEnd();
         }
     }
