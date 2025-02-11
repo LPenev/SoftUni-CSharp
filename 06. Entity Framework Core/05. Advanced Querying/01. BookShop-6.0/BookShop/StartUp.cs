@@ -1,5 +1,6 @@
 ﻿namespace BookShop
 {
+    using BookShop.Models;
     using BookShop.Models.Enums;
     using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
     using Data;
@@ -8,6 +9,7 @@
     using System.Globalization;
     using System.Runtime.Serialization.Formatters;
     using System.Text;
+    using Z.EntityFramework.Plus;
 
     public class StartUp
     {
@@ -68,7 +70,10 @@
             //result = GetMostRecentBooks(db);
 
             // 15. Increase Prices
-            IncreasePrices(db);
+            //IncreasePrices(db);
+
+            // 15. Increase Prices - Version 2 Bulk
+            IncreasePricesV2(db);
 
             // Print result
             Console.WriteLine(result);
@@ -337,7 +342,15 @@
             }
 
             context.SaveChanges();
-            //context.BluckUpdate();
         }
+
+        // 15. Increase Prices - Version 2 Bulk
+        public static void IncreasePricesV2(BookShopContext context)
+        {
+            var upatedBooks = context.Books
+                .Where(x => x.ReleaseDate.HasValue && x.ReleaseDate.Value.Year < 2010)
+                .Update<Book>(book => new Book { Price = book.Price + 5 });
+        }
+
     }
 }
