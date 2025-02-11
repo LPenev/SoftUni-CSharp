@@ -73,7 +73,10 @@
             //IncreasePrices(db);
 
             // 15. Increase Prices - Version 2 Bulk
-            IncreasePricesV2(db);
+            //IncreasePricesV2(db);
+
+            // 16. Remove Books
+            result = RemoveBooks(db).ToString();
 
             // Print result
             Console.WriteLine(result);
@@ -350,6 +353,15 @@
             var upatedBooks = context.Books
                 .Where(x => x.ReleaseDate.HasValue && x.ReleaseDate.Value.Year < 2010)
                 .Update<Book>(book => new Book { Price = book.Price + 5 });
+        }
+
+        // 16. Remove Books
+        public static int RemoveBooks(BookShopContext context)
+        {
+            int numberDeletedBooks = context.Books
+                .Where(x => x.Copies < 4200)
+                .Delete();
+            return numberDeletedBooks;
         }
 
     }
