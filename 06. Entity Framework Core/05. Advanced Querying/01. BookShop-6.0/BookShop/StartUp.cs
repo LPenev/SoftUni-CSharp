@@ -65,8 +65,10 @@
             //result = GetTotalProfitByCategory(db);
 
             // 14. Most Recent Books
-            result = GetMostRecentBooks(db);
+            //result = GetMostRecentBooks(db);
 
+            // 15. Increase Prices
+            IncreasePrices(db);
 
             // Print result
             Console.WriteLine(result);
@@ -320,6 +322,22 @@
                 }
             }
             return sb.ToString().TrimEnd();
+        }
+
+        // 15. Increase Prices
+        public static void IncreasePrices(BookShopContext context)
+        {
+            var upatedBooks = context.Books
+                .Where(x => x.ReleaseDate.HasValue && x.ReleaseDate.Value.Year < 2010)
+                .ToArray();
+
+            foreach (var book in upatedBooks)
+            {
+                book.Price += 5;
+            }
+
+            context.SaveChanges();
+            //context.BluckUpdate();
         }
     }
 }
