@@ -412,3 +412,5 @@ Configuration.cs
 08. JS Front-End/09.1. HTTP and AJAX - Exercise/server/data/phonebook.json
 /08. JS Front-End
 /06. Entity Framework Core/03. LINQ/02. MusicHub/Data/Configuration.cs
+/06. Entity Framework Core/5.5. Auto-Mapping-Objects-FastFood/FastFood.Core/appsettings.json
+/06. Entity Framework Core/5.5. Auto-Mapping-Objects-FastFood/FastFood.Core/appsettings.Development.json
