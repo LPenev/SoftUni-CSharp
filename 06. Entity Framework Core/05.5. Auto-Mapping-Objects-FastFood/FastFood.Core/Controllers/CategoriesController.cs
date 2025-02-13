@@ -2,8 +2,11 @@
 {
     using System;
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using Data;
+    using FastFood.Models;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using ViewModels.Categories;
 
     public class CategoriesController : Controller
@@ -19,18 +22,33 @@
 
         public IActionResult Create()
         {
-            return View();
+            var list = new List<Item>();
+            return View(list);
         }
 
         [HttpPost]
-        public IActionResult Create(CreateCategoryInputModel model)
+        public async Task<IActionResult> Create(CreateCategoryInputModel model)
         {
-            throw new NotImplementedException();
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var category = _mapper.Map<Category>(model);
+
+            _context.Categories.Add(category);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("All", "Categories");
         }
 
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            throw new NotImplementedException();
+            var categories = await _context.Categories
+                .ProjectTo<CategoryAllViewModel>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+
+            return View(categories);
         }
     }
 }

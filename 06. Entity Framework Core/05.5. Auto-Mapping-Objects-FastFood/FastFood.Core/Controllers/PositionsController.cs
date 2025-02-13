@@ -1,11 +1,11 @@
 ﻿namespace FastFood.Core.Controllers
 {
-    using System.Linq;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Data;
     using FastFood.Models;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using ViewModels.Positions;
 
     public class PositionsController : Controller
@@ -25,7 +25,7 @@
         }
 
         [HttpPost]
-        public IActionResult Create(CreatePositionInputModel model)
+        public async Task<IActionResult> Create(CreatePositionInputModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -36,16 +36,16 @@
 
             _context.Positions.Add(position);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("All", "Positions");
         }
 
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            var positions = _context.Positions
+            var positions = await _context.Positions
                 .ProjectTo<PositionsAllViewModel>(_mapper.ConfigurationProvider)
-                .ToList();
+                .ToListAsync();
 
             return View(positions);
         }
