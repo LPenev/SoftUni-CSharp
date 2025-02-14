@@ -31,7 +31,8 @@
             //Employee
             CreateMap<RegisterEmployeeInputModel, Employee>();
 
-            CreateMap<Employee, EmployeesAllViewModel>();
+            CreateMap<Employee, EmployeesAllViewModel>()
+                .ForMember(evm => evm.Position, e => e.MapFrom(x => x.Position.Name));
         }
     }
 }
