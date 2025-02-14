@@ -45,9 +45,13 @@
             return RedirectToAction("All");
         }
 
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            throw new NotImplementedException();
+            var employees = await _context.Employees
+                .ProjectTo<EmployeesAllViewModel>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+
+            return View(employees);
         }
     }
 }
