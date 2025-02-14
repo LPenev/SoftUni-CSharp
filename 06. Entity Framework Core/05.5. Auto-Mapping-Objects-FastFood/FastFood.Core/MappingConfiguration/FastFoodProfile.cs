@@ -29,7 +29,10 @@
                 .ForMember(x => x.PositionId, p => p.MapFrom(x => x.Id))
                 .ForMember(x => x.Name, p=> p.MapFrom(x => x.Name));
 
+            //Employee
             CreateMap<RegisterEmployeeViewModel, Employee>();
+
+            CreateMap<Employee, EmployeesAllViewModel>();
         }
     }
 }

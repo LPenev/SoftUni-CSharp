@@ -40,7 +40,7 @@
             var employee = _mapper.Map<Employee>(model);
             
             _context.Employees.Add(employee);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("All");
         }
