@@ -32,6 +32,7 @@
         [HttpPost]
         public async Task<IActionResult> Register(RegisterEmployeeInputModel model)
         {
+            // Missing PositionName
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Error", "Home");
