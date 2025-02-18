@@ -5,7 +5,9 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Data;
+    using FastFood.Models;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using ViewModels.Items;
 
     public class ItemsController : Controller
@@ -19,20 +21,38 @@
             _mapper = mapper;
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            throw new NotImplementedException();
+            var categories = await _context.Categories
+                .ProjectTo<CreateItemViewModel>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+
+            return View(categories);
         }
 
         [HttpPost]
-        public IActionResult Create(CreateItemInputModel model)
+        public async Task<IActionResult> Create(CreateItemInputModel model)
         {
-            throw new NotImplementedException();
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var item = _mapper.Map<Item>(model);
+
+            _context.Items.Add(item);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("All");
         }
 
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            throw new NotImplementedException();
+            var items = await _context.Items
+                .ProjectTo<ItemsAllViewModels>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+
+            return View(items);
         }
     }
 }

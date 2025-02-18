@@ -3,6 +3,8 @@
     using AutoMapper;
     using FastFood.Core.ViewModels.Categories;
     using FastFood.Core.ViewModels.Employees;
+    using FastFood.Core.ViewModels.Items;
+    using FastFood.Core.ViewModels.Orders;
     using FastFood.Models;
     using ViewModels.Positions;
 
@@ -33,6 +35,26 @@
 
             CreateMap<Employee, EmployeesAllViewModel>()
                 .ForMember(evm => evm.Position, e => e.MapFrom(x => x.Position.Name));
+
+            //Items
+            CreateMap<Category, CreateItemViewModel>()
+                .ForMember(cvm => cvm.CategoryId, c => c.MapFrom(x => x.Id));
+
+            CreateMap<CreateItemInputModel, Item>();
+
+            CreateMap<Item, ItemsAllViewModels>()
+                .ForMember(ivm => ivm.Category, i => i.MapFrom(x => x.Category.Name));
+
+            //Orders
+            CreateMap<CreateOrderInputModel, Order>()
+                .ForMember(o => o.DateTime, cim => cim.MapFrom(x => DateTime.Now));
+
+            CreateMap<Order, OrderAllViewModel>()
+                .ForMember(ovm => ovm.Employee, o => o.MapFrom(x => x.Employee.Name))
+                .ForMember(ovm => ovm.OrderId, o => o.MapFrom(x => x.Id))
+                .ForMember(ovm => ovm.DateTime, o => o.MapFrom(x => x.DateTime.ToString("HH:MM:ss dd/MM/yyyy")));
+
+
         }
     }
 }
