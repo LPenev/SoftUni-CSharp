@@ -3,8 +3,11 @@
     using System;
     using System.Linq;
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using Data;
+    using FastFood.Models;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using ViewModels.Orders;
 
     public class OrdersController : Controller
@@ -18,26 +21,41 @@
             _mapper = mapper;
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var viewOrder = new CreateOrderViewModel
             {
-                Items = _context.Items.Select(x => x.Id).ToList(),
-                Employees = _context.Employees.Select(x => x.Id).ToList(),
+                Items = await _context.Items.Select(x => x.Id).ToListAsync(),
+
+                Employees = await _context.Employees.Select(x => x.Id).ToListAsync(),
+
             };
 
             return View(viewOrder);
         }
 
         [HttpPost]
-        public IActionResult Create(CreateOrderInputModel model)
+        public async Task<IActionResult> Create(CreateOrderInputModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var order = _mapper.Map<Order>(model);
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+
             return RedirectToAction("All", "Orders");
         }
 
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            throw new NotImplementedException();
+            var orders = await _context.Orders
+                .ProjectTo<OrderAllViewModel>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+
+            return View(orders);
         }
     }
 }
