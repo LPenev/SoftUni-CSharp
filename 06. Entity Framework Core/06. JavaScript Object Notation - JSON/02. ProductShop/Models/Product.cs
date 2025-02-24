@@ -6,7 +6,7 @@
     {
         public Product()
         {
-            CategoriesProducts = new List<CategoryProduct>();
+            this.CategoriesProducts = new HashSet<CategoryProduct>();
         }
 
         public int Id { get; set; }
@@ -21,6 +21,6 @@
         public int? BuyerId { get; set; }
         public User Buyer { get; set; } = null!;
 
-        public ICollection<CategoryProduct> CategoriesProducts { get; set; }
+        public virtual ICollection<CategoryProduct> CategoriesProducts { get; set; }
     }
 }
