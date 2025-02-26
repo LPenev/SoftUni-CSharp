@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ProductShop.Data;
+using ProductShop.DTOs.Import;
 using ProductShop.Models;
+using System.Reflection.Metadata;
 
 namespace ProductShop
 {
@@ -10,16 +13,20 @@ namespace ProductShop
         {
             var db = new ProductShopContext();
 
-            var result = String.Empty;
+            string userTextJsonFile = File.ReadAllText("../../../Datasets/users.json");
 
-            //result = ImportUsers(db, );
+            Console.WriteLine(ImportUsers(db, userTextJsonFile));
 
         }
 
-        //public static string ImportUsers(ProductShopContext context, string inputJson)
-        //{
+        public static string ImportUsers(ProductShopContext context, string inputJson)
+        {
+            var users = JsonConvert.DeserializeObject<List<User>>(inputJson);
 
-        //    return $"Successfully imported {users.Count}";
-        //}
+            context.AddRange(users);
+            context.SaveChanges();
+
+            return $"Successfully imported {users.Count()}";
+        }
     }
 }
