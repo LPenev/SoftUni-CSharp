@@ -18,6 +18,10 @@ namespace ProductShop
             //Console.WriteLine(ImportUsers(db, userTextJsonFile));
 
             // 02. Import Products
+            string productsTextJsonFile = File.ReadAllText("../../../Datasets/products.json");
+            Console.WriteLine(ImportProducts(db, productsTextJsonFile));
+
+            
         }
 
         // 01. Import Users
