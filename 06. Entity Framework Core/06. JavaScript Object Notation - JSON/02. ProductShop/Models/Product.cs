@@ -19,7 +19,7 @@
         public User Seller { get; set; } = null!;
 
         public int? BuyerId { get; set; }
-        public User Buyer { get; set; } = null!;
+        public User? Buyer { get; set; }
 
         public virtual ICollection<CategoryProduct> CategoriesProducts { get; set; }
     }
