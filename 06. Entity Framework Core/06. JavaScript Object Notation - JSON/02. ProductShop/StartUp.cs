@@ -22,8 +22,12 @@ namespace ProductShop
             //Console.WriteLine(ImportProducts(db, productsTextJsonFile));
 
             // 03. Import Categories
-            string categoriesTextJsonFile = File.ReadAllText("../../../Datasets/categories.json");
-            Console.WriteLine(ImportCategories(db, categoriesTextJsonFile));
+            //string categoriesTextJsonFile = File.ReadAllText("../../../Datasets/categories.json");
+            //Console.WriteLine(ImportCategories(db, categoriesTextJsonFile));
+
+            // 04. Import Categories and Products
+            string categoryProductsTextJson = File.ReadAllText("../../../Datasets/categories-products.json");
+            Console.WriteLine(ImportCategoryProducts(db, categoryProductsTextJson));
 
         }
 
@@ -60,6 +64,17 @@ namespace ProductShop
             context.SaveChanges();
 
             return $"Successfully imported {categories.Count()}";
+        }
+
+        // 04. Query 4. Import Categories and Products
+        public static string ImportCategoryProducts(ProductShopContext context, string inputJson)
+        {
+            var categoryProducts = JsonConvert.DeserializeObject<List<CategoryProduct>>(inputJson);
+
+            context.CategoriesProducts.AddRange(categoryProducts);
+            context.SaveChanges();
+
+            return $"Successfully imported {categoryProducts.Count}";
         }
     }
 }
