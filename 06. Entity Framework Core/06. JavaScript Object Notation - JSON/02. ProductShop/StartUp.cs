@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using ProductShop.Data;
+using ProductShop.DTOs.Export;
 using ProductShop.DTOs.Import;
 using ProductShop.Models;
 using System.Reflection.Metadata;
@@ -26,9 +28,12 @@ namespace ProductShop
             //Console.WriteLine(ImportCategories(db, categoriesTextJsonFile));
 
             // 04. Import Categories and Products
-            string categoryProductsTextJson = File.ReadAllText("../../../Datasets/categories-products.json");
-            Console.WriteLine(ImportCategoryProducts(db, categoryProductsTextJson));
+            //string categoryProductsTextJson = File.ReadAllText("../../../Datasets/categories-products.json");
+            //Console.WriteLine(ImportCategoryProducts(db, categoryProductsTextJson));
 
+            // Export Data
+            // 05. Export Products in Range
+            Console.WriteLine(GetProductsInRange(db));
         }
 
         // 01. Import Users
@@ -66,7 +71,7 @@ namespace ProductShop
             return $"Successfully imported {categories.Count()}";
         }
 
-        // 04. Query 4. Import Categories and Products
+        // 04. Import Categories and Products
         public static string ImportCategoryProducts(ProductShopContext context, string inputJson)
         {
             var categoryProducts = JsonConvert.DeserializeObject<List<CategoryProduct>>(inputJson);
@@ -75,6 +80,33 @@ namespace ProductShop
             context.SaveChanges();
 
             return $"Successfully imported {categoryProducts.Count}";
+        }
+
+        // Export Data
+
+        // 05. Export Products in Range
+        public static string GetProductsInRange(ProductShopContext context)
+        {
+            var products = context.Products
+                .AsNoTracking()
+                .Where(x => x.Price >= 500 && x.Price <=1000)
+                .OrderBy(x => x.Price)
+                .Select(x => new ExportProductDto{ 
+                    Name = x.Name,
+                    Price = x.Price,
+                    Seller = $"{x.Seller.FirstName} {x.Seller.LastName}" })
+                .ToArray();
+
+            var jsonSettings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                Formatting = Formatting.Indented,
+            };
+
+            var productsJson = JsonConvert.SerializeObject(products, jsonSettings);
+
+            return productsJson;
         }
     }
 }
