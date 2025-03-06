@@ -33,7 +33,11 @@ namespace ProductShop
 
             // Export Data
             // 05. Export Products in Range
-            Console.WriteLine(GetProductsInRange(db));
+            //Console.WriteLine(GetProductsInRange(db));
+
+            // 06. Export Sold Products
+            Console.WriteLine(GetSoldProducts(db));
+
         }
 
         // 01. Import Users
@@ -107,6 +111,39 @@ namespace ProductShop
             var productsJson = JsonConvert.SerializeObject(products, jsonSettings);
 
             return productsJson;
+        }
+
+        // 06. Export Sold Products
+        public static string GetSoldProducts(ProductShopContext context)
+        {
+            var soldProductsUsers = context.Users
+                .Where(u => u.ProductsSold.Any(ps => ps.BuyerId != 0))
+                .OrderBy(u => u.LastName)
+                .ThenBy(u => u.FirstName)
+                .Select(u => new
+                {
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    soldProducts = u.ProductsSold.Select(x => new
+                    {
+                        Name = x.Name,
+                        Price = x.Price,
+                        buyerFirstName = x.Buyer.FirstName,
+                        buyerLastName = x.Buyer.LastName,
+                    })
+                })
+                .ToList();
+
+            var jsonSettings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                Formatting = Formatting.Indented,
+            };
+
+            var usersJson = JsonConvert.SerializeObject(soldProductsUsers, jsonSettings);
+
+            return usersJson;
         }
     }
 }
