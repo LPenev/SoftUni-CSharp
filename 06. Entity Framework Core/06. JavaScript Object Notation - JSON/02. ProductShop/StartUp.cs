@@ -39,10 +39,10 @@ namespace ProductShop
             //Console.WriteLine(GetSoldProducts(db));
 
             // 07. Export Categories by Products Count
-            //Console.WriteLine(GetCategoriesByProductsCount(db));
+            Console.WriteLine(GetCategoriesByProductsCount(db));
 
             // 08. Export Users and Products
-            Console.WriteLine(GetUsersWithProducts(db));
+            //Console.WriteLine(GetUsersWithProducts(db));
 
 
         }
@@ -161,8 +161,8 @@ namespace ProductShop
                 {
                     Category = x.Name,
                     ProductCount = x.CategoriesProducts.Count,
-                    AveragePrice = decimal.Round(x.CategoriesProducts.Average(cp => cp.Product.Price), 2),
-                    TotalRevenue = decimal.Round(x.CategoriesProducts.Sum(cp => cp.Product.Price), 2),
+                    AveragePrice = x.CategoriesProducts.Average(cp => cp.Product.Price).ToString("f2"),
+                    TotalRevenue = x.CategoriesProducts.Sum(cp => cp.Product.Price).ToString("f2"),
                 })
                 .OrderByDescending(x => x.ProductCount);
 
