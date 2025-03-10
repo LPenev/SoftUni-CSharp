@@ -39,7 +39,10 @@ namespace ProductShop
             //Console.WriteLine(GetSoldProducts(db));
 
             // 07. Export Categories by Products Count
-            Console.WriteLine(GetCategoriesByProductsCount(db));
+            //Console.WriteLine(GetCategoriesByProductsCount(db));
+
+            // 08. Export Users and Products
+            Console.WriteLine(GetUsersWithProducts(db));
 
 
         }
@@ -175,5 +178,55 @@ namespace ProductShop
             return categoriesProductsJson;
         }
 
+        // 08. Export Users and Products
+        public static string GetUsersWithProducts(ProductShopContext context)
+        {
+            var usersSalesProducts = context.Users
+                .AsNoTracking()
+                .Where(x => x.ProductsSold.Any(p => p.BuyerId != null && p.Price != null))
+                .Select(x => new
+                {
+                    x.FirstName,
+                    x.LastName,
+                    x.Age,
+                    soldProducts = x.ProductsSold
+                        .Where(x => x.BuyerId != null && x.Price != 0)
+                        .Select(sp => new
+                        {
+                            sp.Name,
+                            sp.Price
+                        })
+                        .ToArray()
+                })
+                .OrderByDescending(x => x.soldProducts.Length)
+                .ToArray();
+
+            var result = new
+            {
+                UserCount = usersSalesProducts.Length,
+                Users = usersSalesProducts.Select(u => new
+                {
+                    u.FirstName,
+                    u.LastName,
+                    u.Age,
+                    SoldProducts = new
+                    {
+                        Count = u.soldProducts.Length,
+                        Products = u.soldProducts
+                    }
+                })
+            };
+
+            var jsonSettings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                Formatting = Formatting.Indented,
+            };
+
+            var usersSalesProductsJson = JsonConvert.SerializeObject(usersSalesProducts, jsonSettings);
+
+            return usersSalesProductsJson;
+        }
     }
 }
