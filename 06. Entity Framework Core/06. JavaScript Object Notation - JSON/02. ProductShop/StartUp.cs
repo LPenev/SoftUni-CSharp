@@ -36,10 +36,10 @@ namespace ProductShop
             //Console.WriteLine(GetProductsInRange(db));
 
             // 06. Export Sold Products
-            //Console.WriteLine(GetSoldProducts(db));
+            Console.WriteLine(GetSoldProducts(db));
 
             // 07. Export Categories by Products Count
-            Console.WriteLine(GetCategoriesByProductsCount(db));
+            //Console.WriteLine(GetCategoriesByProductsCount(db));
 
             // 08. Export Users and Products
             //Console.WriteLine(GetUsersWithProducts(db));
@@ -124,7 +124,7 @@ namespace ProductShop
         public static string GetSoldProducts(ProductShopContext context)
         {
             var soldProductsUsers = context.Users
-                .Where(u => u.ProductsSold.Any(ps => ps.BuyerId != 0))
+                .Where(u => u.ProductsSold.Any(ps => ps.BuyerId != null))
                 .OrderBy(u => u.LastName)
                 .ThenBy(u => u.FirstName)
                 .Select(u => new
@@ -143,7 +143,7 @@ namespace ProductShop
 
             var jsonSettings = new JsonSerializerSettings()
             {
-                NullValueHandling = NullValueHandling.Ignore,
+                //NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 Formatting = Formatting.Indented,
             };
