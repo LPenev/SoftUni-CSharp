@@ -36,10 +36,10 @@ namespace ProductShop
             //Console.WriteLine(GetProductsInRange(db));
 
             // 06. Export Sold Products
-            Console.WriteLine(GetSoldProducts(db));
+            //Console.WriteLine(GetSoldProducts(db));
 
             // 07. Export Categories by Products Count
-            //Console.WriteLine(GetCategoriesByProductsCount(db));
+            Console.WriteLine(GetCategoriesByProductsCount(db));
 
             // 08. Export Users and Products
             //Console.WriteLine(GetUsersWithProducts(db));
@@ -157,14 +157,16 @@ namespace ProductShop
         public static string GetCategoriesByProductsCount(ProductShopContext context)
         {
             var categoriesProductsCount = context.Categories
-                .Select(x => new ExportCategoriesProductsCountDto()
+                .AsNoTracking()
+                .Select(x => new ExportCategoriesProductsCountDto
                 {
                     Category = x.Name,
-                    ProductCount = x.CategoriesProducts.Count,
+                    ProductsCount = x.CategoriesProducts.Count,
                     AveragePrice = x.CategoriesProducts.Average(cp => cp.Product.Price).ToString("f2"),
                     TotalRevenue = x.CategoriesProducts.Sum(cp => cp.Product.Price).ToString("f2"),
                 })
-                .OrderByDescending(x => x.ProductCount);
+                .OrderByDescending(x => x.ProductsCount)
+                .ToList();
 
             var jsonSettings = new JsonSerializerSettings()
             {
