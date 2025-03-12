@@ -2,6 +2,7 @@
 using CarDealer.Models;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace CarDealer
 {
@@ -15,9 +16,12 @@ namespace CarDealer
             var db = new CarDealerContext();
 
             // 09. Import Suppliers
-            var suppliers = File.ReadAllText("../../../Datasets/suppliers.json");
-            Console.WriteLine(ImportSuppliers(db, suppliers));
+            //var suppliers = File.ReadAllText("../../../Datasets/suppliers.json");
+            //Console.WriteLine(ImportSuppliers(db, suppliers));
 
+            // 10. Import Parts
+            var parts = File.ReadAllText("../../../Datasets/parts.json");
+            Console.WriteLine(ImportParts(db, parts));
 
         }
 
@@ -32,6 +36,19 @@ namespace CarDealer
             return $"Successfully imported {suppliers.Count}.";
         }
 
+        // 10. Import Parts
+        public static string ImportParts(CarDealerContext context, string inputJson)
+        {
+            var parts = JsonConvert.DeserializeObject<List<Part>>(inputJson);
 
+            var validSupplierIds = context.Suppliers.Select(x => x.Id);
+
+            var partsWithValidSuppliers = parts.Where(x => validSupplierIds.Contains(x.SupplierId));
+
+            context.AddRange(partsWithValidSuppliers);
+            context.SaveChanges();
+
+            return $"Successfully imported {parts.Count}.";
+        }
     }
 }
