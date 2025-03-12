@@ -39,10 +39,10 @@ namespace ProductShop
             //Console.WriteLine(GetSoldProducts(db));
 
             // 07. Export Categories by Products Count
-            Console.WriteLine(GetCategoriesByProductsCount(db));
+            //Console.WriteLine(GetCategoriesByProductsCount(db));
 
             // 08. Export Users and Products
-            //Console.WriteLine(GetUsersWithProducts(db));
+            Console.WriteLine(GetUsersWithProducts(db));
 
 
         }
@@ -185,14 +185,14 @@ namespace ProductShop
         {
             var usersSalesProducts = context.Users
                 .AsNoTracking()
-                .Where(x => x.ProductsSold.Any(p => p.BuyerId != null && p.Price != null))
-                .Select(x => new
+                .Where(u => u.ProductsSold.Any(p => p.BuyerId != null))
+                .Select(u => new
                 {
-                    x.FirstName,
-                    x.LastName,
-                    x.Age,
-                    soldProducts = x.ProductsSold
-                        .Where(x => x.BuyerId != null && x.Price != 0)
+                    u.FirstName,
+                    u.LastName,
+                    u.Age,
+                    soldProducts = u.ProductsSold
+                        .Where(p => p.BuyerId != null)
                         .Select(sp => new
                         {
                             sp.Name,
@@ -205,7 +205,7 @@ namespace ProductShop
 
             var result = new
             {
-                UserCount = usersSalesProducts.Length,
+                UsersCount = usersSalesProducts.Count(),
                 Users = usersSalesProducts.Select(u => new
                 {
                     u.FirstName,
@@ -213,7 +213,7 @@ namespace ProductShop
                     u.Age,
                     SoldProducts = new
                     {
-                        Count = u.soldProducts.Length,
+                        Count = u.soldProducts.Count(),
                         Products = u.soldProducts
                     }
                 })
@@ -226,7 +226,7 @@ namespace ProductShop
                 Formatting = Formatting.Indented,
             };
 
-            var usersSalesProductsJson = JsonConvert.SerializeObject(usersSalesProducts, jsonSettings);
+            var usersSalesProductsJson = JsonConvert.SerializeObject(result, jsonSettings);
 
             return usersSalesProductsJson;
         }
