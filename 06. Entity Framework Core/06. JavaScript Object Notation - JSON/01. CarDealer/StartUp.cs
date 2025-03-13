@@ -1,5 +1,6 @@
 ﻿using CarDealer.Data;
 using CarDealer.Models;
+using Castle.Core.Resource;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
@@ -24,9 +25,12 @@ namespace CarDealer
             //Console.WriteLine(ImportParts(db, partsJson));
 
             // 11. Import Cars
-            var carsJson = File.ReadAllText("../../../Datasets/cars.json");
-            Console.WriteLine(ImportCars(db, carsJson));
+            //var carsJson = File.ReadAllText("../../../Datasets/cars.json");
+            //Console.WriteLine(ImportCars(db, carsJson));
 
+            // 12. Import Customers
+            var customersJson = File.ReadAllText("../../../Datasets/customers.json");
+            Console.WriteLine(ImportCustomers(db, customersJson));
 
 
         }
@@ -66,6 +70,17 @@ namespace CarDealer
             context.SaveChanges();
 
             return $"Successfully imported {cars.Count}.";
+        }
+
+        // 12. Import Customers
+        public static string ImportCustomers(CarDealerContext context, string inputJson)
+        {
+            var customers = JsonConvert.DeserializeObject<List<Customer>>(inputJson);
+
+            context.AddRange(customers);
+            context.SaveChanges();
+
+            return $"Successfully imported {customers.Count}.";
         }
 
     }
