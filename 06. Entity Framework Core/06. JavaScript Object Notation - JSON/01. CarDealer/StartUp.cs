@@ -29,9 +29,12 @@ namespace CarDealer
             //Console.WriteLine(ImportCars(db, carsJson));
 
             // 12. Import Customers
-            var customersJson = File.ReadAllText("../../../Datasets/customers.json");
-            Console.WriteLine(ImportCustomers(db, customersJson));
+            //var customersJson = File.ReadAllText("../../../Datasets/customers.json");
+            //Console.WriteLine(ImportCustomers(db, customersJson));
 
+            // 13. Import Sales
+            var salesJson = File.ReadAllText("../../../Datasets/sales.json");
+            Console.WriteLine(ImportSales(db, salesJson));
 
         }
 
@@ -83,5 +86,15 @@ namespace CarDealer
             return $"Successfully imported {customers.Count}.";
         }
 
+        // 13. Import Sales
+        public static string ImportSales(CarDealerContext context, string inputJson)
+        {
+            var sales = JsonConvert.DeserializeObject<List<Sale>>(inputJson);
+
+            context.AddRange(sales);
+            context.SaveChanges();
+
+            return $"Successfully imported {sales.Count}.";
+        }
     }
 }
