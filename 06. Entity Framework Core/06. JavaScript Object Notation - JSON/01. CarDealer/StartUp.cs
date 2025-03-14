@@ -14,6 +14,10 @@ namespace CarDealer
     //Update-Database
     public class StartUp
     {
+        public StartUp()
+        {
+        }
+
         public static void Main()
         {
             var db = new CarDealerContext();
@@ -39,7 +43,10 @@ namespace CarDealer
             //Console.WriteLine(ImportSales(db, salesJson));
 
             // 14. Export Ordered Customers
-            Console.WriteLine(GetOrderedCustomers(db));
+            //Console.WriteLine(GetOrderedCustomers(db));
+
+            // 15. Export Cars from Make Toyota
+            Console.WriteLine(GetCarsFromMakeToyota(db));
 
 
         }
@@ -122,7 +129,29 @@ namespace CarDealer
             return orderedCustomersJson;
         }
 
+        // 15. Export Cars from Make Toyota
+        public static string GetCarsFromMakeToyota(CarDealerContext context)
+        {
+            var carsFromMakeToyota = context.Cars
+                .AsNoTracking()
+                .Where(c => c.Make == "Toyota")
+                .OrderBy(x => x.Model)
+                .ThenByDescending(x => x.TraveledDistance)
+                .Select(x => new
+                {
+                    x.Id,
+                    x.Make,
+                    x.Model,
+                    x.TraveledDistance
+                })
+                .ToArray();
 
+            var carsFromMakeToyotaJson = JsonConvert.SerializeObject(carsFromMakeToyota, JsonSettings());
+
+            return carsFromMakeToyotaJson;
+        }
+
+        // Json Settings
         public static JsonSerializerSettings JsonSettings()
         {
             var jsonSettings = new JsonSerializerSettings()
