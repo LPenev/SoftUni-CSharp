@@ -3,6 +3,7 @@ using CarDealer.Models;
 using Castle.Core.Resource;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 
@@ -116,10 +117,22 @@ namespace CarDealer
                 })
                 .ToArray();
 
-            var orderedCustomersJson = JsonConvert.SerializeObject(orderedCustomers);
+            var orderedCustomersJson = JsonConvert.SerializeObject(orderedCustomers, JsonSettings());
 
             return orderedCustomersJson;
         }
 
+
+        public static JsonSerializerSettings JsonSettings()
+        {
+            var jsonSettings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                Formatting = Formatting.Indented,
+            };
+
+            return jsonSettings;
+        }
     }
 }
