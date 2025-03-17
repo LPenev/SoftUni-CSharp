@@ -52,7 +52,8 @@ namespace CarDealer
             //Console.WriteLine(GetLocalSuppliers(db));
 
             // 17. Export Cars with Their List of Parts
-            Console.WriteLine(GetCarsWithTheirListOfParts(db));
+            //Console.WriteLine(GetCarsWithTheirListOfParts(db));
+
 
         }
 
@@ -194,7 +195,7 @@ namespace CarDealer
                     }).ToArray()
                 }).ToArray();
 
-            var carsWithTheirListOfPartsJson = JsonConvert.SerializeObject(carsWithTheirListOfParts, JsonSettings());
+            var carsWithTheirListOfPartsJson = JsonConvert.SerializeObject(carsWithTheirListOfParts, Formatting.Indented);
 
             return carsWithTheirListOfPartsJson;
         }
