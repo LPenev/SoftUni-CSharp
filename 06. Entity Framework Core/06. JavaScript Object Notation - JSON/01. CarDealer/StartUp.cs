@@ -54,6 +54,8 @@ namespace CarDealer
             // 17. Export Cars with Their List of Parts
             //Console.WriteLine(GetCarsWithTheirListOfParts(db));
 
+            // 18. Export Total Sales by Customer
+            Console.WriteLine(GetTotalSalesByCustomer(db));
 
         }
 
@@ -200,6 +202,24 @@ namespace CarDealer
             return carsWithTheirListOfPartsJson;
         }
 
+        // 18. Export Total Sales by Customer
+        public static string GetTotalSalesByCustomer(CarDealerContext context)
+        {
+            var totalSalesByCustomer = context.Customers
+                .AsNoTracking()
+                .Where(x => x.Sales.Count() > 0)
+                .Select(x => new
+                {
+                    fullName = x.Name,
+                    boughtCars = x.Sales.Count(),
+                    //spentMoney = x.Sales.Sum(s => s.Car.PartsCars.Sum(p => p.Part.Price))
+                })
+                //.OrderByDescending(x => x.spentMoney)
+                //.ThenByDescending(x => x.boughtCars)
+                .ToList();
+
+            return JsonConvert.SerializeObject(totalSalesByCustomer, JsonSettings());
+        }
 
         // Json Settings
         public static JsonSerializerSettings JsonSettings()
