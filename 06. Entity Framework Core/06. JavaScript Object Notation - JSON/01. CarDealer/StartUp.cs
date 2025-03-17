@@ -49,8 +49,10 @@ namespace CarDealer
             //Console.WriteLine(GetCarsFromMakeToyota(db));
 
             // 16. Export Local Suppliers
-            Console.WriteLine(GetLocalSuppliers(db));
+            //Console.WriteLine(GetLocalSuppliers(db));
 
+            // 17. Export Cars with Their List of Parts
+            Console.WriteLine(GetCarsWithTheirListOfParts(db));
 
         }
 
@@ -171,6 +173,30 @@ namespace CarDealer
             var localSuppliersJson = JsonConvert.SerializeObject(localSuppliers, JsonSettings());
 
             return localSuppliersJson;
+        }
+
+        // 17. Export Cars with Their List of Parts
+        public static string GetCarsWithTheirListOfParts(CarDealerContext context)
+        {
+            var carsWithTheirListOfParts = context.Cars
+                .Select(c => new
+                {
+                    car = new
+                    {
+                        c.Make,
+                        c.Model,
+                        c.TraveledDistance,
+                    },
+                    parts = c.PartsCars.Select(p => new
+                    {
+                        Name = p.Part.Name,
+                        Price = p.Part.Price.ToString("f2"),
+                    }).ToArray()
+                }).ToArray();
+
+            var carsWithTheirListOfPartsJson = JsonConvert.SerializeObject(carsWithTheirListOfParts, JsonSettings());
+
+            return carsWithTheirListOfPartsJson;
         }
 
 
