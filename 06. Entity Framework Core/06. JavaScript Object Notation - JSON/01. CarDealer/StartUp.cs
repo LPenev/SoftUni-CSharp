@@ -32,16 +32,16 @@ namespace CarDealer
             //Console.WriteLine(ImportParts(db, partsJson));
 
             // 11. Import Cars
-            var carsJson = File.ReadAllText("../../../Datasets/cars.json");
-            Console.WriteLine(ImportCars(db, carsJson));
+            //var carsJson = File.ReadAllText("../../../Datasets/cars.json");
+            //Console.WriteLine(ImportCars(db, carsJson));
 
             // 12. Import Customers
             //var customersJson = File.ReadAllText("../../../Datasets/customers.json");
             //Console.WriteLine(ImportCustomers(db, customersJson));
 
             // 13. Import Sales
-            //var salesJson = File.ReadAllText("../../../Datasets/sales.json");
-            //Console.WriteLine(ImportSales(db, salesJson));
+            var salesJson = File.ReadAllText("../../../Datasets/sales.json");
+            Console.WriteLine(ImportSales(db, salesJson));
 
             // 14. Export Ordered Customers
             //Console.WriteLine(GetOrderedCustomers(db));
@@ -135,8 +135,15 @@ namespace CarDealer
         // 13. Import Sales
         public static string ImportSales(CarDealerContext context, string inputJson)
         {
-            var sales = JsonConvert.DeserializeObject<List<Sale>>(inputJson);
+            var salesDtos = JsonConvert.DeserializeObject<List<ImportSalesDto>>(inputJson);
 
+            var sales = salesDtos.Select(dto => new Sale
+            {
+                CarId = dto.CarId,
+                CustomerId = dto.CustomerId,
+                Discount = dto.Discount
+            }).ToList();
+            
             context.AddRange(sales);
             context.SaveChanges();
 
