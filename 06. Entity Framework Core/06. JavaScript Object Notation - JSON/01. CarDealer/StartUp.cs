@@ -40,8 +40,8 @@ namespace CarDealer
             //Console.WriteLine(ImportCustomers(db, customersJson));
 
             // 13. Import Sales
-            var salesJson = File.ReadAllText("../../../Datasets/sales.json");
-            Console.WriteLine(ImportSales(db, salesJson));
+            //var salesJson = File.ReadAllText("../../../Datasets/sales.json");
+            //Console.WriteLine(ImportSales(db, salesJson));
 
             // 14. Export Ordered Customers
             //Console.WriteLine(GetOrderedCustomers(db));
@@ -56,7 +56,7 @@ namespace CarDealer
             //Console.WriteLine(GetCarsWithTheirListOfParts(db));
 
             // 18. Export Total Sales by Customer
-            //Console.WriteLine(GetTotalSalesByCustomer(db));
+            Console.WriteLine(GetTotalSalesByCustomer(db));
 
         }
 
@@ -239,15 +239,17 @@ namespace CarDealer
         {
             var totalSalesByCustomer = context.Customers
                 .AsNoTracking()
-                .Where(x => x.Sales.Count() > 0)
+                .Where(x => x.Sales.Any())
                 .Select(x => new
                 {
                     fullName = x.Name,
                     boughtCars = x.Sales.Count(),
-                    //spentMoney = x.Sales.Sum(s => s.Car.PartsCars.Sum(p => p.Part.Price))
+                    spentMoney = x.Sales
+                        .SelectMany(s => s.Car.PartsCars)
+                        .Sum(pc => pc.Part.Price)
                 })
-                //.OrderByDescending(x => x.spentMoney)
-                //.ThenByDescending(x => x.boughtCars)
+                .OrderByDescending(x => x.spentMoney)
+                .ThenByDescending(x => x.boughtCars)
                 .ToList();
 
             return JsonConvert.SerializeObject(totalSalesByCustomer, JsonSettings());
