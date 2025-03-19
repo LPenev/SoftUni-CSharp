@@ -56,7 +56,10 @@ namespace CarDealer
             //Console.WriteLine(GetCarsWithTheirListOfParts(db));
 
             // 18. Export Total Sales by Customer
-            Console.WriteLine(GetTotalSalesByCustomer(db));
+            //Console.WriteLine(GetTotalSalesByCustomer(db));
+
+            // 19. Export Sales with Applied Discount
+            Console.WriteLine(GetSalesWithAppliedDiscount(db));
 
         }
 
@@ -255,13 +258,37 @@ namespace CarDealer
             return JsonConvert.SerializeObject(totalSalesByCustomer, JsonSettings());
         }
 
+        // 19. Export Sales with Applied Discount
+        public static string GetSalesWithAppliedDiscount(CarDealerContext context)
+        {
+            var sales = context.Sales
+                .Take(10)
+                .Select(x => new
+                {
+                    car = new
+                    {
+                        x.Car.Make,
+                        x.Car.Model,
+                        x.Car.TraveledDistance
+                    },
+                    customerName = x.Customer.Name,
+                    discount = x.Discount.ToString("f2"),
+                    price = x.Car.PartsCars.Sum(x => x.Part.Price).ToString("f2"),
+                    priceWithDiscount = (x.Car.PartsCars.Sum(x => x.Part.Price) * ( 1 - x.Discount / 100)).ToString("f2")
+                });
+
+            var salesWithAppliedDiscount = JsonConvert.SerializeObject(sales, Formatting.Indented);
+
+            return salesWithAppliedDiscount;
+        }
+
         // Json Settings
         public static JsonSerializerSettings JsonSettings()
         {
             var jsonSettings = new JsonSerializerSettings()
             {
-                NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Formatting.Indented,
             };
 
