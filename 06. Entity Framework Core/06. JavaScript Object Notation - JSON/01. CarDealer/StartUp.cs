@@ -48,10 +48,10 @@ namespace CarDealer
             //Console.WriteLine(GetOrderedCustomers(db));
 
             // 15. Export Cars from Make Toyota
-            //Console.WriteLine(GetCarsFromMakeToyota(db));
+            Console.WriteLine(GetCarsFromMakeToyota(db));
 
             // 16. Export Local Suppliers
-            Console.WriteLine(GetLocalSuppliers(db));
+            //Console.WriteLine(GetLocalSuppliers(db));
 
             // 17. Export Cars with Their List of Parts
             //Console.WriteLine(GetCarsWithTheirListOfParts(db));
@@ -168,7 +168,7 @@ namespace CarDealer
                 })
                 .ToArray();
 
-            var orderedCustomersJson = JsonConvert.SerializeObject(orderedCustomers, JsonSettings());
+            var orderedCustomersJson = JsonConvert.SerializeObject(orderedCustomers, Formatting.Indented);
 
             return orderedCustomersJson;
         }
@@ -190,7 +190,7 @@ namespace CarDealer
                 })
                 .ToArray();
 
-            var carsFromMakeToyotaJson = JsonConvert.SerializeObject(carsFromMakeToyota, JsonSettings());
+            var carsFromMakeToyotaJson = JsonConvert.SerializeObject(carsFromMakeToyota, Formatting.Indented);
 
             return carsFromMakeToyotaJson;
         }
