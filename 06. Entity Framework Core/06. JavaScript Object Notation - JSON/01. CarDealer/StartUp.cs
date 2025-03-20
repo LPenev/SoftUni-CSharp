@@ -1,4 +1,5 @@
-﻿using CarDealer.Data;
+﻿using AutoMapper;
+using CarDealer.Data;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
 using Castle.Core.Resource;
@@ -28,8 +29,8 @@ namespace CarDealer
             //Console.WriteLine(ImportSuppliers(db, suppliersJson));
 
             // 10. Import Parts
-            //var partsJson = File.ReadAllText("../../../Datasets/parts.json");
-            //Console.WriteLine(ImportParts(db, partsJson));
+            var partsJson = File.ReadAllText("../../../Datasets/parts.json");
+            Console.WriteLine(ImportParts(db, partsJson));
 
             // 11. Import Cars
             //var carsJson = File.ReadAllText("../../../Datasets/cars.json");
@@ -59,7 +60,7 @@ namespace CarDealer
             //Console.WriteLine(GetTotalSalesByCustomer(db));
 
             // 19. Export Sales with Applied Discount
-            Console.WriteLine(GetSalesWithAppliedDiscount(db));
+            //Console.WriteLine(GetSalesWithAppliedDiscount(db));
 
         }
 
@@ -83,7 +84,7 @@ namespace CarDealer
 
             var partsWithValidSuppliers = parts.Where(x => validSupplierIds.Contains(x.SupplierId));
 
-            context.AddRange(partsWithValidSuppliers);
+            context.Parts.AddRange(partsWithValidSuppliers);
             context.SaveChanges();
 
             return $"Successfully imported {parts.Count}.";
