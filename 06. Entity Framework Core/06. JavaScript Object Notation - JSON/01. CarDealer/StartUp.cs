@@ -4,9 +4,11 @@ using CarDealer.DTOs.Import;
 using CarDealer.Models;
 using Castle.Core.Resource;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.IO;
 
 namespace CarDealer
@@ -45,10 +47,10 @@ namespace CarDealer
             //Console.WriteLine(ImportSales(db, salesJson));
 
             // 14. Export Ordered Customers
-            //Console.WriteLine(GetOrderedCustomers(db));
+            Console.WriteLine(GetOrderedCustomers(db));
 
             // 15. Export Cars from Make Toyota
-            Console.WriteLine(GetCarsFromMakeToyota(db));
+            //Console.WriteLine(GetCarsFromMakeToyota(db));
 
             // 16. Export Local Suppliers
             //Console.WriteLine(GetLocalSuppliers(db));
@@ -163,7 +165,7 @@ namespace CarDealer
                 .Select(x => new
                 {
                     x.Name,
-                    x.BirthDate,
+                    BirthDate = x.BirthDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
                     x.IsYoungDriver
                 })
                 .ToArray();
