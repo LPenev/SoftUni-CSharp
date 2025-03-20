@@ -29,8 +29,8 @@ namespace CarDealer
             //Console.WriteLine(ImportSuppliers(db, suppliersJson));
 
             // 10. Import Parts
-            var partsJson = File.ReadAllText("../../../Datasets/parts.json");
-            Console.WriteLine(ImportParts(db, partsJson));
+            //var partsJson = File.ReadAllText("../../../Datasets/parts.json");
+            //Console.WriteLine(ImportParts(db, partsJson));
 
             // 11. Import Cars
             //var carsJson = File.ReadAllText("../../../Datasets/cars.json");
@@ -51,7 +51,7 @@ namespace CarDealer
             //Console.WriteLine(GetCarsFromMakeToyota(db));
 
             // 16. Export Local Suppliers
-            //Console.WriteLine(GetLocalSuppliers(db));
+            Console.WriteLine(GetLocalSuppliers(db));
 
             // 17. Export Cars with Their List of Parts
             //Console.WriteLine(GetCarsWithTheirListOfParts(db));
@@ -209,7 +209,7 @@ namespace CarDealer
                 })
                 .ToArray();
 
-            var localSuppliersJson = JsonConvert.SerializeObject(localSuppliers, JsonSettings());
+            var localSuppliersJson = JsonConvert.SerializeObject(localSuppliers, Formatting.Indented);
 
             return localSuppliersJson;
         }
