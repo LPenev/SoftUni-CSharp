@@ -47,7 +47,7 @@ namespace CarDealer
             //Console.WriteLine(ImportSales(db, salesJson));
 
             // 14. Export Ordered Customers
-            Console.WriteLine(GetOrderedCustomers(db));
+            //Console.WriteLine(GetOrderedCustomers(db));
 
             // 15. Export Cars from Make Toyota
             //Console.WriteLine(GetCarsFromMakeToyota(db));
@@ -62,7 +62,7 @@ namespace CarDealer
             //Console.WriteLine(GetTotalSalesByCustomer(db));
 
             // 19. Export Sales with Applied Discount
-            //Console.WriteLine(GetSalesWithAppliedDiscount(db));
+            Console.WriteLine(GetSalesWithAppliedDiscount(db));
 
         }
 
