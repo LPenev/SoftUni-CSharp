@@ -2,11 +2,6 @@
 {
     public class Part
     {
-        public Part()
-        {
-            this.PartsCars = new HashSet<PartCar>();
-        }
-
         public int Id { get; set; }
 
         public string Name { get; set; } = null!; 
@@ -19,6 +14,6 @@
 
         public Supplier Supplier { get; set; } = null!;
 
-        public virtual ICollection<PartCar> PartsCars { get; set; }
+        public ICollection<PartCar> PartsCars { get; set; } = new List<PartCar>();
     }
 }
