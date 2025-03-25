@@ -1,11 +1,7 @@
-﻿using AutoMapper;
-using CarDealer.Data;
+﻿using CarDealer.Data;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
-using Microsoft.Extensions.Primitives;
-using System.IO;
-using System.Xml;
-using System.Xml.Linq;
+
 using System.Xml.Serialization;
 
 namespace CarDealer
@@ -29,18 +25,22 @@ namespace CarDealer
             //inputXml = File.ReadAllText("../../../Datasets/parts.xml");
             //Print(ImportParts(db, inputXml));
 
+            // 11. Import Cars
+            inputXml = File.ReadAllText("../../../Datasets/cars.xml");
+            Print(ImportCars(db, inputXml));
+
         }
 
         // 09. Import Suppliers
         public static string ImportSuppliers(CarDealerContext context, string inputXml)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(importSuppliersDto[]), new XmlRootAttribute("Suppliers"));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportSupplierDto[]), new XmlRootAttribute("Suppliers"));
 
-            importSuppliersDto[] suppliersDto;
+            ImportSupplierDto[] suppliersDto;
 
             using (var reader = new StringReader(inputXml)) 
             {
-                suppliersDto = (importSuppliersDto[])xmlSerializer.Deserialize(reader);
+                suppliersDto = (ImportSupplierDto[])xmlSerializer.Deserialize(reader);
             }
 
             Supplier[] suppliers = suppliersDto.Select(dto => new Supplier() 
@@ -58,10 +58,10 @@ namespace CarDealer
         // 10. Import Parts
         public static string ImportParts(CarDealerContext context, string inputXml)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportPartsDto[]), new XmlRootAttribute("Parts"));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportPartDto[]), new XmlRootAttribute("Parts"));
 
             using StringReader reader = new StringReader(inputXml);
-            ImportPartsDto[]  partsDto = (ImportPartsDto[])xmlSerializer.Deserialize(reader);
+            ImportPartDto[] partsDto = (ImportPartDto[])xmlSerializer.Deserialize(reader);
 
             var validSuppliersId = new HashSet<int>(context.Suppliers.Select(x => x.Id));
 
@@ -81,6 +81,9 @@ namespace CarDealer
             return $"Successfully imported {parts.Count()}";
         }
 
+        
+
+        // Print method to print result
         public static void Print(string printText)
         {
             Console.WriteLine(printText);
