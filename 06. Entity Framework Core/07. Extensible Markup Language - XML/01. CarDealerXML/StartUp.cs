@@ -2,7 +2,9 @@
 using CarDealer.Data;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
+using Microsoft.Extensions.Primitives;
 using System.IO;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -21,14 +23,12 @@ namespace CarDealer
 
             // 09. Import Suppliers
             //inputXml = File.ReadAllText("../../../Datasets/suppliers.xml");
-            //output = ImportSuppliers(db, inputXml);
+            //Print(ImportSuppliers(db, inputXml));
 
             // 10. Import Parts
-            inputXml = File.ReadAllText("../../../Datasets/parts.xml");
-            output = ImportParts(db, inputXml);
+            //inputXml = File.ReadAllText("../../../Datasets/parts.xml");
+            //Print(ImportParts(db, inputXml));
 
-            // Print output
-            Console.WriteLine(output);
         }
 
         // 09. Import Suppliers
@@ -79,6 +79,11 @@ namespace CarDealer
             context.SaveChanges();
 
             return $"Successfully imported {parts.Count()}";
+        }
+
+        public static void Print(string printText)
+        {
+            Console.WriteLine(printText);
         }
     }
 }
