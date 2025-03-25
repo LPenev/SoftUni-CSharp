@@ -20,10 +20,12 @@ namespace CarDealer
             var output = String.Empty;
 
             // 09. Import Suppliers
-            inputXml = File.ReadAllText("../../../Datasets/suppliers.xml");
-            output = ImportSuppliers(db, inputXml);
+            //inputXml = File.ReadAllText("../../../Datasets/suppliers.xml");
+            //output = ImportSuppliers(db, inputXml);
 
-
+            // 10. Import Parts
+            inputXml = File.ReadAllText("../../../Datasets/parts.xml");
+            output = ImportParts(db, inputXml);
 
             // Print output
             Console.WriteLine(output);
@@ -53,5 +55,30 @@ namespace CarDealer
             return $"Successfully imported {suppliers.Count()}";
         }
 
+        // 10. Import Parts
+        public static string ImportParts(CarDealerContext context, string inputXml)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportPartsDto[]), new XmlRootAttribute("Parts"));
+
+            using StringReader reader = new StringReader(inputXml);
+            ImportPartsDto[]  partsDto = (ImportPartsDto[])xmlSerializer.Deserialize(reader);
+
+            var validSuppliersId = new HashSet<int>(context.Suppliers.Select(x => x.Id));
+
+            Part[] parts = partsDto
+                .Where(x => validSuppliersId.Contains(x.SupplierId))
+                .Select(dto => new Part()
+                {
+                    Name = dto.Name,
+                    Price = dto.Price,
+                    Quantity = dto.Quantity,
+                    SupplierId = dto.SupplierId
+                }).ToArray();
+
+            context.Parts.AddRange(parts);
+            context.SaveChanges();
+
+            return $"Successfully imported {parts.Count()}";
+        }
     }
 }
