@@ -3,8 +3,7 @@
 namespace CarDealer.DTOs.Import;
 
 [XmlType("Supplier")]
-[XmlRoot("Suppliers")]
-public class SupplierImportDto
+public class importSuppliersDto
 {
     [XmlElement("name")]
     public string Name { get; set; }

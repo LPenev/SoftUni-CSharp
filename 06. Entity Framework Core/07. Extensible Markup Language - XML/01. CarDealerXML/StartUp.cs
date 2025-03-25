@@ -1,6 +1,8 @@
-﻿using CarDealer.Data;
+﻿using AutoMapper;
+using CarDealer.Data;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
+using System.IO;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -30,15 +32,14 @@ namespace CarDealer
         // 09. Import Suppliers
         public static string ImportSuppliers(CarDealerContext context, string inputXml)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(SupplierImportDto[]), new XmlRootAttribute("Suppliers"));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(importSuppliersDto[]), new XmlRootAttribute("Suppliers"));
 
-            SupplierImportDto[] suppliersDto;
+            importSuppliersDto[] suppliersDto;
 
             using (var reader = new StringReader(inputXml)) 
             {
-                suppliersDto = (SupplierImportDto[])xmlSerializer.Deserialize(reader);
+                suppliersDto = (importSuppliersDto[])xmlSerializer.Deserialize(reader);
             }
-            ;
 
             Supplier[] suppliers = suppliersDto.Select(dto => new Supplier() 
             {
@@ -51,5 +52,6 @@ namespace CarDealer
             
             return $"Successfully imported {suppliers.Count()}";
         }
+
     }
 }
