@@ -1,7 +1,7 @@
 ﻿using CarDealer.Data;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
-
+using System.Collections;
 using System.Xml.Serialization;
 
 namespace CarDealer
@@ -81,7 +81,50 @@ namespace CarDealer
             return $"Successfully imported {parts.Count()}";
         }
 
-        
+        // 11. Import Cars
+        public static string ImportCars(CarDealerContext context, string inputXml)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportCarDto[]), new XmlRootAttribute("Cars"));
+
+            using StringReader reader = new StringReader(inputXml);
+            ImportCarDto[] importCarsDtos = (ImportCarDto[])xmlSerializer.Deserialize(reader);
+
+            var cars = new List<Car>();
+            var partCars = new List<PartCar>();
+
+            foreach (var carDto in importCarsDtos)
+            {
+
+                Car currentCar = new Car()
+                {
+                    Make = carDto.Make,
+                    Model = carDto.Model,
+                    TraveledDistance = carDto.TraveledDistance,
+                };
+
+                cars.Add(currentCar);
+
+                int[] partIds = carDto.PartId.Select(x => x.PartId)
+                    .Distinct()
+                    .ToArray();
+
+                foreach (var partId in partIds)
+                {
+                    partCars.Add( new PartCar
+                    {
+                        Car = currentCar,
+                        PartId = partId
+                    });
+                }
+
+            }
+
+            context.AddRange(cars);
+            context.AddRange(partCars);
+            context.SaveChanges();
+
+            return $"Successfully imported {cars.Count()}";
+        }
 
         // Print method to print result
         public static void Print(string printText)

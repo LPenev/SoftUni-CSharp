@@ -2,7 +2,7 @@
 
 namespace CarDealer.DTOs.Import;
 
-[XmlType("Cars")]
+[XmlType("Car")]
 public class ImportCarDto
 {
     [XmlElement("make")]
@@ -12,8 +12,15 @@ public class ImportCarDto
     public string Model { get; set; }
 
     [XmlElement("traveledDistance")]
-    public string TraveledDistance { get; set; }
+    public long TraveledDistance { get; set; }
 
     [XmlArray("parts")]
-    public ImportPartDto[] PartsIds { get; set; }
+    public PartDto[] PartId { get; set; }
+}
+
+[XmlType("partId")]
+public class PartDto
+{
+    [XmlAttribute("id")]
+    public int PartId { get; set; }
 }
