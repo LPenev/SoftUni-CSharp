@@ -1,6 +1,7 @@
 ﻿using CarDealer.Data;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
+using Castle.Core.Resource;
 using System.Collections;
 using System.Xml.Serialization;
 
@@ -26,8 +27,13 @@ namespace CarDealer
             //Print(ImportParts(db, inputXml));
 
             // 11. Import Cars
-            inputXml = File.ReadAllText("../../../Datasets/cars.xml");
-            Print(ImportCars(db, inputXml));
+            //inputXml = File.ReadAllText("../../../Datasets/cars.xml");
+            //Print(ImportCars(db, inputXml));
+
+            // 12. Import Customers
+            inputXml = File.ReadAllText("../../../Datasets/customers.xml");
+            Print(ImportCustomers(db, inputXml));
+
 
         }
 
@@ -125,6 +131,30 @@ namespace CarDealer
 
             return $"Successfully imported {cars.Count()}";
         }
+
+        // 12. Import Customers
+        public static string ImportCustomers(CarDealerContext context, string inputXml)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportCustomerDto[]), new XmlRootAttribute("Customers"));
+
+            using StringReader reader = new StringReader(inputXml);
+
+            ImportCustomerDto[] customerDtos = (ImportCustomerDto[])xmlSerializer.Deserialize(reader);
+
+            var customers = customerDtos.Select(dto => new Customer
+            {
+                Name = dto.Name,
+                BirthDate = dto.BirthDate,
+                IsYoungDriver = dto.IsYoungDriver
+            }).ToArray();
+
+            context.AddRange(customers);
+            context.SaveChanges();
+
+            return $"Successfully imported {customers.Count()}";
+        }
+
+
 
         // Print method to print result
         public static void Print(string printText)
