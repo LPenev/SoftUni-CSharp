@@ -34,6 +34,8 @@ namespace CarDealer
             inputXml = File.ReadAllText("../../../Datasets/customers.xml");
             Print(ImportCustomers(db, inputXml));
 
+            // 13. Import Sales
+
 
         }
 
@@ -154,6 +156,26 @@ namespace CarDealer
             return $"Successfully imported {customers.Count()}";
         }
 
+        // 13. Import Sales
+        public static string ImportSales(CarDealerContext context, string inputXml)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportSaleDto[]), new XmlRootAttribute("Sales"));
+
+            using StringReader reader = new StringReader(inputXml);
+            ImportSaleDto[] saleDtos = (ImportSaleDto[])xmlSerializer.Deserialize(reader);
+
+            ICollection sales = saleDtos.Select(dto => new Sale
+            {
+                Discount = dto.Discount,
+                CarId = dto.CarId,
+                CustomerId = dto.CustomerId
+            }).ToArray();
+
+            context.AddRange(sales);
+            context.SaveChanges();
+
+            return $"Successfully imported {sales.Count}";
+        }
 
 
         // Print method to print result
