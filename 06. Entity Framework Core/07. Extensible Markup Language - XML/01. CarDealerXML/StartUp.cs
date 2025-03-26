@@ -1,7 +1,6 @@
 ﻿using CarDealer.Data;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
-using Castle.Core.Resource;
 using System.Collections;
 using System.Xml.Serialization;
 
@@ -31,11 +30,12 @@ namespace CarDealer
             //Print(ImportCars(db, inputXml));
 
             // 12. Import Customers
-            inputXml = File.ReadAllText("../../../Datasets/customers.xml");
-            Print(ImportCustomers(db, inputXml));
+            //inputXml = File.ReadAllText("../../../Datasets/customers.xml");
+            //Print(ImportCustomers(db, inputXml));
 
             // 13. Import Sales
-
+            inputXml = File.ReadAllText("../../../Datasets/Sales.xml");
+            Print(ImportSales(db, inputXml));
 
         }
 
@@ -164,12 +164,16 @@ namespace CarDealer
             using StringReader reader = new StringReader(inputXml);
             ImportSaleDto[] saleDtos = (ImportSaleDto[])xmlSerializer.Deserialize(reader);
 
-            ICollection sales = saleDtos.Select(dto => new Sale
+            var validCarsId = context.Cars.Select(x => x.Id).ToArray();
+
+            ICollection<Sale> sales = saleDtos
+                .Where(x => validCarsId.Contains(x.CarId))
+                .Select(dto => new Sale
             {
                 Discount = dto.Discount,
                 CarId = dto.CarId,
                 CustomerId = dto.CustomerId
-            }).ToArray();
+            }).ToList();
 
             context.AddRange(sales);
             context.SaveChanges();
