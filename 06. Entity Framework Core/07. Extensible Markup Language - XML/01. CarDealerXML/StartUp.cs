@@ -42,14 +42,17 @@ namespace CarDealer
             //inputXml = File.ReadAllText("../../../Datasets/Sales.xml");
             //Print(ImportSales(db, inputXml));
 
-            // 15. Export Cars from Make BMW
-
-
             // 14. Export Cars With Distance
             //Print(GetCarsWithDistance(db));
 
             // 15. Export Cars from Make BMW
-            Print(GetCarsFromMakeBmw(db));
+            //Print(GetCarsFromMakeBmw(db));
+
+            // 16. Export Local Suppliers
+            //Print(GetLocalSuppliers(db));
+
+            // 17. Export Cars with Their List of Parts
+            Print(GetCarsWithTheirListOfParts(db));
 
         }
 
@@ -209,23 +212,8 @@ namespace CarDealer
                     Model = x.Model,
                     TraveledDistance = x.TraveledDistance
                 }).ToArray();
-
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ExportCarDto[]), new XmlRootAttribute("cars"));
-
-            XmlWriterSettings settings = new XmlWriterSettings
-            {
-                OmitXmlDeclaration = false,
-                Indent = true
-            };
-
-            StringBuilder stringBuilder = new StringBuilder();
-
-            using XmlWriter writer = XmlWriter.Create(stringBuilder, settings);
-            XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
-            xmlSerializerNamespaces.Add(string.Empty, string.Empty);
-            xmlSerializer.Serialize(writer, carsWithDistanceMore2M, xmlSerializerNamespaces);
             
-            return stringBuilder.ToString();
+            return ExportXml(carsWithDistanceMore2M, "cars");
         }
 
         // 15. Export Cars from Make BMW
@@ -243,28 +231,74 @@ namespace CarDealer
                 })
                 .ToArray();
 
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ExportCarMakeDto[]), new XmlRootAttribute("cars"));
+            return ExportXml(bmwCarDtos, "cars");
+        }
 
-            XmlWriterSettings settings = new XmlWriterSettings
-            {
-                OmitXmlDeclaration = false,
-                Indent = true
-            };
+        // 16. Export Local Suppliers
+        public static string GetLocalSuppliers(CarDealerContext context)
+        {
+            ExportSupplierNumberOfPartsDto[] localSupplierDtos = context.Suppliers
+                .Where(x => !x.IsImporter)
+                .Select(x => new ExportSupplierNumberOfPartsDto
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    PartsCount = x.Parts.Count()
+                })
+                .ToArray();
 
-            StringBuilder stringBuilder = new StringBuilder();
-            using XmlWriter writer = XmlWriter.Create(stringBuilder, settings);
-            
-            XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
-            xmlSerializerNamespaces.Add(string.Empty, string.Empty);
-            xmlSerializer.Serialize(writer, bmwCarDtos, xmlSerializerNamespaces);
+            return ExportXml(localSupplierDtos, "suppliers");
+        }
 
-            return stringBuilder.ToString();
+        // 17. Export Cars with Their List of Parts
+        public static string GetCarsWithTheirListOfParts(CarDealerContext context)
+        {
+            ExportCarWithPartsDto[] top5CarsWithParts = context.Cars
+                .OrderByDescending(x => x.TraveledDistance)
+                .ThenBy(x => x.Model)
+                .Take(5)
+                .Select(x => new ExportCarWithPartsDto()
+                {
+                    Make = x.Make,
+                    Model = x.Model,
+                    TraveledDistance = x.TraveledDistance,
+                    CarParts = x.PartsCars
+                        .OrderByDescending(pc => pc.Part.Price)
+                        .Select(p => new CarPartsDto()
+                        {
+                            Name = p.Part.Name,
+                            Price = p.Part.Price
+                        }).ToArray()
+                })
+                .ToArray();
+
+            return ExportXml(top5CarsWithParts, "cars");
         }
 
         // Print method to print result
         public static void Print(string printText)
         {
             Console.WriteLine(printText);
+        }
+
+        public static string ExportXml<T>(T dtoArray, string xmlRootAttribute, bool ommitDeclaration = false)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T), new XmlRootAttribute(xmlRootAttribute));
+
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = ommitDeclaration,
+                Indent = true
+            };
+
+            StringBuilder stringBuilder = new StringBuilder();
+            using XmlWriter writer = XmlWriter.Create(stringBuilder, settings);
+
+            XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
+            xmlSerializerNamespaces.Add(string.Empty, string.Empty);
+            xmlSerializer.Serialize(writer, dtoArray, xmlSerializerNamespaces);
+
+            return stringBuilder.ToString();
         }
     }
 }
