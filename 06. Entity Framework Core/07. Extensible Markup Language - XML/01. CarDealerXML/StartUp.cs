@@ -42,8 +42,14 @@ namespace CarDealer
             //inputXml = File.ReadAllText("../../../Datasets/Sales.xml");
             //Print(ImportSales(db, inputXml));
 
+            // 15. Export Cars from Make BMW
+
+
             // 14. Export Cars With Distance
-            Print(GetCarsWithDistance(db));
+            //Print(GetCarsWithDistance(db));
+
+            // 15. Export Cars from Make BMW
+            Print(GetCarsFromMakeBmw(db));
 
         }
 
@@ -222,6 +228,38 @@ namespace CarDealer
             return stringBuilder.ToString();
         }
 
+        // 15. Export Cars from Make BMW
+        public static string GetCarsFromMakeBmw(CarDealerContext context)
+        {
+            ExportCarMakeDto[] bmwCarDtos = context.Cars
+                .Where(x => x.Make.ToUpper() == "BMW")
+                .OrderBy(x => x.Model)
+                .ThenByDescending(x => x.TraveledDistance)
+                .Select(x => new ExportCarMakeDto
+                {
+                    Id = x.Id,
+                    Model = x.Model,
+                    TraveledDistance = x.TraveledDistance
+                })
+                .ToArray();
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ExportCarMakeDto[]), new XmlRootAttribute("cars"));
+
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = false,
+                Indent = true
+            };
+
+            StringBuilder stringBuilder = new StringBuilder();
+            using XmlWriter writer = XmlWriter.Create(stringBuilder, settings);
+            
+            XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
+            xmlSerializerNamespaces.Add(string.Empty, string.Empty);
+            xmlSerializer.Serialize(writer, bmwCarDtos, xmlSerializerNamespaces);
+
+            return stringBuilder.ToString();
+        }
 
         // Print method to print result
         public static void Print(string printText)
