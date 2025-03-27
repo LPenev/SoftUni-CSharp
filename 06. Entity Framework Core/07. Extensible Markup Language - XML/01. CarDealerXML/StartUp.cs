@@ -1,7 +1,12 @@
 ﻿using CarDealer.Data;
+using CarDealer.DTOs.Export;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
 using System.Collections;
+using System.Globalization;
+using System.IO;
+using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace CarDealer
@@ -34,8 +39,11 @@ namespace CarDealer
             //Print(ImportCustomers(db, inputXml));
 
             // 13. Import Sales
-            inputXml = File.ReadAllText("../../../Datasets/Sales.xml");
-            Print(ImportSales(db, inputXml));
+            //inputXml = File.ReadAllText("../../../Datasets/Sales.xml");
+            //Print(ImportSales(db, inputXml));
+
+            // 14. Export Cars With Distance
+            Print(GetCarsWithDistance(db));
 
         }
 
@@ -179,6 +187,39 @@ namespace CarDealer
             context.SaveChanges();
 
             return $"Successfully imported {sales.Count}";
+        }
+
+        // 14. Export Cars With Distance
+        public static string GetCarsWithDistance(CarDealerContext context)
+        {
+            ExportCarDto[] carsWithDistanceMore2M = context.Cars
+                .Where(x => x.TraveledDistance > 2000000)
+                .OrderBy(x => x.Make)
+                .ThenBy(x => x.Model)
+                .Take(10)
+                .Select(x => new ExportCarDto
+                {
+                    Make = x.Make,
+                    Model = x.Model,
+                    TraveledDistance = x.TraveledDistance
+                }).ToArray();
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ExportCarDto[]), new XmlRootAttribute("cars"));
+
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = false,
+                Indent = true
+            };
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            using XmlWriter writer = XmlWriter.Create(stringBuilder, settings);
+            XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
+            xmlSerializerNamespaces.Add(string.Empty, string.Empty);
+            xmlSerializer.Serialize(writer, carsWithDistanceMore2M, xmlSerializerNamespaces);
+            
+            return stringBuilder.ToString();
         }
 
 
