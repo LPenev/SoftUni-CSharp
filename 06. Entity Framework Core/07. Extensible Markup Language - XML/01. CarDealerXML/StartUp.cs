@@ -2,6 +2,7 @@
 using CarDealer.DTOs.Export;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections;
 using System.Globalization;
 using System.IO;
@@ -52,10 +53,13 @@ namespace CarDealer
             //Print(GetLocalSuppliers(db));
 
             // 17. Export Cars with Their List of Parts
-            Print(GetCarsWithTheirListOfParts(db));
+            //Print(GetCarsWithTheirListOfParts(db));
 
+            // 18. Export Total Sales by Customer
+            Print(GetTotalSalesByCustomer(db));
+        
         }
-
+                            
         // 09. Import Suppliers
         public static string ImportSuppliers(CarDealerContext context, string inputXml)
         {
@@ -275,12 +279,42 @@ namespace CarDealer
             return ExportXml(top5CarsWithParts, "cars");
         }
 
+        // 18. Export Total Sales by Customer
+        public static string GetTotalSalesByCustomer(CarDealerContext context)
+        {
+            var tempCustomers = context.Customers
+                .AsNoTracking()
+                .Where(x => x.Sales.Any())
+                .Select(c => new
+                {
+                    FullName = c.Name,
+                    BoughtCars = c.Sales.Count(),
+                    SpentMoney = c.Sales.Select(s => new
+                    {
+                        Prices = Math.Round((double)s.Car.PartsCars.Sum(x => x.Part.Price) * (c.IsYoungDriver ? 0.95 : 1), 2)
+                    }).ToArray()
+                })
+                .ToArray();
+
+            ExportCustomersSalesInfo[] customersSalesInfoDtos = tempCustomers
+                .OrderByDescending(x => x.SpentMoney.Sum(s => s.Prices))
+                .Select(x => new ExportCustomersSalesInfo()
+            {
+                FullName = x.FullName,
+                BoughtCars = x.BoughtCars,
+                SpentMoney = x.SpentMoney.Sum(s => (decimal)s.Prices).ToString("f3")
+            }).ToArray();
+
+            return ExportXml(customersSalesInfoDtos, "customers");
+        }
+
         // Print method to print result
         public static void Print(string printText)
         {
             Console.WriteLine(printText);
         }
 
+        // Export dto to XML string
         public static string ExportXml<T>(T dtoArray, string xmlRootAttribute, bool ommitDeclaration = false)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(T), new XmlRootAttribute(xmlRootAttribute));
