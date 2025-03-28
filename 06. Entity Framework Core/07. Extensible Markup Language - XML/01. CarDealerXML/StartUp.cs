@@ -56,10 +56,13 @@ namespace CarDealer
             //Print(GetCarsWithTheirListOfParts(db));
 
             // 18. Export Total Sales by Customer
-            Print(GetTotalSalesByCustomer(db));
-        
+            //Print(GetTotalSalesByCustomer(db));
+
+            // 19. Export Sales with Applied Discount
+            Print(GetSalesWithAppliedDiscount(db));
+
         }
-                            
+
         // 09. Import Suppliers
         public static string ImportSuppliers(CarDealerContext context, string inputXml)
         {
@@ -206,6 +209,7 @@ namespace CarDealer
         public static string GetCarsWithDistance(CarDealerContext context)
         {
             ExportCarDto[] carsWithDistanceMore2M = context.Cars
+                .AsNoTracking()
                 .Where(x => x.TraveledDistance > 2000000)
                 .OrderBy(x => x.Make)
                 .ThenBy(x => x.Model)
@@ -224,6 +228,7 @@ namespace CarDealer
         public static string GetCarsFromMakeBmw(CarDealerContext context)
         {
             ExportCarMakeDto[] bmwCarDtos = context.Cars
+                .AsNoTracking()
                 .Where(x => x.Make.ToUpper() == "BMW")
                 .OrderBy(x => x.Model)
                 .ThenByDescending(x => x.TraveledDistance)
@@ -242,6 +247,7 @@ namespace CarDealer
         public static string GetLocalSuppliers(CarDealerContext context)
         {
             ExportSupplierNumberOfPartsDto[] localSupplierDtos = context.Suppliers
+                .AsNoTracking()
                 .Where(x => !x.IsImporter)
                 .Select(x => new ExportSupplierNumberOfPartsDto
                 {
@@ -258,6 +264,7 @@ namespace CarDealer
         public static string GetCarsWithTheirListOfParts(CarDealerContext context)
         {
             ExportCarWithPartsDto[] top5CarsWithParts = context.Cars
+                .AsNoTracking()
                 .OrderByDescending(x => x.TraveledDistance)
                 .ThenBy(x => x.Model)
                 .Take(5)
@@ -306,6 +313,29 @@ namespace CarDealer
             }).ToArray();
 
             return ExportXml(customersSalesInfoDtos, "customers");
+        }
+
+        // 19. Export Sales with Applied Discount
+        public static string GetSalesWithAppliedDiscount(CarDealerContext context)
+        {
+            ExportSalesDiscountDto[] SalesWithAppliedDiscount = context.Sales
+                .AsNoTracking()
+                .Select(x => new ExportSalesDiscountDto()
+                {
+                    Car = new CarDto
+                    {
+                        Make = x.Car.Make,
+                        Model = x.Car.Model,
+                        TraveledDistance = x.Car.TraveledDistance
+                    },
+                    Discount = (int)x.Discount,
+                    Customer = x.Customer.Name,
+                    Price = x.Car.PartsCars.Sum(x => x.Part.Price),
+                    DiscountPrice = Math.Round((double)(x.Car.PartsCars.Sum(p => p.Part.Price) * (1 - (x.Discount / 100))), 4)
+
+                }).ToArray();
+
+            return ExportXml(SalesWithAppliedDiscount, "sales");
         }
 
         // Print method to print result
