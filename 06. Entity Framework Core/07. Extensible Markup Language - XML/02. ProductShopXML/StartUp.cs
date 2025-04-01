@@ -19,8 +19,14 @@ namespace ProductShop
             //Console.WriteLine(ImportUsers(db, importFile));
 
             // 02. Import Products
-            importFile = File.ReadAllText("../../../Datasets/products.xml");
-            Console.WriteLine(ImportProducts(db, importFile));
+            //importFile = File.ReadAllText("../../../Datasets/products.xml");
+            //Console.WriteLine(ImportProducts(db, importFile));
+
+            // 3. Import Categories
+            importFile = File.ReadAllText("../../../Datasets/categories.xml");
+            Console.WriteLine(ImportCategories(db, importFile));
+
+
         }
 
         // 01. Import Users
@@ -66,6 +72,27 @@ namespace ProductShop
             context.SaveChanges();
 
             return $"Successfully imported {products.Count}";
+        }
+
+        // 3. Import Categories
+        public static string ImportCategories(ProductShopContext context, string inputXml)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportCategoryDto[]), new XmlRootAttribute("Categories"));
+
+            using var reader = new StringReader(inputXml);
+            ImportCategoryDto[] importCategoryDto = (ImportCategoryDto[])xmlSerializer.Deserialize(reader);
+
+            ICollection<Category> categories = importCategoryDto
+                .Where(x => x.Name != null)
+                .Select(x => new Category()
+                {
+                    Name = x.Name
+                }).ToList();
+
+            context.AddRange(categories);
+            context.SaveChanges();
+
+            return $"Successfully imported {categories.Count}";
         }
     }
 }
