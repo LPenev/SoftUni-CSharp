@@ -12,10 +12,15 @@ namespace ProductShop
         public static void Main()
         {
             var db = new ProductShopContext();
+            string importFile;
 
             // 01. Import Users
-            string importFile = File.ReadAllText("../../../Datasets/users.xml");
-            Console.WriteLine(ImportUsers(db, importFile));
+            //importFile = File.ReadAllText("../../../Datasets/users.xml");
+            //Console.WriteLine(ImportUsers(db, importFile));
+
+            // 02. Import Products
+            importFile = File.ReadAllText("../../../Datasets/products.xml");
+            Console.WriteLine(ImportProducts(db, importFile));
         }
 
         // 01. Import Users
@@ -39,5 +44,28 @@ namespace ProductShop
             return $"Successfully imported {users.Count}";
         }
 
+        // 02. Import Products
+        public static string ImportProducts(ProductShopContext context, string inputXml)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportProductDto[]), new XmlRootAttribute("Products"));
+
+            using var reader = new StringReader(inputXml);
+            ImportProductDto[] importProductDtos = (ImportProductDto[])xmlSerializer.Deserialize(reader);
+
+            ICollection<Product> products = importProductDtos
+                .Where(x => x.BuyerId > 0 && x.SellerId > 0)
+                .Select(x => new Product()
+                {
+                    Name = x.Name,
+                    Price = x.Price,
+                    SellerId = x.SellerId,
+                    BuyerId = x.BuyerId
+                }).ToList();
+
+            context.AddRange(products);
+            context.SaveChanges();
+
+            return $"Successfully imported {products.Count}";
+        }
     }
 }
