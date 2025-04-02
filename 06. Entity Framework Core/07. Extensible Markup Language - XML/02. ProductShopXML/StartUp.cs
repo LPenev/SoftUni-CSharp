@@ -3,6 +3,7 @@ using ProductShop.Data;
 using ProductShop.DTOs.Export;
 using ProductShop.DTOs.Import;
 using ProductShop.Models;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -35,7 +36,11 @@ namespace ProductShop
             //Console.WriteLine(ImportCategoryProducts(db, importFile));
 
             // 05. Export Products In Range
-            Console.WriteLine(GetProductsInRange(db));
+            //Console.WriteLine(GetProductsInRange(db));
+
+            // 06. Export Sold Products
+            Console.WriteLine(GetSoldProducts(db));
+
         }
 
         // 01. Import Users
@@ -150,6 +155,31 @@ namespace ProductShop
 
         }
 
+        // 06. Export Sold Products
+        public static string GetSoldProducts(ProductShopContext context)
+        {
+            ExportUserDto[] userDtos = context.Users
+                .Where(x => x.ProductsSold.Where(x=> x.BuyerId != null).Count() > 0)
+                .OrderBy(x => x.LastName)
+                .ThenBy(x => x.FirstName)
+                .Take(5)
+                .Select(x => new ExportUserDto()
+                {
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    SoldedProducts = x.ProductsSold
+                        .OrderBy(o => o.Price)
+                        .Select(s => new SoldProductDto()
+                        {
+                            Name = s.Name,
+                            Price = s.Price,
+                        }).ToArray()
+                }).ToArray();
+            string xmlRootAttribute = "Users";
+            return ExportXml(userDtos, xmlRootAttribute);
+        }
+
+        // Exort to XML
         public static string ExportXml<T>(T dtoArray, string xmlRootAttribute, bool ommitDeclaration = false)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(T), new XmlRootAttribute(xmlRootAttribute));
