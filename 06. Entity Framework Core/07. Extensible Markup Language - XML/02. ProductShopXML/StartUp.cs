@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProductShop.Data;
+using ProductShop.DTOs.Export;
 using ProductShop.DTOs.Import;
 using ProductShop.Models;
+using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace ProductShop
@@ -28,10 +31,11 @@ namespace ProductShop
             //Console.WriteLine(ImportCategories(db, importFile));
 
             // 04. Import Categories and Products
-            importFile = File.ReadAllText("../../../Datasets/categories-products.xml");
-            Console.WriteLine(ImportCategoryProducts(db, importFile));
+            //importFile = File.ReadAllText("../../../Datasets/categories-products.xml");
+            //Console.WriteLine(ImportCategoryProducts(db, importFile));
 
-
+            // 05. Export Products In Range
+            Console.WriteLine(GetProductsInRange(db));
         }
 
         // 01. Import Users
@@ -123,6 +127,46 @@ namespace ProductShop
             context.SaveChanges();
 
             return $"Successfully imported {categoryProducts.Count}";
+        }
+
+        // 05. Export Products In Range
+        public static string GetProductsInRange(ProductShopContext context)
+        {
+            ExportProductDto[] products = context.Products
+                .AsNoTracking()
+                .Where(x => x.Price >= 500 && x.Price <= 1000)
+                .OrderBy(x => x.Price)
+                .Take(10)
+                .Select(x => new ExportProductDto()
+                {
+                    Name = x.Name,
+                    Price = x.Price,
+                    BuyerName = $"{x.Buyer.FirstName } {x.Buyer.LastName}",
+                }).ToArray();
+            
+            string xmlRootAttribute = "Products";
+
+            return ExportXml(products, xmlRootAttribute);
+
+        }
+
+        public static string ExportXml<T>(T dtoArray, string xmlRootAttribute, bool ommitDeclaration = false)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T), new XmlRootAttribute(xmlRootAttribute));
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = ommitDeclaration,
+                Indent = true
+            };
+
+            StringBuilder sb = new StringBuilder();
+
+            using XmlWriter xmlWriter = XmlWriter.Create(sb, settings);
+
+            XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
+            xmlSerializerNamespaces.Add(string.Empty, string.Empty);
+            xmlSerializer.Serialize( xmlWriter, dtoArray, xmlSerializerNamespaces);
+            return sb.ToString();
         }
     }
 }
