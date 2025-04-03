@@ -32,8 +32,8 @@ namespace ProductShop
             //Console.WriteLine(ImportCategories(db, importFile));
 
             // 04. Import Categories and Products
-            importFile = File.ReadAllText("../../../Datasets/categories-products.xml");
-            Console.WriteLine(ImportCategoryProducts(db, importFile));
+            //importFile = File.ReadAllText("../../../Datasets/categories-products.xml");
+            //Console.WriteLine(ImportCategoryProducts(db, importFile));
 
             // 05. Export Products In Range
             //Console.WriteLine(GetProductsInRange(db));
@@ -42,7 +42,7 @@ namespace ProductShop
             // Console.WriteLine(GetSoldProducts(db));
 
             // 07. Export Categories By Products Count
-            //Console.WriteLine(GetCategoriesByProductsCount(db));
+            Console.WriteLine(GetCategoriesByProductsCount(db));
 
         }
 
@@ -162,6 +162,7 @@ namespace ProductShop
         public static string GetSoldProducts(ProductShopContext context)
         {
             ExportUserDto[] userDtos = context.Users
+                .AsNoTracking()
                 .Where(x => x.ProductsSold.Where(x=> x.BuyerId != null).Count() > 0)
                 .OrderBy(x => x.LastName)
                 .ThenBy(x => x.FirstName)
@@ -186,13 +187,16 @@ namespace ProductShop
         public static string GetCategoriesByProductsCount(ProductShopContext context)
         {
             var categoriesByProductsCount = context.Categories
+                .AsNoTracking()
                 .Select(x => new ExportCategoriesByProductDto
                 {
                     Name = x.Name,
-                    Count = 1,
-                    AveragePrice = 0,
-                    TotalRevenue = 0
+                    Count = x.CategoryProducts.Count,
+                    AveragePrice = x.CategoryProducts.Select(p => p.Product.Price).Average(),
+                    TotalRevenue = x.CategoryProducts.Select(p => p.Product.Price).Sum()
                 })
+                .OrderByDescending(x => x.Count)
+                .ThenBy(x => x.TotalRevenue)
                 .ToArray();
 
             var xmlRootAttribute = "Categories";
