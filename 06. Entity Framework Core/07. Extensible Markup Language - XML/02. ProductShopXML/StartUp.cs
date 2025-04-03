@@ -32,14 +32,17 @@ namespace ProductShop
             //Console.WriteLine(ImportCategories(db, importFile));
 
             // 04. Import Categories and Products
-            //importFile = File.ReadAllText("../../../Datasets/categories-products.xml");
-            //Console.WriteLine(ImportCategoryProducts(db, importFile));
+            importFile = File.ReadAllText("../../../Datasets/categories-products.xml");
+            Console.WriteLine(ImportCategoryProducts(db, importFile));
 
             // 05. Export Products In Range
             //Console.WriteLine(GetProductsInRange(db));
 
             // 06. Export Sold Products
-            Console.WriteLine(GetSoldProducts(db));
+            // Console.WriteLine(GetSoldProducts(db));
+
+            // 07. Export Categories By Products Count
+            //Console.WriteLine(GetCategoriesByProductsCount(db));
 
         }
 
@@ -112,7 +115,7 @@ namespace ProductShop
         // 04. Import Categories and Products
         public static string ImportCategoryProducts(ProductShopContext context, string inputXml)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportProductDto[]), new XmlRootAttribute("CategoryProducts"));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportCategoryProductDto[]), new XmlRootAttribute("CategoryProducts"));
 
             using var reader = new StringReader(inputXml);
             ImportCategoryProductDto[] categoryProductDtos = (ImportCategoryProductDto[])xmlSerializer.Deserialize(reader);
@@ -128,7 +131,7 @@ namespace ProductShop
                     ProductId = x.ProductId
                 }).ToList();
 
-            context.AddRange();
+            context.AddRange(categoryProducts);
             context.SaveChanges();
 
             return $"Successfully imported {categoryProducts.Count}";
@@ -177,6 +180,23 @@ namespace ProductShop
                 }).ToArray();
             string xmlRootAttribute = "Users";
             return ExportXml(userDtos, xmlRootAttribute);
+        }
+
+        // 07. Export Categories By Products Count
+        public static string GetCategoriesByProductsCount(ProductShopContext context)
+        {
+            var categoriesByProductsCount = context.Categories
+                .Select(x => new ExportCategoriesByProductDto
+                {
+                    Name = x.Name,
+                    Count = 1,
+                    AveragePrice = 0,
+                    TotalRevenue = 0
+                })
+                .ToArray();
+
+            var xmlRootAttribute = "Categories";
+            return ExportXml(categoriesByProductsCount, xmlRootAttribute);
         }
 
         // Exort to XML

@@ -5,9 +5,9 @@ namespace ProductShop.DTOs.Import;
 [XmlType("CategoryProduct")]
 public class ImportCategoryProductDto
 {
-    [XmlElement("categoryId")]
+    [XmlElement("CategoryId")]
     public int CategoryId { get; set; }
 
-    [XmlElement("productId")]
+    [XmlElement("ProductId")]
     public int ProductId { get; set; }
 }
