@@ -5,9 +5,9 @@ namespace ProductShop.DTOs.Export;
 [XmlType("Product")]
 public class SoldProductDto
 {
-    [XmlAttribute("name")]
+    [XmlElement("name")]
     public string Name { get; set; }
 
-    [XmlAttribute("price")]
+    [XmlElement("price")]
     public decimal Price { get; set; }
 }

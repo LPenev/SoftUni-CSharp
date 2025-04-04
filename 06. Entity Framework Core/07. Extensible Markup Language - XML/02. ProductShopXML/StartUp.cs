@@ -3,7 +3,6 @@ using ProductShop.Data;
 using ProductShop.DTOs.Export;
 using ProductShop.DTOs.Import;
 using ProductShop.Models;
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -42,14 +41,17 @@ namespace ProductShop
             // Console.WriteLine(GetSoldProducts(db));
 
             // 07. Export Categories By Products Count
-            Console.WriteLine(GetCategoriesByProductsCount(db));
+            //Console.WriteLine(GetCategoriesByProductsCount(db));
+
+            // 08. Export Users and Products
+            Console.WriteLine(GetUsersWithProducts(db));
 
         }
 
         // 01. Import Users
         public static string ImportUsers(ProductShopContext context, string inputXml)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportUserDto[]),new XmlRootAttribute("Users"));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportUserDto[]), new XmlRootAttribute("Users"));
 
             using var reader = new StringReader(inputXml);
             ImportUserDto[] userDtos = (ImportUserDto[])xmlSerializer.Deserialize(reader);
@@ -149,9 +151,9 @@ namespace ProductShop
                 {
                     Name = x.Name,
                     Price = x.Price,
-                    BuyerName = $"{x.Buyer.FirstName } {x.Buyer.LastName}",
+                    BuyerName = $"{x.Buyer.FirstName} {x.Buyer.LastName}",
                 }).ToArray();
-            
+
             string xmlRootAttribute = "Products";
 
             return ExportXml(products, xmlRootAttribute);
@@ -163,7 +165,7 @@ namespace ProductShop
         {
             ExportUserDto[] userDtos = context.Users
                 .AsNoTracking()
-                .Where(x => x.ProductsSold.Where(x=> x.BuyerId != null).Count() > 0)
+                .Where(x => x.ProductsSold.Where(x => x.BuyerId != null).Count() > 0)
                 .OrderBy(x => x.LastName)
                 .ThenBy(x => x.FirstName)
                 .Take(5)
@@ -203,6 +205,45 @@ namespace ProductShop
             return ExportXml(categoriesByProductsCount, xmlRootAttribute);
         }
 
+        // 08. Export Users and Products
+        public static string GetUsersWithProducts(ProductShopContext context)
+        {
+            var usersWithSoldedProducts = context.Users
+                .AsNoTracking()
+                .Where(x => x.ProductsSold.Any(p => p.Buyer != null))
+                .Select(x => new UsersWithAgeAndSoldProductsDto
+                {
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Age = x.Age,
+                    SoldProducts = new SoldProductsWrapperDto
+                    {
+                        Count = x.ProductsSold.Count,
+                        Products = x.ProductsSold
+                        .Where(x => x.BuyerId != null)
+                        .OrderByDescending(x => x.Price)
+                        .Select(p => new ExportProductNameAndPriceDto
+                        {
+                            Name = p.Name,
+                            Price = p.Price
+                        })
+                        .ToArray()
+                    }
+
+                })
+                .OrderByDescending(x => x.SoldProducts.Count)
+                .ToArray();
+            
+            var result = new ExportCountUserWithSoldProductsDto
+            {
+                Count = usersWithSoldedProducts.Count(),
+                Users = usersWithSoldedProducts.Take(10).ToArray(),
+            };
+
+            var xmlRootAttribute = "users";
+            return ExportXml(result, xmlRootAttribute);
+        }
+
         // Exort to XML
         public static string ExportXml<T>(T dtoArray, string xmlRootAttribute, bool ommitDeclaration = false)
         {
@@ -219,7 +260,7 @@ namespace ProductShop
 
             XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
             xmlSerializerNamespaces.Add(string.Empty, string.Empty);
-            xmlSerializer.Serialize( xmlWriter, dtoArray, xmlSerializerNamespaces);
+            xmlSerializer.Serialize(xmlWriter, dtoArray, xmlSerializerNamespaces);
             return sb.ToString();
         }
     }
