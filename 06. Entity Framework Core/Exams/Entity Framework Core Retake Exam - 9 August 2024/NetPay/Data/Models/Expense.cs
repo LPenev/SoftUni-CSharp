@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using NetPay.Common;
 using NetPay.Data.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,10 +11,14 @@ public class Expense
     [Key]
     public int Id { get; set; }
 
-    [Required,MinLength(5),MaxLength(50)]
+    [Required]
+    [MinLength(ValidationConstants.ExpenceNameMinLength)]
+    [MaxLength(ValidationConstants.ExpenceNameMaxLength)]
     public string ExpenseName {  get; set; }
 
-    [Column(TypeName = "decimal(18,2)"), Required]
+    [Required]
+    [Range(typeof(decimal), ValidationConstants.MinAmount, ValidationConstants.MaxAmount)]
+    [Column(TypeName = "decimal(18,2)")]
     public decimal Amount { get; set; }
 
     [Required]
@@ -22,7 +27,8 @@ public class Expense
     [Required]
     public PaymentStatus PaymentStatus { get; set; }
 
-    [ForeignKey(nameof(Household)), Required]
+    [Required]
+    [ForeignKey(nameof(Household))]
     public int HouseholdId { get; set; }
     public Household Household { get; set; }
 

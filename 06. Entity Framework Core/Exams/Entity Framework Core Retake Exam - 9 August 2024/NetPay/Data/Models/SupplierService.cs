@@ -6,12 +6,12 @@ namespace NetPay.Data.Models;
 public class SupplierService
 {
     [Key]
-    [ForeignKey(nameof(SupplierId))]
+    [ForeignKey(nameof(Supplier))]
     public int SupplierId { get; set; }
     public Supplier Supplier { get; set; }
 
     [Key]
-    [ForeignKey(nameof(ServiceId))]
+    [ForeignKey(nameof(Service))]
     public int ServiceId { get; set; }
     public Service Service { get; set; }
 }

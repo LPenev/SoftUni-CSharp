@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NetPay.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace NetPay.Data.Models;
 
@@ -13,7 +14,9 @@ public class Service
     [Key]
     public int Id { get; set; }
 
-    [Required, MinLength(5),MaxLength(30)]
+    [Required]
+    [MinLength(ValidationConstants.ServiceNameMinLength)]
+    [MaxLength(ValidationConstants.SupplierNameMaxLength)]
     public string ServiceName { get; set; }
 
     public virtual ICollection<Expense> Expenses { get; set; }
