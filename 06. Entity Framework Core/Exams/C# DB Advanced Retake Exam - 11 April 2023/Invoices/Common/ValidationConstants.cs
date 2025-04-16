@@ -22,11 +22,11 @@ public class ValidationConstants
 
 
     // Invoice
-    public const int InvoiceMinNumber = 1000000000;
-    public const int InvoiceMaxNumber = 1500000000;
+    public const string InvoiceMinNumber = "1000000000";
+    public const string InvoiceMaxNumber = "1500000000";
 
 
-    // Clienet
+    // Client
     public const int ClientNameMinLenght = 10;
     public const int ClientNameMaxLenght = 25;
     public const int ClientNumberVatMinLenght = 10;

@@ -1,4 +1,5 @@
-﻿using Invoices.Data.Models.Enums;
+﻿using Invoices.Common;
+using Invoices.Data.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,6 +10,7 @@ public class Invoice
     [Key]
     public int Id { get; set; }
     [Required]
+    [Range(typeof(decimal), ValidationConstants.InvoiceMinNumber, ValidationConstants.InvoiceMinNumber)]
     public int Number { get; set; }
     [Required]
     public DateTime IssueDate { get; set; }
