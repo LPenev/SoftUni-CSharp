@@ -9,24 +9,21 @@ public class Address
     [Key]
     public int Id { get; set; }
     [Required]
-    [MinLength(ValidationConstants.AddressStreetNameMinLenght)]
     [MaxLength(ValidationConstants.AddressStreetNameMaxLenght)]
-    public string StreetName { get; set; }
+    public string StreetName { get; set; } = null!;
     [Required]
     public int StreetNumber { get; set; }
     [Required]
-    public String PostCode { get; set; }
+    public String PostCode { get; set; } = null!;
     [Required]
-    [MinLength(ValidationConstants.AddressCityMinLenght)]
     [MaxLength(ValidationConstants.AddressCityMaxLenght)]
-    public string City { get; set; }
+    public string City { get; set; } = null!;
     [Required]
-    [MinLength(ValidationConstants.AddressCountryMinLenght)]
     [MaxLength(ValidationConstants.AddressCountryMaxLenght)]
-    public string Country { get; set; }
+    public string Country { get; set; } = null!;
 
     [ForeignKey(nameof(Client))]
     [Required]
     public int ClientId { get; set; }
-    public Client Client { get; set; }
+    public Client Client { get; set; } = null!;
 }

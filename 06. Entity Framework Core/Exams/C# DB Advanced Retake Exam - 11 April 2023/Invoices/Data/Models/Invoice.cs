@@ -24,6 +24,6 @@ public class Invoice
     [Required]
     [ForeignKey(nameof(Client))]
     public int ClientId { get; set; }
-    public Client Client { get; set; }
+    public Client Client { get; set; } = null!;
 
 }

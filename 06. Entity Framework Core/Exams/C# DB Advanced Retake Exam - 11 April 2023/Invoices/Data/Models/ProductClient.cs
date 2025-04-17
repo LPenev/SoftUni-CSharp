@@ -8,10 +8,10 @@ public class ProductClient
     [Key]
     [ForeignKey(nameof(Product))]
     public int ProductId { get; set; }
-    public Product Product { get; set; }
+    public Product Product { get; set; } = null!;
 
     [Key]
     [ForeignKey(nameof(Client))]
     public int ClientId { get; set; }
-    public Client Client { get; set; }
+    public Client Client { get; set; } = null!;
 }

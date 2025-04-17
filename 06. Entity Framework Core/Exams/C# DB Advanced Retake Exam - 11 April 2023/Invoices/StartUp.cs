@@ -18,10 +18,10 @@ namespace Invoices
 
             //ExportEntities(context, projectDir + @"ExportResults/");
 
-            using (var transaction = context.Database.BeginTransaction())
-            {
-                transaction.Rollback();
-            }
+            //using (var transaction = context.Database.BeginTransaction())
+            //{
+            //    transaction.Rollback();
+            //}
         }
 
         private static void ImportEntities(InvoicesContext context, string baseDir, string exportDir)

@@ -6,15 +6,9 @@ namespace Invoices.Data.Models;
 
 public class Product
 {
-    public Product()
-    {
-        this.ProductClients = new HashSet<ProductClient>();
-    }
-
     [Key]
     public int Id { get; set; }
     [Required]
-    [MinLength(ValidationConstants.ProductNameMinLenght)]
     [MaxLength(ValidationConstants.ProcuctNameMaxLenght)]
     public string Name { get; set; }
     [Required]
@@ -23,5 +17,5 @@ public class Product
     [Required]
     public CategoryType CategoryType { get; set; }
 
-    public ICollection<ProductClient> ProductClients { get; set; }
+    public ICollection<ProductClient> ProductClients { get; set; } = new HashSet<ProductClient>();
 }
