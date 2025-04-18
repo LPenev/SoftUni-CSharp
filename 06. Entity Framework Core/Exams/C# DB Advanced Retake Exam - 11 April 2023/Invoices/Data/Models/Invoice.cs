@@ -9,10 +9,7 @@ public class Invoice
 {
     [Key]
     public int Id { get; set; }
-    [Required]
-    [Range(typeof(decimal), ValidationConstants.InvoiceMinNumber, ValidationConstants.InvoiceMinNumber)]
     public int Number { get; set; }
-    [Required]
     public DateTime IssueDate { get; set; }
     [Required]
     public DateTime DueDate { get; set; }
@@ -24,6 +21,6 @@ public class Invoice
     [Required]
     [ForeignKey(nameof(Client))]
     public int ClientId { get; set; }
-    public Client Client { get; set; } = null!;
+    public virtual Client Client { get; set; } = null!;
 
 }

@@ -11,7 +11,6 @@ public class Address
     [Required]
     [MaxLength(ValidationConstants.AddressStreetNameMaxLenght)]
     public string StreetName { get; set; } = null!;
-    [Required]
     public int StreetNumber { get; set; }
     [Required]
     public String PostCode { get; set; } = null!;
@@ -25,5 +24,5 @@ public class Address
     [ForeignKey(nameof(Client))]
     [Required]
     public int ClientId { get; set; }
-    public Client Client { get; set; } = null!;
+    public virtual Client Client { get; set; } = null!;
 }

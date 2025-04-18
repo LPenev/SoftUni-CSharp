@@ -9,14 +9,14 @@ public class Client
     public int Id { get; set; }
     [Required]
     [MaxLength(ValidationConstants.ClientNameMaxLenght)]
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     [Required]
     [MaxLength(ValidationConstants.ClientNumberVatMaxLenght)]
-    public string NumberVat {  get; set; }
+    public string NumberVat { get; set; } = null!;
 
-    public ICollection<Invoice> Invoices { get; set; } = new HashSet<Invoice>();
-    public ICollection<Address> Addresses { get; set; } = new HashSet<Address>();
-    public ICollection<ProductClient> ProductClients { get; set; } = new HashSet<ProductClient>();
+    public virtual ICollection<Address> Addresses { get; set; } = new HashSet<Address>();
+    public virtual ICollection<Invoice> Invoices { get; set; } = new HashSet<Invoice>();
+    public virtual ICollection<ProductClient> ProductsClients { get; set; } = new HashSet<ProductClient>();
 
 }

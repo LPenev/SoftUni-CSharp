@@ -1,6 +1,5 @@
 ﻿using Invoices.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Invoices.Data
 {
@@ -18,8 +17,8 @@ namespace Invoices.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<Address> Addresss { get; set; }
-        public DbSet<ProductClient> ProductClients { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<ProductClient> ProductsClients { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,13 +26,14 @@ namespace Invoices.Data
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
+                    .UseLazyLoadingProxies()
                     .UseSqlServer(Configuration.ConnectionString);
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProductClient>(pc => 
+            modelBuilder.Entity<ProductClient>(pc =>
             {
                 pc.HasKey(x => new { x.ProductId, x.ClientId });
             });

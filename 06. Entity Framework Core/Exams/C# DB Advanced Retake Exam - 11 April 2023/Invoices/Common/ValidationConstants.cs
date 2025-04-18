@@ -1,6 +1,6 @@
 ﻿namespace Invoices.Common;
 
-public class ValidationConstants
+public static class ValidationConstants
 {
     // Product
     public const int ProductNameMinLenght = 9;
@@ -18,12 +18,12 @@ public class ValidationConstants
     public const int AddressCityMaxLenght = 15;
 
     public const int AddressCountryMinLenght = 5;
-    public const int AddressCountryMaxLenght = 5;
+    public const int AddressCountryMaxLenght = 15;
 
 
     // Invoice
-    public const string InvoiceMinNumber = "1000000000";
-    public const string InvoiceMaxNumber = "1500000000";
+    public const string InvoiceMinNumber = "1_000_000_000";
+    public const string InvoiceMaxNumber = "1_500_000_000";
 
 
     // Client
