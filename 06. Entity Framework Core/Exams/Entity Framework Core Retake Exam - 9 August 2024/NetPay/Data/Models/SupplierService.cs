@@ -8,10 +8,10 @@ public class SupplierService
     [Key]
     [ForeignKey(nameof(Supplier))]
     public int SupplierId { get; set; }
-    public Supplier Supplier { get; set; }
+    public Supplier Supplier { get; set; } = null!;
 
     [Key]
     [ForeignKey(nameof(Service))]
     public int ServiceId { get; set; }
-    public Service Service { get; set; }
+    public Service Service { get; set; } = null!;
 }

@@ -12,28 +12,21 @@ public class Expense
     public int Id { get; set; }
 
     [Required]
-    [MinLength(ValidationConstants.ExpenceNameMinLength)]
     [MaxLength(ValidationConstants.ExpenceNameMaxLength)]
     public string ExpenseName {  get; set; }
 
-    [Required]
-    [Range(typeof(decimal), ValidationConstants.MinAmount, ValidationConstants.MaxAmount)]
-    [Column(TypeName = "decimal(18,2)")]
     public decimal Amount { get; set; }
 
-    [Required]
     public DateTime DueDate { get; set; }
 
     [Required]
     public PaymentStatus PaymentStatus { get; set; }
 
-    [Required]
     [ForeignKey(nameof(Household))]
     public int HouseholdId { get; set; }
-    public Household Household { get; set; }
+    public Household Household { get; set; } = null!;
 
-    [Required]
     [ForeignKey(nameof(Service))]
     public int ServiceId { get; set; }
-    public Service Service { get; set; }
+    public Service Service { get; set; } = null!;
 }

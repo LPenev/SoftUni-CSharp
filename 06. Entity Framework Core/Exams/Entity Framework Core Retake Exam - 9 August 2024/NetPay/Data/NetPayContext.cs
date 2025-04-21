@@ -5,8 +5,6 @@ namespace NetPay.Data
 {
     public class NetPayContext : DbContext
     {
-        private const string connectionString = @"Server=localhost;Database=NetPay;User=demo;Password=Demo1234";
-
         public NetPayContext()
         {
             
@@ -18,17 +16,17 @@ namespace NetPay.Data
             
         }
 
-        public DbSet<Household> households { get; set; }
-        public DbSet<Expense> expenses { get; set; }
-        public DbSet<Service> services { get; set; }
-        public DbSet<Supplier> suppliers { get; set; }
-        public DbSet<SupplierService> suppliersService { get; set; }
+        public DbSet<Household> Households { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<SupplierService> SuppliersServices { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if(!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(connectionString);
+                optionsBuilder.UseSqlServer(Configuration.ConnectionString);
             }
         }
 
