@@ -14,7 +14,10 @@ public class BoardgamesContext : DbContext
     {
     }
 
-
+    public DbSet<Boardgame> Boardgames { get; set; }
+    public DbSet<Seller> Sellers { get; set; }
+    public DbSet<Creator> Creators { get; set; }
+    public DbSet<BoardgameSeller> BoardgamesSellers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -27,6 +30,9 @@ public class BoardgamesContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-     
+        modelBuilder.Entity<BoardgameSeller>(bg => 
+        {
+            bg.HasKey(x => new { x.BoardgameId, x.SellerId });
+        });
     }
 }
