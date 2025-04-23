@@ -1,5 +1,4 @@
-﻿using Invoices.Common;
-using Invoices.Data.Models.Enums;
+﻿using Invoices.Data.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

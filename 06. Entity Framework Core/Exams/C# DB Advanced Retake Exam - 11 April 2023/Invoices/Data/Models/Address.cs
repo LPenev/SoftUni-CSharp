@@ -1,4 +1,4 @@
-﻿using Invoices.Common;
+﻿using static Invoices.Common.ValidationConstants;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,16 +9,16 @@ public class Address
     [Key]
     public int Id { get; set; }
     [Required]
-    [MaxLength(ValidationConstants.AddressStreetNameMaxLenght)]
+    [MaxLength(AddressStreetNameMaxLenght)]
     public string StreetName { get; set; } = null!;
     public int StreetNumber { get; set; }
     [Required]
     public String PostCode { get; set; } = null!;
     [Required]
-    [MaxLength(ValidationConstants.AddressCityMaxLenght)]
+    [MaxLength(AddressCityMaxLenght)]
     public string City { get; set; } = null!;
     [Required]
-    [MaxLength(ValidationConstants.AddressCountryMaxLenght)]
+    [MaxLength(AddressCountryMaxLenght)]
     public string Country { get; set; } = null!;
 
     [ForeignKey(nameof(Client))]

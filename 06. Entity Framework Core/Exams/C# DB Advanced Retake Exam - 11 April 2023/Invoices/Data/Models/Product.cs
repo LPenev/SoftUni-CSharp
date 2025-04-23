@@ -1,6 +1,6 @@
-﻿using Invoices.Common;
-using Invoices.Data.Models.Enums;
+﻿using Invoices.Data.Models.Enums;
 using System.ComponentModel.DataAnnotations;
+using static Invoices.Common.ValidationConstants;
 
 namespace Invoices.Data.Models;
 
@@ -9,7 +9,7 @@ public class Product
     [Key]
     public int Id { get; set; }
     [Required]
-    [MaxLength(ValidationConstants.ProcuctNameMaxLenght)]
+    [MaxLength(ProcuctNameMaxLenght)]
     public string Name { get; set; } = null!;
     public decimal Price { get; set; }
     [Required]
