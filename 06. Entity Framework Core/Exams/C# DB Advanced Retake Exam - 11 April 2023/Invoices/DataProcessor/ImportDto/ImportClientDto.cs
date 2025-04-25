@@ -8,14 +8,16 @@ namespace Invoices.DataProcessor.ImportDto;
 [XmlType(nameof(Client))]
 public class ImportClientDto
 {
+    [XmlElement(nameof(Name))]
     [Required]
     [MinLength(ClientNameMinLenght)]
     [MaxLength(ClientNameMaxLenght)]
-    [XmlElement(nameof(Name))]
     public string Name { get; set; } = null!;
 
-    [Required]
     [XmlElement(nameof(NumberVat))]
+    [Required]
+    [MinLength(ClientNumberVatMinLenght)]
+    [MaxLength(ClientNumberVatMaxLenght)]
     public string NumberVat { get; set; } = null!;
 
     [XmlArray(nameof(Addresses))]

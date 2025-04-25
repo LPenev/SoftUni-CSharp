@@ -1,7 +1,11 @@
 ﻿namespace Invoices.DataProcessor
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Text;
     using Invoices.Data;
+    using Invoices.Data.Models;
+    using Invoices.DataProcessor.ImportDto;
+    using Invoices.Utilities;
 
     public class Deserializer
     {
@@ -19,7 +23,58 @@
 
         public static string ImportClients(InvoicesContext context, string xmlString)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            const string XmlRoot = "Clients";
+            ImportClientDto[] deserializedClients = XmlHelper.Deserialize<ImportClientDto[]>(xmlString, XmlRoot);
+
+            ICollection<Client> clientsToImport = new List<Client>();
+
+            foreach (ImportClientDto clientDto in deserializedClients)
+            {
+                if (!IsValid(clientDto))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                ICollection<Address> addressesToImport = new List<Address>();
+
+                foreach (ImportAddressDto addressDto in clientDto.Addresses)
+                {
+                    if (!IsValid(addressDto))
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+                    Address address = new Address()
+                    {
+                        StreetName = addressDto.StreetName,
+                        StreetNumber = addressDto.StreetNumber,
+                        PostCode = addressDto.PostCode,
+                        City = addressDto.City,
+                        Country = addressDto.Country,
+                    };
+
+                    addressesToImport.Add(address);
+                }
+
+                Client newClient = new Client()
+                {
+                    Name = clientDto.Name,
+                    NumberVat = clientDto.NumberVat,
+                    Addresses = addressesToImport,
+                };
+
+                clientsToImport.Add(newClient);
+                sb.AppendLine(String.Format(SuccessfullyImportedClients,clientDto.Name));
+            }
+
+            context.Clients.AddRange(clientsToImport);
+
+            context.SaveChanges();
+
+            return sb.ToString();
         }
 
 
