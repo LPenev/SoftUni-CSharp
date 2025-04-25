@@ -22,8 +22,8 @@ public static class ValidationConstants
 
 
     // Invoice
-    public const string InvoiceMinNumber = "1_000_000_000";
-    public const string InvoiceMaxNumber = "1_500_000_000";
+    public const int InvoiceMinNumber = 1_000_000_000;
+    public const int InvoiceMaxNumber = 1_500_000_000;
 
 
     // Client
