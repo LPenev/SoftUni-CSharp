@@ -12,6 +12,8 @@ public class ImportInvoiceDto
     [Required]
     public string DueDate { get; set; } = null!;
     public decimal Amount { get; set; }
+    
+    [Range(InvoiceMinCurrencyType, InvoiceMaxCurrencyType)]
     public int CurrencyType { get; set; }
     public int ClientId { get; set; }
 }

@@ -1,4 +1,6 @@
-﻿namespace Invoices.Common;
+﻿using Invoices.Data.Models.Enums;
+
+namespace Invoices.Common;
 
 public static class ValidationConstants
 {
@@ -24,6 +26,9 @@ public static class ValidationConstants
     // Invoice
     public const int InvoiceMinNumber = 1_000_000_000;
     public const int InvoiceMaxNumber = 1_500_000_000;
+    public const int InvoiceMinCurrencyType = (int)CurrencyType.BGN;
+    public const int InvoiceMaxCurrencyType = (int)CurrencyType.USD;
+
 
 
     // Client
