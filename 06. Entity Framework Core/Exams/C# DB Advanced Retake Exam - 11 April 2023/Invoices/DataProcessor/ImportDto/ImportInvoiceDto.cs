@@ -8,9 +8,9 @@ public class ImportInvoiceDto
     [Range(InvoiceMinNumber, InvoiceMaxNumber)]
     public int Number { get; set; }
     [Required]
-    public string IssueDate { get; set; }
+    public string IssueDate { get; set; } = null!;
     [Required]
-    public string DueDate { get; set; }
+    public string DueDate { get; set; } = null!;
     public decimal Amount { get; set; }
     public int CurrencyType { get; set; }
     public int ClientId { get; set; }
