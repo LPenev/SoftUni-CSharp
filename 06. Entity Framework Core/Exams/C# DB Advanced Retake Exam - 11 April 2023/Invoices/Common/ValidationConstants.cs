@@ -6,10 +6,13 @@ public static class ValidationConstants
 {
     // Product
     public const int ProductNameMinLenght = 9;
-    public const int ProcuctNameMaxLenght = 30;
+    public const int ProductNameMaxLenght = 30;
 
     public const string ProductPriceMinValue = "5";
     public const string ProductPriceMaxValue = "1000";
+
+    public const int ProductCategoryTypeMinValue = (int)CategoryType.ADR;
+    public const int ProductCategoryTypeMaxValue = (int)CategoryType.Tyres;
 
 
     //Address

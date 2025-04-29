@@ -3,7 +3,6 @@
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
     using System.Text;
-    using AutoMapper.Execution;
     using Invoices.Data;
     using Invoices.Data.Models;
     using Invoices.Data.Models.Enums;
@@ -85,7 +84,7 @@
         {
             StringBuilder sb = new StringBuilder();
 
-            ImportInvoiceDto[] deserializedInvoices =
+            ImportInvoiceDto[]? deserializedInvoices =
                 JsonConvert.DeserializeObject<ImportInvoiceDto[]>(jsonString);
 
             ICollection<Invoice> invoices = new List<Invoice>();
@@ -105,9 +104,8 @@
 
                 bool isDueDateBigIssueDate = DateTime.Compare(dueDate, issueDate) < 0;
 
-                bool isClientExsist = !context.Clients.Select(x => x.Id).Any(id => id == invoiceDto.ClientId);
-
-                if (invoiceDto.Amount <=0 || !isIssueDateValid || !isDueDateValid || isDueDateBigIssueDate || isClientExsist)
+                if (invoiceDto.Amount <=0 || !isIssueDateValid || !isDueDateValid ||
+                    isDueDateBigIssueDate || !isClientExsist(context, invoiceDto.ClientId))
                 {
                     sb.AppendLine(ErrorMessage);
                     continue;
@@ -135,9 +133,56 @@
 
         public static string ImportProducts(InvoicesContext context, string jsonString)
         {
+            StringBuilder sb = new StringBuilder();
+            
+            ImportProductDto[]? deserializedProducts =
+                JsonConvert.DeserializeObject<ImportProductDto[]>(jsonString);
 
+            ICollection<Product> productsToImport = new HashSet<Product>();
 
-            throw new NotImplementedException();
+            foreach (ImportProductDto productDto in deserializedProducts)
+            {
+                if (!IsValid(productDto))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                Product newProduct = new Product()
+                {
+                    Name = productDto.Name,
+                    Price = productDto.Price,
+                    CategoryType = (CategoryType)productDto.CategoryType,
+                };
+
+                ICollection<ProductClient> productClientsToImport = new HashSet<ProductClient>();
+
+                foreach (int clientId in productDto.Clients.Distinct())
+                {
+                    if(!isClientExsist(context, clientId))
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+                    ProductClient newProductClient = new ProductClient() 
+                    {
+                        Product = newProduct,
+                        ClientId = clientId 
+                    };
+
+                    productClientsToImport.Add(newProductClient);
+                }
+
+                newProduct.ProductsClients = productClientsToImport;
+                productsToImport.Add(newProduct);
+                sb.AppendLine(String.Format(SuccessfullyImportedProducts, productDto.Name, productClientsToImport.Count));
+            }
+
+            context.Products.AddRange(productsToImport);
+            context.SaveChanges();
+
+            return sb.ToString();
         }
 
         public static bool IsValid(object dto)
@@ -147,5 +192,11 @@
 
             return Validator.TryValidateObject(dto, validationContext, validationResult, true);
         }
+
+        public static bool isClientExsist(InvoicesContext context , int clientId)
+        {
+            return context.Clients.Select(x => x.Id).Any(id => id == clientId);
+        }
+
     } 
 }
