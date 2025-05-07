@@ -1,4 +1,6 @@
-﻿namespace Boardgames.Common;
+﻿using Boardgames.Data.Models.Enums;
+
+namespace Boardgames.Common;
 
 public static class ValidationConstants
 {
@@ -9,6 +11,9 @@ public static class ValidationConstants
     public const double BoardgameRatingMaxLenght = 10;
     public const int BoardgameYearPublishedMin = 2018;
     public const int BoardgameYearPublishedMax = 2023;
+    public const int BoardgameCategoryTypeMin = (int)CategoryType.Abstract;
+    public const int BoardgameCategoryTypeMax = (int)CategoryType.Strategy;
+
 
     // Seller
     public const int SellerNameMinLenght = 5;
