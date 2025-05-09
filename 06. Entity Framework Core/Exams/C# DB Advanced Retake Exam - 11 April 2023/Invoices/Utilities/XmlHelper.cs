@@ -19,7 +19,7 @@ public static class XmlHelper
         return result;
     }
 
-    public static string Serialize<T>(T obj, string rootName)
+    public static string Serialize<T>(T obj, string rootName, bool emptyNamespace = true)
     {
         if (obj == null)
             throw new ArgumentNullException(nameof(obj), "Object to serialize cannot be null.");
@@ -27,8 +27,15 @@ public static class XmlHelper
         var xmlRoot = new XmlRootAttribute(rootName);
         var xmlSerializer = new XmlSerializer(typeof(T), xmlRoot);
 
+        var namespeces = new XmlSerializerNamespaces();
+        
+        if (emptyNamespace)
+        {
+            namespeces.Add("", "");
+        }
+
         using var stringWriter = new StringWriter();
-        xmlSerializer.Serialize(stringWriter, obj);
+        xmlSerializer.Serialize(stringWriter, obj, namespeces);
         return stringWriter.ToString();
     }
 }

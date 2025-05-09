@@ -1,14 +1,42 @@
 ﻿namespace Invoices.DataProcessor
 {
+    using Castle.Components.DictionaryAdapter;
     using Invoices.Data;
     using Invoices.DataProcessor.ExportDto;
+    using Invoices.Utilities;
     using Newtonsoft.Json;
+    using System.Globalization;
+    using System.Xml.Serialization;
 
     public class Serializer
     {
         public static string ExportClientsWithTheirInvoices(InvoicesContext context, DateTime date)
         {
-            throw new NotImplementedException();
+            const string XmlRoot = "Clients";
+
+            var clientsWithInvoices = context.Clients
+                .Where(x => x.Invoices.Any(d => DateTime.Compare(d.IssueDate, date) > 0))
+                .Select(x => new ExportClientWithInvoicesDto()
+                {
+                    ClientName = x.Name,
+                    VatNumber = x.NumberVat,
+                    Invoices = x.Invoices
+                        .OrderBy(i => i.IssueDate)
+                        .ThenByDescending(i => i.DueDate)
+                        .Select(x => new ExportInvoiceDto()
+                        {
+                            InvoiceNumber = x.Number,
+                            InvoiceAmount = x.Amount,
+                            Currency = x.CurrencyType.ToString(),
+                            DueDate = x.DueDate.ToString("d", CultureInfo.InvariantCulture)
+                        })
+                        .ToArray(),
+                    InvoicesCount = x.Invoices.Count
+                })
+
+                .ToArray();
+
+            return XmlHelper.Serialize(clientsWithInvoices, XmlRoot);
         }
 
         public static string ExportProductsWithMostClients(InvoicesContext context, int nameLength)
