@@ -20,6 +20,7 @@ public static class ValidationConstants
     public const int SellerNameMaxLenght = 20;
     public const int SellerAddressMinLenght = 2;
     public const int SellerAddressMaxLenght = 30;
+    public const string SellerWebsiteRegExpression = @"www\.[A-Za-z0-9\-]+\.com";
 
     // Creator
     public const int CreatorFirstNameMinLenght = 2;

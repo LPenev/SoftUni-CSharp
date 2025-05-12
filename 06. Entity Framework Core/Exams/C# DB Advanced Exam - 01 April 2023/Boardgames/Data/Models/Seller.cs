@@ -15,7 +15,8 @@ public class Seller
     public string Address { get; set; } = null!;
     [Required]
     public string Country { get; set; } = null!;
-    public string Website { get; set; }
+    [Required]
+    public string Website { get; set; } = null!;
 
     public ICollection<BoardgameSeller> BoardgamesSellers { get; set; } = new HashSet<BoardgameSeller>();
 }
