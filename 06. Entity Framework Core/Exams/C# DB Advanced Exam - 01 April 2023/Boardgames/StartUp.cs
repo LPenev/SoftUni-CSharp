@@ -40,16 +40,16 @@
 
         private static void ExportEntities(BoardgamesContext context, string exportDir)
         {
-            var exportCreatorsWithTheirBoardgames = DataProcessor.Serializer.ExportCreatorsWithTheirBoardgames(context);
-            Console.WriteLine(exportCreatorsWithTheirBoardgames);
-            File.WriteAllText(exportDir + "Actual Result - ExportCreatorsWithTheirBoardgames.xml", exportCreatorsWithTheirBoardgames);
+            //var exportCreatorsWithTheirBoardgames = DataProcessor.Serializer.ExportCreatorsWithTheirBoardgames(context);
+            //Console.WriteLine(exportCreatorsWithTheirBoardgames);
+            //File.WriteAllText(exportDir + "Actual Result - ExportCreatorsWithTheirBoardgames.xml", exportCreatorsWithTheirBoardgames);
 
-            /*var year = 2021;
+            var year = 2021;
             double rating = 9.50;
             var exportSellersWithMostBoardgames = DataProcessor.Serializer.ExportSellersWithMostBoardgames(context, year, rating);
             Console.WriteLine(exportSellersWithMostBoardgames);
             File.WriteAllText(exportDir + "Actual Result - ExportSellersWithMostBoardgames.json", exportSellersWithMostBoardgames);
-            */
+            
         }
 
         private static void ResetDatabase(BoardgamesContext context, bool shouldDropDatabase = false)
