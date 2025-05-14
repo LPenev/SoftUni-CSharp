@@ -1,91 +1,13 @@
 [
   {
-    "Name": "Galactic Shop",
-    "Website": "www.galacticshop.com",
-    "Boardgames": [
-      {
-        "Name": "The Banishing",
-        "Rating": 7.7,
-        "Mechanics": "Bias, Card Drafting, Worker Placement",
-        "Category": "Strategy"
-      },
-      {
-        "Name": "Mole Rats in Space",
-        "Rating": 7.51,
-        "Mechanics": "Auction/Bidding, Auction: Sealed Bid, End Game Bonuses, Memory, Set Collection",
-        "Category": "Party"
-      },
-      {
-        "Name": "Super Fantasy Brawl",
-        "Rating": 7.39,
-        "Mechanics": "Action Retrieval, Hand Management, Set Collection",
-        "Category": "Family"
-      },
-      {
-        "Name": "Napoléon 1806",
-        "Rating": 7.26,
-        "Mechanics": "Mancala, Worker Placement, Worker Placement, Different Worker Types",
-        "Category": "Strategy"
-      },
-      {
-        "Name": "An Infamous Traffic",
-        "Rating": 6.9,
-        "Mechanics": "Dice Rolling",
-        "Category": "Family"
-      },
-      {
-        "Name": "Lorenzo il Magnifico",
-        "Rating": 6.84,
-        "Mechanics": "Area Movement, Worker Placement",
-        "Category": "Strategy"
-      },
-      {
-        "Name": "Rival Kings",
-        "Rating": 6.77,
-        "Mechanics": "Memory, Push Your Luck",
-        "Category": "Family"
-      },
-      {
-        "Name": "Android: Mainframe",
-        "Rating": 6.68,
-        "Mechanics": "Memory, Pattern Recognition",
-        "Category": "Family"
-      },
-      {
-        "Name": "Jump Drive",
-        "Rating": 6.6,
-        "Mechanics": "Auction/Bidding, Hand Management, Simultaneous Action Selection, Variable Player Powers",
-        "Category": "Family"
-      },
-      {
-        "Name": "Incorporated",
-        "Rating": 6.52,
-        "Mechanics": "Dice Rolling, Set Collection",
-        "Category": "Family"
-      }
-    ]
-  },
-  {
     "Name": "eSupplements",
     "Website": "www.esupplements.com",
     "Boardgames": [
-      {
-        "Name": "South China Sea",
-        "Rating": 8.19,
-        "Mechanics": "Action Drafting, Events, Point to Point Movement, Tech Trees / Tech Tracks, Worker Placement",
-        "Category": "Strategy"
-      },
       {
         "Name": "Capital Lux",
         "Rating": 7.58,
         "Mechanics": "Grid Movement, Tile Placement",
         "Category": "Abstract"
-      },
-      {
-        "Name": "Kingdom Defenders",
-        "Rating": 7.52,
-        "Mechanics": "Deduction, Hexagon Grid, Modular Board, Pattern Recognition",
-        "Category": "Family"
       },
       {
         "Name": "Kings Road",
@@ -120,63 +42,9 @@
     ]
   },
   {
-    "Name": "Hey Dude Official",
-    "Website": "www.heydudeofficial.com",
-    "Boardgames": [
-      {
-        "Name": "Wiener Walzer",
-        "Rating": 8.44,
-        "Mechanics": "Hand Management, Memory, Take That",
-        "Category": "Family"
-      },
-      {
-        "Name": "Conejos en el Huerto",
-        "Rating": 7.8,
-        "Mechanics": "Card Drafting, Hand Management, Race, Take That, Turn Order: Pass Order, Variable Player Powers",
-        "Category": "Strategy"
-      },
-      {
-        "Name": "Mini Rails",
-        "Rating": 7.68,
-        "Mechanics": "Drafting, End Game Bonuses, Hand Management, Tile Placement, Worker Placement",
-        "Category": "Strategy"
-      },
-      {
-        "Name": "Pędzące Ślimaki",
-        "Rating": 7.42,
-        "Mechanics": "Drafting, End Game Bonuses, Modular Board, Pattern Building, Set Collection, Tile Placement, Turn Order: Claim Action",
-        "Category": "Family"
-      },
-      {
-        "Name": "Pioneer Days",
-        "Rating": 7.31,
-        "Mechanics": "Area Movement, Hand Management, Interrupts, Kill Steal, Secret Unit Deployment, Variable Player Powers",
-        "Category": "Strategy"
-      },
-      {
-        "Name": "Costa Rica",
-        "Rating": 7.08,
-        "Mechanics": "Tile Placement",
-        "Category": "Family"
-      },
-      {
-        "Name": "Rising Sun",
-        "Rating": 7.03,
-        "Mechanics": "Deduction, Hidden Roles, Set Collection",
-        "Category": "Family"
-      }
-    ]
-  },
-  {
     "Name": "Bedsure",
     "Website": "www.bedsure.com",
     "Boardgames": [
-      {
-        "Name": "The Fog of War",
-        "Rating": 9.65,
-        "Mechanics": "Grid Movement, Hand Management, Rock-Paper-Scissors, Time Track, Variable Player Powers",
-        "Category": "Strategy"
-      },
       {
         "Name": "Capital Lux",
         "Rating": 7.58,
@@ -210,15 +78,63 @@
     ]
   },
   {
+    "Name": "Hey Dude Official",
+    "Website": "www.heydudeofficial.com",
+    "Boardgames": [
+      {
+        "Name": "Conejos en el Huerto",
+        "Rating": 7.8,
+        "Mechanics": "Card Drafting, Hand Management, Race, Take That, Turn Order: Pass Order, Variable Player Powers",
+        "Category": "Strategy"
+      },
+      {
+        "Name": "Mini Rails",
+        "Rating": 7.68,
+        "Mechanics": "Drafting, End Game Bonuses, Hand Management, Tile Placement, Worker Placement",
+        "Category": "Strategy"
+      },
+      {
+        "Name": "Pędzące Ślimaki",
+        "Rating": 7.42,
+        "Mechanics": "Drafting, End Game Bonuses, Modular Board, Pattern Building, Set Collection, Tile Placement, Turn Order: Claim Action",
+        "Category": "Family"
+      },
+      {
+        "Name": "Pioneer Days",
+        "Rating": 7.31,
+        "Mechanics": "Area Movement, Hand Management, Interrupts, Kill Steal, Secret Unit Deployment, Variable Player Powers",
+        "Category": "Strategy"
+      },
+      {
+        "Name": "Costa Rica",
+        "Rating": 7.08,
+        "Mechanics": "Tile Placement",
+        "Category": "Family"
+      }
+    ]
+  },
+  {
+    "Name": "Asurion, LLC",
+    "Website": "www.asurion-llc.com",
+    "Boardgames": [
+      {
+        "Name": "Capital Lux",
+        "Rating": 7.58,
+        "Mechanics": "Grid Movement, Tile Placement",
+        "Category": "Abstract"
+      },
+      {
+        "Name": "Imperial Struggle",
+        "Rating": 7.19,
+        "Mechanics": "Card Drafting, Dice Rolling, Drafting, Set Collection, Simultaneous Action Selection",
+        "Category": "Family"
+      }
+    ]
+  },
+  {
     "Name": "JE Products US",
     "Website": "www.jeproductsus.com",
     "Boardgames": [
-      {
-        "Name": "My First Stone Age",
-        "Rating": 7.89,
-        "Mechanics": "Cooperative Game, Dice Rolling, Legacy Game, Point to Point Movement, Variable Player Powers",
-        "Category": "Children"
-      },
       {
         "Name": "Fight for Olympus",
         "Rating": 7.22,
@@ -226,27 +142,9 @@
         "Category": "Family"
       },
       {
-        "Name": "Great Western Trail",
-        "Rating": 6.92,
-        "Mechanics": "Cooperative Game, Hand Management, Real-Time, Variable Player Powers",
-        "Category": "Family"
-      },
-      {
         "Name": "Bohemian Villages",
         "Rating": 6.76,
         "Mechanics": "Drafting, Tile Placement, Turn Order: Progressive",
-        "Category": "Family"
-      },
-      {
-        "Name": "Jump Drive",
-        "Rating": 6.6,
-        "Mechanics": "Auction/Bidding, Hand Management, Simultaneous Action Selection, Variable Player Powers",
-        "Category": "Family"
-      },
-      {
-        "Name": "Incorporated",
-        "Rating": 6.52,
-        "Mechanics": "Dice Rolling, Set Collection",
         "Category": "Family"
       }
     ]

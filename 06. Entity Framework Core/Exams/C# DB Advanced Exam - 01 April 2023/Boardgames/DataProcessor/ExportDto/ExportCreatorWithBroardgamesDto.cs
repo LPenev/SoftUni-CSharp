@@ -7,11 +7,12 @@ namespace Boardgames.DataProcessor.ExportDto;
 [XmlType(nameof(Creator))]
 public class ExportCreatorWithBroardgamesDto
 {
-    [Required]
     public string CreatorName { get; set; } = null!;
 
-    [Required]
     [XmlArray(nameof(Boardgames))]
-    public Boardgame[] Boardgames { get; set; } = null!;
+    public ExportBoardgameDto[] Boardgames { get; set; } = null!;
+
+    [XmlAttribute(nameof(BoardgamesCount))]
+    public string BoardgamesCount { get; set; } = null!;
 
 }

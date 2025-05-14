@@ -2,14 +2,35 @@
 {
     using Boardgames.Data;
     using Boardgames.DataProcessor.ExportDto;
+    using Invoices.Utilities;
     using Newtonsoft.Json;
-    using System.Text.Json.Nodes;
 
     public class Serializer
     {
         public static string ExportCreatorsWithTheirBoardgames(BoardgamesContext context)
         {
-            throw new NotImplementedException();
+            var creatorsWithTheirBoardgames = context.Creators
+                .Where(x => x.Boardgames.Any())
+                .Select(x => new ExportCreatorWithBroardgamesDto()
+                {
+                    CreatorName = x.FirstName + " " + x.LastName,
+                    Boardgames = x.Boardgames
+                        .Select(bg => new ExportBoardgameDto()
+                        {
+                            BoardgameName = bg.Name,
+                            BoardgameYearPublished = bg.YearPublished
+                        })
+                        .OrderBy(x => x.BoardgameName)
+                        .ToArray(),
+                    BoardgamesCount = x.Boardgames.Count.ToString()
+                })
+                .OrderByDescending(c => c.BoardgamesCount)
+                .ThenBy(c => c.CreatorName)
+                .ToArray();
+
+            const string XmlRoot = "Clients";
+
+            return XmlHelper.Serialize(creatorsWithTheirBoardgames, XmlRoot);
         }
 
         public static string ExportSellersWithMostBoardgames(BoardgamesContext context, int year, double rating)
