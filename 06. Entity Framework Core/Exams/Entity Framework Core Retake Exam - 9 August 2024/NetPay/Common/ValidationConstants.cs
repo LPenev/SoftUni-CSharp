@@ -6,11 +6,12 @@ public static class ValidationConstants
     public const int HouseholdContactPersonMinLength = 5;
     public const int HouseholdContactPersonMaxLength = 50;
 
-    public const int EmailMinLength = 6;
-    public const int EmailMaxLength = 80;
+    public const int HouseholdEmailMinLength = 6;
+    public const int HouseholdEmailMaxLength = 80;
 
-    public const int PhoneNumberLength = 15;
-    public const string PhoneNumberPattern = @"^\+\d{3}/\d{3}-\d{6}$";
+    public const int HouseholdPhoneNumberLength = 15;
+    public const string HouseholdPhoneNumberPattern = @"^\+\d{3}/\d{3}-\d{6}$";
+    public const string HouseholdXmlPhoneAttribute = "phone";
 
     //Expence
     public const int ExpenceNameMinLength = 5;

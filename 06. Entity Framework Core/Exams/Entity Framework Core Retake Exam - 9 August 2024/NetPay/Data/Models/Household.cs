@@ -1,5 +1,6 @@
-﻿using NetPay.Common;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+
+using static NetPay.Common.ValidationConstants;
 
 namespace NetPay.Data.Models;
 
@@ -9,14 +10,14 @@ public class Household
     public int Id { get; set; }
 
     [Required]
-    [MaxLength(ValidationConstants.HouseholdContactPersonMaxLength)]
+    [MaxLength(HouseholdContactPersonMaxLength)]
     public string ContactPerson { get; set; } = null!;
 
-    [MaxLength(ValidationConstants.EmailMaxLength)]
+    [MaxLength(HouseholdEmailMaxLength)]
     public string? Email {  get; set; }
 
     [Required]
-    [MaxLength(ValidationConstants.PhoneNumberLength)]
+    [MaxLength(HouseholdPhoneNumberLength)]
     public string PhoneNumber { get; set; } = null!;
 
     public virtual ICollection<Expense> Expenses { get; set; } = new HashSet<Expense>();

@@ -1,5 +1,9 @@
 ﻿using NetPay.Data;
+using NetPay.Data.Models;
+using NetPay.DataProcessor.ImportDtos;
+using NetPay.Utilities;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace NetPay.DataProcessor
 {
@@ -12,7 +16,50 @@ namespace NetPay.DataProcessor
 
         public static string ImportHouseholds(NetPayContext context, string xmlString)
         {
-            throw new NotImplementedException();
+            const string XmlRoot = "Households";
+            var housholdDtos = XmlHelper.Deserialize<ImportHausholdXmlDto[]>(xmlString, XmlRoot);
+
+            StringBuilder sb = new StringBuilder();
+            ICollection<Household> households = new HashSet<Household>();
+
+            foreach (var householdDto in housholdDtos)
+            {
+                if (!IsValid(householdDto))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+
+                Household newHousehold = new Household()
+                {
+                    ContactPerson = householdDto.ContactPerson,
+                    Email = householdDto.Email,
+                    PhoneNumber = householdDto.PhoneNumber,
+                };
+
+                bool isDuplicationInContext = context.Households.Any(x => x.ContactPerson == newHousehold.ContactPerson) ||
+                                              context.Households.Any(x => x.Email == newHousehold.Email) ||
+                                              context.Households.Any(x => x.PhoneNumber == newHousehold.PhoneNumber);
+
+                bool isDuplicationInHouseholds = households.Any(h => h.ContactPerson == newHousehold.ContactPerson) ||
+                                                 households.Any(h => h.Email == newHousehold.Email) ||
+                                                 households.Any(h => h.PhoneNumber == newHousehold.PhoneNumber);
+
+                if (isDuplicationInContext || isDuplicationInHouseholds)
+                {
+                    sb.AppendLine(DuplicationDataMessage);
+                    continue;
+                }
+
+                households.Add(newHousehold);
+                sb.AppendLine(string.Format(SuccessfullyImportedHousehold, newHousehold.ContactPerson));
+            }
+
+            context.AddRange(households);
+            context.SaveChanges();
+
+            return sb.ToString();
         }
 
         public static string ImportExpenses(NetPayContext context, string jsonString)
