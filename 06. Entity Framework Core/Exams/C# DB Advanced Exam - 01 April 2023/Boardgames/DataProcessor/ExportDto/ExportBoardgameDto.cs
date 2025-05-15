@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Boardgames.Data.Models;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
 
 namespace Boardgames.DataProcessor.ExportDto;
 
-[XmlType(nameof(Boardgames))]
+[XmlType(nameof(Boardgame))]
 public class ExportBoardgameDto
 {
     [Required]

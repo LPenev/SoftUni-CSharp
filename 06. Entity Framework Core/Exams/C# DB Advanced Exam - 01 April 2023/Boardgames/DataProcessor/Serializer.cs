@@ -28,7 +28,7 @@
                 .ThenBy(c => c.CreatorName)
                 .ToArray();
 
-            const string XmlRoot = "Clients";
+            const string XmlRoot = "Creators";
 
             return XmlHelper.Serialize(creatorsWithTheirBoardgames, XmlRoot);
         }
