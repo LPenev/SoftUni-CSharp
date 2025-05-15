@@ -17,7 +17,6 @@ public class Household
 
     [Required]
     [MaxLength(ValidationConstants.PhoneNumberLength)]
-    [RegularExpression(ValidationConstants.PhoneNumberPattern)]
     public string PhoneNumber { get; set; } = null!;
 
     public virtual ICollection<Expense> Expenses { get; set; } = new HashSet<Expense>();

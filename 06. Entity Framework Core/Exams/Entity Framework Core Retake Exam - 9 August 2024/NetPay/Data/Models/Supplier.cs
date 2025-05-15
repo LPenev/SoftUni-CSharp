@@ -10,7 +10,7 @@ public class Supplier
 
     [Required]
     [MaxLength(ValidationConstants.SupplierNameMaxLength)]
-    public string SupplierName { get; set; }
+    public string SupplierName { get; set; } = null!;
 
     public virtual ICollection<SupplierService> SuppliersServices { get; set; } = new HashSet<SupplierService>();
 }

@@ -13,7 +13,7 @@ public class Expense
 
     [Required]
     [MaxLength(ValidationConstants.ExpenceNameMaxLength)]
-    public string ExpenseName {  get; set; }
+    public string ExpenseName { get; set; } = null!;
 
     public decimal Amount { get; set; }
 
