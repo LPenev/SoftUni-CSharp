@@ -17,8 +17,8 @@ public static class ValidationConstants
     public const int ExpenceNameMinLength = 5;
     public const int ExpenceNameMaxLength = 50;
 
-    public const string MinAmount = "0.01";
-    public const string MaxAmount = "100000";
+    public const double ExpenceMinAmount = 0.01;
+    public const double ExpenceMaxAmount = 100000;
 
     //Service
     public const int ServiceNameMinLength = 4;
