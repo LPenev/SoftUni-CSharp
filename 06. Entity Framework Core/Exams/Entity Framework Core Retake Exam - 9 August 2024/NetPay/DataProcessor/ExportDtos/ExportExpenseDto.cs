@@ -16,8 +16,8 @@ public class ExportExpenseDto
     public decimal Amount { get; set; }
 
     [XmlElement(nameof(PaymentDate))]
-    public string PaymentDate { get; set; }
+    public string PaymentDate { get; set; } = null!;
 
     [XmlElement(nameof(ServiceName))]
-    public string ServiceName { get; set; }
+    public string ServiceName { get; set; } = null!;
 }
