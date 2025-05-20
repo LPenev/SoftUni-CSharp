@@ -1,4 +1,6 @@
-﻿using System.Xml.Serialization;
+﻿using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace NetPay.Utilities;
 
@@ -19,7 +21,7 @@ public class XmlHelper
         return result;
     }
 
-    public static string Serialize<T>(T obj, string rootName, bool emptyNamespace = true)
+    public static string Serialize<T>(T obj, string rootName, bool omitXmlDeclaration = true, bool xmlIndent = true, bool xmlEmptyNamespace = true)
     {
         if (obj == null)
             throw new ArgumentNullException(nameof(obj), "Object to serialize cannot be null.");
@@ -27,15 +29,23 @@ public class XmlHelper
         var xmlRoot = new XmlRootAttribute(rootName);
         var xmlSerializer = new XmlSerializer(typeof(T), xmlRoot);
 
-        var namespeces = new XmlSerializerNamespaces();
-
-        if (emptyNamespace)
+        XmlWriterSettings xmlSettings = new()
         {
-            namespeces.Add("", "");
+            Encoding = Encoding.UTF8,
+            Indent = xmlIndent,
+            OmitXmlDeclaration = omitXmlDeclaration
+        };
+
+        XmlSerializerNamespaces? namespeces = new XmlSerializerNamespaces();
+
+        if (xmlEmptyNamespace)
+        {
+            namespeces.Add(String.Empty, String.Empty);
         }
 
-        using var stringWriter = new StringWriter();
-        xmlSerializer.Serialize(stringWriter, obj, namespeces);
+        using var stringWriter = new StringWriter(); // Utf8StringWriter
+        using var xmlWriter = XmlWriter.Create(stringWriter, xmlSettings);
+        xmlSerializer.Serialize(xmlWriter, obj, namespeces);
         return stringWriter.ToString();
     }
 }

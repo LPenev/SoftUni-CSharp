@@ -16,5 +16,5 @@ public class ExportHouseholdXmlDto
     public string PhoneNumber { get; set; } = null!;
 
     [XmlArray(nameof(Expenses))]
-    public ExportExpenseDto Expenses { get; set; } = null!;
+    public ExportExpenseDto[] Expenses { get; set; } = null!;
 }
