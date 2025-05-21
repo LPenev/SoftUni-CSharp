@@ -2,7 +2,9 @@
 using NetPay.Data.Models.Enums;
 using NetPay.DataProcessor.ExportDtos;
 using NetPay.Utilities;
+using Newtonsoft.Json;
 using System.Globalization;
+using System.Text.Json.Nodes;
 
 namespace NetPay.DataProcessor
 {
@@ -40,7 +42,21 @@ namespace NetPay.DataProcessor
 
         public static string ExportAllServicesWithSuppliers(NetPayContext context)
         {
-            return "";
+            var allServicesWithSuppliers = context.Services
+                .Select(s => new ExportServicesWithSuppliersDto
+                {
+                    ServiceName = s.ServiceName,
+                    Suppliers = s.SuppliersServices.Select(x => new ExportSuppliersDto
+                    {
+                        SupplierName = x.Supplier.SupplierName,
+                    })
+                    .OrderBy(x => x.SupplierName)
+                    .ToArray()
+                })
+                .OrderBy(x => x.ServiceName)
+                .ToArray();
+
+            return JsonConvert.SerializeObject(allServicesWithSuppliers, Formatting.Indented);
         }
     }
 }
