@@ -22,7 +22,6 @@ public class ImportCustomerDto
 
     [XmlElement(nameof(Email))]
     [Required]
-    [MinLength(CustomerEmailMinLength)]
-    [MaxLength(CustomerEmailMaxLength)]
+    [RegularExpression(CustomerPhoneNumberRegExpression)]
     public string Email { get; set; } = null!;
 }
