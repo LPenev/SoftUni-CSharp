@@ -8,12 +8,6 @@ namespace TravelAgency.DataProcessor.ImportDtos;
 [XmlType(nameof(Customer))]
 public class ImportCustomerDto
 {
-    [XmlAttribute(nameof(PhoneNumber))]
-    [Required]
-    [MinLength(CustomerPhoneNumberLength)]
-    [MaxLength(CustomerPhoneNumberLength)]
-    public string PhoneNumber { get; set; } = null!;
-
     [XmlElement(nameof(FullName))]
     [Required]
     [MinLength(CustomerFullNameMinLength)]
@@ -22,6 +16,12 @@ public class ImportCustomerDto
 
     [XmlElement(nameof(Email))]
     [Required]
-    [RegularExpression(CustomerPhoneNumberRegExpression)]
+    [MinLength(CustomerEmailMinLength)]
+    [MaxLength(CustomerEmailMaxLength)]
     public string Email { get; set; } = null!;
+
+    [XmlAttribute("phoneNumber")]
+    [Required]
+    [RegularExpression(CustomerPhoneNumberRegExpression)]
+    public string PhoneNumber { get; set; } = null!;
 }

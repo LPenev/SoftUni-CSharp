@@ -17,5 +17,4 @@ public static class ValidationConstants
     public const int TourPackagePackageNameMinLength = 2;
     public const int TourPackagePackageNameMaxLength = 40;
     public const int TourPackageDescriptionMaxLength = 200;
-
 }

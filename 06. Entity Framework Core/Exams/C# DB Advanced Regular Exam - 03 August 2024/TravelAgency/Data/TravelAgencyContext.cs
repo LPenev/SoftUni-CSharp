@@ -5,8 +5,6 @@ namespace TravelAgency.Data
 {
     public class TravelAgencyContext : DbContext
     {
-        private const string connectionString = @"";
-
         public TravelAgencyContext()
         {
 
@@ -23,7 +21,7 @@ namespace TravelAgency.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(connectionString);
+                optionsBuilder.UseSqlServer(Configuration.ConnectionString);
             }
         }
 

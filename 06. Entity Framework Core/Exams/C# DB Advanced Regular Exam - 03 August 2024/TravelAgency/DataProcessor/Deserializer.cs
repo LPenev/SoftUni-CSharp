@@ -1,5 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text;
 using TravelAgency.Data;
+using TravelAgency.Data.Models;
+using TravelAgency.DataProcessor.ImportDtos;
+using TravelAgency.Utilities;
 
 namespace TravelAgency.DataProcessor
 {
@@ -12,12 +16,47 @@ namespace TravelAgency.DataProcessor
 
         public static string ImportCustomers(TravelAgencyContext context, string xmlString)
         {
-            throw new NotImplementedException();
+            const string XmlRoot = "Customers";
+            var customerDtos = XmlHelper.Deserialize<ImportCustomerDto[]>(xmlString, XmlRoot);
+
+            StringBuilder sb = new StringBuilder();
+            ICollection<Customer> customers = new HashSet<Customer>();
+
+            foreach (ImportCustomerDto customerDto in customerDtos)
+            {
+                if (!IsValid(customerDto))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                bool isDuplicatedInContext = context.Customer
+                    .Any(x => x.FulName == customerDto.FullName || x.PhoneNumber == customerDto.PhoneNumber 
+                    || x.Email == customerDto.Email);
+
+                if (isDuplicatedInContext) 
+                {
+                    sb.AppendLine(DuplicationDataMessage);
+                    continue;
+                }
+
+                Customer customer = new Customer() 
+                {
+                    FulName = customerDto.FullName,
+                    PhoneNumber = customerDto.PhoneNumber,
+                    Email = customerDto.Email,
+                };
+
+                customers.Add(customer);
+                sb.AppendLine(string.Format(SuccessfullyImportedCustomer, customer.FulName));
+            }
+
+            return sb.ToString().TrimEnd();
         }
 
         public static string ImportBookings(TravelAgencyContext context, string jsonString)
         {
-            throw new NotImplementedException();
+            return string.Empty;
         }
 
         public static bool IsValid(object dto)

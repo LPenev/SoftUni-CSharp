@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata;
 using TravelAgency.Data;
 
 namespace TravelAgency
@@ -15,7 +14,7 @@ namespace TravelAgency
             var projectDir = GetProjectDirectory();
 
             ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
-            ExportEntities(context, projectDir + @"ExportResults/");
+            //ExportEntities(context, projectDir + @"ExportResults/");
 
             using (var transaction = context.Database.BeginTransaction())
             {
