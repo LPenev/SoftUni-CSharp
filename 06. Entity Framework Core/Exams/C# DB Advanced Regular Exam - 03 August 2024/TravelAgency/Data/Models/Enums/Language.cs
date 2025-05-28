@@ -1,6 +1,6 @@
 ﻿namespace TravelAgency.Data.Models.Enums;
 
-public enum Languages
+public enum Language
 {
     English = 0,
     German = 1,

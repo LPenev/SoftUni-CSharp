@@ -13,7 +13,7 @@ public class Guide
     [MaxLength(GuideFullNameMaxLength)]
     public string FullName { get; set; } = null!;
 
-    public Languages Language { get; set; }
+    public Language Language { get; set; }
 
     public virtual ICollection<TourPackageGuide> PackageGuides { get; set; } = new HashSet<TourPackageGuide>();
 }

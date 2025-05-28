@@ -10,7 +10,7 @@ public class Customer
     
     [Required]
     [MaxLength(CustomerFullNameMaxLength)]
-    public string FulName { get; set; } = null!;
+    public string FullName { get; set; } = null!;
     
     [Required]
     [MaxLength(CustomerEmailMaxLength)]

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Text;
 using TravelAgency.Data;
 using TravelAgency.Data.Models;
@@ -30,8 +32,8 @@ namespace TravelAgency.DataProcessor
                     continue;
                 }
 
-                bool isDuplicatedInContext = context.Customer
-                    .Any(x => x.FulName == customerDto.FullName || x.PhoneNumber == customerDto.PhoneNumber 
+                bool isDuplicatedInContext = context.Customers
+                    .Any(x => x.FullName == customerDto.FullName || x.PhoneNumber == customerDto.PhoneNumber 
                     || x.Email == customerDto.Email);
 
                 if (isDuplicatedInContext) 
@@ -42,21 +44,72 @@ namespace TravelAgency.DataProcessor
 
                 Customer customer = new Customer() 
                 {
-                    FulName = customerDto.FullName,
+                    FullName = customerDto.FullName,
                     PhoneNumber = customerDto.PhoneNumber,
                     Email = customerDto.Email,
                 };
 
                 customers.Add(customer);
-                sb.AppendLine(string.Format(SuccessfullyImportedCustomer, customer.FulName));
+                sb.AppendLine(string.Format(SuccessfullyImportedCustomer, customer.FullName));
             }
+
+            context.Customers.AddRange(customers);
+            context.SaveChanges();
 
             return sb.ToString().TrimEnd();
         }
 
         public static string ImportBookings(TravelAgencyContext context, string jsonString)
         {
-            return string.Empty;
+            StringBuilder sb = new StringBuilder();
+            ICollection<Booking> bookings = new HashSet<Booking>();
+
+            var bookingDtos = JsonConvert.DeserializeObject<ImportBookingDto[]>(jsonString);
+
+            if (bookingDtos is null)
+            {
+                sb.AppendLine("Imported File ist empty");
+                return sb.ToString();
+            }
+
+            foreach (var bookingDto in bookingDtos)
+            {
+                if (!IsValid(bookingDto))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                if (!DateTime.TryParseExact(bookingDto.BookingDate, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var bookingDate))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                var customer = context.Customers.FirstOrDefault(x => x.FullName == bookingDto.CustomerName);
+                var tourPackage = context.TourPackages.FirstOrDefault(x => x.PackageName == bookingDto.TourPackageName);
+
+                if(customer is null || tourPackage is null)
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                var booking = new Booking()
+                {
+                    BookingDate = bookingDate,
+                    CustomerId = customer.Id,
+                    TourPackageId = tourPackage.Id,
+                };
+
+                bookings.Add(booking);
+                sb.AppendLine(string.Format(SuccessfullyImportedBooking, tourPackage.PackageName, bookingDate.ToString("yyyy-MM-dd")));
+            }
+            
+            context.AddRange(bookings);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
         }
 
         public static bool IsValid(object dto)
