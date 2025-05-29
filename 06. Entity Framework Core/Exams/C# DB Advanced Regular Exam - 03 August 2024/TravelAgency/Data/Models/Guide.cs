@@ -15,5 +15,5 @@ public class Guide
 
     public Language Language { get; set; }
 
-    public virtual ICollection<TourPackageGuide> PackageGuides { get; set; } = new HashSet<TourPackageGuide>();
+    public virtual ICollection<TourPackageGuide> TourPackageGuides { get; set; } = new HashSet<TourPackageGuide>();
 }
