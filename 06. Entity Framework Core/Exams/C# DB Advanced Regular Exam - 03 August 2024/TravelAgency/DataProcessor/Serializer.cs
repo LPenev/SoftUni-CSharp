@@ -37,7 +37,27 @@ namespace TravelAgency.DataProcessor
 
         public static string ExportCustomersThatHaveBookedHorseRidingTourPackage(TravelAgencyContext context)
         {
-            return String.Empty;
+            var customersThatHaveBookedHorseRidingTP = context.Customers
+                .Where(c => c.Bookings.Any(b => b.TourPackage.PackageName == "Horse Riding Tour"))
+                .Select(x => new ExportCustomersThatHaveBookedHorseRidingTourPackageDto()
+                {
+                    FullName = x.FullName,
+                    PhoneNumber = x.PhoneNumber,
+                    Bookings = x.Bookings
+                        .Where(x => x.TourPackage.PackageName == "Horse Riding Tour")
+                        .OrderBy(x => x.BookingDate)
+                        .Select(x => new ExportBookingDto()
+                        {
+                            TourPackageName = x.TourPackage.PackageName,
+                            Date = x.BookingDate.ToString("yyyy-MM-dd"),
+                        })
+                        .ToArray()
+                })
+                .OrderByDescending(x => x.Bookings.Length)
+                .ThenBy(x => x.FullName)
+                .ToArray();
+
+            return JsonConvert.SerializeObject(customersThatHaveBookedHorseRidingTP, Formatting.Indented);
         }
     }
 }
