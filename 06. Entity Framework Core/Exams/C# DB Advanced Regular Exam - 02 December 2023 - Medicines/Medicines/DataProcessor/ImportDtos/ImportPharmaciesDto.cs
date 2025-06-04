@@ -18,8 +18,9 @@ public class ImportPharmaciesDto
     public string PhoneNumber { get; set; } = null!;
 
     [Required]
-    [XmlAttribute(nameof(PharmacyIsNonStop))]
-    public bool IsNonStop { get; set; }
+    [XmlAttribute(PharmacyIsNonStop)]
+    [RegularExpression(PharmacyIsBooleanRegEx)]
+    public string IsNonStop { get; set; } = null!;
 
     [Required]
     public ImportMedicineDto[] Medicines { get; set; } = null!;

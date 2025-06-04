@@ -12,7 +12,7 @@ public class Pharmacy
     public string Name { get; set; } = null!;
 
     [Required]
-    [MaxLength(PharmacyPhoneNumberLength)]
+    //[MaxLength(PharmacyPhoneNumberLength)]
     public string PhoneNumber { get; set; } = null!;
 
     [Required]

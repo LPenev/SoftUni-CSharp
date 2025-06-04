@@ -28,7 +28,7 @@ public class ImportMedicineDto
     [MaxLength(MedicineProducerMaxLength)]
     public string Producer { get; set; } = null!;
 
-    [XmlAttribute(nameof(MedicineAttributeCategory))]
-    [Required]
-    public Category Category { get; set; }
+    [XmlAttribute(MedicineAttributeCategory)]
+    [Range(MedicineCategoryMin, MedicineCategoryMax)]
+    public int Category { get; set; }
 }
