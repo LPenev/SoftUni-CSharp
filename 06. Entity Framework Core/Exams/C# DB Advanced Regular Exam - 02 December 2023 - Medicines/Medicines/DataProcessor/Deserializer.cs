@@ -7,7 +7,7 @@
     using Medicines.Utilities;
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
-    using System.Runtime.CompilerServices;
+    using Newtonsoft.Json;
     using System.Text;
 
     public class Deserializer
@@ -19,6 +19,47 @@
         public static string ImportPatients(MedicinesContext context, string jsonString)
         {
             StringBuilder sb = new StringBuilder();
+            var patientDtos = JsonConvert.DeserializeObject<ImportPatientDto[]>(jsonString);
+            ICollection<Patient> patients = new HashSet<Patient>();
+
+            foreach (var patientDto in patientDtos)
+            {
+                if (!IsValid(patientDto))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                Patient patient = new Patient()
+                {
+                    FullName = patientDto.FullName,
+                    AgeGroup = (AgeGroup)patientDto.AgeGroup,
+                    Gender = (Gender)patientDto.Gender,
+                };
+
+                foreach (var medicineId in patientDto.Medicines)
+                {
+                    if (patient.PatientsMedicines.Any(x => x.MedicineId == medicineId))
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+                    PatientMedicine patientMedicine = new PatientMedicine()
+                    {
+                        Patient = patient,
+                        MedicineId = medicineId,
+                    };
+
+                    patient.PatientsMedicines.Add(patientMedicine);
+                }
+
+                patients.Add(patient);
+                sb.AppendLine(string.Format(SuccessfullyImportedPatient, patient.FullName, patient.PatientsMedicines.Count));
+            }
+
+            context.Patients.AddRange(patients);
+            context.SaveChanges();
 
             return sb.ToString();
         }
@@ -27,7 +68,7 @@
         {
             const string XmlRoot = "Pharmacies";
             var pharmacyDtos = XmlHelper.Deserialize<ImportPharmaciesDto[]>(xmlString, XmlRoot);
-            
+
             StringBuilder sb = new StringBuilder();
             ICollection<Pharmacy> pharmacies = new HashSet<Pharmacy>();
 
@@ -84,8 +125,8 @@
                 }
 
                 pharmacies.Add(pharmacy);
-                
-                
+
+
                 sb.AppendLine(string.Format(SuccessfullyImportedPharmacy, pharmacy.Name, pharmacy.Medicines.Count));
             }
 

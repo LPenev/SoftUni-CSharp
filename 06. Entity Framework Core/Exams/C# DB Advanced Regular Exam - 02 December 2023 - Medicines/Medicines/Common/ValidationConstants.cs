@@ -21,4 +21,8 @@ public static class ValidationConstants
 
     public const int PatientFullNameMinLength = 5;
     public const int PatientFullNameMaxLength = 100;
+    public const int PatientAgeGroupMin = 0;
+    public const int PatientAgeGroupMax = 2;
+    public const int PatientGenderMin = 0;
+    public const int PatientGenderMax = 1;
 }

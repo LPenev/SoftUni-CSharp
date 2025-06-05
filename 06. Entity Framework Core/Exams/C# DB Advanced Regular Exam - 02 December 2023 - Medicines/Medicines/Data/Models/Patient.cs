@@ -12,7 +12,7 @@ public class Patient
     [MaxLength(PatientFullNameMaxLength)]
     public string FullName { get; set; } = null!;
     public AgeGroup AgeGroup { get; set; }
-    public Gender Genger { get; set; }
+    public Gender Gender { get; set; }
 
     public ICollection<PatientMedicine> PatientsMedicines { get; set; } = new HashSet<PatientMedicine>();
     
