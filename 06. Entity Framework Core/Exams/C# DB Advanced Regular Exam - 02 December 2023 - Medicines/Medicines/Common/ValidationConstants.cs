@@ -1,4 +1,6 @@
-﻿namespace Medicines.Common;
+﻿using Microsoft.Extensions.Primitives;
+
+namespace Medicines.Common;
 
 public static class ValidationConstants
 {
@@ -18,6 +20,8 @@ public static class ValidationConstants
     public const string MedicineAttributeCategory = "category";
     public const int MedicineCategoryMin = 0;
     public const int MedicineCategoryMax = 4;
+    public const string MedicineExportFullName = "Name";
+    public const string MedicineExportExpireDate = "BestBefore";
 
     public const int PatientFullNameMinLength = 5;
     public const int PatientFullNameMaxLength = 100;
