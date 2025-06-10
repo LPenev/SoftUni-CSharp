@@ -1,10 +1,12 @@
 ﻿namespace Medicines.DataProcessor
 {
     using Medicines.Data;
+    using Medicines.Data.Models.Enums;
     using Medicines.DataProcessor.ExportDtos;
     using Medicines.DataProcessor.ImportDtos;
     using Medicines.Utilities;
     using Microsoft.EntityFrameworkCore;
+    using Newtonsoft.Json;
     using System.Text;
 
     public class Serializer
@@ -42,7 +44,6 @@
                 .ThenBy(p => p.FullName)
                 .ToArray();
 
-
             const string XmlRoot = "Patients";
             const bool OmitXmlDeclaration = false;
             return XmlHelper.Serialize(patients, XmlRoot, OmitXmlDeclaration);
@@ -50,7 +51,22 @@
 
         public static string ExportMedicinesFromDesiredCategoryInNonStopPharmacies(MedicinesContext context, int medicineCategory)
         {
-            return null;
+            var medicinesData = context.Medicines.AsNoTracking()
+                .Where(m => m.Category == (Category)medicineCategory && m.Pharmacy.IsNonStop)
+                .OrderBy(m => m.Price)
+                .ThenBy(m => m.Name)
+                .Select(m => new
+                {
+                    Name = m.Name,
+                    Price = m.Price.ToString("F2"),
+                    Pharmacy = new
+                    {
+                        Name = m.Pharmacy.Name,
+                        PhoneNumber = m.Pharmacy.PhoneNumber
+                    }
+                }).ToArray();
+
+            return JsonConvert.SerializeObject(medicinesData, Formatting.Indented);
         }
     }
 }
