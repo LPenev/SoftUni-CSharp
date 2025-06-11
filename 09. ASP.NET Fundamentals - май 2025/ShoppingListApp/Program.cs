@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ShoppingListApp.Data;
+
 namespace ShoppingListApp
 {
     public class Program
@@ -8,6 +11,11 @@ namespace ShoppingListApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // EF Core Database settings
+            string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+                ?? throw new ArgumentNullException("Connection string missing!");
+            builder.Services.AddDbContext<ShoppingListDbContext>(opt => opt.UseSqlServer(connectionString));
 
             var app = builder.Build();
 
