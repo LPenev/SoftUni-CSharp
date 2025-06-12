@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using ShoppingListApp.Contracts;
 using ShoppingListApp.Data;
+using ShoppingListApp.Services;
 
 namespace ShoppingListApp
 {
@@ -9,14 +11,16 @@ namespace ShoppingListApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
 
             // EF Core Database settings
             string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
                 ?? throw new ArgumentNullException("Connection string missing!");
             builder.Services.AddDbContext<ShoppingListDbContext>(opt => opt.UseSqlServer(connectionString));
 
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IProductService, ProductService>();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
