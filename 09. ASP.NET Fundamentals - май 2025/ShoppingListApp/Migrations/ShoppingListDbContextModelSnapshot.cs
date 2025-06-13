@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ShoppingListApp.Data;
 
 #nullable disable
 
@@ -42,7 +41,7 @@ namespace ShoppingListApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product", t =>
+                    b.ToTable("Products", t =>
                         {
                             t.HasComment("List of Products");
                         });
@@ -81,7 +80,7 @@ namespace ShoppingListApp.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductNote", t =>
+                    b.ToTable("ProductNotes", t =>
                         {
                             t.HasComment("Product Note");
                         });

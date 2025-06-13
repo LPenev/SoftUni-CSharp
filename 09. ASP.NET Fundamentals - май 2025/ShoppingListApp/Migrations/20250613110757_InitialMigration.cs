@@ -13,7 +13,7 @@ namespace ShoppingListApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -23,12 +23,12 @@ namespace ShoppingListApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 },
                 comment: "List of Products");
 
             migrationBuilder.CreateTable(
-                name: "ProductNote",
+                name: "ProductNotes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -38,18 +38,18 @@ namespace ShoppingListApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductNote", x => x.Id);
+                    table.PrimaryKey("PK_ProductNotes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProductNote_Product_ProductId",
+                        name: "FK_ProductNotes_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "Product",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Product Note");
 
             migrationBuilder.InsertData(
-                table: "Product",
+                table: "Products",
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[,]
                 {
@@ -58,8 +58,8 @@ namespace ShoppingListApp.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductNote_ProductId",
-                table: "ProductNote",
+                name: "IX_ProductNotes_ProductId",
+                table: "ProductNotes",
                 column: "ProductId");
         }
 
@@ -67,10 +67,10 @@ namespace ShoppingListApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ProductNote");
+                name: "ProductNotes");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "Products");
         }
     }
 }

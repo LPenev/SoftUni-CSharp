@@ -8,6 +8,7 @@ public class ShoppingListDbContext : DbContext
     public ShoppingListDbContext(DbContextOptions<ShoppingListDbContext> options)
         : base(options)
     { }
+
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductNote> ProductNotes { get; set; }
 
@@ -18,5 +19,4 @@ public class ShoppingListDbContext : DbContext
             new Product { Id = 2, Name = "Milk" }
         );
     }
-
 }

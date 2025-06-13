@@ -38,7 +38,7 @@ public class ProductService : IProductService
                 Id = p.Id,
                 Name = p.Name,
                 Description = p.Description,
-            }).ToArrayAsync();
+            }).ToListAsync();
         ;
         return listOfProducts;
     }
