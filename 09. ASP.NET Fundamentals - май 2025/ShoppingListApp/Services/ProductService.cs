@@ -29,8 +29,6 @@ public class ProductService : IProductService
 
     public async Task<IEnumerable<ProductViewModel>> GetAllAsync()
     {
-        Console.WriteLine("Start");
-
         var listOfProducts = await _context.Products
             .AsNoTracking()
             .Select(p => new ProductViewModel()
@@ -39,7 +37,7 @@ public class ProductService : IProductService
                 Name = p.Name,
                 Description = p.Description,
             }).ToListAsync();
-        ;
+        
         return listOfProducts;
     }
 
