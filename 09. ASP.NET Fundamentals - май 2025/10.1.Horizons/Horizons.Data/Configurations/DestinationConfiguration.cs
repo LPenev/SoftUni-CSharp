@@ -32,12 +32,14 @@ public class DestinationConfiguration : IEntityTypeConfiguration<Destination>
         builder
             .HasOne(x => x.Publisher)
             .WithMany() // Navigation Collection missing in build-in Identity User
-            .HasForeignKey(x => x.PublisherId);
+            .HasForeignKey(x => x.PublisherId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder
             .HasOne(x => x.Terrain)
             .WithMany(x => x.Destinations)
-            .HasForeignKey(x => x.TerrainId);
+            .HasForeignKey(x => x.TerrainId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         //builder
         //    .HasData(this.GenerateDesinations);
