@@ -3,7 +3,7 @@ using System.Security.Claims;
 
 namespace Horizons.Web.Controllers;
 
-public class BaseController : Controller
+public abstract class BaseController : Controller
 {
     protected bool IsUserAuthenticated()
     {
