@@ -41,8 +41,8 @@ public class DestinationConfiguration : IEntityTypeConfiguration<Destination>
             .HasForeignKey(x => x.TerrainId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        //builder
-        //    .HasData(this.GenerateDesinations);
+        builder
+            .HasData(this.GenerateDesinations());
     }
 
     private List<Destination> GenerateDesinations()

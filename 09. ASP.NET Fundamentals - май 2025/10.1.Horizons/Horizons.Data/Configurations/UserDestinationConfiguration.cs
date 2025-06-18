@@ -1,7 +1,6 @@
 ﻿using Horizons.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.Identity.Client;
 
 namespace Horizons.Data.Configurations;
 

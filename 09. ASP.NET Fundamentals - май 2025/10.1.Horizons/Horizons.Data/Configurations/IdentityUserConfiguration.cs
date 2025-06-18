@@ -8,8 +8,8 @@ public class IdentityUserConfiguration : IEntityTypeConfiguration<IdentityUser>
 {
     public void Configure(EntityTypeBuilder<IdentityUser> builder)
     {
-        //builder
-        //    .HasData(this.CreateDefaultUser);
+        builder
+            .HasData(this.CreateDefaultUser());
     }
 
     private IdentityUser CreateDefaultUser()

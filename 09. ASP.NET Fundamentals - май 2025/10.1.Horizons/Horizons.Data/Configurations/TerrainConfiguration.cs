@@ -17,8 +17,8 @@ public class TerrainConfiguration : IEntityTypeConfiguration<Terrain>
             .IsRequired()
             .HasMaxLength(NameMaxLength);
 
-        //builder
-        //    .HasData(this.GenerateSeedTerains);
+        builder
+            .HasData(this.GenerateSeedTerains());
     }
 
     private List<Terrain> GenerateSeedTerains() 
