@@ -1,6 +1,8 @@
-﻿namespace Horizons.Services.Core.Contracts
+﻿using Horizons.Web.ViewModels.Destination;
+
+namespace Horizons.Services.Core.Contracts;
+
+public interface IDestinationService
 {
-    public interface IDestinationService
-    {
-    }
+    Task<IEnumerable<DestinationViewModel>> GetAllDestinationsAsync(string? userId);
 }
