@@ -17,12 +17,46 @@ namespace Horizons.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            string? userId = this.GetUserId();
+            try
+            {
+                string? userId = this.GetUserId();
 
-            IEnumerable<DestinationViewModel> allDestinations = await
-                this.destinationService.GetAllDestinationsAsync(userId);
-            
-            return View(allDestinations);
+                IEnumerable<DestinationViewModel> allDestinations = await
+                    this.destinationService.GetAllDestinationsAsync(userId);
+
+                return View(allDestinations);
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+                this.RedirectToAction(nameof(Index), "Home");
+                return null;
+            }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int? id)
+        {
+            DestinationDetailsViewModel? destinationsDetails = null;
+
+            try
+            {
+                string? userId = this.GetUserId();
+
+                destinationsDetails = await this.destinationService
+                    .GetDestinationDetailsAsync(id, userId);
+
+
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+                this.RedirectToAction(nameof(Index), "Home");
+            }
+
+            return View(destinationsDetails);
+        }
+
+
     }
 }
