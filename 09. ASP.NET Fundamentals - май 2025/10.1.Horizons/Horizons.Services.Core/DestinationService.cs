@@ -2,7 +2,9 @@
 using Horizons.Data.Models;
 using Horizons.Services.Core.Contracts;
 using Horizons.Web.ViewModels.Destination;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using static Horizons.GCommon.ValidationConstants.Destination;
 
 namespace Horizons.Services.Core;
@@ -10,10 +12,39 @@ namespace Horizons.Services.Core;
 public class DestinationService : IDestinationService
 {
     private readonly HorizonDbContext dbContext;
+    private readonly UserManager<IdentityUser> userManager;
 
-    public DestinationService(HorizonDbContext dbContext)
+    public DestinationService(HorizonDbContext dbContext, UserManager<IdentityUser> userManager)
     {
         this.dbContext = dbContext ?? throw new ArgumentNullException($"Missing dbContext: {nameof(dbContext)}");
+        this.userManager = userManager;
+    }
+
+    public async Task<bool> AddDestinationAsync(string userId, DestinationAddViewModel inputModel)
+    {
+        IdentityUser? user = await this.userManager.FindByIdAsync(userId);
+        Terrain? terrainRef = await this.dbContext.Terrains.FindAsync(inputModel.TerrainId);
+        bool isPublishedOnDateValid = DateTime.TryParseExact(inputModel.PublishedOn,
+            PublishedOnDateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime publishedOnDate);
+
+        if (user != null && terrainRef != null && isPublishedOnDateValid)
+        {
+            Destination newDestination = new Destination()
+            {
+                Name = inputModel.Name,
+                Description = inputModel.Description,
+                ImageUrl = inputModel.ImageUrl,
+                PublishedOn = publishedOnDate,
+                PublisherId = userId,
+                TerrainId = inputModel.TerrainId,
+            };
+
+            await this.dbContext.Destinations.AddAsync(newDestination);
+            await this.dbContext.SaveChangesAsync();
+
+        }
+
+        throw new NotImplementedException();
     }
 
     public async Task<IEnumerable<DestinationViewModel>> GetAllDestinationsAsync(string? userId)
