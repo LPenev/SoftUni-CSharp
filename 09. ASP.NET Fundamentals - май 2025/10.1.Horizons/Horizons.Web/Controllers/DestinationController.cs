@@ -236,5 +236,34 @@ namespace Horizons.Web.Controllers
                 return this.RedirectToAction(nameof(Index));
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddToFavorites(int? id)
+        {
+            try
+            {
+                string userId = GetUserId()!;
+
+                if (id == null)
+                {
+                    this.RedirectToAction(nameof(Index));
+                }
+
+                bool favAddResult = await this.destinationService.AddDestinationToUserFavoriteListAsync(userId, id.Value);
+
+                if (!favAddResult)
+                {
+                    this.RedirectToAction(nameof(Index));
+                }
+
+                return this.RedirectToAction(nameof(Favorites));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+
+        }
     }
 }

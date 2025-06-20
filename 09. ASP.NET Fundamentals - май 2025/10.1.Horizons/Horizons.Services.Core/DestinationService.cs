@@ -185,6 +185,39 @@ public class DestinationService : IDestinationService
         return favDestinations;
     }
 
+    public async Task<bool> AddDestinationToUserFavoriteListAsync(string userId, int destId)
+    {
+        bool operationResult = false;
+
+        IdentityUser? user = await this.userManager.FindByIdAsync(userId);
+
+        Destination? favDest = await this.dbContext
+            .Destinations
+            .FindAsync(destId);
+
+        if (user != null && favDest != null && favDest.PublisherId.ToLower() != userId.ToLower())
+        {
+            UserDestination? userFavoriteDest = await this.dbContext
+                .UsersDestinations
+                .SingleOrDefaultAsync(x => x.UserId.ToLower() == userId.ToLower() && x.DestinationId == destId);
+
+            if (userFavoriteDest == null)
+            {
+                userFavoriteDest = new UserDestination()
+                {
+                    UserId = userId,
+                    DestinationId = destId,
+                };
+
+                await this.dbContext.UsersDestinations.AddAsync(userFavoriteDest);
+                await this.dbContext.SaveChangesAsync();
+                operationResult = true;
+            }
+        }
+
+        return operationResult;
+    }
+
     public async Task<bool> PersistUpdateDestinationAsync(string userId, DestinationEditInputModel inputModel)
     {
         bool operationResult = false;
