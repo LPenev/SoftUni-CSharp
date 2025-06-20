@@ -13,4 +13,8 @@ public interface IDestinationService
     Task<DestinationEditInputModel?> GetDestinationForEditAsync(string userId, int? destId);
 
     Task<bool> PersistUpdateDestinationAsync(string userId, DestinationEditInputModel inputModel);
+
+    Task<DestinationDeleteInputModel?> GetDestinationForDeletingAsync(string userId, int? destId);
+
+    Task<bool> SoftDeleteDestinationAsync(string userId, DestinationDeleteInputModel inputModel);
 }

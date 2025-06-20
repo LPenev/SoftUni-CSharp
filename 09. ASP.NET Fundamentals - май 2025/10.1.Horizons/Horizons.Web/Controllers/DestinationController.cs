@@ -163,5 +163,55 @@ namespace Horizons.Web.Controllers
                 return this.RedirectToAction(nameof(Index));
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            try
+            {
+                string userId = GetUserId()!;
+
+                DestinationDeleteInputModel? deleteInputModel = await this.destinationService.GetDestinationForDeletingAsync(userId, id);
+
+                if (deleteInputModel == null)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
+
+                return this.View(deleteInputModel);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(DestinationDeleteInputModel inputModel)
+        {
+            try
+            {
+                if (!this.ModelState.IsValid)
+                {
+                    ModelState.AddModelError(string.Empty, "You cannot delete the destination.");
+                    return this.View(inputModel);
+                }
+
+                bool deleteResult = await this.destinationService.SoftDeleteDestinationAsync(this.GetUserId()!, inputModel);
+                if (deleteResult == false)
+                {
+                    this.ModelState.AddModelError(string.Empty, "Fatal error occurred while deleting the destination");
+                    return this.View(inputModel);
+                }
+
+                return this.RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+        }
     }
 }

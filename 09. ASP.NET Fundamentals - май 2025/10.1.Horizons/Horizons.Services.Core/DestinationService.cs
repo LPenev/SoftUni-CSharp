@@ -107,6 +107,33 @@ public class DestinationService : IDestinationService
         return destinationDetailsVM;
     }
 
+    public async Task<DestinationDeleteInputModel?> GetDestinationForDeletingAsync(string userId, int? destId)
+    {
+        DestinationDeleteInputModel? deleteInputModel = null;
+
+        if (destId.HasValue)
+        {
+            Destination? deleteDestinationModel = await dbContext
+                .Destinations
+                .Include(d => d.Publisher)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(d => d.Id == destId);
+
+            if (deleteDestinationModel != null && deleteDestinationModel.PublisherId.ToLower() == userId.ToLower())
+            {
+                deleteInputModel = new DestinationDeleteInputModel()
+                {
+                    Id = deleteDestinationModel.Id,
+                    Name = deleteDestinationModel.Name,
+                    Publisher = deleteDestinationModel.Publisher.NormalizedUserName,
+                    PublisherId = deleteDestinationModel.PublisherId,
+                };
+            }
+        }
+
+        return deleteInputModel;
+    }
+
     public async Task<DestinationEditInputModel?> GetDestinationForEditAsync(string userId, int? destId)
     {
         DestinationEditInputModel? editInputModel = null;
@@ -131,7 +158,7 @@ public class DestinationService : IDestinationService
                 };
             }
         }
-        
+
         return editInputModel;
     }
 
@@ -143,15 +170,15 @@ public class DestinationService : IDestinationService
         Terrain? terrainRef = await this.dbContext
             .Terrains
             .FindAsync(inputModel.TerrainId);
-        
+
         bool isPublishedOnDateValid = DateTime.TryParseExact(inputModel.PublishedOn,
             PublishedOnDateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime publishedOnDate);
-        
+
         Destination? updatedDest = await this.dbContext
             .Destinations
             .FindAsync(inputModel.Id);
 
-        if(user != null && terrainRef != null && updatedDest != null 
+        if (user != null && terrainRef != null && updatedDest != null
             && isPublishedOnDateValid && updatedDest.PublisherId.ToLower() == userId.ToLower())
         {
             updatedDest.Name = inputModel.Name;
@@ -163,6 +190,26 @@ public class DestinationService : IDestinationService
 
             await this.dbContext.SaveChangesAsync();
 
+            operationResult = true;
+        }
+
+        return operationResult;
+    }
+
+    public async Task<bool> SoftDeleteDestinationAsync(string userId, DestinationDeleteInputModel inputModel)
+    {
+        bool operationResult = false;
+
+        IdentityUser? user = await this.userManager.FindByIdAsync(userId);
+
+        Destination? deletedDest = await this.dbContext
+            .Destinations
+            .FindAsync(inputModel.Id);
+
+        if (user != null && deletedDest != null && deletedDest.PublisherId.ToLower() == userId.ToLower())
+        {
+            deletedDest.IsDeleted = true;
+            await this.dbContext.SaveChangesAsync();
             operationResult = true;
         }
 
