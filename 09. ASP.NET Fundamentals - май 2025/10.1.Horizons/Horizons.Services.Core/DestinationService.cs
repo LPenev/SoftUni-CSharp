@@ -162,6 +162,29 @@ public class DestinationService : IDestinationService
         return editInputModel;
     }
 
+    public async Task<IEnumerable<DestinationFavoriteViewModel>?> GetDestinationUserFavoriteViewModelAsync(string userId)
+    {
+        IEnumerable<DestinationFavoriteViewModel?> favDestinations = null;
+        IdentityUser? user = await this.userManager.FindByIdAsync(userId);
+
+        if (user != null)
+        {
+            favDestinations = await this.dbContext
+                .UsersDestinations
+                .Include(d => d.Destination)
+                .ThenInclude(d => d.Terrain)
+                .Where(ud => ud.UserId.ToLower() == userId.ToLower())
+                .Select(ud => new DestinationFavoriteViewModel()
+                {
+                    Id = ud.DestinationId,
+                    Name = ud.Destination.Name,
+                    ImageUrl =ud.Destination.ImageUrl,
+                    Terrain = ud.Destination.Terrain.Name,
+                }).ToArrayAsync();
+        }
+        return favDestinations;
+    }
+
     public async Task<bool> PersistUpdateDestinationAsync(string userId, DestinationEditInputModel inputModel)
     {
         bool operationResult = false;

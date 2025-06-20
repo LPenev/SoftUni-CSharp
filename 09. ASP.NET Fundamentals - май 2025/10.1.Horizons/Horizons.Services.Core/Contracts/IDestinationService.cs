@@ -17,4 +17,6 @@ public interface IDestinationService
     Task<DestinationDeleteInputModel?> GetDestinationForDeletingAsync(string userId, int? destId);
 
     Task<bool> SoftDeleteDestinationAsync(string userId, DestinationDeleteInputModel inputModel);
+
+    Task<IEnumerable<DestinationFavoriteViewModel>?> GetDestinationUserFavoriteViewModelAsync(string userId);
 }

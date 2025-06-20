@@ -213,5 +213,28 @@ namespace Horizons.Web.Controllers
                 return this.RedirectToAction(nameof(Index));
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Favorites()
+        {
+            try
+            {
+                string userId = GetUserId()!;
+                IEnumerable<DestinationFavoriteViewModel>? favDestinations =
+                    await this.destinationService.GetDestinationUserFavoriteViewModelAsync(userId);
+
+                if (favDestinations == null)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
+
+                return this.View(favDestinations);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+        }
     }
 }
