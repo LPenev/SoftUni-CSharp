@@ -30,7 +30,7 @@ namespace Horizons.Web.Controllers
 
                 return View(allDestinations);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 this.RedirectToAction(nameof(Index), "Home");
@@ -53,7 +53,7 @@ namespace Horizons.Web.Controllers
 
 
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 this.RedirectToAction(nameof(Index), "Home");
@@ -65,33 +65,34 @@ namespace Horizons.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            try 
+            try
             {
-                DestinationAddViewModel inputModel = new DestinationAddViewModel()
+                DestinationAddInputModel inputModel = new DestinationAddInputModel()
                 {
                     PublishedOn = DateTime.UtcNow.ToString(PublishedOnDateFormat),
                     Terrains = await this.terrainService.GetAllTerrainsAsync(),
                 };
 
                 return View(inputModel);
-            
-            } catch(Exception ex) 
+
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return this.RedirectToAction(nameof(Index));
             }
 
-            
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(DestinationAddViewModel inputModel)
+        public async Task<IActionResult> Add(DestinationAddInputModel inputModel)
         {
-            try 
+            try
             {
                 if (!this.ModelState.IsValid)
                 {
-                    return this.RedirectToAction(nameof(Add));
+                    return this.View(inputModel);
                 }
 
                 bool addResult = await this.destinationService.AddDestinationAsync(this.GetUserId()!, inputModel);
@@ -99,12 +100,64 @@ namespace Horizons.Web.Controllers
                 if (!addResult)
                 {
                     ModelState.AddModelError(string.Empty, "Fatal error occurred while adding destination");
-                    return this.RedirectToAction(nameof(Add));
+                    return this.View(inputModel);
                 }
 
                 return this.RedirectToAction(nameof(Index));
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            try
+            {
+                string userId = GetUserId()!;
+
+                DestinationEditInputModel? editInputModel = await this.destinationService.GetDestinationForEditAsync(userId, id);
+
+                if (editInputModel == null)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
+
+                editInputModel!.Terrains = await this.terrainService.GetAllTerrainsAsync();
+
+                return this.View(editInputModel);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(DestinationEditInputModel inputModel)
+        {
+            try
+            {
+                if (!this.ModelState.IsValid)
+                {
+                    return this.View(inputModel);
+                }
+
+                bool editResult = await this.destinationService.PersistUpdateDestinationAsync(this.GetUserId(), inputModel);
+                if (editResult == false)
+                {
+                    this.ModelState.AddModelError(string.Empty, "Fatal error occurred while updating the destination");
+                    return this.View(inputModel);
+                }
+
+                return this.RedirectToAction(nameof(Details), new { id = inputModel.Id});
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return this.RedirectToAction(nameof(Index));

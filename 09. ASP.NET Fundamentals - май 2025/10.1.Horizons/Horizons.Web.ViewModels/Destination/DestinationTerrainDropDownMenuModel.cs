@@ -1,5 +1,5 @@
 ﻿namespace Horizons.Web.ViewModels.Destination;
 
-public class DestinationTerrainDropDownMenuModel : DestinationAddViewModel
+public class DestinationTerrainDropDownMenuModel : DestinationAddInputModel
 {
 }

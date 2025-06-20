@@ -20,7 +20,7 @@ public class DestinationService : IDestinationService
         this.userManager = userManager;
     }
 
-    public async Task<bool> AddDestinationAsync(string userId, DestinationAddViewModel inputModel)
+    public async Task<bool> AddDestinationAsync(string userId, DestinationAddInputModel inputModel)
     {
         IdentityUser? user = await this.userManager.FindByIdAsync(userId);
         Terrain? terrainRef = await this.dbContext.Terrains.FindAsync(inputModel.TerrainId);
@@ -107,4 +107,65 @@ public class DestinationService : IDestinationService
         return destinationDetailsVM;
     }
 
+    public async Task<DestinationEditInputModel?> GetDestinationForEditAsync(string userId, int? destId)
+    {
+        DestinationEditInputModel? editInputModel = null;
+
+        if (destId.HasValue)
+        {
+            Destination? editDestinationModel = await dbContext.Destinations
+                .AsNoTracking()
+                .SingleOrDefaultAsync(d => d.Id == destId);
+
+            if (editDestinationModel != null && editDestinationModel.PublisherId.ToLower() == userId.ToLower())
+            {
+                editInputModel = new DestinationEditInputModel()
+                {
+                    Id = editDestinationModel.Id,
+                    Name = editDestinationModel.Name,
+                    Description = editDestinationModel.Description,
+                    ImageUrl = editDestinationModel.ImageUrl,
+                    TerrainId = editDestinationModel.TerrainId,
+                    PublishedOn = editDestinationModel.PublishedOn.ToString(PublishedOnDateFormat),
+                    PublisherId = editDestinationModel.PublisherId,
+                };
+            }
+        }
+        
+        return editInputModel;
+    }
+
+    public async Task<bool> PersistUpdateDestinationAsync(string userId, DestinationEditInputModel inputModel)
+    {
+        bool operationResult = false;
+
+        IdentityUser? user = await this.userManager.FindByIdAsync(userId);
+        Terrain? terrainRef = await this.dbContext
+            .Terrains
+            .FindAsync(inputModel.TerrainId);
+        
+        bool isPublishedOnDateValid = DateTime.TryParseExact(inputModel.PublishedOn,
+            PublishedOnDateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime publishedOnDate);
+        
+        Destination? updatedDest = await this.dbContext
+            .Destinations
+            .FindAsync(inputModel.Id);
+
+        if(user != null && terrainRef != null && updatedDest != null 
+            && isPublishedOnDateValid && updatedDest.PublisherId.ToLower() == userId.ToLower())
+        {
+            updatedDest.Name = inputModel.Name;
+            updatedDest.Description = inputModel.Description;
+            updatedDest.PublishedOn = publishedOnDate;
+            updatedDest.TerrainId = inputModel.TerrainId;
+            updatedDest.ImageUrl = inputModel.ImageUrl;
+            updatedDest.TerrainId = inputModel.TerrainId;
+
+            await this.dbContext.SaveChangesAsync();
+
+            operationResult = true;
+        }
+
+        return operationResult;
+    }
 }

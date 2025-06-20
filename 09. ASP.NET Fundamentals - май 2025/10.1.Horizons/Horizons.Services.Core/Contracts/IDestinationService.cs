@@ -8,5 +8,9 @@ public interface IDestinationService
 
     Task<DestinationDetailsViewModel?> GetDestinationDetailsAsync(int? id, string? userId);
 
-    Task<bool> AddDestinationAsync(string userId, DestinationAddViewModel inputModel);
+    Task<bool> AddDestinationAsync(string userId, DestinationAddInputModel inputModel);
+
+    Task<DestinationEditInputModel?> GetDestinationForEditAsync(string userId, int? destId);
+
+    Task<bool> PersistUpdateDestinationAsync(string userId, DestinationEditInputModel inputModel);
 }

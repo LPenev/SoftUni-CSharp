@@ -4,7 +4,7 @@ using static Horizons.GCommon.ValidationConstants.Destination;
 
 namespace Horizons.Web.ViewModels.Destination;
 
-public class DestinationAddViewModel
+public class DestinationAddInputModel
 {
     [Required]
     [MinLength(NameMinLength)]
