@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RecipeSharingPlatform.Services.Core.Contracts;
 using RecipeSharingPlatform.ViewModels.Recipe;
-using static RecipeSharingPlatform.GCommon.ValidationConstants.Recipe;
 
 namespace RecipeSharingPlatform.Web.Controllers
 {
@@ -107,5 +106,55 @@ namespace RecipeSharingPlatform.Web.Controllers
             }
 
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Remove(int? id)
+        {
+            RecipeDeleteViewModel? viewModel = new RecipeDeleteViewModel();
+
+            try
+            {
+                string? userId = this.GetUserId();
+                viewModel = await this.recipeService.RemoveRecipeFromUserFavoriteListAsync(userId, id);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmRemove(int? id)
+        {
+            try
+            {
+                string userId = GetUserId()!;
+
+                if (id == null)
+                {
+                    this.RedirectToAction(nameof(Index));
+                }
+
+                bool favRemoveResult = await this.recipeService.ConfirmRemoveRecipeFromUserFavoriteListAsync(userId, id.Value);
+
+                if (!favRemoveResult)
+                {
+                    this.RedirectToAction(nameof(Index));
+                }
+
+                return this.RedirectToAction(nameof(Favorites));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+        }
+
+
     }
 }

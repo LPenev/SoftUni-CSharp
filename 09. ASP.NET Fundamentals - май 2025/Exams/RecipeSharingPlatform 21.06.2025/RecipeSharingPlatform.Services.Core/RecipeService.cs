@@ -71,7 +71,7 @@ namespace RecipeSharingPlatform.Services.Core
                     Category = x.Category.Name,
                     SavedCount = x.UsersRecipes.Count(),
                     IsAuthor = isUserIdValid ? x.AuthorId.ToLower() == userId : false,
-                    IsSaved  = isUserIdValid ? x.UsersRecipes.Any(ur => ur.UserId.ToLower() == userId!.ToLower()) : false,
+                    IsSaved = isUserIdValid ? x.UsersRecipes.Any(ur => ur.UserId.ToLower() == userId!.ToLower()) : false,
                 }).ToArrayAsync();
 
 
@@ -98,7 +98,7 @@ namespace RecipeSharingPlatform.Services.Core
                     recipeDetailsVM = new RecipeDetailsViewModel()
                     {
                         Id = recipe.Id,
-                        ImageUrl= recipe.ImageUrl,
+                        ImageUrl = recipe.ImageUrl,
                         Title = recipe.Title,
                         Instructions = recipe.Instructions,
                         Category = recipe.Category.Name,
@@ -109,7 +109,7 @@ namespace RecipeSharingPlatform.Services.Core
                     };
                 }
             }
-                return recipeDetailsVM;
+            return recipeDetailsVM;
         }
 
         public async Task<IEnumerable<RecipeFavoritesViewModel>?> GetRecipeUserFavoritesViewModelAsync(string userId)
@@ -133,6 +133,63 @@ namespace RecipeSharingPlatform.Services.Core
                     }).ToArrayAsync();
             }
             return favRecipes;
+        }
+
+        public async Task<RecipeDeleteViewModel> RemoveRecipeFromUserFavoriteListAsync(string? userId, int? recipeId)
+        {
+            RecipeDeleteViewModel? viewModel = null;
+            IdentityUser? user = await this.userManager.FindByIdAsync(userId);
+
+            if (user != null)
+            {
+                UserRecipe? userRecipe = await this.dbContext
+                    .UserRecipes
+                    .Include(d => d.Recipe)
+                    .SingleOrDefaultAsync(x => x.RecipeId == recipeId && x.UserId.ToLower() == userId.ToLower());
+
+                if (userRecipe != null)
+                {
+                    viewModel = new RecipeDeleteViewModel()
+                    {
+                        Id = userRecipe.RecipeId,
+                        Title = userRecipe.Recipe.Title,
+                        AuthorId = userRecipe.Recipe.AuthorId,
+                        Author = user.UserName!,
+                        ImageUrl = userRecipe.Recipe.ImageUrl,
+                    };
+                }
+                else
+                {
+                    throw new ArgumentNullException("Recipe data not found");
+                }
+            }
+
+            return viewModel;
+        }
+
+        public async Task<bool> ConfirmRemoveRecipeFromUserFavoriteListAsync(string? userId, int? recipeId)
+        {
+            bool operationResult = false;
+
+            if (string.IsNullOrWhiteSpace(userId) || recipeId == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                var deletedCount = await this.dbContext.UserRecipes
+                   .Where(ur => ur.UserId == userId && ur.RecipeId == recipeId).ExecuteDeleteAsync();
+                
+                operationResult = deletedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                operationResult = false;
+            }
+
+            return operationResult;
         }
     }
 }
