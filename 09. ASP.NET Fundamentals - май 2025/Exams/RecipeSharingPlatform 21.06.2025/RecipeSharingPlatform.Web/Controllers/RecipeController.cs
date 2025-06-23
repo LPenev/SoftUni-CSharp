@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RecipeSharingPlatform.Services.Core;
 using RecipeSharingPlatform.Services.Core.Contracts;
 using RecipeSharingPlatform.ViewModels.Recipe;
 
@@ -7,10 +8,12 @@ namespace RecipeSharingPlatform.Web.Controllers
 {
     public class RecipeController : BaseController
     {
+        private readonly ICategoryService categoryService;
         private readonly IRecipeService recipeService;
 
-        public RecipeController(IRecipeService recipeService)
+        public RecipeController(IRecipeService recipeService, ICategoryService categoryService)
         {
+            this.categoryService = categoryService;
             this.recipeService = recipeService;
         }
 
@@ -205,6 +208,38 @@ namespace RecipeSharingPlatform.Web.Controllers
                 Console.WriteLine(ex.Message);
                 return this.RedirectToAction(nameof(Index));
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            try
+            {
+                RecipeCreateInputModel inputModel = new RecipeCreateInputModel()
+                {
+                    Categories = await this.categoryService.GetCategoriesAsync(),
+                };
+
+                return View(inputModel);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(RecipeCreateInputModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                model.Categories = await this.categoryService.GetCategoriesAsync();
+                return View(model);
+            }
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

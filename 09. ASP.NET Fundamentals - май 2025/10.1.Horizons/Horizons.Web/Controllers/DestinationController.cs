@@ -92,6 +92,7 @@ namespace Horizons.Web.Controllers
             {
                 if (!this.ModelState.IsValid)
                 {
+                    inputModel.Terrains = await this.terrainService.GetAllTerrainsAsync();
                     return this.View(inputModel);
                 }
 
