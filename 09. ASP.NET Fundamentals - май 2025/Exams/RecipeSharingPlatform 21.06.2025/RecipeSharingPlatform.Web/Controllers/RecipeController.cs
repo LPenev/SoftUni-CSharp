@@ -34,6 +34,7 @@ namespace RecipeSharingPlatform.Web.Controllers
             }
         }
 
+        [HttpGet]
         public async Task<IActionResult> Details(int? id)
         {
             RecipeDetailsViewModel? recipeDetails = null;
@@ -43,9 +44,7 @@ namespace RecipeSharingPlatform.Web.Controllers
                 string? userId = this.GetUserId();
 
                 recipeDetails = await this.recipeService
-                    .GetDestinationDetailsAsync(id, userId);
-
-
+                    .GetReceptDetailsAsync(id, userId);
             }
             catch (Exception ex)
             {
@@ -56,6 +55,7 @@ namespace RecipeSharingPlatform.Web.Controllers
             return View(recipeDetails);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Favorites()
         {
             try
@@ -132,12 +132,12 @@ namespace RecipeSharingPlatform.Web.Controllers
         {
             try
             {
-                string userId = GetUserId()!;
-
                 if (id == null)
                 {
                     this.RedirectToAction(nameof(Index));
                 }
+
+                string userId = GetUserId()!;
 
                 bool favRemoveResult = await this.recipeService.ConfirmRemoveRecipeFromUserFavoriteListAsync(userId, id.Value);
 
@@ -155,6 +155,56 @@ namespace RecipeSharingPlatform.Web.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            RecipeDeleteViewModel? model = null;
+            try
+            {
+                if (id == null)
+                {
+                    this.RedirectToAction(nameof(Index));
+                }
 
+                string userId = GetUserId()!;
+
+                model = await this.recipeService.GetRecipeToDelete(userId, id);
+
+                if (model == null)
+                {
+                    this.RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmDelete(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    this.RedirectToAction(nameof(Index));
+                }
+                
+                string userId = GetUserId()!;
+
+                bool deleteResult = await this.recipeService.ConfirmRecipeDelete(userId, id.Value);
+
+                return this.RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+        }
     }
 }

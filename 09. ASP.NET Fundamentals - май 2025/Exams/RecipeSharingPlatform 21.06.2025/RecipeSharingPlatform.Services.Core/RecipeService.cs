@@ -78,7 +78,7 @@ namespace RecipeSharingPlatform.Services.Core
             return allRecipes;
         }
 
-        public async Task<RecipeDetailsViewModel?> GetDestinationDetailsAsync(int? id, string? userId)
+        public async Task<RecipeDetailsViewModel?> GetReceptDetailsAsync(int? id, string? userId)
         {
             RecipeDetailsViewModel recipeDetailsVM = null;
 
@@ -180,7 +180,67 @@ namespace RecipeSharingPlatform.Services.Core
             {
                 var deletedCount = await this.dbContext.UserRecipes
                    .Where(ur => ur.UserId == userId && ur.RecipeId == recipeId).ExecuteDeleteAsync();
-                
+
+                operationResult = deletedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                operationResult = false;
+            }
+
+            return operationResult;
+        }
+
+        public async Task<RecipeDeleteViewModel> GetRecipeToDelete(string? userId, int? id)
+        {
+            RecipeDeleteViewModel viewModel = null;
+
+            if (id.HasValue)
+            {
+                bool isUserNameValid = userId != null;
+
+                Recipe? recipe = await this.dbContext
+                    .Recipes
+                    .Include(x => x.Author)
+                    .SingleOrDefaultAsync(x => x.Id == id && x.AuthorId == userId);
+
+                if (recipe != null)
+                {
+                    viewModel = new RecipeDeleteViewModel
+                    {
+                        Id = id.Value,
+                        Title = recipe.Title,
+                        AuthorId = recipe.AuthorId,
+                        Author = recipe.Author.UserName!,
+                        ImageUrl = recipe.ImageUrl,
+                    };
+                }
+            }
+            return viewModel;
+        }
+
+        public async Task<bool> ConfirmRecipeDelete(string? userId, int? recipeId)
+        {
+            bool operationResult = false;
+
+            if (string.IsNullOrWhiteSpace(userId) || recipeId == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                var favDeletedCount = await this.dbContext
+                   .UserRecipes
+                   .Where(ur => ur.UserId == userId && ur.RecipeId == recipeId)
+                   .ExecuteDeleteAsync();
+
+                var deletedCount = await this.dbContext
+                    .Recipes
+                    .Where(x=> x.AuthorId == userId && x.Id == recipeId)
+                    .ExecuteDeleteAsync();
+
                 operationResult = deletedCount > 0;
             }
             catch (Exception ex)
