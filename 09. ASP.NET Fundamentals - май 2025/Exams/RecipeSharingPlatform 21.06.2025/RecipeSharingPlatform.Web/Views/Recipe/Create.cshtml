@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Create Recipe";
-    var today = DateTime.Now.ToString("yyyy-MM-dd");
+    var today = DateTime.Now.ToString("dd-MM-yyyy");
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3" style="margin-top: 20px;">
@@ -44,7 +44,7 @@
 
             <div class="col-sm-6 mb-2">
                 <label asp-for="@Model.CreatedOn" class="form-label-add-edit">Created On</label>
-                <input asp-for="@Model.CreatedOn" class="form-control" type="date" aria-required="true" value="@(string.IsNullOrEmpty(Model.CreatedOn) ? today : Model.CreatedOn)" />
+                <input asp-for="@Model.CreatedOn" class="form-control" type="text" aria-required="true" value="@(Model.CreatedOn == null ? today : Model.CreatedOn)" />
                 <span asp-validation-for="@Model.CreatedOn" class="text-danger"></span>
             </div>
 

@@ -14,11 +14,13 @@ namespace RecipeSharingPlatform.Services.Core
     {
         private readonly ApplicationDbContext dbContext;
         private readonly UserManager<IdentityUser> userManager;
+        private readonly ICategoryService categoryService;
 
-        public RecipeService(ApplicationDbContext dbContext, UserManager<IdentityUser> userManager)
+        public RecipeService(ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, ICategoryService categoryService)
         {
             this.dbContext = dbContext ?? throw new ArgumentNullException($"Missing dbContext: {nameof(dbContext)}");
             this.userManager = userManager;
+            this.categoryService = categoryService;
         }
 
         public async Task<bool> AddRecipeToUserFavoriteListAsync(string userId, int recipeId)
@@ -238,7 +240,7 @@ namespace RecipeSharingPlatform.Services.Core
 
                 var deletedCount = await this.dbContext
                     .Recipes
-                    .Where(x=> x.AuthorId == userId && x.Id == recipeId)
+                    .Where(x => x.AuthorId == userId && x.Id == recipeId)
                     .ExecuteDeleteAsync();
 
                 operationResult = deletedCount > 0;
@@ -251,6 +253,109 @@ namespace RecipeSharingPlatform.Services.Core
 
             return operationResult;
         }
+        public async Task<bool> AddRecipeAsync(string? userId, RecipeCreateInputModel model)
+        {
+            IdentityUser? user = await this.userManager.FindByIdAsync(userId);
+            Category? categoryRef = await this.dbContext.Categories.FindAsync(model.CategoryId);
+            bool isCreatedOnDateValid = DateTime.TryParseExact(model.CreatedOn,
+            "yyyy-mm-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime CreatedOnDate);
 
+            if (user != null && categoryRef != null)
+            {
+                try
+                {
+                    Recipe newRecipe = new Recipe()
+                    {
+                        Title = model.Title,
+                        Instructions = model.Instructions,
+                        ImageUrl = model.ImageUrl,
+                        CreatedOn = CreatedOnDate,
+                        AuthorId = userId,
+                        Author = user,
+                        CategoryId = model.CategoryId,
+                    };
+
+                    await this.dbContext.Recipes.AddAsync(newRecipe);
+                    await this.dbContext.SaveChangesAsync();
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+
+            return false;
+        }
+
+        public async Task<RecipeEditInputModel> GetRecipeForEditAsync(string? userId, int? id)
+        {
+            RecipeEditInputModel? inputModel = null;
+
+            if (id.HasValue && !String.IsNullOrEmpty(userId))
+            {
+                Recipe? recipe = await this.dbContext
+                    .Recipes
+                    .Include(x => x.Category)
+                    .Include(x => x.Author)
+                    .SingleOrDefaultAsync(r => r.Id == id && r.AuthorId == userId);
+
+                if (recipe == null)
+                {
+                    return null;
+                }
+
+                inputModel = new RecipeEditInputModel()
+                {
+                    Id = recipe.Id,
+                    ImageUrl = recipe.ImageUrl,
+                    Title = recipe.Title,
+                    Instructions = recipe.Instructions,
+                    CategoryId = recipe.CategoryId,
+                    Categories = await this.categoryService.GetCategoriesAsync(),
+                };
+
+                return inputModel;
+            }
+            return null;
+        }
+
+        public async Task<bool> UpdateRecipeAsync(string? userId, RecipeEditInputModel model)
+        {
+            if(userId == null)
+            {
+                throw new ArgumentNullException(nameof(userId));
+            }
+
+            IdentityUser? user = await this.userManager.FindByIdAsync(userId);
+
+            if (userId != user.Id) 
+            {
+                throw new ArgumentNullException(nameof(userId));
+            }
+
+
+            Recipe updateRecipe = new Recipe()
+            {
+                Id =model.Id,
+                Title = model.Title,
+                Instructions = model.Instructions,
+                ImageUrl = model.ImageUrl,
+                AuthorId = userId,
+                Author = user,
+                CategoryId = model.CategoryId,
+            };
+
+            if (updateRecipe == null)
+            {
+                throw new ArgumentNullException(nameof(userId));
+            }
+
+            this.dbContext.Update(updateRecipe);
+            await this.dbContext.SaveChangesAsync();
+            return true;
+        }
     }
 }

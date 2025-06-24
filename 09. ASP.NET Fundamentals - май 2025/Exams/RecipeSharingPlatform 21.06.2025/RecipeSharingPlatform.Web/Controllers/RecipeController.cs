@@ -183,7 +183,7 @@ namespace RecipeSharingPlatform.Web.Controllers
                 Console.WriteLine(ex.Message);
                 return this.RedirectToAction(nameof(Index));
             }
-            
+
             return View(model);
         }
 
@@ -196,7 +196,7 @@ namespace RecipeSharingPlatform.Web.Controllers
                 {
                     this.RedirectToAction(nameof(Index));
                 }
-                
+
                 string userId = GetUserId()!;
 
                 bool deleteResult = await this.recipeService.ConfirmRecipeDelete(userId, id.Value);
@@ -239,6 +239,67 @@ namespace RecipeSharingPlatform.Web.Controllers
                 return View(model);
             }
 
+            bool addResult = await this.recipeService.AddRecipeAsync(this.GetUserId()!, model);
+
+            if (!addResult)
+            {
+                ModelState.AddModelError(string.Empty, "Fatal error occurred while adding destination");
+                model.Categories = await this.categoryService.GetCategoriesAsync();
+                return this.View(model);
+            }
+
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            try
+            {
+                string userId = GetUserId()!;
+
+                RecipeEditInputModel? editInputModel = await this.recipeService.GetRecipeForEditAsync(userId, id);
+
+                if (editInputModel == null)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
+
+                return this.View(editInputModel);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return this.RedirectToAction(nameof(Index));
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(RecipeEditInputModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    model.Categories = await this.categoryService.GetCategoriesAsync();
+                    return View(model);
+                }
+
+                bool addResult = await this.recipeService.UpdateRecipeAsync(this.GetUserId()!, model);
+
+                if (!addResult) 
+                {
+                    ModelState.AddModelError(string.Empty, "Fatal error occurred while adding destination");
+                    model.Categories = await this.categoryService.GetCategoriesAsync();
+                    return this.View(model);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return RedirectToAction(nameof(Index));
         }
     }

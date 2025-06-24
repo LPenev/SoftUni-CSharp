@@ -3,23 +3,9 @@ using static RecipeSharingPlatform.GCommon.ValidationConstants.Recipe;
 
 namespace RecipeSharingPlatform.ViewModels.Recipe;
 
-public class RecipeCreateInputModel
+public class RecipeCreateInputModel : RecipeBaseInputModel
 {
-    public int id {  get; set; }
-    
-    [Required]
-    [MinLength(TitleMinLength)]
-    [MaxLength(TitleMaxLength)]
-    public string Title { get; set; } = null;
-    public int CategoryId { get; set; }
-    [Required]
-    [MinLength(InstructionsMinLength)]
-    [MaxLength(InstructionsMaxLength)]
-    public string Instructions { get; set; } = null!;
-    public string? ImageUrl { get; set; }
-    [Required]
-    public string CreatedOn { get; set; } = null!;
-
-    public IEnumerable<CategoriesViewModel> Categories { get; set; } = Enumerable.Empty<CategoriesViewModel>();
+    [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+    public string CreatedOn { get; set; }
 
 }
