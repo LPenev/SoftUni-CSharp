@@ -18,7 +18,7 @@
         {
             base.OnModelCreating(builder);
             // apply all Entity Configuration Files
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetEntryAssembly());
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
