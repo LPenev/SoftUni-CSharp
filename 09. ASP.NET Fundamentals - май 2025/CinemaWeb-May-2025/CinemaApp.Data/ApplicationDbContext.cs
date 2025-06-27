@@ -17,7 +17,8 @@
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            //builder.ApplyConfigurationsFromAssembly(Assembly.GetEntryAssembly());
+            // apply all Entity Configuration Files
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetEntryAssembly());
         }
     }
 }
