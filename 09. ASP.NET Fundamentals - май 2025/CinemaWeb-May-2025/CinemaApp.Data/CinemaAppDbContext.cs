@@ -5,11 +5,11 @@
     using Microsoft.EntityFrameworkCore;
     using System.Reflection;
 
-    public class ApplicationDbContext : IdentityDbContext
+    public class CinemaAppDbContext : IdentityDbContext
     {
         public DbSet<Movie> Movies { get; set; }
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public CinemaAppDbContext(DbContextOptions<CinemaAppDbContext> options)
             : base(options)
         {
         }

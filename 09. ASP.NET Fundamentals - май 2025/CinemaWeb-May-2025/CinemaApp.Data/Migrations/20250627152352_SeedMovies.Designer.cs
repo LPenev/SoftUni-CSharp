@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CinemaApp.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(CinemaAppDbContext))]
     [Migration("20250627152352_SeedMovies")]
     partial class SeedMovies
     {
