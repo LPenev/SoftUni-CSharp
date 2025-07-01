@@ -8,6 +8,8 @@
     public class CinemaAppDbContext : IdentityDbContext
     {
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Movie> UserMovies { get; set; }
+
 
         public CinemaAppDbContext(DbContextOptions<CinemaAppDbContext> options)
             : base(options)
