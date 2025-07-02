@@ -1,18 +1,19 @@
-﻿using CinemaApp.Data;
+﻿using CinemaApp.Services.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaApp.Web.Controllers;
 
 public class MovieController : Controller
 {
-    private readonly CinemaAppDbContext context;
-
-    public MovieController(CinemaAppDbContext context)
+    private readonly IMovieService movieService;
+    public MovieController(IMovieService movieService)
     {
-        this.context = context;
+        this.movieService = movieService;
     }
-    public IActionResult Index()
+
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var movies = await movieService.GetAllMoviesAsync();
+        return View(movies);
     }
 }

@@ -1,24 +1,24 @@
 ﻿using CinemaApp.Data;
+using CinemaApp.Services.Core.Interfaces;
 using CinemaApp.Web.ViewModels.Movie;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace CinemaApp.Web;
+namespace CinemaApp.Services.Core;
 
-public class MovieController : Controller
+public class MovieService : IMovieService
 {
     private readonly CinemaAppDbContext context;
-
-    public MovieController(CinemaAppDbContext context)
+    public MovieService(CinemaAppDbContext context)
     {
         this.context = context;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IEnumerable<AllMoviesIndexViewModel>> GetAllMoviesAsync()
     {
-        var movies = await this.context
-            .Movies
-            .Select(m => new AllMoviesIndexViewModel()
+        return await context.Movies
+            .Where(m => !m.IsDeleted)
+            .AsNoTracking()
+            .Select(m => new AllMoviesIndexViewModel
             {
                 Id = m.Id.ToString(),
                 Title = m.Title,
@@ -28,6 +28,5 @@ public class MovieController : Controller
                 ImageUrl = m.ImageUrl,
             })
             .ToArrayAsync();
-        return View(movies);
     }
 }
