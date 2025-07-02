@@ -16,4 +16,10 @@ public class MovieController : Controller
         var movies = await movieService.GetAllMoviesAsync();
         return View(movies);
     }
+
+    [HttpGet]
+    public IActionResult Add()
+    {
+        return View();
+    }
 }
