@@ -12,8 +12,4 @@
     <ProjectReference Include="..\CinemaApp.Services.AutoMapping\CinemaApp.Services.AutoMapping.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Movie\" />
-  </ItemGroup>
-
 </Project>
