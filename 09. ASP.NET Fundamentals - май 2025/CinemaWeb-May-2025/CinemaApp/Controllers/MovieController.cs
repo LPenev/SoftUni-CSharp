@@ -14,7 +14,7 @@ public class MovieController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var movies = await movieService.GetAllMoviesAsync();
+        var movies = await movieService.GetAllMoviesAsync();    
         return View(movies);
     }
 
@@ -33,5 +33,17 @@ public class MovieController : Controller
         }
         await movieService.AddAsync(model);
         return RedirectToAction(nameof(Index));
+    }
+
+    public async Task<IActionResult> Details(string id)
+    {
+        var movie = await movieService.GetByIdAsync(id);
+
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        return View(movie);
     }
 }

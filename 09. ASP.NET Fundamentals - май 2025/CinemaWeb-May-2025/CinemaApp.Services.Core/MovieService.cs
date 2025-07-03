@@ -49,4 +49,30 @@ public class MovieService : IMovieService
             })
             .ToArrayAsync();
     }
+
+    public async Task<MovieDetailsViewModel> GetByIdAsync(string id)
+    {
+        var movie = await context.Movies
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.Id.ToString() == id && !m.IsDeleted);
+
+        if (movie == null)
+        {
+            return null;
+        }
+
+        var movieDetails = new MovieDetailsViewModel
+        {
+            Id = movie.Id.ToString(),
+            Title = movie.Title,
+            Genre = movie.Genre,
+            Director = movie.Director,
+            Description = movie.Description,
+            Duration = movie.Duration,
+            ReleaseDate = movie.ReleaseDate.ToString("yyyy-MM-dd"),
+            ImageUrl = movie.ImageUrl
+        };
+
+        return movieDetails;
+    }
 }
