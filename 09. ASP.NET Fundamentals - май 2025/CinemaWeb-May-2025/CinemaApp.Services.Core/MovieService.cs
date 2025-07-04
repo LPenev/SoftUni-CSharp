@@ -102,11 +102,12 @@ public class MovieService : IMovieService
         return movieToEdit;
     }
 
+
     public async Task UpdateAsync(MovieFormViewModel model)
     {
         if (!Guid.TryParse(model.Id, out Guid id))
         {
-            Console.WriteLine("Невалиден GUID");
+            Console.WriteLine("Invalid GUID");
         }
 
         var movie = await context.Movies.FindAsync(id);
@@ -116,7 +117,7 @@ public class MovieService : IMovieService
         if (!DateTime.TryParseExact(model.ReleaseDate, "yyyy-MM-dd",
             CultureInfo.InvariantCulture, DateTimeStyles.None, out var releaseDate))
         {
-            throw new Exception("Невалидна дата.");
+            throw new Exception("Invalid date.");
         }
 
         movie.Title = model.Title;
@@ -128,5 +129,29 @@ public class MovieService : IMovieService
         movie.ImageUrl = model.ImageUrl;
 
         await context.SaveChangesAsync();
+    }
+
+    public async Task SoftDeleteAsync(string id)
+    {
+        var movie = await context.Movies
+            .FirstOrDefaultAsync(m => m.Id.ToString() == id);
+
+        if (movie != null && !movie.IsDeleted)
+        {
+            movie.IsDeleted = true;
+            await context.SaveChangesAsync();
+        }
+    }
+
+    public async Task HardDeleteAsync(string id)
+    {
+        var movie = await context.Movies
+            .FirstOrDefaultAsync(m => m.Id.ToString() == id);
+
+        if(movie != null)
+        {
+            context.Movies.Remove(movie);
+            await context.SaveChangesAsync();
+        }
     }
 }

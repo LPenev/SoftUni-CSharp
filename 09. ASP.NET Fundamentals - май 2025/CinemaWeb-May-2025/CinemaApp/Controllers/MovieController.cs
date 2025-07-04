@@ -61,9 +61,9 @@ public class MovieController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Edit(MovieFormViewModel model)
+    public async Task<IActionResult> Edit(string id,MovieFormViewModel model)
     {
-        if (!ModelState.IsValid) 
+        if (!ModelState.IsValid)
         {
             return View(model);
         }
@@ -74,10 +74,30 @@ public class MovieController : Controller
         }
         catch (Exception ex)
         {
-            ModelState.AddModelError(string.Empty, "Възникна грешка при записа.");
+            ModelState.AddModelError(string.Empty, "Error by save data.");
             return View(model);
         }
 
-        return RedirectToAction(nameof(Details));
+        return RedirectToAction(nameof(Details), new {id});
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var movie = await movieService.GetByIdAsync(id);
+
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        return View(movie);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteConfirmed(string id)
+    {
+        await movieService.SoftDeleteAsync(id);
+        return RedirectToAction(nameof(Index));
     }
 }
