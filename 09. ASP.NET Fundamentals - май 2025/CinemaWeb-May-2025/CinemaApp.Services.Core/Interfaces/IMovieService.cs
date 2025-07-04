@@ -9,4 +9,8 @@ public interface IMovieService
     Task AddAsync(MovieFormViewModel model);
 
     Task <MovieDetailsViewModel> GetByIdAsync (string id);
+
+    Task<MovieFormViewModel> GetByIdToEditAsync(string id);
+
+    Task UpdateAsync(MovieFormViewModel model);
 }

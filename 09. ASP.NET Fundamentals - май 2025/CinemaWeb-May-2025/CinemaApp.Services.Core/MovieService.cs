@@ -70,9 +70,63 @@ public class MovieService : IMovieService
             Description = movie.Description,
             Duration = movie.Duration,
             ReleaseDate = movie.ReleaseDate.ToString("yyyy-MM-dd"),
-            ImageUrl = movie.ImageUrl
+            ImageUrl = movie.ImageUrl,
         };
 
         return movieDetails;
+    }
+
+    public async Task<MovieFormViewModel> GetByIdToEditAsync(string id)
+    {
+        var movie = await context.Movies
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.Id.ToString() == id && !m.IsDeleted);
+
+        if (movie == null)
+        {
+            return null;
+        }
+
+        var movieToEdit = new MovieFormViewModel
+        {
+            Title = movie.Title,
+            Genre = movie.Genre,
+            ReleaseDate = movie.ReleaseDate.ToString("yyyy-MM-dd"),
+            Duration = movie.Duration,
+            Director = movie.Director,
+            Description = movie.Description,
+            ImageUrl = movie.ImageUrl,
+            Id = id,
+        };
+
+        return movieToEdit;
+    }
+
+    public async Task UpdateAsync(MovieFormViewModel model)
+    {
+        if (!Guid.TryParse(model.Id, out Guid id))
+        {
+            Console.WriteLine("Невалиден GUID");
+        }
+
+        var movie = await context.Movies.FindAsync(id);
+        if (movie == null)
+            throw new ArgumentException("Movie not found");
+
+        if (!DateTime.TryParseExact(model.ReleaseDate, "yyyy-MM-dd",
+            CultureInfo.InvariantCulture, DateTimeStyles.None, out var releaseDate))
+        {
+            throw new Exception("Невалидна дата.");
+        }
+
+        movie.Title = model.Title;
+        movie.Genre = model.Genre;
+        movie.ReleaseDate = releaseDate;
+        movie.Duration = model.Duration;
+        movie.Director = model.Director;
+        movie.Description = model.Description;
+        movie.ImageUrl = model.ImageUrl;
+
+        await context.SaveChangesAsync();
     }
 }

@@ -39,5 +39,7 @@
 
         [MaxLength(ImageUrlMaxLength, ErrorMessage = ImageUrlMaxLengthMessage)]
         public string? ImageUrl { get; set; }
+
+        public string? Id { get; set; }
     }
 }

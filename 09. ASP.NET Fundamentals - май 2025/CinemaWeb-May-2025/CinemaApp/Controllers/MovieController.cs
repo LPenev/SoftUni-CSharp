@@ -21,6 +21,11 @@ public class MovieController : Controller
     [HttpGet]
     public IActionResult Add()
     {
+        if (User?.Identity?.IsAuthenticated ?? true)
+        {
+            return RedirectToAction("Index");
+        }
+
         return View();
     }
 
@@ -35,6 +40,7 @@ public class MovieController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [HttpGet]
     public async Task<IActionResult> Details(string id)
     {
         var movie = await movieService.GetByIdAsync(id);
@@ -45,5 +51,33 @@ public class MovieController : Controller
         }
 
         return View(movie);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Edit(string id)
+    {
+        var movie = await movieService.GetByIdToEditAsync(id);
+        return View(movie);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(MovieFormViewModel model)
+    {
+        if (!ModelState.IsValid) 
+        {
+            return View(model);
+        }
+
+        try
+        {
+            await movieService.UpdateAsync(model);
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, "Възникна грешка при записа.");
+            return View(model);
+        }
+
+        return RedirectToAction(nameof(Index));
     }
 }
