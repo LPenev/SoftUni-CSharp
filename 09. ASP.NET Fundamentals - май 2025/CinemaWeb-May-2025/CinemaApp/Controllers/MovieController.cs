@@ -78,6 +78,6 @@ public class MovieController : Controller
             return View(model);
         }
 
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Details));
     }
 }
