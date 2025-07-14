@@ -36,7 +36,6 @@ public class MovieService : IMovieService
     public async Task<IEnumerable<AllMoviesIndexViewModel>> GetAllMoviesAsync()
     {
         return await context.Movies
-            .Where(m => !m.IsDeleted)
             .AsNoTracking()
             .Select(m => new AllMoviesIndexViewModel
             {
