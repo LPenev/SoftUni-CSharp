@@ -8,7 +8,7 @@
     public class CinemaAppDbContext : IdentityDbContext
     {
         public DbSet<Movie> Movies { get; set; }
-        public DbSet<Movie> UserMovies { get; set; }
+        public DbSet<WatchList> WatchLists { get; set; }
 
 
         public CinemaAppDbContext(DbContextOptions<CinemaAppDbContext> options)
