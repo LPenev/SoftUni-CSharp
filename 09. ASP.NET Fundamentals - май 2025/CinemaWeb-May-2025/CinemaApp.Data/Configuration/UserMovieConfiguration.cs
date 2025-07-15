@@ -19,5 +19,7 @@ public class UserMovieConfiguration : IEntityTypeConfiguration<UserMovie>
             .WithMany()
             .HasForeignKey(um => um.MovieId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasQueryFilter(um => !um.Movie.IsDeleted == false);
     }
 }
