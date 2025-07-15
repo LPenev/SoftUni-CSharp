@@ -21,7 +21,7 @@ public class MovieController : Controller
     [HttpGet]
     public IActionResult Add()
     {
-        if (User?.Identity?.IsAuthenticated ?? true)
+        if (!User?.Identity?.IsAuthenticated ?? false)
         {
             return RedirectToAction("Index");
         }
@@ -36,6 +36,7 @@ public class MovieController : Controller
         {
             return View(model);
         }
+
         await movieService.AddAsync(model);
         return RedirectToAction(nameof(Index));
     }
