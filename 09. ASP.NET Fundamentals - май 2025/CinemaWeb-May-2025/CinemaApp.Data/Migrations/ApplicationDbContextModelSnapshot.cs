@@ -70,7 +70,7 @@ namespace CinemaApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Movies", (string)null);
 
                     b.HasData(
                         new
@@ -308,7 +308,7 @@ namespace CinemaApp.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Watchlists");
+                    b.ToTable("Watchlists", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

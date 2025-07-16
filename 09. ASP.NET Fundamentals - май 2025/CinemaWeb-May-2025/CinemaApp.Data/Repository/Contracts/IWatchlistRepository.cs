@@ -2,6 +2,6 @@
 
 namespace CinemaApp.Data.Repository.Contracts;
 
-public interface IWatchlistRepository : IRepository<UserMovie, string>
+public interface IWatchlistRepository : IRepository<Watchlist, string>
 {
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CinemaApp.Data.Configuration;
 
-public class WatchListConfiguration : IEntityTypeConfiguration<Watchlist>
+public class WatchlistConfiguration : IEntityTypeConfiguration<Watchlist>
 {
     public void Configure(EntityTypeBuilder<Watchlist> builder)
     {
@@ -23,9 +23,9 @@ public class WatchListConfiguration : IEntityTypeConfiguration<Watchlist>
         builder.Property(x => x.IsDeleted)
             .HasDefaultValue(false);
 
-        builder.HasQueryFilter(um => !um.Movie.IsDeleted == false);
+        builder.HasQueryFilter(um => um.Movie.IsDeleted == false);
         
-        builder.HasQueryFilter(um => !um.IsDeleted == false);
+        builder.HasQueryFilter(um => um.IsDeleted == false);
 
     }
 }
