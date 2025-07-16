@@ -2,7 +2,7 @@
 
 namespace CinemaApp.Data.Models;
 
-public class WatchList
+public class Watchlist
 {
     public string UserId { get; set; } = null!;
     public virtual IdentityUser User { get; set; } = null!;

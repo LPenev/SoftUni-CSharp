@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CinemaApp.Data.Configuration;
 
-public class WatchListConfiguration : IEntityTypeConfiguration<WatchList>
+public class WatchListConfiguration : IEntityTypeConfiguration<Watchlist>
 {
-    public void Configure(EntityTypeBuilder<WatchList> builder)
+    public void Configure(EntityTypeBuilder<Watchlist> builder)
     {
         builder.HasKey(um => new { um.UserId, um.MovieId });
 
