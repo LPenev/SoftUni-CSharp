@@ -1,67 +1,61 @@
 ﻿using CinemaApp.Data;
 using CinemaApp.Data.Models;
+using CinemaApp.Data.Repository.Contracts;
 using CinemaApp.Services.Core.Interfaces;
 using CinemaApp.Web.ViewModels.Watchlist;
 using Microsoft.EntityFrameworkCore;
+using static CinemaApp.GCommon.EntityConstants.Movie;
 
 namespace CinemaApp.Services.Core;
 
 public class WatchlistService : IWatchlistService
 {
-    private readonly CinemaAppDbContext context;
-
-    public WatchlistService(CinemaAppDbContext context)
+    private readonly IWatchlistRepository _watchlistRepository;
+    public WatchlistService(IWatchlistRepository watchlistRepository)
     {
-        this.context = context;
+        _watchlistRepository = watchlistRepository;
     }
 
+    public async Task RemoveMovieFromWatchlistAsync(string userId, string movieId)
+    {
+        var userMovie = await _watchlistRepository.GetByCompositeKeyAsync(userId, movieId);
+
+        if (userMovie != null)
+        {
+            _watchlistRepository.Delete(userMovie);
+            await _watchlistRepository.SaveChangesAsync();
+        }
+    }
+
+    public async Task AddMovieToWatchlistAsync(string userId, string movieId)
+    {
+        var userMovie = new Watchlist
+        {
+            UserId = userId,
+            MovieId = Guid.Parse(movieId)
+        };
+        await _watchlistRepository.AddAsync(userMovie);
+        await _watchlistRepository.SaveChangesAsync();
+    }
+
+    public async Task<bool> IsMoveInWatchlistAsync(string userId, string movieId)
+    {
+        return await _watchlistRepository.ExistsAsync(userId, movieId.ToString());
+    }
 
     public async Task<IEnumerable<WatchlistViewModel>> GetUserWatchlistAsync(string userId)
     {
-        var info = context.Watchlists.ToList();
-        var infoMovies = context.Movies.ToList();
-
-
-        return await context.Watchlists
-            //.Where(w => w.UserId == userId)
-            .Select(w => new WatchlistViewModel
+        return await _watchlistRepository.GetAllAttached()
+            .Where(um => um.UserId == userId)
+            .Select(um => new WatchlistViewModel
             {
-                MovieId = w.Movie.Id.ToString(),
-                Title = w.Movie.Title,
-                Genre = w.Movie.Genre,
-                ReleaseDate = w.Movie.ReleaseDate.ToString("yyyy-MM-dd"),
-                ImageUrl = w.Movie.ImageUrl
+                MovieId = um.Movie.Id.ToString(),
+                Title = um.Movie.Title,
+                Genre = um.Movie.Genre,
+                ImageUrl = um.Movie.ImageUrl,
+                ReleaseDate = um.Movie.ReleaseDate.ToString(ReleaseDateFormat)
             }).ToListAsync();
     }
 
-    public async Task<bool> IsMoveInWatchlistAsync(string userId, Guid movieId)
-    {
-        return await context.Watchlists
-            .AnyAsync(w => w.UserId == userId && w.MovieId == movieId);
-    }
-
-    public async Task AddMovieToWatchlistAsync(string userId, Guid movieId)
-    {
-        var addToWatchlist = new Watchlist
-        {
-            UserId = userId,
-            MovieId = movieId,
-        };
-
-        context.Watchlists.Add(addToWatchlist);
-        await context.SaveChangesAsync();
-    }
-
-    public async Task RemoveMovieFromWatchlistAsync(string userId, Guid movieId)
-    {
-        var userMovie = await context.Watchlists
-            .FirstOrDefaultAsync(w => w.UserId == userId && w.MovieId == movieId);
-        
-        if (userMovie != null)
-        {
-            context.Watchlists.Remove(userMovie);
-            await context.SaveChangesAsync();
-        }
-    }
 }
 

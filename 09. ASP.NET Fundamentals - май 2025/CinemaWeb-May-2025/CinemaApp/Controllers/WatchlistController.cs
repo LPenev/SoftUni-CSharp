@@ -36,11 +36,11 @@ public class WatchlistController : BaseController
         }
         
         var userId = GetUserId();
-        bool isMovieInWatchlist = await watchlistService.IsMoveInWatchlistAsync(userId, Guid.Parse(movieId));
+        bool isMovieInWatchlist = await watchlistService.IsMoveInWatchlistAsync(userId, movieId);
 
         if (!isMovieInWatchlist)
         {
-            await watchlistService.AddMovieToWatchlistAsync(userId, Guid.Parse(movieId));
+            await watchlistService.AddMovieToWatchlistAsync(userId, movieId);
         }
 
         return RedirectToAction(nameof(Index));
@@ -55,11 +55,12 @@ public class WatchlistController : BaseController
             return RedirectToAction("Login", "Account");
         }
         string? userId = GetUserId();
-        bool isMovieInWatchlist = watchlistService.IsMoveInWatchlistAsync(userId, movieId).Result;
+        
+        bool isMovieInWatchlist = watchlistService.IsMoveInWatchlistAsync(userId, movieId.ToString()).Result;
         
         if (isMovieInWatchlist)
         {
-            watchlistService.RemoveMovieFromWatchlistAsync(userId, movieId).Wait();
+            watchlistService.RemoveMovieFromWatchlistAsync(userId, movieId.ToString()).Wait();
         }
 
         return RedirectToAction(nameof(Index));

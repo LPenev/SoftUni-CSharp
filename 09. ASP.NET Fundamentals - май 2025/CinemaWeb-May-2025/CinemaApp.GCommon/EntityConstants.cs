@@ -20,5 +20,7 @@ public class EntityConstants
         public const int DurationMin = 1;
         public const int DurationMax = 300;
         public const string DurationRequiredErrorMessage = "Title is required";
+        public const string ApplicationDateFormat = "yyyy-MM-dd";
+        public const string ReleaseDateFormat = "dd-MM-yyyy";
     }
 }
