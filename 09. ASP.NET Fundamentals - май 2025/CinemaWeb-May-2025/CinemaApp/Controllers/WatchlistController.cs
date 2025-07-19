@@ -1,6 +1,4 @@
-﻿using CinemaApp.Services.Core;
-using CinemaApp.Services.Core.Interfaces;
-using CinemaApp.Web.ViewModels.Watchlist;
+﻿using CinemaApp.Services.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaApp.Web.Controllers;

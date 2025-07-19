@@ -36,7 +36,7 @@ public class Program
         builder.Services.AddScoped<IWatchlistService, WatchlistService>();
 
         // Repositories
-        //builder.Services.AddScoped(typeof(IMovieRepository), typeof(MovieRepository));
+        builder.Services.AddScoped(typeof(IMovieRepository), typeof(MovieRepository));
         builder.Services.AddScoped(typeof(IWatchlistRepository), typeof(WatchlistRepository));
 
 

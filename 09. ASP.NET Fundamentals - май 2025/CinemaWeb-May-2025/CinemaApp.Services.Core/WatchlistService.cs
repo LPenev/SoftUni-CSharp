@@ -1,5 +1,4 @@
-﻿using CinemaApp.Data;
-using CinemaApp.Data.Models;
+﻿using CinemaApp.Data.Models;
 using CinemaApp.Data.Repository.Contracts;
 using CinemaApp.Services.Core.Interfaces;
 using CinemaApp.Web.ViewModels.Watchlist;
@@ -11,6 +10,7 @@ namespace CinemaApp.Services.Core;
 public class WatchlistService : IWatchlistService
 {
     private readonly IWatchlistRepository _watchlistRepository;
+
     public WatchlistService(IWatchlistRepository watchlistRepository)
     {
         _watchlistRepository = watchlistRepository;
@@ -22,8 +22,7 @@ public class WatchlistService : IWatchlistService
 
         if (userMovie != null)
         {
-            _watchlistRepository.Delete(userMovie);
-            await _watchlistRepository.SaveChangesAsync();
+            await _watchlistRepository.DeleteAsync(userMovie); // Използвай асинхронния метод, той сам прави SaveChangesAsync
         }
     }
 
@@ -34,8 +33,7 @@ public class WatchlistService : IWatchlistService
             UserId = userId,
             MovieId = Guid.Parse(movieId)
         };
-        await _watchlistRepository.AddAsync(userMovie);
-        await _watchlistRepository.SaveChangesAsync();
+        await _watchlistRepository.AddAsync(userMovie); // Не е нужно втори път SaveChangesAsync
     }
 
     public async Task<bool> IsMoveInWatchlistAsync(string userId, string movieId)
@@ -56,6 +54,6 @@ public class WatchlistService : IWatchlistService
                 ReleaseDate = um.Movie.ReleaseDate.ToString(ReleaseDateFormat)
             }).ToListAsync();
     }
-
 }
+
 
