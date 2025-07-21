@@ -22,57 +22,362 @@ namespace CinemaApp.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CinemaApp.Data.Models.Movie", b =>
+            modelBuilder.Entity("CinemaApp.Data.Models.Cinema", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasComment("Movie Identifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("Director")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasComment("Movie Director");
-
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasComment("Movie Genre");
-
-                    b.Property<string>("ImageUrl")
-                        .HasMaxLength(2048)
-                        .HasColumnType("nvarchar(2048)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid?>("ManagerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ManagerId");
+
+                    b.HasIndex("Name", "Location")
+                        .IsUnique();
+
+                    b.ToTable("Cinemas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("8a1fdfb4-08c9-44a2-a46e-0b3c45ff57b9"),
+                            IsDeleted = false,
+                            Location = "Sofia, Bulgaria",
+                            Name = "Arena Mall Sofia"
+                        },
+                        new
+                        {
+                            Id = new Guid("f4c3e429-0e36-47af-99a2-0c7581a7fc67"),
+                            IsDeleted = false,
+                            Location = "Plovdiv, Bulgaria",
+                            Name = "Cinema City Plovdiv"
+                        },
+                        new
+                        {
+                            Id = new Guid("5ae6c761-1363-4a23-9965-171c70f935de"),
+                            IsDeleted = false,
+                            Location = "Varna, Bulgaria",
+                            Name = "Eccoplexx Varna"
+                        },
+                        new
+                        {
+                            Id = new Guid("be80d2e4-1c91-4e86-9b73-12ef08c9c3d2"),
+                            IsDeleted = false,
+                            Location = "Sofia, Bulgaria",
+                            Name = "IMAX Mall of Sofia"
+                        },
+                        new
+                        {
+                            Id = new Guid("33c36253-9b68-4d8a-89ae-f3276f1c3f8a"),
+                            IsDeleted = false,
+                            Location = "Burgas, Bulgaria",
+                            Name = "Cinema City Burgas Plaza"
+                        });
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.CinemaMovie", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AvailableTickets")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<Guid>("CinemaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid>("MovieId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Showtime")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CinemaId");
+
+                    b.HasIndex("MovieId", "CinemaId", "Showtime")
+                        .IsUnique();
+
+                    b.ToTable("CinemasMovies", t =>
+                        {
+                            t.HasComment("Movie projection in a cinema in the system");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("71a411ec-d23c-4abb-b50c-75571d0a3cff"),
+                            AvailableTickets = 120,
+                            CinemaId = new Guid("8a1fdfb4-08c9-44a2-a46e-0b3c45ff57b9"),
+                            IsDeleted = false,
+                            MovieId = new Guid("ae50a5ab-9642-466f-b528-3cc61071bb4c"),
+                            Showtime = "18:30"
+                        },
+                        new
+                        {
+                            Id = new Guid("30c505d0-9833-4087-9377-43ac8ab34e07"),
+                            AvailableTickets = 90,
+                            CinemaId = new Guid("f4c3e429-0e36-47af-99a2-0c7581a7fc67"),
+                            IsDeleted = false,
+                            MovieId = new Guid("4571bf2f-dbb3-446c-a92a-07cb77f47ed0"),
+                            Showtime = "21:00"
+                        },
+                        new
+                        {
+                            Id = new Guid("130f6630-5593-4165-8e9e-de718ee1fb72"),
+                            AvailableTickets = 70,
+                            CinemaId = new Guid("5ae6c761-1363-4a23-9965-171c70f935de"),
+                            IsDeleted = false,
+                            MovieId = new Guid("2f22c0dd-f7b9-46c3-a753-0d076dafb489"),
+                            Showtime = "20:15"
+                        },
+                        new
+                        {
+                            Id = new Guid("c96549ed-7a19-4e83-856e-976cf306d611"),
+                            AvailableTickets = 60,
+                            CinemaId = new Guid("33c36253-9b68-4d8a-89ae-f3276f1c3f8a"),
+                            IsDeleted = false,
+                            MovieId = new Guid("4b760743-8d49-48d5-bca6-15f5236e3f7b"),
+                            Showtime = "19:00"
+                        },
+                        new
+                        {
+                            Id = new Guid("30864830-db09-412a-a816-6dbaccc1374c"),
+                            AvailableTickets = 150,
+                            CinemaId = new Guid("be80d2e4-1c91-4e86-9b73-12ef08c9c3d2"),
+                            IsDeleted = false,
+                            MovieId = new Guid("c994999b-02dd-46c2-abc4-00c4787e629f"),
+                            Showtime = "17:45"
+                        },
+                        new
+                        {
+                            Id = new Guid("a22c43b7-bd1d-46cd-b419-dba244e533cc"),
+                            AvailableTickets = 85,
+                            CinemaId = new Guid("f4c3e429-0e36-47af-99a2-0c7581a7fc67"),
+                            IsDeleted = false,
+                            MovieId = new Guid("f1342f7d-ff72-4bfb-8a36-8368dec7b088"),
+                            Showtime = "20:00"
+                        },
+                        new
+                        {
+                            Id = new Guid("93f61e0c-6e62-41bb-b4e2-fc770ac48128"),
+                            AvailableTickets = 40,
+                            CinemaId = new Guid("5ae6c761-1363-4a23-9965-171c70f935de"),
+                            IsDeleted = false,
+                            MovieId = new Guid("94e73f37-e260-4c6f-930b-8bd65c9c8a11"),
+                            Showtime = "22:30"
+                        },
+                        new
+                        {
+                            Id = new Guid("6a7071a9-0c3d-42e5-9514-639c5fb259a3"),
+                            AvailableTickets = 100,
+                            CinemaId = new Guid("33c36253-9b68-4d8a-89ae-f3276f1c3f8a"),
+                            IsDeleted = false,
+                            MovieId = new Guid("96fcb0c2-807e-4f7d-a28b-14ba6f9cb9b4"),
+                            Showtime = "16:00"
+                        },
+                        new
+                        {
+                            Id = new Guid("3291c19e-5995-48af-9124-35f855bf8476"),
+                            AvailableTickets = 95,
+                            CinemaId = new Guid("8a1fdfb4-08c9-44a2-a46e-0b3c45ff57b9"),
+                            IsDeleted = false,
+                            MovieId = new Guid("eb13b5e6-b8fd-4e11-99ef-446e9e752558"),
+                            Showtime = "19:45"
+                        },
+                        new
+                        {
+                            Id = new Guid("d00af316-049a-4bd5-97c2-c55fcab99783"),
+                            AvailableTickets = 80,
+                            CinemaId = new Guid("be80d2e4-1c91-4e86-9b73-12ef08c9c3d2"),
+                            IsDeleted = false,
+                            MovieId = new Guid("777634e2-3bb6-4748-8e91-7a10b70c78ac"),
+                            Showtime = "20:30"
+                        },
+                        new
+                        {
+                            Id = new Guid("0241c54a-37e7-4c9a-bcfb-43f0a60749e2"),
+                            AvailableTickets = 60,
+                            CinemaId = new Guid("5ae6c761-1363-4a23-9965-171c70f935de"),
+                            IsDeleted = false,
+                            MovieId = new Guid("8c5904a9-bfab-4b0f-b12b-b5fc795e6231"),
+                            Showtime = "17:00"
+                        },
+                        new
+                        {
+                            Id = new Guid("0e5c76b7-9e27-4217-a113-5cafd558d00f"),
+                            AvailableTickets = 70,
+                            CinemaId = new Guid("f4c3e429-0e36-47af-99a2-0c7581a7fc67"),
+                            IsDeleted = false,
+                            MovieId = new Guid("ab2c3213-48a7-41ea-9393-45c60ef813e6"),
+                            Showtime = "18:15"
+                        },
+                        new
+                        {
+                            Id = new Guid("ef18d96e-2e5b-4218-b552-e094e98ac178"),
+                            AvailableTickets = 50,
+                            CinemaId = new Guid("8a1fdfb4-08c9-44a2-a46e-0b3c45ff57b9"),
+                            IsDeleted = false,
+                            MovieId = new Guid("94e73f37-e260-4c6f-930b-8bd65c9c8a11"),
+                            Showtime = "22:00"
+                        },
+                        new
+                        {
+                            Id = new Guid("9d54f01b-b33d-4ed5-8c4c-6874d62b24dd"),
+                            AvailableTickets = 110,
+                            CinemaId = new Guid("be80d2e4-1c91-4e86-9b73-12ef08c9c3d2"),
+                            IsDeleted = false,
+                            MovieId = new Guid("f1342f7d-ff72-4bfb-8a36-8368dec7b088"),
+                            Showtime = "20:00"
+                        });
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.Manager", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Managers", t =>
+                        {
+                            t.HasComment("Manager in the system");
+                        });
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.Movie", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Movie identifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
+                        .HasComment("Movie description");
+
+                    b.Property<string>("Director")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Movie director");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int")
+                        .HasComment("Movie duration");
+
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Movie genre");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)")
+                        .HasComment("Movie image url from the image store");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasComment("Shows if movie is deleted");
+
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2")
-                        .HasComment("Movie Release Date");
+                        .HasComment("Movie release date");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)")
-                        .HasComment("Movie Title");
+                        .HasComment("Movie title");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies", (string)null);
+                    b.ToTable("Movies");
 
                     b.HasData(
+                        new
+                        {
+                            Id = new Guid("ab2c3213-48a7-41ea-9393-45c60ef813e6"),
+                            Description = "A love story unfolds on the doomed voyage of the Titanic.",
+                            Director = "James Cameron",
+                            Duration = 195,
+                            Genre = "Romance",
+                            ImageUrl = "https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_.jpg",
+                            IsDeleted = false,
+                            ReleaseDate = new DateTime(1997, 12, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Titanic"
+                        },
+                        new
+                        {
+                            Id = new Guid("777634e2-3bb6-4748-8e91-7a10b70c78ac"),
+                            Description = "The Lord of the Rings: The Fellowship of the Ring is a 2001 epic high fantasy adventure film directed by Peter Jackson from a screenplay by Fran Walsh, Philippa Boyens, and Jackson, based on 1954's The Fellowship of the Ring, the first volume of the novel The Lord of the Rings by J. R. R. Tolkien.",
+                            Director = "Peter Jackson",
+                            Duration = 178,
+                            Genre = "Fantasy",
+                            ImageUrl = "https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+                            IsDeleted = false,
+                            ReleaseDate = new DateTime(2001, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Lord of the Rings"
+                        },
+                        new
+                        {
+                            Id = new Guid("ae50a5ab-9642-466f-b528-3cc61071bb4c"),
+                            Description = "Harry Potter and the Goblet of Fire is a 2005 fantasy film directed by Mike Newell from a screenplay by Steve Kloves. It is based on the 2000 novel Harry Potter and the Goblet of Fire by J. K. Rowling.",
+                            Director = "Mike Newel",
+                            Duration = 157,
+                            Genre = "Fantasy",
+                            ImageUrl = "https://m.media-amazon.com/images/M/MV5BMTI1NDMyMjExOF5BMl5BanBnXkFtZTcwOTc4MjQzMQ@@._V1_.jpg",
+                            IsDeleted = false,
+                            ReleaseDate = new DateTime(2005, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Harry Potter and the Goblet of Fire"
+                        },
                         new
                         {
                             Id = new Guid("4571bf2f-dbb3-446c-a92a-07cb77f47ed0"),
@@ -291,6 +596,38 @@ namespace CinemaApp.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CinemaApp.Data.Models.Ticket", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CinemaMovieId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 6)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("CinemaMovieId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("Tickets", t =>
+                        {
+                            t.HasComment("Ticket in the system");
+                        });
+                });
+
             modelBuilder.Entity("CinemaApp.Data.Models.Watchlist", b =>
                 {
                     b.Property<string>("UserId")
@@ -308,7 +645,7 @@ namespace CinemaApp.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Watchlists", (string)null);
+                    b.ToTable("Watchlists");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -513,10 +850,69 @@ namespace CinemaApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CinemaApp.Data.Models.Cinema", b =>
+                {
+                    b.HasOne("CinemaApp.Data.Models.Manager", "Manager")
+                        .WithMany("ManagedCinemas")
+                        .HasForeignKey("ManagerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Manager");
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.CinemaMovie", b =>
+                {
+                    b.HasOne("CinemaApp.Data.Models.Cinema", "Cinema")
+                        .WithMany("CinemaMovies")
+                        .HasForeignKey("CinemaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CinemaApp.Data.Models.Movie", "Movie")
+                        .WithMany("MovieProjections")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Cinema");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.Manager", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithOne()
+                        .HasForeignKey("CinemaApp.Data.Models.Manager", "UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.Ticket", b =>
+                {
+                    b.HasOne("CinemaApp.Data.Models.CinemaMovie", "CinemaMovieProjection")
+                        .WithMany("Tickets")
+                        .HasForeignKey("CinemaMovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CinemaMovieProjection");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("CinemaApp.Data.Models.Watchlist", b =>
                 {
                     b.HasOne("CinemaApp.Data.Models.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("UserWatchlists")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -581,6 +977,28 @@ namespace CinemaApp.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.Cinema", b =>
+                {
+                    b.Navigation("CinemaMovies");
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.CinemaMovie", b =>
+                {
+                    b.Navigation("Tickets");
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.Manager", b =>
+                {
+                    b.Navigation("ManagedCinemas");
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.Movie", b =>
+                {
+                    b.Navigation("MovieProjections");
+
+                    b.Navigation("UserWatchlists");
                 });
 #pragma warning restore 612, 618
         }

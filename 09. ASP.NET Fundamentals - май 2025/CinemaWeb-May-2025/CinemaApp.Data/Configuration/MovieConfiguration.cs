@@ -71,6 +71,39 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
     public List<Movie> SeedMovies()
     {
         List<Movie> movies = new List<Movie> {
+            new Movie()
+            {
+                Id = Guid.Parse("ab2c3213-48a7-41ea-9393-45c60ef813e6"),
+                Title = "Titanic",
+                Genre = "Romance",
+                ReleaseDate = new DateTime(1997, 12, 19),
+                Director = "James Cameron",
+                Duration = 195,
+                Description = "A love story unfolds on the doomed voyage of the Titanic.",
+                ImageUrl = "https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_.jpg"
+            },
+            new Movie()
+            {
+                Id = Guid.Parse("777634e2-3bb6-4748-8e91-7a10b70c78ac"),
+                Title = "Lord of the Rings",
+                Genre = "Fantasy",
+                ReleaseDate = new DateTime(2001, 05, 01),
+                Director = "Peter Jackson",
+                Duration = 178,
+                Description = "The Lord of the Rings: The Fellowship of the Ring is a 2001 epic high fantasy adventure film directed by Peter Jackson from a screenplay by Fran Walsh, Philippa Boyens, and Jackson, based on 1954's The Fellowship of the Ring, the first volume of the novel The Lord of the Rings by J. R. R. Tolkien.",
+                ImageUrl = "https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+            },
+            new Movie()
+            {
+                Id = Guid.Parse("ae50a5ab-9642-466f-b528-3cc61071bb4c"),
+                Title = "Harry Potter and the Goblet of Fire",
+                Genre = "Fantasy",
+                ReleaseDate = new DateTime(2005, 11, 01),
+                Director = "Mike Newel",
+                Duration = 157,
+                Description = "Harry Potter and the Goblet of Fire is a 2005 fantasy film directed by Mike Newell from a screenplay by Steve Kloves. It is based on the 2000 novel Harry Potter and the Goblet of Fire by J. K. Rowling.",
+                ImageUrl = "https://m.media-amazon.com/images/M/MV5BMTI1NDMyMjExOF5BMl5BanBnXkFtZTcwOTc4MjQzMQ@@._V1_.jpg"
+            },
             new()
             {
                 Id = Guid.Parse("4571bf2f-dbb3-446c-a92a-07cb77f47ed0"),
@@ -253,6 +286,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
                  ImageUrl = "https://www.movieposters.com/cdn/shop/products/ff35c38cb67f47a5f4cbec6c92a5d5a8_acb37f4c-8110-4bc9-b597-01e75e565a60_480x.progressive.jpg?v=1573587558"
             }
         };
+
 
         return movies;
     }

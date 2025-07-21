@@ -7,9 +7,9 @@
 
     public class CinemaAppDbContext : IdentityDbContext
     {
-        public DbSet<Movie> Movies { get; set; }
+        public virtual DbSet<Movie> Movies { get; set; } = null!;
+        
         public DbSet<Watchlist> Watchlists { get; set; }
-
 
         public CinemaAppDbContext(DbContextOptions<CinemaAppDbContext> options)
             : base(options)

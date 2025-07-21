@@ -16,16 +16,14 @@ public class WatchlistConfiguration : IEntityTypeConfiguration<Watchlist>
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(um => um.Movie)
-            .WithMany()
+            .WithMany(m => m.UserWatchlists)
             .HasForeignKey(um => um.MovieId)
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.Property(x => x.IsDeleted)
             .HasDefaultValue(false);
 
-        builder.HasQueryFilter(um => um.Movie.IsDeleted == false);
-        
-        builder.HasQueryFilter(um => um.IsDeleted == false);
+        builder.HasQueryFilter(um => !um.IsDeleted && !um.Movie.IsDeleted);
 
     }
 }

@@ -3,7 +3,7 @@ using CinemaApp.Data.Repository.Contracts;
 using CinemaApp.Services.Core.Interfaces;
 using CinemaApp.Web.ViewModels.Watchlist;
 using Microsoft.EntityFrameworkCore;
-using static CinemaApp.GCommon.EntityConstants.Movie;
+using static CinemaApp.Data.Common.EntityConstants.Movie;
 
 namespace CinemaApp.Services.Core;
 

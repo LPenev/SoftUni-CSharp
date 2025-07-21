@@ -43,7 +43,7 @@ public class MovieService : IMovieService
                 Title = m.Title,
                 Genre = m.Genre,
                 Director = m.Director,
-                ReleaseDate = m.ReleaseDate.ToString("yyyy-MM-dd"),
+                ReleaseDate = m.ReleaseDate.ToString(WebDateFormat),
                 ImageUrl = m.ImageUrl
             })
             .ToListAsync();
@@ -69,7 +69,7 @@ public class MovieService : IMovieService
             Director = movie.Director,
             Description = movie.Description,
             Duration = movie.Duration,
-            ReleaseDate = movie.ReleaseDate.ToString("yyyy-MM-dd"),
+            ReleaseDate = movie.ReleaseDate.ToString(WebDateFormat),
             ImageUrl = movie.ImageUrl,
         };
     }
@@ -89,7 +89,7 @@ public class MovieService : IMovieService
             Id = movie.Id.ToString(),
             Title = movie.Title,
             Genre = movie.Genre,
-            ReleaseDate = movie.ReleaseDate.ToString("yyyy-MM-dd"),
+            ReleaseDate = movie.ReleaseDate.ToString(ReleaseDateFormat),
             Duration = movie.Duration,
             Director = movie.Director,
             Description = movie.Description,
@@ -107,7 +107,7 @@ public class MovieService : IMovieService
         if (movie == null || movie.IsDeleted)
             throw new ArgumentException("Movie not found");
 
-        if (!DateTime.TryParseExact(model.ReleaseDate, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var releaseDate))
+        if (!DateTime.TryParseExact(model.ReleaseDate, ReleaseDateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out var releaseDate))
             throw new Exception("Invalid date.");
 
         movie.Title = model.Title;

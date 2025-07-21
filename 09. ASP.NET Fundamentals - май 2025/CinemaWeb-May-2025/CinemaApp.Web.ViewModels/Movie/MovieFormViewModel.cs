@@ -10,31 +10,31 @@
             this.ReleaseDate = DateTime.UtcNow.ToString(ReleaseDateFormat);
         }
 
-        [Required(ErrorMessage = TitleRequiredMessage)]
+        [Required(ErrorMessage = TitleRequiredErrorMessage)]
         [MinLength(TitleMinLength, ErrorMessage = TitleMinLengthMessage)]
-        [MaxLength(TitleMaxLength, ErrorMessage = TitleMaxLengthMessage)]
+        [MaxLength(TitleMaxLength, ErrorMessage = TitleMaxLengthErrorMessage)]
         public string Title { get; set; } = null!;
 
-        [Required(ErrorMessage = GenreRequiredMessage)]
+        [Required(ErrorMessage = GenreRequiredErrorMessage)]
         [MinLength(GenreMinLength, ErrorMessage = GenreMinLengthMessage)]
-        [MaxLength(GenreMaxLength, ErrorMessage = GenreMaxLengthMessage)]
+        [MaxLength(GenreMaxLength, ErrorMessage = GenreMaxLengthErrorMessage)]
         public string Genre { get; set; } = null!;
 
-        [Required(ErrorMessage = ReleaseDateRequiredMessage)]
+        [Required(ErrorMessage = ReleaseDateRequiredErrorMessage)]
         public string ReleaseDate { get; set; }
 
-        [Required(ErrorMessage = DurationRequiredMessage)]
+        [Required(ErrorMessage = DurationRequiredErrorMessage)]
         [Range(DurationMin, DurationMax, ErrorMessage = DurationRangeMessage)]
         public int Duration { get; set; }
 
-        [Required(ErrorMessage = DirectorRequiredMessage)]
+        [Required(ErrorMessage = DirectorRequiredErrorMessage)]
         [MinLength(DirectorNameMinLength, ErrorMessage = DirectorNameMinLengthMessage)]
-        [MaxLength(DirectorNameMaxLength, ErrorMessage = DirectorNameMaxLengthMessage)]
+        [MaxLength(DirectorNameMaxLength, ErrorMessage = DirectorMaxLengthErrorMessage)]
         public string Director { get; set; } = null!;
 
-        [Required(ErrorMessage = DescriptionRequiredMessage)]
+        [Required(ErrorMessage = DescriptionRequiredErrorMessage)]
         [MinLength(DescriptionMinLength, ErrorMessage = DescriptionMinLengthMessage)]
-        [MaxLength(DescriptionMaxLength, ErrorMessage = DescriptionMaxLengthMessage)]
+        [MaxLength(DescriptionMaxLength, ErrorMessage = DescriptionMaxLengthErrorMessage)]
         public string Description { get; set; } = null!;
 
         [MaxLength(ImageUrlMaxLength, ErrorMessage = ImageUrlMaxLengthMessage)]
