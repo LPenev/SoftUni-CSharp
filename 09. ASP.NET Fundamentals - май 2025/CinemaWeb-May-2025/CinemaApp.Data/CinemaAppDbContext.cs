@@ -8,8 +8,16 @@
     public class CinemaAppDbContext : IdentityDbContext
     {
         public virtual DbSet<Movie> Movies { get; set; } = null!;
-        
-        public DbSet<Watchlist> Watchlists { get; set; }
+
+        public virtual DbSet<Watchlist> Watchlists { get; set; }
+
+        public virtual DbSet<Cinema> Cinemas { get; set; }
+
+        public virtual DbSet<CinemaMovie> CinemaMovies { get; set; }
+
+        public virtual DbSet<Ticket> Tickets { get; set; }
+
+        public virtual DbSet<UserTicket> UserTickets { get; set; }
 
         public CinemaAppDbContext(DbContextOptions<CinemaAppDbContext> options)
             : base(options)

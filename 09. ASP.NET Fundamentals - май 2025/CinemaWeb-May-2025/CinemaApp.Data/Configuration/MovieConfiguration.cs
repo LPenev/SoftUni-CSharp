@@ -7,64 +7,64 @@ namespace CinemaApp.Data.Configuration;
 
 public class MovieConfiguration : IEntityTypeConfiguration<Movie>
 {
-    public void Configure(EntityTypeBuilder<Movie> entity)
+    public void Configure(EntityTypeBuilder<Movie> builder)
     {
         // Define the primary key of the Movie entity
-        entity
+        builder
             .HasKey(m => m.Id);
 
         // Define constraints for the Title column
-        entity
+        builder
             .Property(m => m.Title)
             .IsRequired()
             .HasMaxLength(TitleMaxLength);
 
         // Define constraints for the Genre column
-        entity
+        builder
             .Property(m => m.Genre)
             .IsRequired()
             .HasMaxLength(GenreMaxLength);
 
         // Define constraints for the ReleaseDate column
-        entity
+        builder
             .Property(m => m.ReleaseDate)
             .IsRequired();
 
         // Define constraints for the Director column
-        entity
+        builder
             .Property(m => m.Director)
             .IsRequired()
             .HasMaxLength(DirectorNameMaxLength);
 
         // Define constraints for the Duration column
-        entity
+        builder
             .Property(m => m.Duration)
             .IsRequired();
 
         // Define constraints for the Description column
-        entity
+        builder
             .Property(m => m.Description)
             .IsRequired()
             .HasMaxLength(DescriptionMaxLength);
 
         // Define constraints for the ImageUrl column
-        entity
+        builder
             .Property(m => m.ImageUrl)
             .IsRequired(false)
             .HasMaxLength(ImageUrlMaxLength);
 
         // Define constraints for the IsDeleted column
-        entity
+        builder
             .Property(m => m.IsDeleted)
             .IsRequired()
             .HasDefaultValue(false);
 
         // Filter out only the active (non-deleted) entries
-        entity
+        builder
             .HasQueryFilter(m => m.IsDeleted == false);
 
         // Seed movies data with migration for development
-        entity
+        builder
             .HasData(this.SeedMovies());
     }
 

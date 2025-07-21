@@ -32,7 +32,10 @@ public class Movie
     [Comment("Shows if movie is deleted")]
     public bool IsDeleted { get; set; }
 
-    public virtual ICollection<Watchlist> UserWatchlists { get; set; }
-        = new HashSet<Watchlist>();
+    public virtual ICollection<CinemaMovie> CinemaMovies { get; set; } = new HashSet<CinemaMovie>();
+
+    public virtual ICollection<Ticket> Tickets { get; set; } = new HashSet<Ticket>();
+
+    public virtual ICollection<Watchlist> UserWatchlists { get; set; } = new HashSet<Watchlist>();
 
 }
