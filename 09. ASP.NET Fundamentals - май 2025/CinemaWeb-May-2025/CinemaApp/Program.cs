@@ -7,6 +7,7 @@ using Services.Core;
 using Services.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Middlewares;
 
 public class Program
 {
@@ -60,6 +61,10 @@ public class Program
         app.UseStaticFiles();
 
         app.UseRouting();
+
+        app.UseAuthentication();
+
+        app.UseMiddleware<ManagerAccessMiddleware>();
 
         app.UseAuthorization();
 
