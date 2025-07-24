@@ -30,7 +30,8 @@ public class Program
             options.Password.RequireUppercase = false;
             options.Password.RequireLowercase = false;
         })
-            .AddEntityFrameworkStores<CinemaAppDbContext>();
+        .AddRoles<IdentityRole>()
+        .AddEntityFrameworkStores<CinemaAppDbContext>();
 
         // Services
         builder.Services.AddScoped<IMovieService, MovieService>();
