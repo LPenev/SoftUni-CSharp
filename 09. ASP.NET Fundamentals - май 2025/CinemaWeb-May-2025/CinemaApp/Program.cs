@@ -1,3 +1,5 @@
+using CinemaApp.Data.Seeding;
+
 namespace CinemaApp.Web;
 
 using Data;
@@ -73,6 +75,12 @@ public class Program
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
         app.MapRazorPages();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var service = scope.ServiceProvider;
+            RoleSeeder.SeedRolesAsync(service);
+        }
 
         app.Run();
     }
