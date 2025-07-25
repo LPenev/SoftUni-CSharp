@@ -23,7 +23,7 @@ public class RoleSeeder
             }
         }
 
-        if (userManager == null)
+        if (userManager != null)
         {
             var user = new IdentityUser
             {
