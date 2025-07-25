@@ -67,7 +67,7 @@ public class Program
 
         app.UseAuthentication();
 
-        app.UseMiddleware<ManagerAccessMiddleware>();
+        //app.UseMiddleware<ManagerAccessMiddleware>();
 
         app.UseAuthorization();
 
