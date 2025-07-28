@@ -1,0 +1,11 @@
+﻿namespace CinemaApp.Web.ViewModels.Cinema;
+
+public class ConfigureCinemasViewModel
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; } = null!;
+
+    public string Location { get; set; } = null!;
+}
+
