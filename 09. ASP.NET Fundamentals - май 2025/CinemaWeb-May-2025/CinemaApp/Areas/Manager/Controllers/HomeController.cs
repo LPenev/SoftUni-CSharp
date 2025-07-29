@@ -3,21 +3,22 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace CinemaApp.Web.Controllers;
+namespace CinemaApp.Web.Areas.Manager.Controllers;
 
+[Area("Manager")]
 [Authorize(Roles = "Manager")]
-public class ManagerController : BaseController
+public class HomeController : Controller
 {
-    private readonly ILogger<ManagerController> _logger;
+    private readonly ILogger<HomeController> _logger;
 
-    public ManagerController(ILogger<ManagerController> logger)
+    public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
     }
 
     public IActionResult Index()
     {
-        return View("Home/Index");
+        return View(); // Areas/Manager/Views/Home/Index.cshtml
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
