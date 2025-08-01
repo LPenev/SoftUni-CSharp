@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CinemaApp.Web.ViewModels.Cinema;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaApp.Web.Areas.Manager.Controllers
@@ -9,7 +10,8 @@ namespace CinemaApp.Web.Areas.Manager.Controllers
     {
         public IActionResult Index()
         {
-            return View(); // -> Areas/Manager/Views/ShowtimeSetup/Index.cshtml
+            var cinemas = Enumerable.Empty<CinemaIndexViewModel>();
+            return View(cinemas); // -> Areas/Manager/Views/ShowtimeSetup/Index.cshtml
         }
     }
 }
