@@ -19,5 +19,17 @@ public class CinemaController : BaseController
         var model = Enumerable.Empty<UsersCinemaIndexViewModel>();
         return View(model);
     }
+
+    [AllowAnonymous]
+    public IActionResult Program()
+    {
+        return View();
+    }
+
+    [AllowAnonymous]
+    public IActionResult Details()
+    {
+        return View();
+    }
 }
 
