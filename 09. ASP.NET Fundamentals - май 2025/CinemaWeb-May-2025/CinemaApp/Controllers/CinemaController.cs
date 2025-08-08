@@ -1,4 +1,5 @@
 ﻿using CinemaApp.Web.ViewModels.Cinema;
+using CinemaApp.Web.ViewModels.Movie;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,7 +24,8 @@ public class CinemaController : BaseController
     [AllowAnonymous]
     public IActionResult Program()
     {
-        return View();
+        var model = Enumerable.Empty<MovieUserProgramViewModel>();
+        return View(model);
     }
 
     [AllowAnonymous]
