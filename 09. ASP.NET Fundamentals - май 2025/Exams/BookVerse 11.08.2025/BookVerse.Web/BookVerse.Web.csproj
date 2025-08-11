@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\" />
     <Folder Include="wwwroot\images\genres\" />
   </ItemGroup>
 
