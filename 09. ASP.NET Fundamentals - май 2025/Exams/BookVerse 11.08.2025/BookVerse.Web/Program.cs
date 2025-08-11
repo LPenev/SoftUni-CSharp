@@ -33,6 +33,7 @@ namespace BookVerse
             builder.Services.AddRazorPages();
 
             builder.Services.AddScoped<IBookService, BookService>();
+            builder.Services.AddScoped<IGenreService, GenreService>();
 
 
             var app = builder.Build();

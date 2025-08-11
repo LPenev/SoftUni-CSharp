@@ -9,15 +9,17 @@ public class BookController : BaseController
 {
 
     private readonly IBookService bookService;
+    private readonly IGenreService genreService;
 
-    public BookController(IBookService bookService)
+
+    public BookController(IBookService bookService, IGenreService genreService)
     {
         this.bookService = bookService;
+        this.genreService = genreService;
     }
 
-
-    [HttpGet]
     [AllowAnonymous]
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         try
@@ -36,6 +38,7 @@ public class BookController : BaseController
         }
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> Details(int? id)
     {
@@ -131,6 +134,155 @@ public class BookController : BaseController
         return RedirectToAction(nameof(MyBooks));
     }
 
+    [Authorize]
+    [HttpGet]
+    public async Task<IActionResult> Create()
+    {
+        try
+        {
+            BookCreateInputModel inputModel = new BookCreateInputModel()
+            {
+                Genres = await this.genreService.GetGenreAsync(),
+            };
 
+            return View(inputModel);
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return this.RedirectToAction(nameof(Index));
+        }
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> Create(BookCreateInputModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            model.Genres = await this.genreService.GetGenreAsync();
+            return View(model);
+        }
+
+        bool addResult = await this.bookService.AddBookAsync(this.GetUserId()!, model);
+
+        if (!addResult)
+        {
+            ModelState.AddModelError(string.Empty, "Fatal error occurred while adding book");
+            model.Genres = await this.genreService.GetGenreAsync();
+            return this.View(model);
+        }
+
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    [Authorize]
+    [HttpGet]
+    public async Task<IActionResult> Edit(int? id)
+    {
+        try
+        {
+            string userId = GetUserId()!;
+
+            BookEditInputModel? editInputModel = await this.bookService.GetBookForEditAsync(userId, id);
+
+            if (editInputModel == null)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            return this.View(editInputModel);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return this.RedirectToAction(nameof(Index));
+        }
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> Edit(BookEditInputModel model)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                model.Genres = await this.genreService.GetGenreAsync();
+                return View(model);
+            }
+
+            bool addResult = await this.bookService.UpdateBookAsync(this.GetUserId()!, model);
+
+            if (!addResult)
+            {
+                ModelState.AddModelError(string.Empty, "Fatal error occurred while adding book");
+                model.Genres = await this.genreService.GetGenreAsync();
+                return this.View(model);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        return RedirectToAction(nameof(Index));
+    }
+
+    [Authorize]
+    [HttpGet]
+    public async Task<IActionResult> Delete(int? id)
+    {
+        BookDeleteViewModel? model = null;
+        try
+        {
+            if (id == null)
+            {
+                this.RedirectToAction(nameof(Index));
+            }
+
+            string userId = GetUserId()!;
+
+            model = await this.bookService.GetBookToDelete(userId, id);
+
+            if (model == null)
+            {
+                this.RedirectToAction(nameof(Index));
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return this.RedirectToAction(nameof(Index));
+        }
+
+        return View(model);
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> ConfirmDelete(int? id)
+    {
+        try
+        {
+            if (id == null)
+            {
+                this.RedirectToAction(nameof(Index));
+            }
+
+            string userId = GetUserId()!;
+
+            bool deleteResult = await this.bookService.ConfirmBookDelete(userId, id.Value);
+
+            return this.RedirectToAction(nameof(Index));
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return this.RedirectToAction(nameof(Index));
+        }
+    }
 }
 

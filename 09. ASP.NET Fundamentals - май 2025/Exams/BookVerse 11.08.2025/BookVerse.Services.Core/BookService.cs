@@ -1,4 +1,5 @@
-﻿using BookVerse.Data;
+﻿using System.Globalization;
+using BookVerse.Data;
 using BookVerse.DataModels;
 using BookVerse.Services.Core.Contracts;
 using BookVerse.ViewModels.Book;
@@ -12,11 +13,13 @@ public class BookService : IBookService
 {
     private readonly ApplicationDbContext dbContext;
     private readonly UserManager<IdentityUser> userManager;
+    private readonly IGenreService genreService;
 
-    public BookService(ApplicationDbContext dbContext, UserManager<IdentityUser> userManager)
+    public BookService(ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, IGenreService genreService)
     {
         this.dbContext = dbContext ?? throw new ArgumentNullException($"Missing dbContext: {nameof(dbContext)}");
         this.userManager = userManager;
+        this.genreService = genreService;
     }
 
 
@@ -148,6 +151,173 @@ public class BookService : IBookService
         dbContext.UserBooks.Remove(link);
         await dbContext.SaveChangesAsync();
         return true;
+    }
+    public async Task<bool> AddBookAsync(string? userId, BookCreateInputModel model)
+    {
+        IdentityUser? user = await this.userManager.FindByIdAsync(userId);
+        Genre? genreRef = await this.dbContext.Genres.FindAsync(model.GenreId);
+        bool isCreatedOnDateValid = DateTime.TryParseExact(model.PublishedOn,
+            "yyyy-mm-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime PublishedOnDate);
+
+        if (user != null && genreRef != null)
+        {
+            try
+            {
+                Book newBook = new Book()
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    CoverImageUrl = model.CoverImageUrl,
+                    PublishedOn = PublishedOnDate,
+                    PublisherId = userId,
+                    Publisher = user,
+                    GenreId = model.GenreId,
+                };
+
+                await this.dbContext.Books.AddAsync(newBook);
+                await this.dbContext.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    public async Task<BookEditInputModel> GetBookForEditAsync(string? userId, int? id)
+    {
+        BookEditInputModel? inputModel = null;
+
+        if (id.HasValue && !String.IsNullOrEmpty(userId))
+        {
+            Book? book = await this.dbContext
+                .Books
+                .Include(x => x.Genre)
+                .Include(x => x.Publisher)
+                .SingleOrDefaultAsync(r => r.Id == id && r.PublisherId == userId);
+
+            if (book == null)
+            {
+                return null;
+            }
+
+            var genres = await this.genreService.GetGenreAsync();
+            ;
+
+            inputModel = new BookEditInputModel()
+            {
+                Id = book.Id,
+                CoverImageUrl = book.CoverImageUrl,
+                Title = book.Title,
+                Description = book.Description,
+                GenreId = book.GenreId,
+                Genres = genres,
+                PublishedOn = book.PublishedOn,
+            };
+
+            return inputModel;
+        }
+        return null;
+    }
+
+    public async Task<bool> UpdateBookAsync(string? userId, BookEditInputModel model)
+    {
+        if (userId == null)
+        {
+            throw new ArgumentNullException(nameof(userId));
+        }
+
+        IdentityUser? user = await this.userManager.FindByIdAsync(userId);
+
+        if (userId != user.Id)
+        {
+            throw new ArgumentNullException(nameof(userId));
+        }
+
+
+        Book updateBook = new Book()
+        {
+            Id = model.Id,
+            Title = model.Title,
+            Description = model.Description,
+            CoverImageUrl = model.CoverImageUrl, 
+            PublisherId = userId,
+            Publisher = user,
+            GenreId = model.GenreId,
+            PublishedOn = model.PublishedOn
+        };
+
+        if (updateBook == null)
+        {
+            throw new ArgumentNullException(nameof(userId));
+        }
+
+        this.dbContext.Update(updateBook);
+        await this.dbContext.SaveChangesAsync();
+        return true;
+    }
+
+    public async Task<BookDeleteViewModel> GetBookToDelete(string? userId, int? id)
+    {
+        BookDeleteViewModel viewModel = null;
+
+        if (id.HasValue)
+        {
+            bool isUserNameValid = userId != null;
+
+            Book? recipe = await this.dbContext
+                .Books
+                .Include(x => x.Publisher)
+                .SingleOrDefaultAsync(x => x.Id == id && x.PublisherId == userId);
+
+            if (recipe != null)
+            {
+                viewModel = new BookDeleteViewModel
+                {
+                    Id = id.Value,
+                    Title = recipe.Title,
+                    Publisher = recipe.Publisher.UserName!,
+                };
+            }
+        }
+        return viewModel;
+    }
+
+    public async Task<bool> ConfirmBookDelete(string? userId, int? recipeId)
+    {
+        bool operationResult = false;
+
+        if (string.IsNullOrWhiteSpace(userId) || recipeId == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            var favDeletedCount = await this.dbContext
+                .UserBooks
+                .Where(ur => ur.UserId == userId && ur.BookId == recipeId)
+                .ExecuteDeleteAsync();
+
+            var deletedCount = await this.dbContext
+                .Books
+                .Where(x => x.PublisherId == userId && x.Id == recipeId)
+                .ExecuteDeleteAsync();
+
+            operationResult = deletedCount > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+            operationResult = false;
+        }
+
+        return operationResult;
     }
 
 }
