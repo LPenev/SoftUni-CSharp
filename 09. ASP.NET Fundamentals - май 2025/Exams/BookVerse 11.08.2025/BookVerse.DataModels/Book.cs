@@ -23,6 +23,6 @@ public class Book
     public bool IsDeleted { get; set; } = false;
 
     // Favorites
-    public ICollection<UserBook> UsersBooks { get; set; } = new HashSet<UserBook>();
+    public ICollection<UserBook> UserBooks { get; set; } = new HashSet<UserBook>();
 }
 

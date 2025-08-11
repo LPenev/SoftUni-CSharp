@@ -16,7 +16,7 @@ public class UserBookConfiguration : IEntityTypeConfiguration<UserBook>
             .OnDelete(DeleteBehavior.Restrict);
 
         b.HasOne(x => x.Book)
-            .WithMany(bk => bk.UsersBooks)
+            .WithMany(bk => bk.UserBooks)
             .HasForeignKey(x => x.BookId)
             .OnDelete(DeleteBehavior.Restrict);
 
