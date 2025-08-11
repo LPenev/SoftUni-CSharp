@@ -1,4 +1,9 @@
-﻿@* @{
+﻿@using BookVerse.ViewModels.Book;
+@model BookDetailsViewModel
+@using static BookVerse.GCommon.ValidationConstants.Book;
+
+
+@{
     ViewData["Title"] = "Book Details";
 }
 
@@ -26,7 +31,7 @@
             <p class="card-text">@Model.Description</p>
             <hr />
             <p class="card-text"><small class="text-muted">Genre: @Model.Genre</small></p>
-            <p class="card-text"><small class="text-muted">Published On: @Model.PublishedOn.ToString("dd/MM/yyyy")</small></p>
+            <p class="card-text"><small class="text-muted">Published On: @Model.PublishedOn.ToString(PublishedOnDateTimeFormat)</small></p>
             <p class="card-text"><small class="text-muted">Publisher: @Model.Publisher</small></p>
             <hr />
         </div>
@@ -60,4 +65,3 @@
         </div>
     </div>
 </div>
- *@

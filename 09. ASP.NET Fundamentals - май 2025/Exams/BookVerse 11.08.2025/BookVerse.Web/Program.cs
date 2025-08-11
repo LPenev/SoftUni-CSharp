@@ -1,7 +1,9 @@
 using BookVerse.Data;
+using BookVerse.Services;
+using BookVerse.Services.Core;
+using BookVerse.Services.Core.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace BookVerse
 {
@@ -29,6 +31,8 @@ namespace BookVerse
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
+
+            builder.Services.AddScoped<IBookService, BookService>();
 
 
             var app = builder.Build();
