@@ -1,10 +1,8 @@
+using BookVerse.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using RecipeSharingPlatform.Data;
-using RecipeSharingPlatform.Services.Core;
-using RecipeSharingPlatform.Services.Core.Contracts;
 
-namespace RecipeSharingPlatform.Web
+namespace BookVerse
 {
     public class Program
     {
@@ -18,19 +16,8 @@ namespace RecipeSharingPlatform.Web
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options =>
-            {
-                options.SignIn.RequireConfirmedAccount = false;
-
-                options.Password.RequireDigit = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireLowercase = false;
-            }).AddEntityFrameworkStores<ApplicationDbContext>();
-
-            builder.Services.AddScoped<IRecipeService, RecipeService>();
-            builder.Services.AddScoped<ICategoryService, CategoryService>();
-
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
